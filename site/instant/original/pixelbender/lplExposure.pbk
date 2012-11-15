@@ -1,0 +1,42 @@
+<languageVersion : 1.0;>
+kernel lplExposure
+<
+    namespace : "positlabs.lightpaintlive";
+    vendor : "Posit Labs";
+    version : 1;
+    description : "Lightpaint live exposure filter";
+>
+{
+    input image4 src;
+    input image4 src2;
+    output pixel4 dst;
+    
+    parameter float intensity
+    <
+        defaultValue:.083;
+        minValue:0.0;
+        maxValue:0.167;
+    >;
+
+    // loops through every pixel in the image
+    void evaluatePixel()
+    {
+        // gets position of target pixel
+        float2 pos = outCoord();
+    
+        // gets the next pixel in the loop
+        // with r, g, b, a values
+        pixel4 p = sampleNearest(src, pos);
+        pixel4 p2 = sampleNearest(src2, pos);
+        
+
+        float p2avg = (p2.r + p2.g + p2.b)/3.0;
+        
+        // ignore dim light
+        if(p2avg > 0.2){
+            p += p2 * float4(intensity, intensity, intensity, 1);
+        }
+        
+        dst = p;
+    }
+}
