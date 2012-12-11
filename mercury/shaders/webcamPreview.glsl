@@ -8,15 +8,13 @@
 
 //#fragment
 uniform sampler2D uNewTexture;
-//uniform sampler2D uOldTexture;
 
-//uniform float exposure;
+// TODO change this name so it will work with Postprocess
 
 varying vec2 vTextureCoord;
 
 void main(void) {
   vec4 n = texture2D(uNewTexture, vTextureCoord);
-  //uOldTexture;
 
   gl_FragColor = vec4(n.rgb, 1.0);
 
