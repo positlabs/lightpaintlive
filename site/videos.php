@@ -111,6 +111,11 @@
 				<img src="http://img.youtube.com/vi/PDlEC6cUUHs/0.jpg"/>
 			</div> </a>
 			<a href="#">
+			<div onclick="changeVideo(this, 'http://www.youtube.com/embed/SPDVnzRaqJ8')">
+				<h1>Miedza's LPL: Heavy Demo 2</h1>
+				<img src="http://img.youtube.com/vi/SPDVnzRaqJ8/0.jpg"/>
+			</div> </a>
+			<a href="#">
 			<div onclick="changeVideo(this, 'http://www.youtube.com/embed/SrXbS4qcEf8')">
 				<h1>Miedza's LPL: Heavy Demo</h1>
 				<img src="http://img.youtube.com/vi/SrXbS4qcEf8/0.jpg"/>
