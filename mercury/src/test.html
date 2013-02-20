@@ -46,15 +46,24 @@
   <script type="text/javascript" src="J3D/src/util/ParticleUtil.js"></script>
   <script type="text/javascript" src="J3D/src/util/ShaderUtil.js"></script>
   <script type="text/javascript" src="J3D/src/util/Time.js"></script>
+  <script type="text/javascript" src="js/PersistenceVideo.js"></script>
+
 
   <script src="js/libs/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="js/libs/dat.gui.min.js"></script>
   <script type="text/javascript" src="js/utils.js"></script>
   <script type="text/javascript" src="test/postproc_test.js"></script>
 
-
   <link rel="stylesheet" href="css/common.css"/>
   <link rel="stylesheet" href="css/mercury.css"/>
+
+  <script type="text/javascript">
+    var mercury;
+    window.onload = function(){
+      mercury = new LPL.Mercury();
+      mercury.init();
+    }
+  </script>
 
 </head>
 
