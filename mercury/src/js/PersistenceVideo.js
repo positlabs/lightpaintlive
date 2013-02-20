@@ -12,7 +12,7 @@ J3D.Persistence = function (engine) {
 	this.blendFilter = null;
 	// Use the simplest copy filter to render the composite to the screen (can be overwritten)
 	this.copyFilter = J3D.ShaderUtil.parseGLSL(J3D.ShaderSource.CopyFilter);
-}
+};
 
 J3D.Persistence.prototype.render = function () {
 
@@ -52,7 +52,7 @@ J3D.Persistence.prototype.render = function () {
 	// STEP 2. Render the new texture and the blend from previous frame to the composite framebuffer
 	compositeFbo.bind();
 
-	program = engine.shaderAtlas.getShader(this.blendFilter);
+	program = this.engine.shaderAtlas.getShader(this.blendFilter);
 
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 	gl.useProgram(program);
@@ -75,7 +75,7 @@ J3D.Persistence.prototype.render = function () {
 	compositeFbo.unbind();
 
 	// STEP 3. Render the composite framebuffer to screen
-	program = engine.shaderAtlas.getShader(this.copyFilter);
+	program = this.engine.shaderAtlas.getShader(this.copyFilter);
 
 
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);

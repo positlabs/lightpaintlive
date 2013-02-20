@@ -1,131 +1,193 @@
 var LPL = {};
 LPL.Mercury = function () {
 
-	var post,
+	var post, // effect used for webcam preview
 		userStream,
 		engine,
+		persistence, // effect used for painting
 		renderTimer,
+		userStreamTx, // webcam feed texture
 		currentShader,
+		resizer, // holder for the engine resizer function
 		shaders = {}, // collection of loaded shaders
 		me = this;
 
+	this.state = "notPainting";
 	this.exposure = 20;
 	this.resolution = "800x600";
 	this.fps = 30;
 	this.mode = "screen";
 
 	this.init = function () {
-		console.log("setup()");
+		console.log("Mercury." + "init()", arguments);
 
 		engine = new J3D.Engine(undefined, undefined, {preserveDrawingBuffer:true});
 		engine.setClearColor(J3D.Color.black);
 
-		var setup = function (shader) {
+		function setup(shader) {
 			shaders["WebcamShader"] = shader;
 			J3D.UserStream(function (stream) {
 				userStream = stream;
 
-				var ctex = new J3D.Texture(stream);
+				userStreamTx = new J3D.Texture(stream);
+
+				persistence = new J3D.Persistence(engine);
+				persistence.vTexture = userStreamTx;
+				persistence.fboN = new J3D.FrameBuffer();
+				persistence.fboA = new J3D.FrameBuffer();
+				persistence.fboB = new J3D.FrameBuffer();
 
 				post = new J3D.Postprocess(engine);
 				post.filter = shader;
 				post.render = function () {
 					J3D.Time.tick();
-					ctex.update();
-					post.renderEffect(ctex.tex);
+					userStreamTx.update();
+					post.renderEffect(userStreamTx.tex);
 				};
 
+				resizer = engine.resize;
+				engine.resize = {};
 				me.changeResolution(me.resolution);
-				startRender();
+				me.new();
 			});
-		};
+		}
 
 		J3D.Loader.loadGLSL("test/WebcamShader.glsl", setup);
 		makeGUI();
+		loadShaders();
+
+		window.addEventListener("resize", onResize);
 	};
 
-	function startRender() {
-		renderTimer = setInterval(post.render, 1000 / me.fps);
+	function loadShaders() {
+		console.log("loadShaders." + "loadShaders()", arguments);
+		for (var i = 0, max = LPL.Mercury.MODES.length; i < max; i++) {
+			J3D.Loader.loadGLSL("shaders/" + LPL.Mercury.MODES[i] + ".glsl", loaded);
+		}
+
+		var loadCount = 0;
+
+		function loaded(shader) {
+			console.log("loaded." + "loaded()", arguments);
+
+			var modeName = LPL.Mercury.MODES[loadCount];
+			shaders[modeName] = shader;
+			loadCount++;
+
+			if (loadCount == LPL.Mercury.MODES.length){
+				currentShader = shaders["screen"];
+				persistence.blendFilter = currentShader;
+			}
+		}
 	}
 
 	this.changeResolution = function (resolution) {
 		console.log("changeResolution", resolution);
 
-		var $window = $(window);
 		var width = resolution.split("x")[0];
 		var height = resolution.split("x")[1];
 
-		//TODO - maybe do this on window resize, too.
+		// have to keep reference to engine.resize so we can use it,
+		// but also need to disable so it doesn't automatically fire when the window resizes
+		engine.resize = resizer;
 		engine.resize(width, height);
+		engine.resize = function () {
+		};
 
-		$canvas = $("#mercury canvas");
-		$canvas.css("margin-left", -width / 2 + "px");
-		$canvas.css("margin-top", -height / 2 + "px");
-		$window.trigger("resize");
+		onResize();
 	};
 
+	function onResize() {
+		var width = me.resolution.split("x")[0],
+			height = me.resolution.split("x")[1],
+			scale = Math.min(window.innerWidth / width, window.innerHeight / height);
+
+		var canvas = document.getElementsByTagName("canvas")[0];
+		canvas.style.width = width * scale + "px";
+		canvas.style.height = height * scale + "px";
+		canvas.style.marginLeft = -width / 2 * scale + "px";
+		canvas.style.marginTop = -height / 2 * scale + "px";
+	}
+
 	this.start = function () {
-		console.log("Mercury."+"start()", arguments);
+//		console.log("Mercury." + "start()", arguments);
 
-		engine = new J3D.Engine(undefined, undefined, {preserveDrawingBuffer:true});
-		engine.setClearColor(J3D.Color.black);
-		console.log("engine",engine);
+		me.state = "painting";
 
-		post = new J3D.Persistence(engine);
-		post.vTexture = new J3D.Texture(userStream);
-		post.blendFilter = currentShader;
-		post.blendFilter.exposure = me.exposure;
+		persistence.blendFilter = currentShader;
+		persistence.blendFilter.exposure = me.exposure * .01;
 
 		clearTimeout(renderTimer);
-		renderTimer = setInterval(function(){
-			post.render();
+		renderTimer = setInterval(function () {
+			persistence.render();
 		}, 1000 / me.fps);
 
-		startRender();
 	};
 
 	this.stop = function () {
+//		console.log("Mercury." + "stop()", arguments);
+		me.state = "notPainting";
+		clearTimeout(renderTimer);
+	};
 
+	this["start / stop"] = function () {
+		me.state == "painting" ? me.stop() : me.start();
+	};
+
+	this.new = function () {
+//		console.log("Mercury."+"new()", arguments);
+		me.stop();
+		persistence.fboN = new J3D.FrameBuffer();
+		persistence.fboA = new J3D.FrameBuffer();
+		persistence.fboB = new J3D.FrameBuffer();
+
+		renderTimer = setInterval(function () {
+			post.render();
+		}, 1000 / me.fps);
 	};
 
 	/**
 	 *  changes the shader to use during painting
 	 */
 	this.changeMode = function (mode) {
-		console.log("Mercury."+"changeMode()", arguments);
-		if (shaders[mode] == undefined) {
-			J3D.Loader.loadGLSL("../src/shaders/" + mode + ".glsl", function (shader) {
-				shaders[mode] = shader;
-				doChange();
-			});
-		}else doChange();
-
-		function doChange(){
-			currentShader = shaders[mode];
-		}
+		console.log("Mercury." + "changeMode()", arguments);
+		currentShader = shaders[mode];
 	};
 
 	function makeGUI() {
-		var resolutions = ["320x240", "640x480", "800x600", "1024x768", "1280x720"],
-			modes = ["screen", "add"];
 
 		//TODO - move controls outside of this class
-		//TODO - make dat.gui controls
 
 		//fps
 		//exposure
 
 		var gui = new dat.GUI();
+		gui.remember(me);
 
-		var res = gui.add(me, "resolution", resolutions);
+		var res = gui.add(me, "resolution", LPL.Mercury.RESOLUTIONS);
 		res.onChange(me.changeResolution);
 
-		var bmodes = gui.add(me, "mode", modes);
+		var bmodes = gui.add(me, "mode", LPL.Mercury.MODES);
 		bmodes.onChange(me.changeMode);
 
-		gui.add(me, "start");
-		gui.add(me, "stop");
+		var xposur = gui.add(me, 'exposure', 1, 100);
+		xposur.onChange(function () {
+			persistence.blendFilter.exposure = me.exposure * .01;
+		});
+
+		var framerate = gui.add(me, 'fps', 1, 120);
+		framerate.onChange(function () {
+			if (me.state != "painting")
+				me.new();
+		});
+//		gui.add(me, 'save');
+		gui.add(me, 'new');
+
+		gui.add(me, "start / stop");
 
 	}
 
 };
+
+LPL.Mercury.MODES = ["screen", "add", "overlay", "softlight", "kaleido"];
+LPL.Mercury.RESOLUTIONS = ["320x240", "640x480", "800x600", "1024x768", "1280x720"];

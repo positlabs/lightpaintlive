@@ -1,12 +1,3 @@
-UTILS = {
-
-
-
-
-
-
-};
-
 
 //-- http://stackoverflow.com/questions/2124684/jquery-how-click-anywhere-outside-of-the-div-the-div-fades-out
 

@@ -2,90 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dd259fa-1733-4842-b2ce-b7c1699b2236" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mercury/src/test/WebcamShader.glsl" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mercury/test/VideoEffect.glsl" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/lib/gl-matrix-1.2.3.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/lib/gl-matrix-1.2.3.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/lib/gl-matrix-1.3.7.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/lib/gl-matrix-1.3.7.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/lib/requestAnimationFrame.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/lib/requestAnimationFrame.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/J3D.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/J3D.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/AssetLoader.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/AssetLoader.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/BuiltinShaders.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/BuiltinShaders.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Camera.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Camera.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Collider.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Collider.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Cubemap.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Cubemap.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Engine.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Engine.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/FrameBuffer.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/FrameBuffer.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Geometry.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Geometry.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Light.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Light.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Loader.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Loader.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Mesh.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Mesh.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Postprocess.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Postprocess.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Primitives.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Primitives.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Ray.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Ray.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Scene.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Scene.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Shader.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Shader.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/ShaderAtlas.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/ShaderAtlas.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/ShaderSource.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/ShaderSource.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Texture.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Texture.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/engine/Transform.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/engine/Transform.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/extras/Capabilities.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/extras/Capabilities.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/extras/Interactor.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/extras/Interactor.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/extras/PointerLock.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/extras/PointerLock.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/extras/UserStream.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/extras/UserStream.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/math/Matrix44.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/math/Matrix44.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/math/Vector2.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/math/Vector2.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/math/Vector3.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/math/Vector3.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/nmath/Vector2.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/nmath/Vector2.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/nmath/Vector3.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/nmath/Vector3.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/builtin/Copy.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/builtin/Copy.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/builtin/Depth.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/builtin/Depth.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/builtin/Gouraud.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/builtin/Gouraud.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/builtin/Lightmap.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/builtin/Lightmap.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/builtin/Normal2Color.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/builtin/Normal2Color.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/builtin/Phong.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/builtin/Phong.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/builtin/Reflective.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/builtin/Reflective.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/builtin/Selflit.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/builtin/Selflit.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/builtin/Skybox.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/builtin/Skybox.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/builtin/Vignette.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/builtin/Vignette.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/includes/BasicFilterVertex.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/includes/BasicFilterVertex.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/includes/CommonFilterInclude.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/includes/CommonFilterInclude.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/includes/CommonInclude.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/includes/CommonInclude.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/includes/Lights.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/includes/Lights.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/includes/Modifiers.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/includes/Modifiers.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/shaders/includes/VertexInclude.glsl" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/shaders/includes/VertexInclude.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/util/Color.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/util/Color.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/util/Error.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/util/Error.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/util/GeometryUtil.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/util/GeometryUtil.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/util/Intersection.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/util/Intersection.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/util/MathUtil.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/util/MathUtil.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/util/ParticleUtil.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/util/ParticleUtil.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/util/ShaderUtil.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/util/ShaderUtil.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/J3D/src/util/Time.js" afterPath="$PROJECT_DIR$/mercury/src/J3D/src/util/Time.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/css/common.css" afterPath="$PROJECT_DIR$/mercury/src/css/common.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/css/mercury.css" afterPath="$PROJECT_DIR$/mercury/src/css/mercury.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/dev.html" afterPath="$PROJECT_DIR$/mercury/src/dev.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/img/icon128.png" afterPath="$PROJECT_DIR$/mercury/src/img/icon128.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/img/icon16.png" afterPath="$PROJECT_DIR$/mercury/src/img/icon16.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/img/icon48.png" afterPath="$PROJECT_DIR$/mercury/src/img/icon48.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/index.html" afterPath="$PROJECT_DIR$/mercury/src/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/js/PersistenceVideo.js" afterPath="$PROJECT_DIR$/mercury/src/js/PersistenceVideo.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/js/libs/dat.gui.min.js" afterPath="$PROJECT_DIR$/mercury/src/js/libs/dat.gui.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/js/libs/j3d.js" afterPath="$PROJECT_DIR$/mercury/src/js/libs/j3d.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/js/libs/jquery-1.7.2.min.js" afterPath="$PROJECT_DIR$/mercury/src/js/libs/jquery-1.7.2.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/js/mercury.js" afterPath="$PROJECT_DIR$/mercury/src/js/mercury.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/js/production.js" afterPath="$PROJECT_DIR$/mercury/src/js/production.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/js/social.js" afterPath="$PROJECT_DIR$/mercury/src/js/social.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/js/utils.js" afterPath="$PROJECT_DIR$/mercury/src/js/utils.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/shaders/add.glsl" afterPath="$PROJECT_DIR$/mercury/src/shaders/add.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/shaders/kaleido.glsl" afterPath="$PROJECT_DIR$/mercury/src/shaders/kaleido.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/shaders/overlay.glsl" afterPath="$PROJECT_DIR$/mercury/src/shaders/overlay.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/shaders/sandbox.glsl" afterPath="$PROJECT_DIR$/mercury/src/shaders/sandbox.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/shaders/screen.glsl" afterPath="$PROJECT_DIR$/mercury/src/shaders/screen.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/shaders/softlight.glsl" afterPath="$PROJECT_DIR$/mercury/src/shaders/softlight.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/shaders/webcamPreview.glsl" afterPath="$PROJECT_DIR$/mercury/src/shaders/webcamPreview.glsl" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/test.html" afterPath="$PROJECT_DIR$/mercury/src/test.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/test/postproc_test.js" afterPath="$PROJECT_DIR$/mercury/src/test/postproc_test.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mercury/src/js/social.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/src/js/utils.js" afterPath="$PROJECT_DIR$/mercury/src/js/extend.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mercury/src/dev.html" afterPath="$PROJECT_DIR$/mercury/src/dev.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mercury/src/js/PersistenceVideo.js" afterPath="$PROJECT_DIR$/mercury/src/js/PersistenceVideo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mercury/src/test.html" afterPath="$PROJECT_DIR$/mercury/src/test.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mercury/src/test/postproc_test.js" afterPath="$PROJECT_DIR$/mercury/src/test/postproc_test.js" />
     </list>
     <ignored path="LightPaintLive.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -108,16 +31,7 @@
       <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mercury/src/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="3243" selection-end="3243" vertical-scroll-proportion="-29.44">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dev.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mercury/src/dev.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="52" selection-start="3290" selection-end="3362" vertical-scroll-proportion="-18.56">
+            <state line="49" column="0" selection-start="3243" selection-end="3243" vertical-scroll-proportion="-13.08">
               <folding />
             </state>
           </provider>
@@ -126,7 +40,16 @@
       <file leaf-file-name="postproc_test.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mercury/src/test/postproc_test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="26" selection-start="1984" selection-end="1984" vertical-scroll-proportion="0.6909091">
+            <state line="40" column="37" selection-start="1124" selection-end="1124" vertical-scroll-proportion="0.72727275">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mercury.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mercury/src/js/mercury.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="84" column="0" selection-start="2026" selection-end="2120" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -145,7 +68,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/lplMercuryApp/manifest.json" />
         <option value="$PROJECT_DIR$/mercury/shaders/webcamPreview.glsl" />
         <option value="$PROJECT_DIR$/mercury/dev.html" />
         <option value="$PROJECT_DIR$/mercury/js/mercury.js" />
@@ -160,6 +82,7 @@
         <option value="$PROJECT_DIR$/mercury/src/test/WebcamShader.glsl" />
         <option value="$PROJECT_DIR$/mercury/src/test.html" />
         <option value="$PROJECT_DIR$/mercury/src/js/PersistenceVideo.js" />
+        <option value="$PROJECT_DIR$/mercury/src/js/utils.js" />
         <option value="$PROJECT_DIR$/mercury/src/test/postproc_test.js" />
       </list>
     </option>
@@ -297,6 +220,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -324,7 +248,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="22" width="1676" height="1028" extended-state="0" />
+    <frame x="4" y="22" width="1676" height="1028" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -398,16 +322,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mercury/build/build.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/src/js/social.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mercury/src/J3D/src/engine/Postprocess.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="25" selection-start="455" selection-end="455" vertical-scroll-proportion="0.3272727" />
@@ -420,9 +334,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/site/scripts/easel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="410" selection-start="36525" selection-end="36525" vertical-scroll-proportion="0.6493656">
-          <folding />
-        </state>
+        <state line="90" column="410" selection-start="36525" selection-end="36525" vertical-scroll-proportion="0.6493656" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/site/scripts/lighttrails.js">
@@ -434,51 +346,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mercury/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mercury/src/shaders/webcamPreview.glsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="32" selection-start="281" selection-end="292" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="16" column="32" selection-start="281" selection-end="292" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mercury/src/test/WebcamShader.glsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="4" selection-start="222" selection-end="222" vertical-scroll-proportion="0.2">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/src/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="3243" selection-end="3243" vertical-scroll-proportion="-29.44">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/src/dev.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="52" selection-start="3290" selection-end="3362" vertical-scroll-proportion="-18.56">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/src/js/mercury.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="24" selection-start="2769" selection-end="2780" vertical-scroll-proportion="0.4181818">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/src/js/PersistenceVideo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="21" selection-start="788" selection-end="788" vertical-scroll-proportion="0.36363637">
-          <folding />
-        </state>
+        <state line="11" column="4" selection-start="222" selection-end="222" vertical-scroll-proportion="0.2" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/site/mercury/js/PersistenceVideo.js">
@@ -495,9 +373,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/src/dev.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="52" selection-start="3290" selection-end="3362" vertical-scroll-proportion="0.5345029">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/mercury/J3D/src/engine/Engine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="42" selection-start="411" selection-end="411" vertical-scroll-proportion="0.16608997">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/src/js/PersistenceVideo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="94" selection-start="395" selection-end="395" vertical-scroll-proportion="0.21818182">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/src/js/mercury.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="0" selection-start="2026" selection-end="2120" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/src/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="0" selection-start="3243" selection-end="3243" vertical-scroll-proportion="-13.08">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/src/js/extend.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mercury/src/test/postproc_test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="26" selection-start="1984" selection-end="1984" vertical-scroll-proportion="0.6909091">
+        <state line="40" column="37" selection-start="1124" selection-end="1124" vertical-scroll-proportion="0.72727275">
           <folding />
         </state>
       </provider>
