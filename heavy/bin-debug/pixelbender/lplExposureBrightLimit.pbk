@@ -1,0 +1,77 @@
+<languageVersion : 1.0;>
+kernel lplExposure
+<
+    namespace : "positlabs.lightpaintlive";
+    vendor : "Posit Labs";
+    version : 2;
+    description : "Lightpaint live exposure filter";
+>
+{
+    //canvas
+    input image4 src;
+    
+    //camera
+    input image4 src2;
+    
+    output pixel4 dst;
+    
+    parameter float intensity
+    <
+        defaultValue:.083;
+        minValue:0.0;
+        maxValue:0.167;
+    >;
+        
+    parameter float lowerLimit
+    <
+        defaultValue:0.1;
+        minValue:0.1;
+        maxValue:1.0;
+    >;
+
+    parameter float upperLimit
+    <
+        defaultValue:1.0;
+        minValue:0.0;
+        maxValue:1.0;
+    >;
+
+    // set to zero to deactivate
+    parameter float brightLimit
+    <
+        defaultValue:0.0;
+        minValue:-1.0;
+        maxValue:1.0;
+    >;
+
+    // loops through every pixel in the image
+    void evaluatePixel()
+    {
+        // gets position of target pixel
+        float2 pos = outCoord();
+    
+        // gets the next pixel in the loop
+        // with r, g, b, a values
+        pixel4 p = sampleNearest(src, pos);
+        pixel4 p2 = sampleNearest(src2, pos);
+
+        //canvas brightness
+        float pavg = (p.r + p.g + p.b)/3.0;
+        
+        //camera brightness
+        float p2avg = (p2.r + p2.g + p2.b)/3.0;
+        
+        // always test for lowerlimit
+        if(p2avg >= lowerLimit){
+            // if brightness limit is active, make upper limit relative to canvas
+            if(brightLimit != 0.0){
+                if(pavg <= p2avg + brightLimit)
+                    p += p2 * float4(intensity, intensity, intensity, 1);
+            }else if(p2avg <= upperLimit){
+                // else just do upper limit on camera image
+                p += p2 * float4(intensity, intensity, intensity, 1);
+            }
+        }
+        dst = p;
+    }
+}
