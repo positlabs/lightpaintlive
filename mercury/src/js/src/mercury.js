@@ -19,8 +19,8 @@ LPL.Mercury = function () {
 
 	this.state = "notPainting";
 	this.exposure = 20;
-	this.resolution = "800x600";
-	this.fps = 30;
+	this.resolution = "1024x768";
+	this.fps = 60;
 	this.mode = "screen";
 
 	this.init = function () {
@@ -60,7 +60,7 @@ LPL.Mercury = function () {
 			});
 		}
 
-		J3D.Loader.loadGLSL("test/WebcamShader.glsl", setup);
+		J3D.Loader.loadGLSL("shaders/WebcamShader.glsl", setup);
 
 		window.addEventListener("resize", onResize);
 	};
@@ -223,5 +223,5 @@ LPL.Mercury = function () {
 
 };
 
-LPL.Mercury.MODES = ["screen", "add", "overlay", "softlight", "kaleido"];
+LPL.Mercury.MODES = ["screen", "add", "overlay", "softlight", "kaleido", "sandbox"];
 LPL.Mercury.RESOLUTIONS = ["320x240", "640x480", "800x600", "1024x768", "1280x720"];

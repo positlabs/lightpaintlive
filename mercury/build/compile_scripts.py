@@ -2,7 +2,7 @@
 
 import glob, os, sys, shutil
 
-directories = ["../js/"]
+directories = ["../src/js/src/"]
 
 tmpdir = "temp_js"
 compiled = "%s/*.js" % tmpdir

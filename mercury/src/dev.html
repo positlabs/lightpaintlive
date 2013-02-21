@@ -20,6 +20,7 @@
   <script type="text/javascript" src="J3D/src/engine/Light.js"></script>
   <script type="text/javascript" src="J3D/src/engine/Loader.js"></script>
   <script type="text/javascript" src="J3D/src/engine/Mesh.js"></script>
+  <script type="text/javascript" src="J3D/src/engine/Postprocess.js"></script>
   <script type="text/javascript" src="J3D/src/engine/Primitives.js"></script>
   <script type="text/javascript" src="J3D/src/engine/Ray.js"></script>
   <script type="text/javascript" src="J3D/src/engine/Scene.js"></script>
@@ -45,23 +46,28 @@
   <script type="text/javascript" src="J3D/src/util/ParticleUtil.js"></script>
   <script type="text/javascript" src="J3D/src/util/ShaderUtil.js"></script>
   <script type="text/javascript" src="J3D/src/util/Time.js"></script>
+  <script type="text/javascript" src="js/PersistenceVideo.js"></script>
 
   <script src="js/libs/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="js/libs/dat.gui.min.js"></script>
-  <!--<script type="text/javascript" src="js/libs/j3d.js"></script>-->
-  <script type="text/javascript" src="js/PersistenceVideo.js"></script>
-  <script type="text/javascript" src="js/mercury.js"></script>
-  <script type="text/javascript" src="js/social.js"></script>
+
   <script type="text/javascript" src="js/extend.js"></script>
+  <script type="text/javascript" src="js/mercury.js"></script>
 
   <link rel="stylesheet" href="css/common.css"/>
   <link rel="stylesheet" href="css/mercury.css"/>
 
+  <script type="text/javascript">
+    var mercury;
+    window.onload = function(){
+      mercury = new LPL.Mercury();
+      mercury.init();
+    }
+  </script>
+
 </head>
 
 <body id="mercury">
-
-<!--DEV.HTML-->
 
 </body>
 

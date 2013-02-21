@@ -2,7 +2,7 @@
 
 import glob, os, sys, shutil
 
-directories = ["../css/"]
+directories = ["../src/css/"]
 
 tmpdir = "temp_css"
 compiled = "%s/*.css" % tmpdir
