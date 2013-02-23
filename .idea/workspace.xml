@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dd259fa-1733-4842-b2ce-b7c1699b2236" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mercury/src/js/src/mercury.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mercury/src/shaders/WebcamShader.glsl" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mercury/compiled/compiled.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mercury/compiled/main.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/src/js/PersistenceVideo.js" afterPath="$PROJECT_DIR$/mercury/src/js/src/PersistenceVideo.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/src/js/extend.js" afterPath="$PROJECT_DIR$/mercury/src/js/src/extend.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/src/js/mercury.js" afterPath="$PROJECT_DIR$/mercury/src/js/src/mercury_old.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mercury/src/js/production.js" afterPath="$PROJECT_DIR$/mercury/src/js/src/production.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mercury/build/compile_css.py" afterPath="$PROJECT_DIR$/mercury/build/compile_css.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mercury/build/compile_scripts.py" afterPath="$PROJECT_DIR$/mercury/build/compile_scripts.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mercury/src/dev.html" afterPath="$PROJECT_DIR$/mercury/src/dev.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mercury/src/index.html" afterPath="$PROJECT_DIR$/mercury/src/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mercury/src/test.html" afterPath="$PROJECT_DIR$/mercury/src/test.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mercury/src/test/postproc_test.js" afterPath="$PROJECT_DIR$/mercury/src/test/postproc_test.js" />
     </list>
     <ignored path="LightPaintLive.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,28 +23,19 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mercury/src/test.html">
+      <file leaf-file-name="mercury.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mercury/src/js/src/mercury.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="136" selection-end="3170" vertical-scroll-proportion="-3.84">
+            <state line="22" column="17" selection-start="591" selection-end="591" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mercury/src/index.html">
+      <file leaf-file-name="dev.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mercury/src/dev.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="38" selection-start="53" selection-end="53" vertical-scroll-proportion="0.056140352">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="compile_scripts.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mercury/build/compile_scripts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="30" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0">
+            <state line="37" column="72" selection-start="2426" selection-end="2426" vertical-scroll-proportion="0.69239765">
               <folding />
             </state>
           </provider>
@@ -83,7 +61,6 @@
         <option value="$PROJECT_DIR$/mercury/src/js/utils.js" />
         <option value="$PROJECT_DIR$/mercury/src/shaders/softlight.glsl" />
         <option value="$PROJECT_DIR$/mercury/src/test/postproc_test.js" />
-        <option value="$PROJECT_DIR$/mercury/src/dev.html" />
         <option value="$PROJECT_DIR$/mercury/src/js/mercury.js" />
         <option value="$PROJECT_DIR$/mercury/src/js/production.js" />
         <option value="$PROJECT_DIR$/mercury/build/compile_css.py" />
@@ -92,11 +69,11 @@
         <option value="$PROJECT_DIR$/mercury/src/test.html" />
         <option value="$PROJECT_DIR$/mercury/src/js/src/production.js" />
         <option value="$PROJECT_DIR$/mercury/src/index.html" />
+        <option value="$PROJECT_DIR$/mercury/src/dev.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="4" />
     <option name="y" value="22" />
     <option name="width" value="1676" />
     <option name="height" value="1028" />
@@ -195,6 +172,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="shaders" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lightpaintlive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lightpaintlive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mercury" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -222,24 +221,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lightpaintlive" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lightpaintlive" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mercury" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -281,7 +262,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="22" width="1676" height="1028" extended-state="6" />
+    <frame x="0" y="22" width="1676" height="1028" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -363,32 +344,69 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mercury/src/shaders/WebcamShader.glsl">
+    <entry file="file://$PROJECT_DIR$/mercury/src/shaders/kaleido.glsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="15" column="18" selection-start="250" selection-end="254" vertical-scroll-proportion="0.27272728" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/build/deploy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/src/img/icon128.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/build/build.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/build/compile_css.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="148" selection-end="148" vertical-scroll-proportion="0.14545454" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/compiled/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="19" selection-start="79" selection-end="79" vertical-scroll-proportion="0.05882353" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/src/js/src/production.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="11" selection-start="184" selection-end="184" vertical-scroll-proportion="0.18181819" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/src/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="136" selection-end="3170" vertical-scroll-proportion="-0.44093567" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="38" selection-start="53" selection-end="53" vertical-scroll-proportion="0.056140352" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/src/shaders/add.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="10" selection-start="31" selection-end="38" vertical-scroll-proportion="0.054545455" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mercury/build/compile_scripts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="30" selection-start="83" selection-end="83" vertical-scroll-proportion="0.07272727" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mercury/src/js/src/mercury_old.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="27" selection-start="302" selection-end="302" vertical-scroll-proportion="0.27272728">
-          <folding />
-        </state>
+        <state line="100" column="43" selection-start="2476" selection-end="2476" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/src/test/postproc_test.js">
+    <entry file="file://$USER_HOME$/Desktop/softlight.glsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="59" selection-start="0" selection-end="5820" vertical-scroll-proportion="0.36363637">
-          <folding>
-            <element signature="e#1725#2338#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/src/shaders/kaleido.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="18" selection-start="250" selection-end="254" vertical-scroll-proportion="0.27272728">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -400,80 +418,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/build/deploy.py">
+    <entry file="file://$PROJECT_DIR$/mercury/src/js/src/mercury.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="22" column="17" selection-start="591" selection-end="591" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mercury/src/dev.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="48" selection-start="3481" selection-end="3481" vertical-scroll-proportion="0.4760234">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/src/img/icon128.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/build/build.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/src/js/src/mercury.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="17" selection-start="591" selection-end="591" vertical-scroll-proportion="0.4">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/build/compile_css.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="148" selection-end="148" vertical-scroll-proportion="0.14545454">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/compiled/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="19" selection-start="79" selection-end="79" vertical-scroll-proportion="0.05882353">
-          <folding>
-            <marker date="1361411678000" expanded="false" signature="151146:151177" placeholder="..." />
-            <marker date="1361411678000" expanded="false" signature="154308:154318" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/src/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="136" selection-end="3170" vertical-scroll-proportion="-3.84">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/src/js/src/production.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="11" selection-start="184" selection-end="184" vertical-scroll-proportion="0.18181819">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/build/compile_scripts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="30" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mercury/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="38" selection-start="53" selection-end="53" vertical-scroll-proportion="0.056140352">
+        <state line="37" column="72" selection-start="2426" selection-end="2426" vertical-scroll-proportion="0.69239765">
           <folding />
         </state>
       </provider>
