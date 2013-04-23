@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6dd259fa-1733-4842-b2ce-b7c1699b2236" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mercury/src/dev.html" afterPath="$PROJECT_DIR$/mercury/src/dev.html" />
     </list>
     <ignored path="LightPaintLive.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,7 +34,7 @@
       <file leaf-file-name="dev.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mercury/src/dev.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="72" selection-start="2426" selection-end="2426" vertical-scroll-proportion="0.69239765">
+            <state line="66" column="0" selection-start="3767" selection-end="3767" vertical-scroll-proportion="0.87953216">
               <folding />
             </state>
           </provider>
@@ -74,6 +73,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="4" />
     <option name="y" value="22" />
     <option name="width" value="1676" />
     <option name="height" value="1028" />
@@ -262,13 +262,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1676" height="1028" extended-state="6" />
-    <editor active="true" />
+    <frame x="4" y="22" width="1676" height="1028" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24984875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24984875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -404,18 +404,9 @@
         <state line="100" column="43" selection-start="2476" selection-end="2476" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/softlight.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mercury/src/shaders/softlight.glsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="42" selection-start="450" selection-end="450" vertical-scroll-proportion="0.4">
-          <folding />
-        </state>
+        <state line="22" column="42" selection-start="450" selection-end="450" vertical-scroll-proportion="0.4" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mercury/src/js/src/mercury.js">
@@ -427,7 +418,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mercury/src/dev.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="72" selection-start="2426" selection-end="2426" vertical-scroll-proportion="0.69239765">
+        <state line="66" column="0" selection-start="3767" selection-end="3767" vertical-scroll-proportion="0.87953216">
           <folding />
         </state>
       </provider>

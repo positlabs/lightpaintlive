@@ -13,6 +13,7 @@ J3D.UserStream = function(callback) {
 
     var onError = function(e) {
         console.log(e);
+	    alert("Something went wrong! You might need to visit chrome://settings/contentExceptions#media-stream and clear your settings.");
         throw J3D.Error.USER_STREAM_ERROR
     }
 
@@ -30,7 +31,7 @@ J3D.UserStream = function(callback) {
         n.getUserMedia({ video: true, audio: false, captureDelay: 2 }, onSuccess, onError);
     } else if (n.webkitGetUserMedia) {
         iswebkit = true;
-        n.webkitGetUserMedia({audio:false, video:true}, onSuccess, onError);
+        navigator.webkitGetUserMedia({video:true, audio:false}, onSuccess, onError);
     } else {
         throw J3D.Error.USER_STREAM_ERROR;
     }
