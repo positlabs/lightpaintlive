@@ -1,5 +1,5 @@
 var LPL = {};
-LPL.Mercury = function () {
+(function () {
 
 	var post, // effect used for webcam preview
 		userStream,
@@ -23,10 +23,10 @@ LPL.Mercury = function () {
 	this.fps = 30;
 	this.mode = "screen";
 
-	this.init = function () {
+	window.onload = function () {
 		console.log("Mercury." + "init()", arguments);
 
-		engine = new J3D.Engine(undefined, undefined, {preserveDrawingBuffer:true});
+		engine = new J3D.Engine(undefined, undefined, {preserveDrawingBuffer: true});
 		engine.setClearColor(J3D.Color.black);
 
 		function setup(shader) {
@@ -95,7 +95,7 @@ LPL.Mercury = function () {
 	//TODO - make shader-specific controls
 	function makeShaderControls() {
 		shaders["kaleido"].controls = {
-			create:function (datgui) {
+			create: function (datgui) {
 				persistence.blendFilter.arg1 = me.kaleidoSplit;
 				var kaleidoNum = datgui.add(me, "kaleidoSplit", 2, 8);
 				kaleidoNum.step(1);
@@ -160,6 +160,30 @@ LPL.Mercury = function () {
 		me.state == "painting" ? me.stop() : me.start();
 	};
 
+	this.save = function () {
+		var fileName = "LPL-MERCURY_" + Date.now() + ".jpg";
+
+		// flip the image
+		var canvas = document.getElementsByTagName("canvas")[0];
+		var ncanvas = document.createElement("canvas");
+		ncanvas.width = canvas.width;
+		ncanvas.height = canvas.height;
+		var ctx = ncanvas.getContext("2d");
+		ctx.scale(-1, 1);
+		ctx.drawImage(canvas, -canvas.width, 0, canvas.width, canvas.height);
+
+		var imgUrl = ncanvas.toDataURL("image/jpeg", 10);
+		var save = document.createElement("a");
+		save.href = imgUrl;
+		save.target = "_blank";
+		save.download = fileName;
+
+		var evt = document.createEvent('MouseEvents');
+		evt.initMouseEvent('click', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+		save.dispatchEvent(evt);
+	};
+
 	this.new = function () {
 //		console.log("Mercury."+"new()", arguments);
 		me.stop();
@@ -214,14 +238,22 @@ LPL.Mercury = function () {
 			if (me.state != "painting")
 				me.new();
 		});
-//		gui.add(me, 'save');
+		gui.add(me, 'save');
 		gui.add(me, 'new');
 
 		gui.add(me, "start / stop");
 
 	}
 
-};
+})();
 
+LPL.Mercury = {};
 LPL.Mercury.MODES = ["screen", "add", "overlay", "softlight", "kaleido"];
 LPL.Mercury.RESOLUTIONS = ["320x240", "640x480", "800x600", "1024x768", "1280x720"];
+
+
+//var mercury;
+//window.onload = function () {
+//	mercury = new LPL.Mercury();
+//	mercury.init();
+//};
