@@ -1,0 +1,41 @@
+#mercury {
+	width: 100%;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+#mercury canvas {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: scaleX(-1);
+}
+
+#mercury .dg {
+	z-index: 10;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	background-color: rgba(0, 0, 0, .8);
+	padding: 0 100px;
+	z-index: 100;
+}
+
+footer span{
+	margin: 0 10px;
+	line-height: 50px;
+	color: gray;
+}
+
+footer img{
+	position: absolute;
+	left: 20px;
+	top: -35px;
+}
+
+footer a{
+	text-transform: uppercase;
+}

@@ -1,5 +1,5 @@
 {
-    "root": "../src/",
+    "root": "../app/",
 
     "input": "dev.html",
 
@@ -14,5 +14,5 @@
     "host": "positlabs.com",
     "username": "c204230",
     "password": "Password2133",
-    "ftpRoot": "lightpaintlive.com/mercury/"
+    "ftpRoot": "lightpaintlive.com/mercury/app/"
 }
