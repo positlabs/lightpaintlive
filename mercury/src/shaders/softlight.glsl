@@ -20,17 +20,16 @@ void main(void) {
 
   vec3 one = vec3(1.0);
   vec3 onehalf = vec3(0.5);
-  float v1Lum = (v1.r + v1.g + v1.b )/3.0;
+  float v1Lum = (v2.r + v2.g + v2.b )/3.0;
 
   vec3 softlight;
-      if ( v1Lum > 0.5 ){
-         softlight = v2.rgb + (one - v2.rgb) * ((v1.rgb - onehalf) / onehalf) * (0.5 - abs(v2.rgb - onehalf));
-      }else{
-         softlight = v2.rgb - v2.rgb * ((onehalf - v1.rgb) / onehalf) * (0.5 - abs(v2.rgb-onehalf));
-      }
 
-   softlight = mix(v2.rgb, softlight, exposure);
+  if ( v1Lum > 0.5 ){
+	 softlight = v2.rgb + (one - v2.rgb) * ((v1.rgb - onehalf) / onehalf) * (0.5 - abs(v2.rgb - onehalf));
+  }else{
+	 softlight = v2.rgb - v2.rgb * ((onehalf - v1.rgb) / onehalf) * (0.5 - abs(v2.rgb-onehalf));
+  }
 
-  gl_FragColor = vec4(softlight, 1.0);
+  gl_FragColor = vec4(mix(v1.rgb, softlight*.1, exposure), 1.0);
 
 }
