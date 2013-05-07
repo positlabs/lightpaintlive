@@ -7,8 +7,8 @@
 
 
   <!-- build-o-matic compiled.css -->
-  <link rel="stylesheet" type="text/css" href="css/src/common.css"/>
-  <link rel="stylesheet" type="text/css" href="css/src/mercury.css"/>
+  <link rel="stylesheet" type="text/less" href="css/src/common.less"/>
+  <link rel="stylesheet" type="text/less" href="css/src/mercury.less"/>
   <!-- /build-o-matic -->
 
   <!-- build-o-matic main_min.js -->
@@ -54,37 +54,51 @@
   <script type="text/javascript" src="js/libs/J3D/src/util/Time.js"></script>
 
   <script type="text/javascript" src="js/libs/dat.gui.min.js"></script>
+  <script type="text/javascript" src="js/libs/less.js"></script>
 
   <script type="text/javascript" src="js/src/PersistenceVideo.js"></script>
   <script type="text/javascript" src="js/src/mercury.js"></script>
+  <script type="text/javascript" src="js/src/mercury-demo.js"></script>
   <!-- /build-o-matic -->
 
-  <!--<script type="text/javascript">-->
-  <!--var _gaq = _gaq || [];-->
-  <!--_gaq.push(['_setAccount', 'UA-28885410-1']);-->
-  <!--_gaq.push(['_trackPageview', '/mercury']);-->
-  <!--(function () {-->
-  <!--var ga = document.createElement('script');-->
-  <!--ga.type = 'text/javascript';-->
-  <!--ga.async = true;-->
-  <!--ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';-->
-  <!--var s = document.getElementsByTagName('script')[0];-->
-  <!--s.parentNode.insertBefore(ga, s);-->
-  <!--})();-->
-
-  <!--</script>-->
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28885410-1']);
+    _gaq.push(['_trackPageview', '/mercury']);
+    (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 
   <!--
     TODO LIST
     =====================
-    - split into app / demo
-    - improve kaleido reliability
+    - split into app / demo by checking if it's been purchased in chrome store
+    - improve kaleido reliability. maybe make mirror mode in addition
     - keyboard shortcuts
     - make chrome app! 	//http://developer.chrome.com/extensions/manifest.html
   -->
 </head>
 
 <body id="mercury">
+
+<!-- TODO - link to camera options chrome://settings/content -->
+
+<footer>
+
+  <a href="http://lightpaintlive.com" target="_blank"><img src="img/icon128.png" width="80px"/></a>
+
+  <h1>light paint live: <a href="http://pixel-fiend.positlabs.com/2013/01/light-paint-live-mercury-alpha.html"
+                           target="_blank">mercury</a> (demo)</h1>
+  <span>© 2013 <a href="http://pixel-fiend.positlabs.com" target="_blank">posit labs</a></span>
+  <!--<span>Want more features? Get the <a href="http://">mercury Chrome app</a></span>-->
+</footer>
+
 </body>
 
 </html>
