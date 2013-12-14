@@ -75,29 +75,39 @@
     })();
   </script>
 
-  <!--
-    TODO LIST
-    =====================
-    - split into app / demo by checking if it's been purchased in chrome store
-    - improve kaleido reliability. maybe make mirror mode in addition
-    - keyboard shortcuts
-    - make chrome app! 	//http://developer.chrome.com/extensions/manifest.html
-  -->
+  <style type="text/css">
+    #chromeExperiment{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 10001;
+    }
+    #get-app{
+      position: fixed;
+      right: 0;
+      margin-left: -130px;
+      bottom: 0;
+      padding: 15px;
+      background: black;
+      font-size: 18px;
+      color: cyan;
+      text-align: center;
+      font-family: helvetica, arial;
+      z-index: 10000;
+
+    }
+  </style>
+
 </head>
 
 <body id="mercury">
 
-<!-- TODO - link to camera options chrome://settings/content -->
+<a id="chromeExperiment" href="http://www.chromeexperiments.com/detail/light-paint-live-mercury/?f=">
+  <img src="img/badge.png" alt="chrome experiment"/>
+</a>
 
-<footer>
+<a id="get-app" href="https://chrome.google.com/webstore/detail/light-paint-live-mercury/bphfkpkoljdicakaokfbjiaamholpgjf?hl=en&gl=US" target="_blank">Get the Chrome app </a>
 
-  <a href="http://lightpaintlive.com" target="_blank"><img src="img/icon128.png" width="80px"/></a>
-
-  <h1>light paint live: <a href="http://pixel-fiend.positlabs.com/2013/01/light-paint-live-mercury-alpha.html"
-                           target="_blank">mercury</a> (demo)</h1>
-  <span>© 2013 <a href="http://pixel-fiend.positlabs.com" target="_blank">posit labs</a></span>
-  <!--<span>Want more features? Get the <a href="http://">mercury Chrome app</a></span>-->
-</footer>
 
 </body>
 
