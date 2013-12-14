@@ -12,13 +12,20 @@
 	
 	<fx:Script>
 		<![CDATA[
-			//TODO - add support for stereoscopic capture
-			
-			//TODO - color drift?
-			
-			//TODO - post-process imported video. make smoothing algorithm with pixel bender.
-			//TODO - make video recorder with low-res canvas preview
-			
+			import air.update.ApplicationUpdaterUI;
+			import air.update.events.DownloadErrorEvent;
+			import air.update.events.StatusUpdateErrorEvent;
+			import air.update.events.UpdateEvent;
+
+			import spark.events.IndexChangeEvent;
+			import spark.filters.GlowFilter;
+
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+
+			import flash.data.EncryptedLocalStore;
+			import flash.filesystem.File;
+									
 			//FIXME - fix app close issue
 		]]>
 
@@ -26,18 +33,6 @@
 	
 	<fx:Script>
 		<![CDATA[
-			import air.update.ApplicationUpdaterUI;
-			import air.update.events.DownloadErrorEvent;
-			import air.update.events.StatusUpdateErrorEvent;
-			import air.update.events.UpdateEvent;
-			
-			import mx.controls.Alert;
-			import mx.core.FlexGlobals;
-			import mx.core.Window;
-			import mx.states.OverrideBase;
-			
-			import spark.events.IndexChangeEvent;
-			import spark.filters.GlowFilter;
 			
 			private static var _singleton : LightPaintLiveDesktop;
 			
@@ -180,8 +175,8 @@
 				var hdata : ByteArray = new ByteArray();
 				wdata.writeInt(int(width));
 				hdata.writeInt(int(height));
-				EncryptedLocalStore.setItem("windowWidth", wdata)
-				EncryptedLocalStore.setItem("windowHeight", hdata)
+				EncryptedLocalStore.setItem("windowWidth", wdata);
+				EncryptedLocalStore.setItem("windowHeight", hdata);
 
 				//save window position to database
 				var xData : ByteArray = new ByteArray();
@@ -335,7 +330,7 @@
 				if(currentState == "notPainting"){
 					webcam.startPainting(); 
 					currentState = 'painting'; 
-					helpScreen.visible = false
+					helpScreen.visible = false;
 					newBtn.enabled = saveBtn.enabled = undoBtn.enabled = true;
 					redoBtn.enabled = false;
 				}else{

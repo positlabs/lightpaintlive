@@ -54,14 +54,22 @@
 		#heavyBtn:hover {
 			border-color: #ffffff;
 		}
-		#androidBtn img {
-			border-width: 1px;
-			border-style: solid;
-			border-color: #12b91e;
-		}
+    #androidBtn img {
+      border-width: 1px;
+      border-style: solid;
+      border-color: #12b91e;
+    }
 		#androidBtn img:hover {
 			border-color: #ffffff;
 		}
+    #mercuryBtn img {
+      border-width: 1px;
+      border-style: solid;
+      border-color: #0e52c1;
+    }
+    #mercuryBtn img:hover {
+      border-color: #ffffff;
+    }
 		#featuresSection h2 {
 			padding-top: 30px;
 			margin-bottom: 5px;
@@ -116,13 +124,25 @@
 				</li>
 			</p>
 		</div>
+
 		<div class="flavorBlock">
-			<h2>LPL ANDROID</h2>
-			<a href="https://market.android.com/details?id=com.positlabs.lightpaintlive&hl=en" target="_blank" id="androidBtn"><img src="imgs/androidBtn.jpg"/></a>
+			<h2>LPL MERCURY</h2>
+			<a href="https://chrome.google.com/webstore/detail/light-paint-live-mercury/bphfkpkoljdicakaokfbjiaamholpgjf?hl=en&gl=US" target="_blank" id="mercuryBtn"><img src="imgs/mercuryBtn.jpg"/></a>
 			<p>
-				<strong>Free android app</strong> that makes for a handy light-painter’s sketch book. Super portable!
+				<strong>Chrome app.</strong>
+        <br>
+        Uses GPU processing for extremely fluid light-painting. It functions offline so you can shoot in remote locations! Try the
+        <a href="http://lightpaintlive.com/mercury/" target="_blank">alpha version</a> for a taste of what you'll get in the app.
 			</p>
 		</div>
+    <!--<div class="flavorBlock">-->
+			<!--<h2>LPL ANDROID</h2>-->
+			<!--<a href="https://market.android.com/details?id=com.positlabs.lightpaintlive&hl=en" target="_blank" id="androidBtn"><img src="imgs/androidBtn.jpg"/></a>-->
+			<!--<p>-->
+				<!--<strong>Free android app</strong> that makes for a handy light-painter’s sketch book. Super portable!-->
+			<!--</p>-->
+		<!--</div>-->
+
 	</section>
 	<h1> FEATURES </h1>
 	<!-- 	<div class="divBar"></div> -->
@@ -157,12 +177,16 @@
 		<br/>
 		<strong>Capture size</strong> selector determines the dimensions of the image.
 		<br/>
-		<strong>Target frame-rate</strong> slider determines the maximum rate of capture. <h2>6. RECORDING OPTIONS</h2>
-		<strong>Capture video</strong> checkbox enables user to save a video of the performance. Recommended for low-resolution only.
-		<br/>
-		<strong>Save full res video</strong> checkbox records videos at full size. Recommended for low-resolution only.
-		<br/>
-		<strong>Write video to disk</strong> checkbox writes the video to the disk as it’s being captured. Minimzes memory usage during recording. <h2>7. VIEW OPTIONS</h2>
+		<strong>Target frame-rate</strong> slider determines the maximum rate of capture.
+    <del>
+      <h2>6. RECORDING OPTIONS</h2>
+      <strong>Capture video</strong> checkbox enables user to save a video of the performance. Recommended for low-resolution only.
+      <br/>
+      <strong>Save full res video</strong> checkbox records videos at full size. Recommended for low-resolution only.
+      <br/>
+      <strong>Write video to disk</strong> checkbox writes the video to the disk as it’s being captured. Minimzes memory usage during recording.
+      </del>
+    <h2>7. VIEW OPTIONS</h2>
 		<strong>Dim controls</strong> checkbox dims the controls during painting.
 	</section>
 	<h1> TIPS </h1>

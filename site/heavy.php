@@ -51,19 +51,19 @@
 			</form>
 			Paypal
 		</div>
-		<div class="purchaseOption">
-			<form action="https://checkout.google.com/api/checkout/v2/checkoutForm/Merchant/407731358962082" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" target="_blank">
-				<input name="item_name_1" type="hidden" value="Light Paint Live: Heavy"/>
-				<input name="item_description_1" type="hidden" value="Full-feature desktop version of Light Paint Live. Works on Mac and Windows."/>
-				<input name="item_quantity_1" type="hidden" value="1"/>
-				<input name="item_price_1" type="hidden" value="5.0"/>
-				<input name="item_currency_1" type="hidden" value="USD"/>
-				<input name="shopping-cart.items.item-1.digital-content.description" type="hidden" value="You will receive an email with a license key, shortly.&#xa;&#xa;Adobe AIR is required to run this program. Download it for free at http://get.adobe.com/air/&#xa;&#xa;The Light Paint Live installer can be downloaded from the link below, or you can follow the instructions in the license email."/>
-				<input name="shopping-cart.items.item-1.digital-content.url" type="hidden" value="http://lightpaintlive.com/heavy/lpl_installer.air"/>
-				<input name="_charset_" type="hidden" value="utf-8"/>
-				<input alt="" src="https://checkout.google.com/buttons/buy.gif?merchant_id=407731358962082&amp;w=117&amp;h=48&amp;style=trans&amp;variant=text&amp;loc=en_US" type="image"/>
-			</form>
-		</div>
+		<!--<div class="purchaseOption">-->
+			<!--<form action="https://checkout.google.com/api/checkout/v2/checkoutForm/Merchant/407731358962082" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" target="_blank">-->
+				<!--<input name="item_name_1" type="hidden" value="Light Paint Live: Heavy"/>-->
+				<!--<input name="item_description_1" type="hidden" value="Full-feature desktop version of Light Paint Live. Works on Mac and Windows."/>-->
+				<!--<input name="item_quantity_1" type="hidden" value="1"/>-->
+				<!--<input name="item_price_1" type="hidden" value="5.0"/>-->
+				<!--<input name="item_currency_1" type="hidden" value="USD"/>-->
+				<!--<input name="shopping-cart.items.item-1.digital-content.description" type="hidden" value="You will receive an email with a license key, shortly.&#xa;&#xa;Adobe AIR is required to run this program. Download it for free at http://get.adobe.com/air/&#xa;&#xa;The Light Paint Live installer can be downloaded from the link below, or you can follow the instructions in the license email."/>-->
+				<!--<input name="shopping-cart.items.item-1.digital-content.url" type="hidden" value="http://lightpaintlive.com/heavy/lpl_installer.air"/>-->
+				<!--<input name="_charset_" type="hidden" value="utf-8"/>-->
+				<!--<input alt="" src="https://checkout.google.com/buttons/buy.gif?merchant_id=407731358962082&amp;w=117&amp;h=48&amp;style=trans&amp;variant=text&amp;loc=en_US" type="image"/>-->
+			<!--</form>-->
+		<!--</div>-->
 	</section>
 	<h1>INSTALL</h1>
 	<section>
