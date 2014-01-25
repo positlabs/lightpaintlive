@@ -4,6 +4,7 @@
 	}
 
 	#lightControls {
+		display: none;
 		position: fixed;
 		top: 0;
 		padding: 5px;

@@ -22,18 +22,10 @@
 		.purchaseOption {
 			text-align: center;
 			float: left;
-			width: 150px;
-			height: 50px;
-			border-style: solid;
-			border-color: #00B3FF;
-			border-width: 1px;
-			padding-top: 10px;
-			margin: 20px;
-			margin-left: 0;
-			margin-top: 0;
+			margin: 0 20px 0 30px;
 		}
-		.purchaseOption:hover {
-			border-color: #FFFFFF;
+		.purchaseOption iframe{
+			margin: 0
 		}
 	</style>
 	<?php include('includes/globalStyles.php')
@@ -50,6 +42,9 @@
 				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 			</form>
 			Paypal
+		</div>
+		<div class="purchaseOption">
+			<a class="coinbase-button" data-code="1625ec94b90f9aecdb871f79c06d7b64" data-button-style="custom_small" href="https://coinbase.com/checkouts/1625ec94b90f9aecdb871f79c06d7b64">Pay With Bitcoin</a><script src="https://coinbase.com/assets/button.js" type="text/javascript"></script>
 		</div>
 		<!--<div class="purchaseOption">-->
 			<!--<form action="https://checkout.google.com/api/checkout/v2/checkoutForm/Merchant/407731358962082" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" target="_blank">-->

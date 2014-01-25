@@ -96,11 +96,23 @@
 	<h1> FLAVORS </h1>
 	<!-- 	<div class="divBar"></div> -->
 	<section>
+
+		<div class="flavorBlock">
+			<h2>LPL MERCURY</h2>
+			<a href="https://chrome.google.com/webstore/detail/light-paint-live-mercury/bphfkpkoljdicakaokfbjiaamholpgjf?hl=en&gl=US" target="_blank" id="mercuryBtn"><img src="imgs/mercuryBtn.jpg"/></a>
+			<p>
+				<strong>Chrome app</strong>
+        <br>
+        Uses GPU processing for extremely fluid light-painting. It functions offline so you can shoot in remote locations! Try the
+        <a href="http://lightpaintlive.com/mercury/" target="_blank">alpha version</a> for a taste of what you'll get in the app.
+			</p>
+		</div>
+
 		<div class="flavorBlock">
 			<h2>LPL INSTANT</h2>
 			<a href="http://lightpaintlive.com/instant" target="_blank" id="instantBtn"><img src="imgs/instantBtn.jpg"/></a>
 			<p>
-				<strong>Try the web-demo for free!</strong>
+				<strong>Free demo of LPL Heavy</strong>
 				<br/>
 				All you need is a computer and a webcam!
 			</p>
@@ -122,17 +134,6 @@
 				<li>
 					...and lots more! (see below)
 				</li>
-			</p>
-		</div>
-
-		<div class="flavorBlock">
-			<h2>LPL MERCURY</h2>
-			<a href="https://chrome.google.com/webstore/detail/light-paint-live-mercury/bphfkpkoljdicakaokfbjiaamholpgjf?hl=en&gl=US" target="_blank" id="mercuryBtn"><img src="imgs/mercuryBtn.jpg"/></a>
-			<p>
-				<strong>Chrome app.</strong>
-        <br>
-        Uses GPU processing for extremely fluid light-painting. It functions offline so you can shoot in remote locations! Try the
-        <a href="http://lightpaintlive.com/mercury/" target="_blank">alpha version</a> for a taste of what you'll get in the app.
 			</p>
 		</div>
     <!--<div class="flavorBlock">-->
@@ -215,7 +216,9 @@
 		<a href="http://extrawebcam.com/" target="_blank">ExtraWebcam</a> - Connect Canon live-view to LPL with this software.
 		<br/>
 		<a href="http://webcam-osx.sourceforge.net/index.html" target="_blank">Macam</a> - Various webcam drivers for Mac.
-		
+		<br />
+		<a href="http://www.splitcamera.com/" target="_blank">Split Cam</a> - Play video files through the webcam.
+
 	</section>
 	<?php include('includes/footer.php')
 	?>
