@@ -25,7 +25,7 @@
 			margin: 0 20px 0 30px;
 		}
 		.purchaseOption iframe{
-			margin: 0
+			margin: 0;
 		}
 	</style>
 	<?php include('includes/globalStyles.php')

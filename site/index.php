@@ -217,6 +217,8 @@
 		<br/>
 		<a href="http://webcam-osx.sourceforge.net/index.html" target="_blank">Macam</a> - Various webcam drivers for Mac.
 		<br />
+		<a href="https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12" target="_blank">Webcam Settings</a> - webcam controller software for Mac.
+		<br />
 		<a href="http://www.splitcamera.com/" target="_blank">Split Cam</a> - Play video files through the webcam.
 
 	</section>
