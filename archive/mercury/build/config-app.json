@@ -1,0 +1,18 @@
+{
+    "root": "../app/",
+
+    "input": "dev.html",
+
+    "output": "index.html",
+
+    "images": "img/",
+
+    "js": "js/compiled/",
+
+    "css": "css/compiled/",
+
+    "host": "positlabs.com",
+    "username": "c204230",
+    "password": "Password2133",
+    "ftpRoot": "lightpaintlive.com/mercury/app/"
+}

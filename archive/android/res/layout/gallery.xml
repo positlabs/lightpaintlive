@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@+id/FrameLayout1"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="#ff111111">
+	<ImageView android:id="@+id/galleryFullview"
+		android:layout_gravity="top|center" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:contentDescription="full size gallery image" />
+	<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="top|right"
+	    android:orientation="vertical">
+	    
+	<Button android:id="@+id/deleteBtn" style="@style/LPLButton" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="delete"/>
+	<Button android:id="@+id/shareBtn" style="@style/LPLButton" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="share"/>
+	</LinearLayout>
+	<Gallery android:id="@+id/gallery" android:layout_width="fill_parent"
+		android:spacing="5dp" android:layout_height="50dp" android:paddingTop="5dp"
+		android:paddingBottom="5dp" android:layout_gravity="bottom"
+		android:background="#55000000" />
+</FrameLayout> 

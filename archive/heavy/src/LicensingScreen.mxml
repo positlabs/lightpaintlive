@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100%" height="100%" >
+	
+	<fx:Script>
+		<![CDATA[
+			import net.zarqon.api.entity.License;
+			import net.zarqon.api.entity.LicenseHolder;
+			import net.zarqon.api.events.LicenseManagerEvent;
+			import net.zarqon.api.system.LicenseManager;
+			
+			import spark.filters.GlowFilter;
+			//
+			//
+			// Licensing stuff
+			//
+			//
+			[Bindable] private var license : License;
+			
+			public function checkValidity():Boolean{
+				
+				var valid : Boolean;
+				if(getValidity() == "true"){
+					trace("license is valid");
+					// activate app functionality	
+					valid = true;
+				}else{
+					trace("license is invalid");
+					//show name / address / key input prompt
+					valid = false;
+				}
+				
+				return valid;
+			}
+			
+			private function submitKey(name : String, email : String, key : String):void{
+				trace("submitKey(name : String, email : String, key : String)");
+				trace("name: " + name);
+				trace("email: " + email);
+				trace("key: " + key);
+				// check license
+				// Your Zarqon Key   (YOU MUST USE YOUR ZARQON LICENSE KEY HERE)
+//				var issuerKey:String = "ZQNFT-8653403A89585F5AA7F44BD1ACDA7208";
+				var issuerKey:String = "ZQN-A50714A8E234151B1353EDC5D358C6D7";
+				
+				// The License Holder 
+				// (You'll get these from the user and store them for reference in the AIR ELS)
+				//				var licenseHolder:LicenseHolder = new LicenseHolder( "josh", "josh.beckwith.test@gmail.com");
+				var licenseHolder:LicenseHolder = new LicenseHolder(name, email);
+				
+				// The License key   (YOU MUST CREATE A PRODUCT AND ISSUE A LICENSE TO THE ABOVE LICENSEHOLDER)
+				//				var licenseKey:String = "LPL-ABCEBF68EC4F52B22A644899500E955F";
+				var licenseKey:String = key;
+				
+				// Create the LicenseManager 				
+				var licenseManager:LicenseManager = new LicenseManager( issuerKey, licenseKey, licenseHolder );
+				
+				// Add Event Listeners
+				licenseManager.addEventListener( LicenseManagerEvent.LICENSE_INVALID, licenseInvalid );
+				licenseManager.addEventListener( LicenseManagerEvent.LICENSE_VALID, licenseValid );
+				
+				// Validate the License				
+				licenseManager.validateLicense();
+				
+			}
+			
+			private function licenseInvalid( lme:LicenseManagerEvent ):void {
+				setValidity("false");
+				
+				//notify user of failure
+				trace("licenseInvalid()");
+				invalidLicenseNotification.visible = true;
+				invalidLicenseNotification.includeInLayout = true;
+			}
+			
+			private function licenseValid( lme:LicenseManagerEvent ):void {
+				trace("licenseValid()");
+				license = lme.license;
+				setValidity("true");
+				
+				invalidLicenseNotification.visible = false;
+				invalidLicenseNotification.includeInLayout = false;
+
+				// activate app functionality	
+				LightPaintLiveDesktop.getInstance().currentState = "notPainting";
+			}
+			
+			//** @param value "true" or "false" */
+			private function setValidity(value : String):void{
+				// Store hasLicense boolean in encrypted local storage
+				var data:ByteArray = new ByteArray();
+				data.writeUTFBytes(value);
+				EncryptedLocalStore.setItem("hasLicense", data)
+			}
+			
+			private function getValidity():String{
+				//using the same key used to write the data, I read the bytes back
+				var bytes:ByteArray = EncryptedLocalStore.getItem("hasLicense");
+				if(bytes){
+					return bytes.readUTFBytes(bytes.bytesAvailable);
+				}else{
+					return "false";
+				}
+			}
+		]]>
+	</fx:Script>
+	
+		<s:Image top="20" horizontalCenter="0" source="@Embed('assets/lplHeader.png')"/>
+		
+		<s:VGroup color="white" contentBackgroundAlpha="0" focusColor="cyan" horizontalCenter="0"
+				  verticalCenter="0">
+			<s:Label color="cyan" fontSize="14" fontWeight="bold" text="Enter your credentials"/>
+			<s:Rect/>
+			
+			<s:HGroup verticalAlign="middle">
+				<s:TextInput id="nameInput"/>
+				<s:Label text="name"/>
+			</s:HGroup>
+			<s:HGroup verticalAlign="middle">
+				<s:TextInput id="emailInput"/>
+				<s:Label text="email"/>
+			</s:HGroup>
+			<s:HGroup verticalAlign="middle">
+				<s:TextInput id="keyInput"/>
+				<s:Label text="key"/>
+			</s:HGroup>
+			<s:Rect/>
+			<s:HGroup verticalAlign="middle">
+				<s:Button width="{nameInput.width}" label="submit"
+						  click="submitKey(nameInput.text, emailInput.text, keyInput.text)"
+						  skinClass="skins.LPLButtonSkin" useHandCursor="true"/>
+				<s:Label id="invalidLicenseNotification" visible="false" color="red"
+						 includeInLayout="false" text="License information is invalid!"/>
+			</s:HGroup>
+		</s:VGroup>
+		
+		<s:Label id="lplsiteLink" bottom="10" buttonMode="true"
+				 click="{navigateToURL(new URLRequest('http://lightpaintlive.com'))}" color="white"
+				 fontWeight="bold" horizontalCenter="0" mouseOut="{lplsiteLink.filters = []}"
+				 mouseOver="{lplsiteLink.filters = [new spark.filters.GlowFilter()]}"
+				 text="Need a license? Visit LightPaintLive.com"/>
+		
+	
+</s:Group>

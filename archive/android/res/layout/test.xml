@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/testlayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <!-- 
+    <SurfaceView
+        android:id="@+id/canvasContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </SurfaceView>
+     -->
+
+    <FrameLayout
+        android:id="@+id/previewContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </FrameLayout>
+    
+    <ImageView android:id="@+id/previewBlocker" android:layout_width="fill_parent" android:layout_height="fill_parent" android:background="@android:color/black" android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/paintView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <!-- <Button android:id="@+id/flashBtn" android:text="light" android:layout_gravity="top|right" android:layout_margin="5dp" style="@style/LPLButton"></Button> -->
+
+
+    <!-- <Button android:id="@+id/modeBtn" style="@style/LPLButton" android:text="mode: lighten" android:layout_gravity="top|left" android:layout_margin="5dp"/> -->
+
+
+    <!-- <FrameLayout android:id="@+id/controls" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_gravity="bottom"> -->
+    <!-- <Button android:layout_width="fill_parent" android:background="#80000000" android:layout_height="75dp"/> -->
+    <!-- <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="horizontal" android:paddingTop="10dp" android:paddingBottom="10dp" android:paddingLeft="5dp" android:paddingRight="5dp"> -->
+    <!-- <Button android:id="@+id/previewBtn" style="@style/LPLButton" android:text="preview"></Button> -->
+    <!-- <Button android:id="@+id/switchCamBtn" style="@style/LPLButton" android:text="switch cam"></Button> -->
+    <!-- <Button android:id="@+id/menuBtn" style="@style/LPLButton" android:text="menu"></Button> -->
+    <!-- <SeekBar android:id="@+id/intensitySlider" android:layout_width="0dip" android:layout_height="wrap_content" android:layout_weight="1" android:layout_gravity="center_vertical" android:padding="5dp"></SeekBar> -->
+    <!-- <Button android:id="@+id/saveBtn" style="@style/LPLButton" android:text="save"></Button> -->
+    <!-- <Button android:id="@+id/newBtn" style="@style/LPLButton" android:text="new"></Button> -->
+    <!-- </LinearLayout> -->
+    <!-- </FrameLayout> -->
+
+
+    <!-- <LinearLayout android:id="@+id/timerPopup" android:visibility="gone" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal|center_vertical" android:background="#99000000" android:padding="15dp"> -->
+    <!-- <SeekBar android:id="@+id/timerSlider" android:layout_width="300dp" android:layout_height="fill_parent" android:max="10" android:layout_gravity="center_vertical" android:paddingBottom="10dp"/> -->
+    <!-- <Button android:id="@+id/setTimerBtn" android:text="set timer: 0 secs" android:layout_width="fill_parent" style="@style/LPLButton" android:onClick="closePopup" android:layout_gravity="center_vertical|center_horizontal"/> -->
+    <!-- </LinearLayout> -->
+
+    <Button
+        android:id="@+id/flashBtn"
+        style="@style/LPLButton"
+        android:layout_width="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_margin="5dp"
+        android:text="light" />
+
+    <LinearLayout
+        android:id="@+id/controlsGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <ScrollView
+         android:id="@+id/controls"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="bottom"
+            android:background="#80006666"
+            android:visibility="gone"
+            android:padding="5dp" >
+
+            <LinearLayout
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/saveBtn"
+                        style="@style/LPLButton"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:text="save" />
+
+                    <Button
+                        android:id="@+id/newBtn"
+                        style="@style/LPLButton"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:text="new" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/previewBtn"
+                    style="@style/LPLButton"
+                    android:text="preview" >
+                </Button>
+                
+                <Button
+                    android:id="@+id/upgradeBtn"
+                    style="@style/LPLButton"
+                    android:text="upgrade 99c" >
+                </Button>
+
+                <Button
+                    android:id="@+id/switchCamBtn"
+                    style="@style/LPLButton"
+                    android:text="switch cam" >
+                </Button>
+
+                <Button
+                    android:id="@+id/modeBtn"
+                    style="@style/LPLButton"
+                    android:text="mode: lighten" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <SeekBar
+                        android:id="@+id/intensitySlider"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp" />
+
+                    <TextView
+                        style="@style/sliderLabel"
+                        android:layout_gravity="center_vertical"
+                        android:text="exposure" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <SeekBar
+                        android:id="@+id/thresholdSlider"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp" />
+
+                    <TextView
+                        style="@style/sliderLabel"
+                        android:layout_gravity="center_vertical"
+                        android:text="threshold" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/timerSliderGroup"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <SeekBar
+                        android:id="@+id/timerSlider"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:max="10"
+                        android:padding="5dp" />
+
+                    <TextView 
+                        style="@style/sliderLabel"
+                        android:layout_gravity="center_vertical"
+                        android:text="delay" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/menuBtn"
+                    style="@style/LPLButton"
+                    android:text="gallery" >
+                </Button>
+            </LinearLayout>
+        </ScrollView>
+        
+        
+        <Button
+            android:id="@+id/controlsBtn"
+            style="@style/LPLButton"
+            android:layout_height="fill_parent"
+            android:layout_margin="0dp"
+            android:background="#33000000"
+            android:drawableLeft="@drawable/lpl_icon48" />
+        
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/countdownDisplay"
+        style="@style/LPLButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:background="#99000000"
+        android:text="0"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</FrameLayout>

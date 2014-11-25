@@ -1,0 +1,123 @@
+	html {
+		background-color: #000000;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		min-height: 700px;
+		min-width: 900px;
+		line-height: 1.5em;
+	}
+	body {
+		margin: 0px;
+		padding: 0px;
+		color: #ffffff;
+	}
+	a {
+		text-decoration: none;
+		color: #ff6b6b;
+		font-weight: bold;
+	}
+	a:hover {
+		color: #4ad8c8;
+	}
+	#canvas {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+	}
+	#wrapper {
+		text-align: center;
+		width: 100%;
+		position: absolute;
+	}
+	#container {
+		width: 900px;
+		margin: 15px auto;
+	}
+	#headerLogo {
+		background-image: url('imgs/siteHeader.png');
+		width: 693px;
+		height: 156px;
+		margin-left: 61px;
+		float: left;
+	}
+	strong, b {
+		color: white;
+	}
+	nav {
+		text-align: left;
+		font-size: 12px;
+		font-family: "UniversLTStd67BoldCondensed";
+		float: left;
+		border-width: 7px;
+		margin: 50px 0 0 25px;
+	}
+	nav ul {
+		list-style: none;
+		padding: 0 0 0 7px;
+		margin: 0;
+	}
+	nav li {
+		margin-top: -1px;
+	}
+	nav a {
+		border-left-style: solid;
+		border-color: #4a4a4a;
+		border-width: 7px;
+		margin-left: -14px;
+		padding-left: 7px;
+		color: #4A4A4A;
+	}
+	nav a:hover {
+		border-color: #4ad8c8;
+		color: #4ad8c8;
+	}
+	nav a:active {
+		border-color: #ffffff;
+		color: #FFFFFF;
+	}
+	.theProgram #theProgram a, .theVideos #theVideos a, .theGallery #theGallery a, .theStory #theStory a {
+		border-color: #ff0000;
+		color: #FFFFFF;
+	}
+
+	#content {
+		background-image: url('imgs/contentBG.png');
+		background-repeat: repeat-y;
+		background-size: 100%;
+		float: left;
+		width: 900px;
+		padding: 20px;
+	}
+	h1 {
+		float: left;
+		clear: left;
+		width: 170px;
+		margin: 6px 20px 0 0;
+		font-family: "BebasNeueRegular";
+		text-align: right;
+		font-size: 38px;
+	}
+	h2 {
+		color: #FFFFFF;
+		font-size: 18px;
+		margin-top: -3px;
+	}
+	section {
+		color: #d2d2d2;
+		float: left;
+		text-align: left;
+		margin-bottom: 60px;
+		width: 690px;
+	}
+	.divBar {
+		float: left;
+		background-color: #2d2d2d;
+		height: 28px;
+		width: 710px;
+	}	iframe {
+		border-color: white;
+		border-width: 1px;
+		border-style: solid;
+		float: left;
+		margin-bottom: 60px;
+	}

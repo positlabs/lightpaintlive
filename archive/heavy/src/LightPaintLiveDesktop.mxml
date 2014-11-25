@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
+					   xmlns:s="library://ns.adobe.com/flex/spark"
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   xmlns:my="*"
+					   width="100%" height="100%" minWidth="840" minHeight="601"
+					   applicationActivate="init()" backgroundColor="0x000000"
+					   closing="onAppClose()" addedToStage="checkLicense()"
+					   resize="resizeHandler()" windowResize="resizeHandler()"
+					   click.notPainting="dummyBtn.setFocus()"
+					   click.painting="dummyBtn.setFocus()">
+	
+	<fx:Script>
+		<![CDATA[
+			import air.update.ApplicationUpdaterUI;
+			import air.update.events.DownloadErrorEvent;
+			import air.update.events.StatusUpdateErrorEvent;
+			import air.update.events.UpdateEvent;
+
+			import spark.events.IndexChangeEvent;
+			import spark.filters.GlowFilter;
+
+			import mx.controls.Alert;
+			import mx.core.FlexGlobals;
+
+			import flash.data.EncryptedLocalStore;
+			import flash.filesystem.File;
+									
+			//FIXME - fix app close issue
+		]]>
+
+	</fx:Script>
+	
+	<fx:Script>
+		<![CDATA[
+			
+			private static var _singleton : LightPaintLiveDesktop;
+			
+			private var updater : ApplicationUpdaterUI = new ApplicationUpdaterUI();
+			
+			[Bindable]
+			public var webcam : WebCam;
+			private var setupComplete : Boolean;
+			
+			public var captureSize : Point = new Point(1280, 720);
+			private var ctrlDown : Boolean;
+			private var shiftDown : Boolean;
+			
+			private var appInitialized : Boolean;
+			
+			/** points to what is holding the Webcam. Either wc, or popWin.stage */
+			private var canvasContainer : DisplayObjectContainer;
+
+			/** popup window that holds canvas */
+			private var popWin : NativeWindow = new NativeWindow(new NativeWindowInitOptions());
+			
+			private function init():void{
+				if(!appInitialized){
+					trace("init");
+					appInitialized = true;
+					_singleton = this;
+					statusBar.visible = false;
+					setup();
+				}
+			}
+			
+			private function checkLicense():void{
+				trace("checkLicense()");
+				var licenseValid : Boolean = licenseScreen.checkValidity();
+				if(licenseValid)currentState = "notPainting";
+			}
+			
+			/** Setup main app stuff */
+			public function setup():void{
+				trace("setup()");
+				
+				// get saved window size
+				var wbytes : ByteArray = EncryptedLocalStore.getItem("windowWidth");
+				var hbytes : ByteArray = EncryptedLocalStore.getItem("windowHeight");
+				if(wbytes)width = wbytes.readInt();
+				if(hbytes)height = hbytes.readInt();
+				
+				// get saved window position
+				var xbytes : ByteArray = EncryptedLocalStore.getItem("windowX");
+				var ybytes : ByteArray = EncryptedLocalStore.getItem("windowY");
+				if(xbytes)nativeApplication.activeWindow.x = xbytes.readInt();
+				if(wbytes)nativeApplication.activeWindow.y = ybytes.readInt();
+				
+				// get saved resolution preference
+				trace("get saved resolution preference");
+//				var resbytes : ByteArray = EncryptedLocalStore.getItem("resIndex");
+//				if(resbytes){
+//					var resIndex : int = resbytes.readInt();
+//					ControlPanel.resolutionSelectedIndex = resIndex;
+//					setCaptureSize(resIndex);
+//				}
+				
+				FlexGlobals.topLevelApplication.addEventListener(KeyboardEvent.KEY_DOWN, keyDown);
+				FlexGlobals.topLevelApplication.addEventListener(KeyboardEvent.KEY_UP, keyUp);
+				
+//				setupWebcam();
+			}
+			
+			
+			/** fired after licensing check, when app leaves startup state */
+			private function startApp():void{
+				trace("startApp()");
+				
+				// check if an update is available
+				updater.configurationFile = new File("app:/update_config.xml");
+				trace(updater.configurationFile.nativePath);
+				updater.addEventListener(UpdateEvent.INITIALIZED, updaterInitialized);
+				updater.addEventListener(StatusUpdateErrorEvent.UPDATE_ERROR, onStatusUpdateError);
+				updater.addEventListener(DownloadErrorEvent.DOWNLOAD_ERROR, onDownloadError);
+				updater.initialize();
+				
+				setupWebcam();
+			}
+			
+			
+			
+			private function updaterInitialized(e:UpdateEvent):void{
+				trace("updaterInitialized()");
+				updater.checkNow();
+			}
+			
+			private function onStatusUpdateError(evt:StatusUpdateErrorEvent):void {
+				Alert.show(evt.toString());
+			}
+			
+			private function onDownloadError(evt:DownloadErrorEvent):void {
+				Alert.show(evt.toString());
+			}
+			
+			
+			
+			
+			
+			
+			private function setupWebcam():void{
+				trace("setupWebcam()");
+				
+				canvasContainer = wc;
+				
+				if(dummyBtn)
+					focusManager.setFocus(dummyBtn);
+				
+				// get the last camera that was active
+//				var lastCamBytes : ByteArray = EncryptedLocalStore.getItem("camName");
+//				if(lastCamBytes){
+//					var lastCamName : String = lastCamBytes.readUTFBytes(lastCamBytes.bytesAvailable);
+//					for (var i:int = 0; i < Camera.names.length; i++){
+//						if(lastCamName == Camera.names[i]){
+//							webcam = new WebCam(captureSize.x, captureSize.y, i);
+//						}
+//					}
+//					//if no camera was active, just use the default
+//				}else webcam = new WebCam(captureSize.x, captureSize.y);
+				webcam = new WebCam(captureSize.x, captureSize.y);
+				
+				wc.addChild(webcam);
+				setupComplete = true;
+				resizeHandler();
+			
+			}
+			
+			/** Save user prefs here */
+			private function onAppClose():void{
+				trace("onAppClose()");
+				
+				if(popWinActive)popWin.close();
+					
+				//save window size to database
+				var wdata:ByteArray = new ByteArray();
+				var hdata : ByteArray = new ByteArray();
+				wdata.writeInt(int(width));
+				hdata.writeInt(int(height));
+				EncryptedLocalStore.setItem("windowWidth", wdata);
+				EncryptedLocalStore.setItem("windowHeight", hdata);
+
+				//save window position to database
+				var xData : ByteArray = new ByteArray();
+				var yData : ByteArray = new ByteArray();
+				
+//				xData.writeInt(nativeApplication.activeWindow.x);
+//				yData.writeInt(nativeApplication.activeWindow.y);
+				xData.writeInt(nativeWindow.x);
+				yData.writeInt(nativeWindow.y);
+				EncryptedLocalStore.setItem("windowX", xData);
+				EncryptedLocalStore.setItem("windowY", yData);
+				
+				// save last webcam name
+				var camName : ByteArray = new ByteArray();
+				camName.writeUTFBytes(advancedControls.camSelector.selectedItem as String);
+				EncryptedLocalStore.setItem("camName", camName);
+
+				// save resolution preference
+				var resIndex : ByteArray = new ByteArray();
+				resIndex.writeInt(advancedControls.resolutionSelector.selectedIndex);
+				EncryptedLocalStore.setItem("resIndex", resIndex);
+				
+				exit();
+			}
+			
+			protected function resizeHandler():void{
+				
+				if(setupComplete){
+//					trace("resizeHandler()");
+					webcam.scaleX = webcam.scaleY = 1;
+					var xScale : Number = width/captureSize.x;
+					var yScale : Number = height/captureSize.y;
+					
+					var scale : Number = 0;
+					if(xScale < yScale)
+						scale = xScale
+					else scale = yScale;
+					
+					wc.scaleX = scale;
+					wc.scaleY = scale;
+				}
+				
+				// get popWinResize to fire when camera size / selection changes
+				if(popWinActive)popWinResize();
+				
+			}
+			
+			private function fullscreen():void{
+				
+				if(fullscreenBtn.label == "fullscreen"){
+					nativeWindow.stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+					popWin.stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+					fullscreenBtn.label = "exit fullscreen";
+				}else{
+					nativeWindow.stage.displayState = StageDisplayState.NORMAL;
+					popWin.stage.displayState = StageDisplayState.NORMAL;
+					fullscreenBtn.label = "fullscreen";
+				}
+				
+				resizeHandler();
+			}
+			
+			public function captureSizeChange(e:IndexChangeEvent):void{
+				trace("captureSizeChange()");
+				currentState = "notPainting";
+				newPainting();
+				canvasContainer.removeChildren();
+//				canvasContainer.removeChild(webcam);
+				
+				setCaptureSize(e.newIndex);
+				
+				if(popWinActive){
+					popWin.close();
+					reopenPopWinFlag = true;
+//					switchCanvasWindow();
+				}else{
+					webcam = new WebCam(captureSize.x, captureSize.y, webcam.cameraIndex);
+					canvasContainer.addChild(webcam);
+					resizeHandler();
+				}
+				
+			}
+			
+			private function setCaptureSize(selectedIndex : int):void{
+				trace("setCaptureSize(): " + selectedIndex);
+				switch(selectedIndex){
+					case 0:
+						captureSize.x = 1920;
+						captureSize.y = 1080;						
+						break;
+					case 1:
+						captureSize.x = 1280;
+						captureSize.y = 720;
+						break;
+					case 2:
+						captureSize.x = 800;
+						captureSize.y = 600;
+						break;
+					case 3:
+						captureSize.x = 720;
+						captureSize.y = 480;
+						break;
+					case 4:
+						captureSize.x = 400;
+						captureSize.y = 300;
+						break;
+					case 5:
+						captureSize.x = 160;
+						captureSize.y = 90;
+						break;
+				}
+			}
+			
+			public function changeCamera(camIndex : int):void{
+				canvasContainer.removeChildren();
+				webcam = new WebCam(captureSize.x, captureSize.y, camIndex);
+				
+				if(popWinActive){
+					// need to close the window, and reopen it. Made the new cam above just to set default camIndex
+					reopenPopWinFlag = true;
+					popWin.close();
+				}else{
+					resizeHandler();
+					canvasContainer.addChild(webcam);
+				}
+			}
+			
+			private function startPainting():void{
+				if(!countdown.visible){
+					if(advancedControls.delayCheckBox.selected && currentState == "notPainting"){
+					
+						countdown.start(advancedControls.delaySlider.value);
+						
+					} else togglePainting();
+				}else{
+					//stop the countdown if they press the button while the countdown is active.
+					countdown.stop();
+				}
+			
+//				saveOpts.visible = false;
+			}
+			
+			private function newPainting():void{
+				webcam.newPainting(); 
+				newBtn.enabled = undoBtn.enabled = redoBtn.enabled = saveBtn.enabled = false;
+//				saveOpts.visible = false;
+			}
+			
+			public function togglePainting():void{
+				
+				if(currentState == "notPainting"){
+					webcam.startPainting(); 
+					currentState = 'painting'; 
+					helpScreen.visible = false;
+					newBtn.enabled = saveBtn.enabled = undoBtn.enabled = true;
+					redoBtn.enabled = false;
+				}else{
+					webcam.stopPainting(); 
+					currentState = 'notPainting';
+//					saveVideoBtn.enabled = webcam.videoChunksUndo.length > 0;
+				}
+			}
+			
+			private function undo():void{
+				var isEnabled : Boolean = webcam.undo();
+				undoBtn.enabled = isEnabled;
+				redoBtn.enabled = true;
+			}
+			private function redo():void{
+				var isEnabled : Boolean = webcam.redo();
+				redoBtn.enabled = isEnabled;
+				undoBtn.enabled = true;
+			}
+			
+			private function saveImg():void{
+				webcam.savePainting();
+//				saveOpts.visible = false;
+			}
+//			private function saveVid():void{
+//				webcam.saveVideo();
+//				saveOpts.visible = false;
+//			}
+			
+			public static function getInstance(): LightPaintLiveDesktop{
+				return _singleton;
+			}
+			
+			private function keyUp(e:KeyboardEvent):void{
+				if(e.keyCode == Keyboard.CONTROL)
+					ctrlDown = false;
+				else if(e.keyCode == Keyboard.SHIFT)
+					shiftDown = false;
+			}
+			private function keyDown(e:KeyboardEvent):void{
+				if(currentState == "notPainting" || currentState == "painting"){
+					
+					if(e.keyCode == Keyboard.ESCAPE && nativeWindow.stage.displayState == StageDisplayState.FULL_SCREEN_INTERACTIVE)
+						fullscreen();
+					
+					switch(e.keyCode){
+						case Keyboard.Z:
+							if(undoBtn.enabled && editControls.enabled && ctrlDown)
+								undo();
+							break;
+						case Keyboard.Y:
+							if(redoBtn.enabled && editControls.enabled && ctrlDown)
+								redo();
+							break;
+						case Keyboard.S:
+//							if(advancedControls.recordCheckBox.selected && editControls.enabled && ctrlDown && shiftDown){
+//								saveVid();
+//							}else if(saveBtn.enabled && editControls.enabled && ctrlDown){
+								saveImg();
+//							}
+							break;
+						case Keyboard.N:
+							if(newBtn.enabled && editControls.enabled && ctrlDown)
+								newPainting();
+							break;
+						case Keyboard.SPACE:
+							startPainting();
+							break;
+						case Keyboard.ENTER:
+							if(currentState == "notPainting")
+								togglePreview();
+							break;
+						case Keyboard.UP:
+							focusManager.setFocus(intensitySlider);
+							intensitySlider.value ++;
+							webcam.intensity = intensitySlider.value;
+							break;
+						case Keyboard.DOWN:
+							focusManager.setFocus(intensitySlider);
+							intensitySlider.value --;
+							webcam.intensity = intensitySlider.value;
+							break;
+						case Keyboard.CONTROL:
+							ctrlDown = true;
+						case Keyboard.SHIFT:
+							shiftDown = true;
+							break;
+					}
+				}
+			}
+			
+			protected function togglePreview():void{
+				if(webcam.previewActive == false){
+					webcam.preview(true);
+				}else{
+					webcam.preview(false);		
+				} 
+			}
+			
+			private var popWinActive : Boolean;
+			private var reopenPopWinFlag:Boolean;
+
+			public function openPopWindow():void{
+
+				if(!popWinActive){
+					popWinActive = true;
+					reopenPopWinFlag = false;
+					canvasContainer = popWin.stage;
+					webcam = new WebCam(captureSize.x, captureSize.y, webcam.cameraIndex);
+				
+					popWin = new NativeWindow(new NativeWindowInitOptions());
+					popWin.stage.color = 0x000000;
+					popWin.width = captureSize.x/1.5;
+					popWin.height = captureSize.y/1.5;
+					popWin.stage.scaleMode = StageScaleMode.NO_SCALE;
+					popWin.stage.align = StageAlign.TOP_LEFT;
+					popWin.addEventListener(NativeWindowBoundsEvent.RESIZE, popWinResize);
+					popWin.addEventListener(Event.CLOSE, popWinClose);
+	
+					wc.removeChildren();
+					wc.visible = false;
+					popWin.stage.addChild(webcam);
+					popWin.activate();
+					popWinResize();
+				}
+				
+			}			
+			
+			/** scales the canvas to match popWin size */
+			protected function popWinResize(e:NativeWindowBoundsEvent = null):void{
+//				trace("popWinResize()");
+				var xScale : Number = popWin.width/captureSize.x;
+				var yScale : Number = popWin.height/captureSize.y;
+				
+				var scale : Number = 0;
+				if(xScale < yScale)
+					scale = xScale
+				else scale = yScale;
+				
+				webcam.scaleX = scale;
+				webcam.scaleY = scale;
+				webcam.x = (popWin.width - webcam.width ) /2
+			}
+			
+			protected function popWinClose(event:Event):void{
+				trace("popWinClose()");
+				
+				
+				popWinActive = false;
+				
+				popWin.removeEventListener(NativeWindowBoundsEvent.RESIZE, popWinResize);
+				popWin.removeEventListener(Event.CLOSE, popWinClose);
+				
+				// re-open if it's just changing resolution
+				if(reopenPopWinFlag){
+					openPopWindow();
+				}else{
+					canvasContainer = wc;
+					wc.addChild(webcam);
+					wc.visible = true;
+					resizeHandler();
+				}
+	
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:states>
+		<s:State exitState="startApp()" name="startup"/>
+		<s:State enterState="advancedControls.currentState = 'notPainting'; toNotPainting.play()"
+				 name="notPainting"/>
+		<s:State enterState="advancedControls.currentState = 'painting'; toPainting.play()"
+				 name="painting"/>
+	</s:states>
+	<!--
+	<s:transitions>
+		<s:Transition fromState="notPainting" toState="painting">
+			<s:Fade id="toPainting" duration="700" target="{controls}"/>
+		</s:Transition>
+		<s:Transition fromState="painting" toState="notPainting">
+			<s:Fade id="toNotPainting" duration="1200" target="{controls}"/>
+		</s:Transition>
+	</s:transitions>
+	-->
+	<fx:Declarations>
+		<s:Fade id="toPainting" alphaTo=".2" duration="700" target="{controls}"/>
+		<s:Fade id="toNotPainting" alphaTo="1" duration="1200" target="{controls}"/>
+		<s:Fade id="saveImgStart" alphaFrom="0" alphaTo="1" effectEnd="saveImg()"
+				target="{saveStartNotif}"/>
+		<s:Fade id="saveEnd" alphaTo="0" duration="3000"
+				effectStart="saveStartNotif.visible = false; saveEndNotif.visible = true;"
+				startDelay="3000" target="{saveEndNotif}"/>
+	</fx:Declarations>
+	
+	<my:LicensingScreen id="licenseScreen" includeIn="startup"/>
+	
+	<s:SpriteVisualElement id="wc" excludeFrom="startup" width="{webcam.width}"
+						   height="{webcam.height}" horizontalCenter="0" verticalCenter="0"/>
+	
+	<s:Group id="controls" excludeFrom="startup" width="100%" height="100%">
+		
+		<s:Group bottom="-25" width="100%" height="100%">
+			
+			<s:Group bottom="0" width="100%" height="50">
+				<s:Rect width="100%" height="100%">
+					<s:fill>
+						<s:SolidColor alpha=".8" color="0x000000"/>
+					</s:fill>
+				</s:Rect>
+			</s:Group>
+			
+			<s:VGroup right="5" top="5">
+				<s:Button id="fullscreenBtn" width="{previewBtn.width}" height="30"
+						  label="fullscreen" buttonMode="true" click="fullscreen()"
+						  focusEnabled="false" skinClass="skins.LPLButtonSkin"
+						  enabled.painting="false"/>
+				<s:Button id="previewBtn" height="30" label="toggle preview" buttonMode="true"
+						  focusEnabled="false" skinClass="skins.LPLButtonSkin"
+						  toolTip="Enter key to show/hide preview"
+						  click.notPainting="togglePreview()"
+						  enabled.painting="false"/>
+			</s:VGroup>
+
+			<s:Label right="10" bottom="5" buttonMode="true" click="helpScreen.visible = true;"
+					 color="white" fontSize="36" fontWeight="bold" text="?"
+					 toolTip="Click for help!"/>
+			
+			
+			<s:Image id="lplLogo" left="10" bottom="10" buttonMode="true"
+					 click="{navigateToURL(new URLRequest('http://lightpaintlive.com'))}"
+					 mouseOut="{lplLogo.filters = []}"
+					 mouseOver="{lplLogo.filters = [new spark.filters.GlowFilter()]}"
+					 source="@Embed('assets/lplHeader_sm.png')" toolTip="Visit LightPaintLive.com"/>
+			
+			
+			<s:HGroup id="bottomControls" bottom="10" gap="7" horizontalCenter="0"
+					  verticalAlign="middle">
+				<s:Button id="startBtn" height="30" buttonMode="true" click="startPainting()"
+						  focusEnabled="false" skinClass="skins.LPLButtonSkin"
+						  toolTip="Spacebar to start / stop capturing"
+						  label.notPainting="start"
+						  label.painting="stop"/>
+				
+				<s:Rect width="15"/>
+				
+				<s:VGroup horizontalAlign="center">
+					<s:HSlider id="intensitySlider"
+							   change="webcam.intensity = intensitySlider.value;" maximum="100"
+							   minimum="0"
+							   toolTip="Up / down arrows to increase / decrease intensity"
+							   value="50"/>
+					<s:Label color="white" text="light-sensitivity"/>
+				</s:VGroup>
+
+				<s:Rect width="15"/>
+				
+				<s:HGroup id="editControls" verticalAlign="middle"
+						  enabled.painting="false">
+					<s:HGroup id="undoRedoControls">
+						<s:Button id="undoBtn" width="50" height="30" label="undo" buttonMode="true"
+								  click="undo()" enabled="false" focusEnabled="false"
+								  skinClass="skins.LPLButtonSkin" toolTip="Ctrl + z"/>
+						<s:Button id="redoBtn" width="50" height="30" label="redo" buttonMode="true"
+								  click="redo()" enabled="false" focusEnabled="false"
+								  skinClass="skins.LPLButtonSkin" toolTip="Ctrl + y"/>
+					</s:HGroup>					<s:Rect width="5"/>
+					<s:Button id="newBtn" width="50" height="30" label="new" buttonMode="true"
+							  click="newPainting()" enabled="false" focusEnabled="false"
+							  skinClass="skins.LPLButtonSkin" toolTip="Ctrl + n"/>
+					
+					<s:Button id="saveBtn" width="50" height="30" label="save" buttonMode="true"
+							  click="saveImgStart.play()" enabled="false"
+							  focusEnabled="false" skinClass="skins.LPLButtonSkin"
+							  toolTip="Ctrl + s saves an image"/>
+					
+					<s:Button id="dummyBtn" includeInLayout="false"/>
+				</s:HGroup>
+			</s:HGroup>
+			
+			
+			
+		<!--
+			==
+			== ADVANCED CONTROLS
+			==
+			-->
+			<my:ControlPanel id="advancedControls" left="5" top="5" width="{lplLogo.width}"
+							 focusEnabled="false"/>
+
+			
+			
+			
+<!--
+			<s:HGroup id="saveOpts" visible="false"
+					  left="{bottomControls.x + editControls.x + saveBtn.x - saveOpts.width/4}"
+					  top="{saveBtn.y + bottomControls.y - saveOpts.height - 10}">
+				<s:Button width="50" height="30" label="img" buttonMode="true"
+						  click="saveImgStart.play()" focusEnabled="false"
+						  skinClass="skins.LPLButtonSkin" toolTip="Ctrl + s"/>
+				<s:Button id="saveVideoBtn" width="50" height="30" label="video" buttonMode="true"
+						  click="saveVidStart.play();" focusEnabled="false"
+						  skinClass="skins.LPLButtonSkin" toolTip="Ctrl + Shift + s"/>
+			</s:HGroup>	
+		-->
+			
+		</s:Group>
+		
+	</s:Group>
+	
+	
+	<s:Group id="saveNotify" width="100%" height="100%">
+		<s:Rect visible="{saveStartNotif.visible}" bottom="-25" width="100%" height="100%" alpha=".8">
+			<s:fill>
+				<s:SolidColor color="black"/>
+			</s:fill>
+		</s:Rect>
+		<s:Label id="saveStartNotif" visible="false" color="red" fontSize="48" fontWeight="bold"
+				 horizontalCenter="0" text="SAVING..." verticalCenter="0"/>
+		<s:Label id="saveEndNotif" visible="false" color="green" fontSize="48" fontWeight="bold"
+				 horizontalCenter="0" text="SAVE COMPLETE" verticalCenter="0"/>
+	</s:Group>
+	
+	<s:Group id="helpScreen" visible="false" horizontalCenter="0" verticalCenter="0">
+		<s:TextArea width="500" height="230" color="white" contentBackgroundAlpha=".8"
+					contentBackgroundColor="0x00000" editable="false" paddingBottom="20"
+					paddingLeft="20" paddingRight="20" paddingTop="20">
+			<s:content>This app requires a webcam, and is best used in dark environments. If you want to know more about a control, hover over it with the mouse to see a description.
+				<s:br/><s:br/>For tutorials on light painting techniques and how to use Light Paint Live, visit the <s:a href="http://lightpaintlive.com/videos.php"><s:span color="0x00ffff" textDecoration="none">videos page</s:span></s:a><s:br/><s:br/>
+				<s:span fontWeight="bold">Basic instructions:</s:span><s:br/>
+				1. Pick a camera and a resolution (control panel > camera options)<s:br/>
+				2. Press start (or spacebar) and start painting!
+			</s:content>
+		</s:TextArea>
+		<s:Label id="closeBtn" left="20" bottom="20" buttonMode="true"
+				 click="helpScreen.visible = false;" color="white" fontSize="36" fontWeight="bold"
+				 text="OK"/>
+	</s:Group>
+	
+	<my:Countdown id="countdown" horizontalCenter="0" verticalCenter="0"/>
+	
+</s:WindowedApplication>
