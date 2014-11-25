@@ -1,4 +1,16 @@
 lightpaintlive
 ==============
 
-LPL site and programs
+
+
+
+FAQ
+========
+
+
+
+
+
+
+
+
