@@ -17,7 +17,6 @@ Modes
 Mercury has 10 
 
 create gifs 
-have sean write descriptions
 
 
 FAQs
@@ -37,23 +36,30 @@ e.g. 256/60 = 4.3 seconds
 
 It's not working!
 -----
-update chrome
-open chrome and go to chrome://chrome
+If the app isn't working, make sure Chrome is up to date. Open chrome and go to chrome://chrome to ask it to update itself.
 
-test the webcam (webrtc thing?)
+Make sure the webcam is plugged in, and test to see if it works (https://apprtc.appspot.com). If it fails, then try updating the drivers for your webcam.
 
 
 
 Can I use a DSLR with LPL?
 -----
-Yes, but requires 3rd party software. Low framerate, low resolution. Not recommended. Use LPL to enhance your light painting, not replace it.
+Yes, but it requires 3rd party software. Generally the video feed from DSLR to webcam is low resolution and low framerate. We do not recommend it.
 
+[links to dslr -> webcam programs]
+
+
+How can I get rid of film noise?
+-----
+Most webcams default to using auto-exposure. This is not ideal for light painting. In complete darkness, it will use the maximum exposure, which makes the video very noisy. Use your webcam's driver software to control settings on the webcam, or use a universal webcam controller like Webcam Settings (Mac).
+
+https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12
 
 
 Light tools
 -----
 www.lightpaintingbrushes.com
-blinkytape
+http://blinkinlabs.com/blinkytape/
 others?
 
 

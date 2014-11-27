@@ -36,7 +36,7 @@ var scriptTask = function(){
 	return 	gulp.src(paths.entryScript)
 				.pipe(browserify({
 					debug: true,
-					transform: ['6to5-browserify']
+					// transform: ['6to5-browserify']
 				}))
 				.pipe(gulp.dest(paths.dist))
 }
