@@ -2,6 +2,7 @@ lightpaintlive
 ==============
 
 
+
 Installation walkthrough
 ========
 
@@ -14,7 +15,25 @@ Installation walkthrough
 
 Modes
 ========
-Mercury has 10 
+Mercury has 10 modes for capturing light. Some are used for light painting, and some are used for transitioning between paintings. There are even some modes for 'dark painting'. Use the keys 0-9 to quickly switch modes.
+
+
+normal: Used for fading out the current painting.
+ 
+average, screen, add: Additive blend modes. Simulates traditional light painting.
+
+lighten: Only the brightest light will show. Allows painting for a very long time without over-exposing the picture.
+
+darken: Similar to lighten, but darkness is sticky. Can be used in extremely bright environments.
+
+multiply: darkening effect.
+
+linearlight: High contrast lightening, continuous mode.
+
+linearburn: High contrast darkening, continuous mode.
+
+pinlight: a mix between lighten and darken
+
 
 create gifs 
 
@@ -47,6 +66,7 @@ Can I use a DSLR with LPL?
 Yes, but it requires 3rd party software. Generally the video feed from DSLR to webcam is low resolution and low framerate. We do not recommend it.
 
 [links to dslr -> webcam programs]
+http://sparkosoft.com/how-to-use-dslr-as-webcam
 
 
 How can I get rid of film noise?
@@ -54,6 +74,7 @@ How can I get rid of film noise?
 Most webcams default to using auto-exposure. This is not ideal for light painting. In complete darkness, it will use the maximum exposure, which makes the video very noisy. Use your webcam's driver software to control settings on the webcam, or use a universal webcam controller like Webcam Settings (Mac).
 
 https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12
+http://extrawebcam.com/
 
 
 Light tools
