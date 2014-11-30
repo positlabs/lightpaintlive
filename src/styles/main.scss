@@ -1,6 +1,12 @@
 @import './normalize.scss';
+@import './mixins.scss';
 
 html, body {
 	background-color: black;
 	color: white;
+	@include font-ubuntu(400);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	@include font-oswald(700);
 }

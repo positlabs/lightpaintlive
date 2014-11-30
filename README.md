@@ -2,9 +2,23 @@ lightpaintlive
 ==============
 
 
+Mercury
+======
+
+TODO: summarize what Mercury is. Hype it up
+
+
+Mercury feature demo video
+-----
+probably inline video
+TODO: outline
+
+Buy CTA
+------
 
 Installation walkthrough
-========
+------
+external link via thumbnail with play button
 
 1. Go to chrome app store. Mention this needs to be done in chrome
 2. buy
@@ -13,8 +27,9 @@ Installation walkthrough
 
 
 
+
 Modes
-========
+-------
 Mercury has 10 modes for capturing light. Some are used for light painting, and some are used for transitioning between paintings. There are even some modes for 'dark painting'. Use the keys 0-9 to quickly switch modes.
 
 
@@ -28,9 +43,9 @@ darken: Similar to lighten, but darkness is sticky. Can be used in extremely bri
 
 multiply: darkening effect.
 
-linearlight: High contrast lightening, continuous mode.
+linearlight: High contrast lightening.
 
-linearburn: High contrast darkening, continuous mode.
+linearburn: High contrast darkening.
 
 pinlight: a mix between lighten and darken
 
@@ -63,10 +78,11 @@ Make sure the webcam is plugged in, and test to see if it works (https://apprtc.
 
 Can I use a DSLR with LPL?
 -----
-Yes, but it requires 3rd party software. Generally the video feed from DSLR to webcam is low resolution and low framerate. We do not recommend it.
+Yes, but it requires 3rd party software. Generally the video feed from DSLR to webcam is low resolution and low framerate. We don't recommend it.
 
 [links to dslr -> webcam programs]
 http://sparkosoft.com/how-to-use-dslr-as-webcam
+http://extrawebcam.com/
 
 
 How can I get rid of film noise?
@@ -74,12 +90,11 @@ How can I get rid of film noise?
 Most webcams default to using auto-exposure. This is not ideal for light painting. In complete darkness, it will use the maximum exposure, which makes the video very noisy. Use your webcam's driver software to control settings on the webcam, or use a universal webcam controller like Webcam Settings (Mac).
 
 https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12
-http://extrawebcam.com/
 
 
-Light tools
+Where can I buy light tools?
 -----
-www.lightpaintingbrushes.com
+http://lightpaintingbrushes.com/
 http://blinkinlabs.com/blinkytape/
 others?
 
@@ -94,6 +109,6 @@ LPL Post (?)
 
 
 
-Mercury
+Mercury App
 =======
 add an info icon that opens an overlay with support email and link to site
