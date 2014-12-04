@@ -1,6 +1,12 @@
 // import LPLLogo from './views/lpl-logo.es6.js';
 import MercurySection from './views/mercury-section.es6.js';
-require('../../node_modules/zepto/zepto.min.js'); // zepto's package.json is not working...
+import FooterView from './views/footer.es6.js';
+
+// init backbone
+import '../../node_modules/zepto/zepto.min.js'; // zepto's package.json is not working...
+import _ from 'lodash'; window._ = _;
+import Backbone from 'backbone';
+Backbone.$ = $;
 
 export default class App {
 
@@ -11,8 +17,7 @@ export default class App {
 		// new LPLLogo();
 
 		new MercurySection();
+		new FooterView();
 	}
 
 };
-
-// asdfasdfasdf:;;;';;'';sdaf;f;!@#

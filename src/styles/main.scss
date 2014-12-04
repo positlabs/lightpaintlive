@@ -10,3 +10,25 @@ html, body {
 h1, h2, h3, h4, h5, h6 {
 	@include font-oswald(700);
 }
+
+section#mercury {
+
+
+	.btn {
+		
+	}
+
+	.launch-btn {
+		display: none;
+	}
+
+	&.state-installed {
+		.launch-btn {
+			display: block;
+		}
+		.install-btn {
+			display: none;
+		}
+	}
+
+}

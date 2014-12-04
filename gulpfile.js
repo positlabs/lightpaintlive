@@ -34,7 +34,7 @@ gulp.task('templates', templateTask);
 
 var styleTask = function(){
     return 	gulp.src(paths.entryStyle)
-		        .pipe(plumber())
+		        // .pipe(plumber())
 		        .pipe(sass({
 		        	errLogToConsole: true
 		        }))
@@ -62,7 +62,7 @@ var scriptTask = function(){
 					}
 				})
 				.pipe(source('main.js'))
-				.pipe(plumber())
+				// .pipe(plumber())
 				.pipe(gulp.dest(paths.dist))
 
 	return out;

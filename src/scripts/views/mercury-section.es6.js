@@ -1,32 +1,40 @@
+import CoreView from '../core/core-view.es6.js'
 
-export default class MercurySection {
+export default class MercurySection extends CoreView {
 
 	constructor(){
+		console.log('MercurySection.constructor');
+		this.setElement($('#mercury'));
+		this.props = {
+			events: {
+				'mousedown .install-btn': 	'onClickInstallBtn',
+				'click .launch-btn': 		'onClickLaunchBtn'
+			}
+		};
+		super();
+	}
 
-		this.$el = $('#mercury');
-
-		var $installBtn = this.$el.find('.install-btn');
-		$installBtn.click(()=> 
-			chrome.webstore.install("https://chrome.google.com/webstore/detail/bphfkpkoljdicakaokfbjiaamholpgjf", 
-				function(){console.log('success')}, 
-				function(){console.log('failure')})
-			);
-
+	initialize(){
+		console.log('MercurySection.initialize');
 		if (chrome.app.isInstalled) {
-
 			this.$el.addClass('state-installed');
-
-			// TODO: show launch button
-			// http://lightpaintlive.com/mercury
-			// launch button will simply open this url, and it will be handled by the apps url handler if it is installed.
-			// if not installed, and installation detection failed for some reason, it will just open mercury alpha
-			
-		}else{
-			this.$el.addClass('state-not-installed');
 		}
-		
-		//TODO: also listen for install state change
+	}
 
+	onClickInstallBtn(){
+		console.log('MercurySection.onClickInstallBtn');
+		let appurl = "https://chrome.google.com/webstore/detail/bphfkpkoljdicakaokfbjiaamholpgjf";
+		chrome.webstore.install(
+			appurl, 
+			()=> this.$el.addClass('state-installed'), 
+			()=> console.log('failure')
+		)	
+	}
+
+	onClickLaunchBtn(){
+		console.log('MercurySection.onClickLaunchBtn');
+		var w = window.open('http://lightpaintlive.com/mercury');
+		setTimeout(w.close(), 100);
 	}
 
 }
