@@ -2,10 +2,12 @@ var gulp = 			require('gulp');
 var sass = 			require('gulp-sass');
 var jade = 			require('gulp-jade');
 var plumber = 		require('gulp-plumber');
+var mergeStream = 	require('merge-stream');
 var del = 			require('del');
 var browserify = 	require('browserify');
 var es6ify = 		require('es6ify');
 var fs =	 		require('fs');
+var path =	 		require('path');
 var source = 		require('vinyl-source-stream');
 var colors = 		require('colors');
 
@@ -73,8 +75,15 @@ gulp.task('scripts', scriptTask);
 
 
 gulp.task('build:move', ['clean'], function(){
-	return 	gulp.src('./src/assets/**/*', {base:'./src/'})
-				.pipe(gulp.dest(paths.dist));
+	var assets = 
+		gulp.src('./src/assets/**/*', {base:'./src/'})
+			.pipe(gulp.dest(paths.dist));
+
+	var mercuryAlpha = 
+		gulp.src('./archive/mercury/app/**/*', {base:'./archive/mercury/app/'})
+			.pipe( gulp.dest(path.join(paths.dist, 'mercury/')) );
+
+	return mergeStream(assets, mercuryAlpha);
 });
 
 
