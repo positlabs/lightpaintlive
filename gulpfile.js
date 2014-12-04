@@ -49,7 +49,7 @@ var scriptTask = function(){
 	if(!fs.existsSync('./dist/')) fs.mkdirSync('./dist/');
 
 	var out = 	browserify({
-					debug: true, 
+					debug: true, // source maps
 					modules: 'commonjs',
 				})
 				.add(es6ify.runtime)
