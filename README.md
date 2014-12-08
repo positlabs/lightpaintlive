@@ -48,22 +48,22 @@ TODO: create gifs
 keyboard shortcuts
 -------
 
-TODO: list them
 
 
 FAQs
 ========
 
 
-It's not working!?
+It's not working!
 -----
 If the app isn't working, make sure Chrome is up to date. Open chrome and go to chrome://chrome to ask it to update itself.
 
 Make sure the webcam is plugged in, and test to see if it works (https://apprtc.appspot.com). If it fails, then try updating the drivers for your webcam.
 
+
 How can I use a different webcam?
 -----
-In Chrome, go to chrome://settings/content and find the Media section. Select your camera.
+In Chrome, go to chrome://settings/content, find the Media section, and select your camera.
 
 
 Can I use a DSLR with LPL?
@@ -88,7 +88,7 @@ Most webcams default to using auto-exposure. This is not ideal for light paintin
 
 How can I fade out my light painting?
 -----
-Short fades are possible by switching modes; like 'screen' to 'normal'.  
+Short fades are possible by switching modes; like 'screen' to 'normal'.
 
 This formula can be used to determine the duration of the fades. Each frame will subtract 1 value from the current color, of which there are 256 possible values.
 

@@ -1,6 +1,8 @@
 // import LPLLogo from './views/lpl-logo.es6.js';
 import MercurySection from './views/mercury-section.es6.js';
-import FooterView from './views/footer.es6.js';
+import FooterView from './views/footer-view.es6.js';
+import BGTrailsView from './views/bg-trails-view.es6.js';
+import './analytics.js';
 
 // init backbone
 import '../../node_modules/zepto/zepto.min.js'; // zepto's package.json is not working...
@@ -18,6 +20,7 @@ export default class App {
 
 		new MercurySection();
 		new FooterView();
+		new BGTrailsView();
 	}
 
 };

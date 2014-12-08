@@ -22,6 +22,7 @@
     "gulp-plumber": "^0.6.6",
     "lodash": "^2.4.1",
     "merge-stream": "^0.1.6",
+    "node-bourbon": "^1.2.3",
     "vinyl-source-stream": "^1.0.0",
     "zepto": "0.0.4"
   },

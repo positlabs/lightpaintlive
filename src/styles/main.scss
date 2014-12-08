@@ -1,18 +1,83 @@
+@import '../../node_modules/node-bourbon/assets/stylesheets/_bourbon.scss';
 @import './normalize.scss';
 @import './mixins.scss';
 
+$orange: #ff9933;
+
 html, body {
-	background-color: black;
+	background-color: #282828;
 	color: white;
 	@include font-ubuntu(400);
+	min-height: 100%;
+	min-width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	@include font-oswald(700);
 }
 
-section#mercury {
+a {
+	text-decoration: none;
+	color: $orange;
+	@include background(linear-gradient(135deg, $orange 70%, white 75%, $orange 80%));
+	background-size: 200%;
 
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-fill-color: transparent;	
+
+	&:hover{
+		// text-decoration: underline;
+		@include animation(anchor-gradient-hover 3s both);
+		@include animation-iteration-count(infinite);
+		
+	}
+	
+}
+
+@include keyframes(anchor-gradient-hover) {
+	0% {		background-position-x: 0; }
+	20%, 100% {	background-position-x: -170%; }
+}
+
+
+.wrapper {
+	width: 800px;
+	margin: 0 auto;
+}
+
+footer, nav {
+	position: absolute;
+	width: 100%;
+	background: black;
+}
+
+nav {
+	top: 0;
+	height: 100px;
+}
+
+footer {
+	
+	bottom: 0;
+	height: 32px;
+
+	.fb-holder,
+	.gplus-holder {
+		display: inline-block;
+		float: left;
+		margin-top: 6px;
+	}
+	a {
+		float: right;
+		line-height: 32px;
+	}
+}
+
+section#mercury {
+	
+	margin-top: 100px;
 
 	.btn {
 		
@@ -32,3 +97,13 @@ section#mercury {
 	}
 
 }
+
+#bg-trails {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+

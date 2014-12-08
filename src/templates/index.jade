@@ -12,6 +12,8 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 
 		link(rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/bphfkpkoljdicakaokfbjiaamholpgjf")
 
+		meta(name="keywords" content="light painting, webcam, photography, photo app, chrome app")
+
 		meta(property="og:url" content="http://lightpaintlive.com")
 		meta(property="og:site_name" content="Lightpaint Live")
 		meta(property="og:type" content="website")
@@ -22,25 +24,30 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 	body
 
 		nav
-			|navigation
+			div(class='wrapper')
+				|navigation
 
-		section(id='mercury')
-			|section#mercury
-			button(class='install-btn btn') buy &amp; install Mercury
-			button(class='launch-btn btn') launch Mercury
+		div(class='wrapper')
 
-		section(id='faq') 
-			|section#faq
+			section(id='mercury')
+				|section#mercury
+				button(class='install-btn btn') buy &amp; install Mercury
+				button(class='launch-btn btn') launch Mercury
 
-		section(id='open-source') 
-			|section#open-source
+			section(id='faq') 
+				|section#faq
+
+			section(id='open-source') 
+				|section#open-source
 
 		footer
-			|footer
-			a(style="display: inline" target="_blank" href="mailto:josh@lightpaintlive.com") contact support
-			div(class="g-plusone" data-size="medium" data-href="http://lightpaintlive.com")
-			div(class="fb-like" data-href="http://www.facebook.com/LightPaintLive" data-layout="button_count" data-width="150" data-colorscheme="dark" data-font="segoe ui")
+			div(class='wrapper')
+				a(target="_blank" href="mailto:josh@lightpaintlive.com") contact support
+				//- div(class='gplus-holder')
+				//- 	div(class="g-plusone" data-size="medium" data-href="http://lightpaintlive.com")
+				div(class='fb-holder')
+					div(class="fb-like" data-href="http://www.facebook.com/LightPaintLive" data-layout="button_count" data-width="150" data-colorscheme="dark" data-font="segoe ui")
 			
-
+		div(id='bg-trails')
 
 

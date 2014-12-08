@@ -8,7 +8,7 @@ export default class LPLLogo {
 		this.halfSize = size * .5;
 		var halfSize = this.halfSize;
 
-		this.stage = new PIXI.Stage(0x000000, true);
+		this.stage = new PIXI.Stage(0x000000);
 		this.renderer = PIXI.autoDetectRenderer(size, size);
 
 		this.accumulationTextures = [
@@ -63,9 +63,9 @@ export default class LPLLogo {
 	    var scale = Math.sin(this.currentFrame*.005)*.025 + .2;
 	    this.dust.scale.set(scale, scale);
 
-	    this.accumulationTextures.reverse();
-	    var [rt1, rt2] = this.accumulationTextures;
-	    rt1.render(this.stage, true);
+		this.accumulationTextures.reverse();
+		var [rt1, rt2] = this.accumulationTextures;
+		rt1.render(this.stage, true);
 		this.accumulatorSprite.setTexture(rt1);
 		rt2.render(this.stage, false);
 

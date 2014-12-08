@@ -10,6 +10,7 @@ var fs =	 		require('fs');
 var path =	 		require('path');
 var source = 		require('vinyl-source-stream');
 var colors = 		require('colors');
+var bourbon = 		require('node-bourbon');
 
 
 var paths = {
@@ -35,10 +36,10 @@ gulp.task('templates', templateTask);
 
 
 var styleTask = function(){
+
     return 	gulp.src(paths.entryStyle)
-		        // .pipe(plumber())
 		        .pipe(sass({
-		        	errLogToConsole: true
+		        	errLogToConsole: true,
 		        }))
 		        .pipe(gulp.dest(paths.dist));
 }
@@ -82,8 +83,12 @@ gulp.task('build:move', ['clean'], function(){
 	var mercuryAlpha = 
 		gulp.src('./archive/mercury/app/**/*', {base:'./archive/mercury/app/'})
 			.pipe( gulp.dest(path.join(paths.dist, 'mercury/')) );
+	
+	var googleownership = 
+		gulp.src('./archive/site/googleda3c10baf778c2f2.html', {base:'./archive/site/'})
+			.pipe( gulp.dest(paths.dist) );
 
-	return mergeStream(assets, mercuryAlpha);
+	return mergeStream(assets, mercuryAlpha, googleownership);
 });
 
 
