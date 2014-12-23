@@ -1,4 +1,5 @@
-// import LPLLogo from './views/lpl-logo.es6.js';
+import LPLLogo from './views/lpl-logo.es6.js';
+import DustParticles from './views/dust-particles.es6.js';
 import MercurySection from './views/mercury-section.es6.js';
 import FooterView from './views/footer-view.es6.js';
 import BGTrailsView from './views/bg-trails-view.es6.js';
@@ -16,11 +17,12 @@ export default class App {
 
 	constructor(){
 		// console.log('app.constructor');
-		// new LPLLogo();
+		var logo = new LPLLogo();
+		var dust = new DustParticles(logo);
 
-		new MercurySection();
-		new FooterView();
-		new BGTrailsView();
+		// new MercurySection();
+		// new FooterView();
+		// new BGTrailsView();
 	}
 
 };

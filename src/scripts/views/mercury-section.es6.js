@@ -7,8 +7,8 @@ export default class MercurySection extends CoreView {
 		this.setElement($('#mercury'));
 		this.props = {
 			events: {
-				'mousedown .install-btn': 	'onClickInstallBtn',
-				'click .launch-btn': 		'onClickLaunchBtn'
+				'mousedown 	.install-btn': 		'onClickInstallBtn',
+				'click 		.launch-btn': 		'onClickLaunchBtn'
 			}
 		};
 		super();

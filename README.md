@@ -24,7 +24,7 @@ go over features
 
 LIGHT Modes
 -------
-Mercury has 10 modes for capturing light. Some are used for light painting, and some are used for transitioning between paintings. There are even some modes for 'dark painting'. Use the keys 0-9 to quickly switch modes.
+Mercury has 4 modes for capturing light. Use the keys 0-3 to quickly switch modes.
 
 normal: Used for fading out the current painting.
  
@@ -34,19 +34,16 @@ lighten: Only the brightest light will show. Allows painting for a very long tim
 
 darken: Similar to lighten, but darkness is sticky. Can be used in extremely bright environments.
 
-multiply: darkening effect.
-
-linearlight: High contrast lightening.
-
-linearburn: High contrast darkening.
-
-pinlight: a mix between lighten and darken
-
 TODO: create gifs 
 
 
 keyboard shortcuts
 -------
+Mode: 0, 1, 2, 3
+Fullscreen: f, f11
+New: n
+Save: s
+Trigger: spacebar
 
 
 
@@ -135,11 +132,24 @@ Post-process for converting normal videos into light painting videos. Processing
 Footer
 =======
 FB like
-Google +1 
 josh@lightpaintlive.com
 
 
 
+Story
+=====
+
+LPL started as a simple prototype. It had two buttons and was very slow. It was discovered by Joerg Miedza, a prominent member of the light-painting community. The app was very limited, but Miedza saw it as the next step in the evolution of light-painting. He wanted to know if it could be improved, so he emailed the developer. Ever since then, Josh and Joerg have been exchanging ideas and improving LPL. Miedza was overflowing with enthusiasm and ideas. He was the driving force behind the LPL project. Without him, the program would still have only two controls!
+
+Joerg Miedza: Artist
+Miedza has been creating movies and photos using special techniques since the late 90’s. He is the co-founder of the german light-art project LAPP-PRO. In this project, the LAPP-Team developed a unique brand of light painting: LightArt Performance Photography, or LAPP for short. The skills Miedza acquired working with motion pictures allowed him to contribute significantly to the performance and artistic aspect of LAPP photography.
+His personal work is at miedza.de 
+Email: joerg@miedza.de 
+There is also a book of the work: Painting With Light
+
+Josh Beckwith: Developer
+Josh has always been obsessed with science and technology - and as a child, he dreamed of becoming an inventor. Now, he's a senior interactive developer at Tool of North America.
+Email: josh@lightpaintlive.com
 
 
 

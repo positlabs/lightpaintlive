@@ -1,78 +1,108 @@
 import 'requestanimationframe';
 import PIXI from '../lib/pixi.js';
+import Backbone from 'backbone';
+import CoreEvents from '../core/core-events.es6.js';
 
-export default class LPLLogo {
+export default class LPLLogo extends CoreEvents {
 
-	constructor(size = 500){
-		this.size = size;
-		this.halfSize = size * .5;
-		var halfSize = this.halfSize;
+	constructor(size = 1024){
+
+		super();
+		window.logo = this;
+
+		this._size = size;
+		var halfSize = this._halfSize = size * .5;
 
 		this.stage = new PIXI.Stage(0x000000);
 		this.renderer = PIXI.autoDetectRenderer(size, size);
+		this.renderer.view.style.width = halfSize + 'px';
+		this.renderer.view.style.height = halfSize + 'px';
 
 		this.accumulationTextures = [
 			new PIXI.RenderTexture(size, size),
 			new PIXI.RenderTexture(size, size)
 		];
 
+		// thing to add particles to
+		this.accumulatorGraphics = new PIXI.Graphics();
+		this.stage.addChild(this.accumulatorGraphics);
+
+		// handles drawing rendertextures
 		this.accumulatorSprite = new PIXI.Sprite(this.accumulationTextures[0]);
-		this.accumulatorSprite.position.set(halfSize, halfSize);
 		this.accumulatorSprite.anchor.set(.5, .5);
 		this.stage.addChild(this.accumulatorSprite);
 		
-		this.dust = PIXI.Sprite.fromImage("assets/images/space-dust.jpg");
-		this.dust.anchor.set(.5, .5);
-		this.dust.scale.set(.225, .225);
-		this.dust.position.set(halfSize, halfSize);
-		this.dust.blendMode = PIXI.blendModes.SCREEN;
-		this.stage.addChild(this.dust);
+		this.whiteCircle = new PIXI.Graphics();
+		this.whiteCircle.beginFill(0xffffff);
+		this.stage.addChild(this.whiteCircle);
 
-		var whiteCircle = PIXI.Sprite.fromImage("assets/images/circle-white.svg");
-		whiteCircle.anchor.set(.5, .5);
-		whiteCircle.scale.set(.25, .25)
-		whiteCircle.position.set(halfSize, halfSize);
-		whiteCircle.alpha = .5;
-		whiteCircle.blendMode = PIXI.blendModes.SCREEN;
-		this.stage.addChild(whiteCircle);
-		
-		var blackCircle = PIXI.Sprite.fromImage("assets/images/circle-black.svg");
-		blackCircle.anchor.set(.5, .5);
-		blackCircle.scale.set(.25, .25);
-		blackCircle.position.set(halfSize, halfSize);
-		this.stage.addChild(blackCircle);
+		var blur = new PIXI.BlurFilter();
+		blur.blur = 10;
+		this.whiteCircle.filters = [blur];
+
+		this.blackCircle = new PIXI.Graphics();
+		this.blackCircle.beginFill(0x000000);
+		this.stage.addChild(this.blackCircle);
 
 		this.faderGraphic = new PIXI.Graphics();
 		this.faderGraphic.beginFill(0x000000, .03);
-		this.faderGraphic.drawRect(-halfSize, -halfSize, size, size);
-		this.accumulatorSprite.addChild(this.faderGraphic);
+		this.accumulatorGraphics.addChild(this.faderGraphic);
+
+		this.onResize();
 
 		document.body.appendChild(this.renderer.view);
-		this.currentFrame = 0;
 	    this.onFrame();
 
 	}
 
+	get size(){
+		return this._size;
+	}
+
+	set size(newSize){
+		this._size = newSize;
+		this._halfSize = newSize * .5;
+		this.onResize();
+	}
+
 	onResize(){
+
+		this.renderer.resize(this._size, this._size);
+		this.renderer.view.style.width = this._halfSize + 'px';
+		this.renderer.view.style.height = this._halfSize + 'px';
+
+		this.accumulationTextures[0].resize(this._size, this._size);
+		this.accumulationTextures[1].resize(this._size, this._size);
+		this.accumulatorSprite.position.set(this._halfSize, this._halfSize);
+
+		this.whiteCircle.drawCircle(this._halfSize, this._halfSize, this._size*.26, this._size*.26); // TODO: clear?
+		this.blackCircle.drawCircle(this._halfSize, this._halfSize, this._size*.25, this._size*.25);
+		this.faderGraphic.drawRect(0, 0, this._size, this._size);
+
+		this.trigger('resize');
 
 	}
 
-	onFrame() {
+	addChild(child){
+		this.accumulatorGraphics.addChild(child);
+	}
 
-	    this.dust.rotation += 0.01;
-	    var scale = Math.sin(this.currentFrame*.005)*.025 + .2;
-	    this.dust.scale.set(scale, scale);
+	removeChild(child){
+		this.accumulatorGraphics.removeChild(child);
+	}
+
+	onFrame(time=0) {
 
 		this.accumulationTextures.reverse();
 		var [rt1, rt2] = this.accumulationTextures;
-		rt1.render(this.stage, true);
+		rt1.render(this.accumulatorGraphics, true);
 		this.accumulatorSprite.setTexture(rt1);
-		rt2.render(this.stage, false);
+		rt2.render(this.accumulatorGraphics, false);
 
 	    this.renderer.render(this.stage);
+	    this.trigger('frame', time);
 
-		this.currentFrame++;
-	    requestAnimationFrame( ()=>this.onFrame() ); // easy scope binding
+	    requestAnimationFrame( (time)=>this.onFrame(time) );
 
 	}
 
