@@ -17,6 +17,9 @@ export default class LPLLogo extends CoreEvents {
 		this.renderer = PIXI.autoDetectRenderer(size, size);
 		this.renderer.view.style.width = halfSize + 'px';
 		this.renderer.view.style.height = halfSize + 'px';
+		this.renderer.view.style.position = 'absolute';
+		this.renderer.view.style.top = 0;
+
 
 		this.accumulationTextures = [
 			new PIXI.RenderTexture(size, size),

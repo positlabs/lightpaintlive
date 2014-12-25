@@ -26,13 +26,13 @@ LIGHT Modes
 -------
 Mercury has 4 modes for capturing light. Use the keys 0-3 to quickly switch modes.
 
-normal: Used for fading out the current painting.
+normal: Used for fading the current painting.
  
-average, screen, add: Additive blend modes. Simulates traditional light painting.
+average: Simulates traditional light painting.
 
-lighten: Only the brightest light will show. Allows painting for a very long time without over-exposing the picture.
+lighten: Only captures the brightest light. Allows painting for a very long time without over-exposing the picture.
 
-darken: Similar to lighten, but darkness is sticky. Can be used in extremely bright environments.
+darken: Similar to lighten, but darkness is captured. Can be used in extremely bright environments.
 
 TODO: create gifs 
 
