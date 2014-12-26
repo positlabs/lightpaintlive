@@ -5,7 +5,7 @@ import CoreEvents from '../core/core-events.es6.js';
 
 export default class LPLLogo extends CoreEvents {
 
-	constructor(size = 1024){
+	constructor(size = 512){
 
 		super();
 		window.logo = this;
@@ -15,11 +15,8 @@ export default class LPLLogo extends CoreEvents {
 
 		this.stage = new PIXI.Stage(0x000000);
 		this.renderer = PIXI.autoDetectRenderer(size, size);
-		this.renderer.view.style.width = halfSize + 'px';
-		this.renderer.view.style.height = halfSize + 'px';
 		this.renderer.view.style.position = 'absolute';
 		this.renderer.view.style.top = 0;
-
 
 		this.accumulationTextures = [
 			new PIXI.RenderTexture(size, size),
@@ -35,17 +32,7 @@ export default class LPLLogo extends CoreEvents {
 		this.accumulatorSprite.anchor.set(.5, .5);
 		this.stage.addChild(this.accumulatorSprite);
 		
-		this.whiteCircle = new PIXI.Graphics();
-		this.whiteCircle.beginFill(0xffffff);
-		this.stage.addChild(this.whiteCircle);
-
-		var blur = new PIXI.BlurFilter();
-		blur.blur = 10;
-		this.whiteCircle.filters = [blur];
-
-		this.blackCircle = new PIXI.Graphics();
-		this.blackCircle.beginFill(0x000000);
-		this.stage.addChild(this.blackCircle);
+		this.createCircles();
 
 		this.faderGraphic = new PIXI.Graphics();
 		this.faderGraphic.beginFill(0x000000, .03);
@@ -66,6 +53,26 @@ export default class LPLLogo extends CoreEvents {
 		this._size = newSize;
 		this._halfSize = newSize * .5;
 		this.onResize();
+	}
+
+	createCircles(){
+		if(this.whiteCircle != undefined){
+			this.stage.removeChild(this.whiteCircle);
+			this.stage.removeChild(this.blackCircle);
+		}
+
+		this.whiteCircle = new PIXI.Graphics();
+		this.whiteCircle.beginFill(0xffffff);
+		this.stage.addChild(this.whiteCircle);
+
+		var blur = new PIXI.BlurFilter();
+		blur.blur = 10;
+		this.whiteCircle.filters = [blur];
+
+		this.blackCircle = new PIXI.Graphics();
+		this.blackCircle.beginFill(0x000000);
+		this.stage.addChild(this.blackCircle);
+
 	}
 
 	onResize(){
@@ -94,7 +101,7 @@ export default class LPLLogo extends CoreEvents {
 		this.accumulatorGraphics.removeChild(child);
 	}
 
-	onFrame(time=0) {
+	onFrame(time = 0) {
 
 		this.accumulationTextures.reverse();
 		var [rt1, rt2] = this.accumulationTextures;

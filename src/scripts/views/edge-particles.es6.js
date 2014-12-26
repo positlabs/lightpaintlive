@@ -1,5 +1,6 @@
 import PIXI from '../lib/pixi.js';
 import _ from 'underscore';
+import tinycolor from 'tinycolor2'; window.tinycolor = tinycolor;
 
 export default class EdgeParticles extends PIXI.Graphics {
 
@@ -23,9 +24,10 @@ export default class EdgeParticles extends PIXI.Graphics {
 
 	spawnParticles(numParticles){
 		// console.log('spawnParticles', numParticles);
+		var hueOffset = Math.random()*360;
 		for (var i = numParticles-1; i >= 0; i--) {
 			var center = new PIXI.Vector(this.logo.size*.5, this.logo.size*.5);
-			var p = new EdgeParticle(center);
+			var p = new EdgeParticle(center, hueOffset);
 			this.addChild(p);
 		};
 	}
@@ -47,7 +49,7 @@ export default class EdgeParticles extends PIXI.Graphics {
 
 class EdgeParticle extends PIXI.Graphics {
 
-	constructor(center = new PIXI.Vector()){
+	constructor(center = new PIXI.Vector(), hueOffset = 0){
 		// console.log('EdgeParticle.constructor', position.x, position.y);
 		super();
 
@@ -56,9 +58,12 @@ class EdgeParticle extends PIXI.Graphics {
 
 		this.blendMode = PIXI.blendModes.SCREEN;
 
-		var color = Math.random()*0xffffff;
-		this.lineStyle(4, color, .2);
-		var size = Math.random() * 500 + 100;
+		var color = tinycolor({h: Math.random()*150 + hueOffset, s: 100, v: 50}).toHex();
+		color = parseInt(color, 16);
+		// console.log('%c'+color, 'color: #' + color);
+		this.lineStyle(logo.size/1024*4, color, .2);
+
+		var size = Math.random() * logo.size * .5 + logo.size * .1;
 		this.moveTo(0, -size/2);
 		this.lineTo(0, size/2);
 		this.speed = Math.random() * .5 + .05

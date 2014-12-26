@@ -1,5 +1,6 @@
 import PIXI from '../lib/pixi.js';
 import _ from 'underscore';
+import tinycolor from 'tinycolor2';
 
 export default class OrbitParticles extends PIXI.Graphics {
 
@@ -17,16 +18,17 @@ export default class OrbitParticles extends PIXI.Graphics {
 	    logo.on('resize', (e)=>this.onResize(e));
 	    this.onResize();
 
-		this.spawnParticles(400);
+		this.spawnParticles(200);
 
 	}
 
 	spawnParticles(numParticles){
 		// console.log('spawnParticles', numParticles);
+		var colorOffset = Math.random()*360;
 		for (var i = numParticles-1; i >= 0; i--) {
 			var rng = 100;
 			var position = this.center.clone().add(new PIXI.Vector(Math.random()*rng-rng*.5, Math.random()*rng-rng*.5));
-			var p = new OrbitParticle(position);
+			var p = new OrbitParticle(position, colorOffset);
 			this.addChild(p);
 		}
 	}
@@ -52,13 +54,16 @@ export default class OrbitParticles extends PIXI.Graphics {
 
 class OrbitParticle extends PIXI.Graphics {
 
-	constructor(position = new PIXI.Vector()){
+	constructor(position = new PIXI.Vector(), colorOffset = 0){
 		// console.log('OrbitParticle.constructor', position.x, position.y);
 		super();
-		this.beginFill(0x33FFFF, .5);
-		var size = 40;
+		var color = tinycolor({h:Math.random()*150+colorOffset, s:1, v:1}).toHex();
+		color = parseInt(color, 16);
+		this.beginFill(color, 1);
+		this.alpha = .15;
+		var size = 100;
 		this.drawCircle(0, 0, size, size);
-		this.blendMode = PIXI.blendModes.ADD;
+		this.blendMode = PIXI.blendModes.SCREEN;
 		this.position = position;
 		var rng = 30;
 		this.velocity = new PIXI.Vector(Math.random()*rng-rng*.5, Math.random()*rng-rng*.5);
