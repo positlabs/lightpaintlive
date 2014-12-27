@@ -35,7 +35,7 @@ export default class App {
 
 		new MercurySection();
 		new FooterView();
-		new BGTrailsView(); // FIXME: 
+		new BGTrailsView(); // FIXME: https://github.com/GoodBoyDigital/pixi.js/issues/1299
 	}
 
 };
