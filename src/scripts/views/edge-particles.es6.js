@@ -26,8 +26,7 @@ export default class EdgeParticles extends PIXI.Graphics {
 		// console.log('spawnParticles', numParticles);
 		var hueOffset = Math.random()*360;
 		for (var i = numParticles-1; i >= 0; i--) {
-			var center = new PIXI.Vector(this.logo.size*.5, this.logo.size*.5);
-			var p = new EdgeParticle(center, hueOffset);
+			var p = new EdgeParticle(this.logo, hueOffset);
 			this.addChild(p);
 		};
 	}
@@ -49,13 +48,12 @@ export default class EdgeParticles extends PIXI.Graphics {
 
 class EdgeParticle extends PIXI.Graphics {
 
-	constructor(center = new PIXI.Vector(), hueOffset = 0){
+	constructor(logo, hueOffset = 0){
 		// console.log('EdgeParticle.constructor', position.x, position.y);
 		super();
 
-		this.center = center;
+		this.center = new PIXI.Vector(logo.size*.5, logo.size*.5);
 		this.direction = Math.random() > .5 ? 1 : -1;
-
 		this.blendMode = PIXI.blendModes.SCREEN;
 
 		var color = tinycolor({h: Math.random()*150 + hueOffset, s: 100, v: 50}).toHex();
@@ -66,7 +64,8 @@ class EdgeParticle extends PIXI.Graphics {
 		var size = Math.random() * logo.size * .5 + logo.size * .1;
 		this.moveTo(0, -size/2);
 		this.lineTo(0, size/2);
-		this.speed = Math.random() * .5 + .05
+		this.speed = Math.random() * .5 + .2;
+		// this.speed = Math.random() * .5 + .05;
 		this.angle = Math.random() * Math.PI * 2;
 	}
 

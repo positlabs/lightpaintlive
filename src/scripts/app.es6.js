@@ -24,18 +24,18 @@ export default class App {
 	constructor(){
 		// console.log('app.constructor');
 
+		// PIXI setup
 		PIXI.Vector = Vector;
 		PIXI.Point = Vector;
 
-
-		var logo = new LPLLogo();
-		// var dust = new DustParticles(logo);
+		var logo = new LPLLogo('#lpl-logo');
 		new EdgeParticles(logo);
+		// var dust = new DustParticles(logo);
 		// new OrbitParticles(logo);
 
-		// new MercurySection();
-		// new FooterView();
-		// new BGTrailsView();
+		new MercurySection();
+		new FooterView();
+		new BGTrailsView(); // FIXME: 
 	}
 
 };

@@ -5,10 +5,10 @@ import CoreEvents from '../core/core-events.es6.js';
 
 export default class LPLLogo extends CoreEvents {
 
-	constructor(size = 512){
+	constructor(selector, size = 512){
 
 		super();
-		window.logo = this;
+		// window.logo = this;
 
 		this._size = size;
 		var halfSize = this._halfSize = size * .5;
@@ -40,7 +40,9 @@ export default class LPLLogo extends CoreEvents {
 
 		this.onResize();
 
-		document.body.appendChild(this.renderer.view);
+		var parentEl = selector != undefined ? $(selector)[0] : document.body;
+
+		parentEl.appendChild(this.renderer.view);
 	    this.onFrame();
 
 	}
@@ -78,8 +80,8 @@ export default class LPLLogo extends CoreEvents {
 	onResize(){
 
 		this.renderer.resize(this._size, this._size);
-		this.renderer.view.style.width = this._halfSize + 'px';
-		this.renderer.view.style.height = this._halfSize + 'px';
+		// this.renderer.view.style.width = this._halfSize + 'px';
+		// this.renderer.view.style.height = this._halfSize + 'px';
 
 		this.accumulationTextures[0].resize(this._size, this._size);
 		this.accumulationTextures[1].resize(this._size, this._size);

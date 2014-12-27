@@ -21,32 +21,137 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 		meta(property="og:description" content="Real-time light painting software.")
 		meta(property="fb:app_id" content="331545326882067")
 
+
+
 	body
 
 		nav
 			div(class='wrapper')
-				|navigation
+				div(id='lpl-logo')
 
-		div(class='wrapper')
 
-			section(id='mercury')
-				|section#mercury
-				button(class='install-btn btn') buy &amp; install Mercury
-				button(class='launch-btn btn') launch Mercury
 
-			section(id='faq') 
-				|section#faq
+		div(class='scrollable-content')
+			div(class='wrapper')
 
-			section(id='open-source') 
-				|section#open-source
-//- 
+				section(id='mercury')
+					h1 Mercury
+					p A webcam app for light painting in real-time. Runs on Chrome for Mac &amp; Windows.
+					div(class='mercury-btns')
+						button(class='install-btn btn') buy &amp; install Mercury
+						button(class='launch-btn btn') launch Mercury
+						span ...or try 
+						a(href='http://lightpaintlive.com/mercury/' target='_blank') Mercury Alpha
+					iframe(class="video" width="420" height="315" src="//www.youtube.com/embed/XQu8TTBmGhA" frameborder="0" allowfullscreen)
+				
+				div(class='sub-section')
+					h1 light modes
+					p Mercury has 4 modes for capturing light. Use the keys 0-3 to quickly switch modes.
+
+					div(class='gif') gif
+
+					div(class='buttons')
+						button normal
+						button average
+						button lighten
+						button darken
+
+					div(class='descriptions')
+						p normal: Used for fading the current painting.
+						p average: Simulates traditional light painting.
+						p lighten: Only captures the brightest light. Allows painting for a very long time without over-exposing the picture.
+						p darken: Similar to lighten, but darkness is captured. Can be used in extremely bright environments.
+
+				div(class='sub-section')
+					h1 keyboard shortcuts
+					p Mercury can be controlled remotely with a 
+						a(href='http://www.amazon.com/Logitech-Wireless-Keyboard-Built-In-Multi-Touch/dp/B005DKZTMG/ref=pd_cp_pc_2' target='_blank') mini bluetooth keyboard!
+					
+					ul
+						li Fullscreen: f, or F11
+						li Exposure: left/right arrows, or [ ]
+						li Modes: 0-3
+						li Mirror: m
+						li Save: s
+						li New: n
+						li Trigger: spacebar
+
+
+
+
+				section(id='faq') 
+					h1 Frequently asked questions
+
+					h2 It's not working!
+					p Make sure Chrome is up to date. Open chrome and go to 
+						a(href='chrome://chrome' target='_blank') chrome://chrome 
+						| to update.
+
+					h2 How can I use a different webcam?
+					p In Chrome, go to 
+						a(href='chrome://settings/content' target='_blank') chrome://settings/content
+						|, find the Media section, and select your camera.
+
+					h2 Can I use a DSLR with LPL?
+					p Yes, but it requires 3rd party software. Generally the video feed from DSLR to webcam is low resolution and low framerate. We don't recommend it.
+					p #[a(href='http://sparkosoft.com/how-to-use-dslr-as-webcam' target='_blank') sparkosoft ]
+					p #[a(href='http://extrawebcam.com/' target='_blank') extrawebcam]
+
+					h2 Can I record light painting videos?
+					p Yes, by using any screen-casting program. Quicktime has this feature built-in. There is also a free web-based program called 
+						a(href='www.screencast-o-matic.com' target='_blank') screencast-o-matic.
+
+					h2 How can I get rid of noise?
+					p Most webcams default to using auto-exposure. This is not ideal for light painting. In complete darkness, 
+						| it will use the maximum exposure, which makes the video very noisy (like high ISO). 
+						| Use your webcam's driver software to control settings on the webcam, or use a universal webcam controller
+						| like #[a(href='(https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12)' target='_blank') Webcam Settings] (Mac).
+					p Of course, the quality of the camera also affects this. We recommend Logitech webcams, like the #[a(href='http://www.logitech.com/en-us/product/webcam-c930e-business' target='_blank') C930e]
+
+					h2 How can I fade out my light painting?
+					p Short fades are possible by switching modes; like 'screen' to 'normal'.
+					p The formula below can be used to determine the duration of the fades. Each frame will subtract 1 from the current color, of which there are 256 possible values.
+					p 256 (color values) / 60 (frames per second) = 4.3 seconds
+
+					h2 Where can I buy light tools?
+					p 
+						a(href='http://lightpaintingbrushes.com/' target='_blank') LightPaintingBrushes. 
+						span Jason Page's flexible, extensible light painting brush system. We highly recommend it. 
+					p 
+						a(href='http://blinkinlabs.com/blinkytape/' target='_blank') Blinky Tape. 
+						span Programmable 60-led RGB strips. Easy. 
+					p Smartphones and tablets are also super cool. Get creative!
+
+
+
+
+				section(id='open-source') 
+					h1 open source
+					p Here are some open source (free!) light painting programs. LPL doesn't actively maintain these projects, but hopefully they will serve you well.
+
+					ul
+						li 
+							p LPL Heavy
+							span The original LPL program for Mac/Windows. #[a(href="" target="_blank") View on GitHub.]
+
+						li
+							p LPL Android
+							span Light painting app for Android devices. #[a(href="" target="_blank") View on GitHub.]
+
+						li
+							p LPL Processor
+							span Processing sketch that converts raw video into light painting videos. #[a(href="" target="_blank") View on GitHub.]
+
+
+
 		footer
 			div(class='wrapper')
 				a(target="_blank" href="mailto:josh@lightpaintlive.com") contact support
-				//- div(class='gplus-holder')
-				//- 	div(class="g-plusone" data-size="medium" data-href="http://lightpaintlive.com")
 				div(class='fb-holder')
 					div(class="fb-like" data-href="http://www.facebook.com/LightPaintLive" data-layout="button_count" data-width="150" data-colorscheme="dark" data-font="segoe ui")
+
+
+
 			
 		div(id='bg-trails')
 

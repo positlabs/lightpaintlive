@@ -1,37 +1,9 @@
 import CoreView from '../core/core-view.es6.js';
 import 'requestanimationframe';
 import PIXI from '../lib/pixi.js';
-// import SimplexNoise from 'simplex-noise';
-
-// class Ribbon extends PIXI.Rope {
-	
-// 	constructor(){
-	
-// 		var length = 918 / 20;
-// 		this.points = [];
-// 		for (var i = 0; i < 20; i++) {
-// 			var segSize = length;
-// 			this.points.push(new PIXI.Point(i * length, 0));
-// 		};
-
-// 		super(PIXI.Texture.fromImage("assets/images/space-dust.jpg"), this.points);
-// 		this.x = 200;
-
-// 		this.noise = new SimplexNoise();
-// 	}
-
-// 	update(t){
-// 		var time = t * .1;
-// 		var length = 918 / 20;
-// 		for (var i = 0; i < this.points.length; i++) {
-// 			this.points[i].y = Math.sin(i * 0.2  + time) * 30;
-// 			this.points[i].x = i * length + Math.cos(i * 0.05  + time) * 20;
-// 		}
-// 	}
-
-// }
 
 class Floater extends PIXI.Sprite {
+
 	constructor(){
 		var texture = PIXI.Texture.fromImage("assets/images/rainbow-dots.png");
 		super(texture);
@@ -45,6 +17,7 @@ class Floater extends PIXI.Sprite {
 		this.speed = 5;
 		this.rotationSpeed = (Math.random()-.5)*.05;
 	}
+
 	update(t){
 		this.rotation += this.rotationSpeed;
 		this.position.x += this.vector.x * this.speed;
@@ -52,10 +25,13 @@ class Floater extends PIXI.Sprite {
 		if(this.position.x > window.innerWidth || this.position.x < 0) this.vector.x *= -1;  
 		if(this.position.y > window.innerHeight || this.position.y < 0) this.vector.y *= -1;  
 	}
+
 }
 
 export default class BGTrailsView extends CoreView {
+
 	initialize(){
+		
 		this.setElement($('#bg-trails'));
 
 		var w = window.innerWidth;
@@ -97,8 +73,10 @@ export default class BGTrailsView extends CoreView {
 	}
 
 	onResize(){
+
 		var w = window.innerWidth, 
 			h = window.innerHeight;
+		
 		this.props = {
 			width: w,
 			height: h,
@@ -111,7 +89,6 @@ export default class BGTrailsView extends CoreView {
 
 	onFrame() {
 
-		// this.ribbon.update(this.currentFrame);
 		_.each(this.autonomousChildren, (child)=> child.update(this.currentFrame));
 
 		this.accumulationTextures.reverse();
