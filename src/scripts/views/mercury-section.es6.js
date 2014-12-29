@@ -3,7 +3,7 @@ import CoreView from '../core/core-view.es6.js'
 export default class MercurySection extends CoreView {
 
 	constructor(){
-		console.log('MercurySection.constructor');
+		// console.log('MercurySection.constructor');
 		this.setElement($('#mercury'));
 		this.props = {
 			events: {
@@ -15,25 +15,29 @@ export default class MercurySection extends CoreView {
 	}
 
 	initialize(){
-		console.log('MercurySection.initialize');
+		// console.log('MercurySection.initialize');
 		if (chrome.app.isInstalled) {
 			this.$el.addClass('state-installed');
 		}
 	}
 
-	onClickInstallBtn(){
-		console.log('MercurySection.onClickInstallBtn');
+	onClickInstallBtn(e){
+		// console.log('MercurySection.onClickInstallBtn');
+
+		//TODO: only do this on chrome. maybe show warning if other browser.
+		e.preventDefault();
 		let appurl = "https://chrome.google.com/webstore/detail/bphfkpkoljdicakaokfbjiaamholpgjf";
 		chrome.webstore.install(
 			appurl, 
 			()=> this.$el.addClass('state-installed'), 
 			()=> console.log('failure')
-		)	
+		);
 	}
 
 	onClickLaunchBtn(){
-		console.log('MercurySection.onClickLaunchBtn');
-		var w = window.open('http://lightpaintlive.com/mercury');
+		// console.log('MercurySection.onClickLaunchBtn');
+		// triggers a url handler that will open the app
+		var w = window.open('http://lightpaintlive.com/mercury-app');
 		setTimeout(w.close(), 100);
 	}
 

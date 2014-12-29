@@ -5,30 +5,31 @@
 $orange: #ff9933;
 
 html, body {
-	background-color: #282828;
+	background-color: #151515;
 	color: white;
-	@include font-ubuntu(400);
 	min-height: 100%;
 	min-width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	@include font-oswald(700);
+p, span, ul {
+	letter-spacing: 1px;
+	line-height: 1.5;
+	@include font-ubuntu(13px, 300);
 }
 
 a {
 	text-decoration: none;
 	color: $orange;
-	@include background(linear-gradient(135deg, $orange 70%, white 75%, $orange 80%));
-	background-size: 200%;
 
+	background: -webkit-linear-gradient(135deg, $orange 70%, white 75%, $orange 80%);
+	background-position: 60%;
+	background-size: 200%;
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
 	text-fill-color: transparent;	
 
 	&:hover {
-		// text-decoration: underline;
 		@include animation(anchor-gradient-hover 3s both);
 		@include animation-iteration-count(infinite);		
 	}
@@ -36,8 +37,8 @@ a {
 }
 
 @include keyframes(anchor-gradient-hover) {
-	0% {		background-position-x: 0; }
-	20%, 100% {	background-position-x: -170%; }
+	0% {		background-position-x: 60%; }
+	20%, 100% {	background-position-x: -145%; }
 }
 
 .scrollable-content {
@@ -48,9 +49,9 @@ a {
 }
 
 .wrapper {
-	width: 800px;
+	width: 720px;
 	margin: 0 auto;
-	background-color: rgba(0, 0, 0, .5);
+	padding: 0 20px;
 }
 
 footer, nav {
@@ -63,10 +64,27 @@ footer, nav {
 nav {
 	top: 0;
 	height: 100px;
-	#lpl-logo canvas {
-		width: 100px;
-		height: 100px;
+	#lpl-logo {
+		margin-left: -22px;
+		canvas {
+			width: 100px;
+			height: 100px;
+		}
 	}
+}
+
+h1, h2, h3 {
+	text-transform: uppercase;
+	margin: 0;
+}
+h1 {
+	@include font-oswald(32px, 300);
+}
+h2 {
+	@include font-oswald(24px, 300);
+}
+h3 {
+	@include font-oswald(18px, 300);
 }
 
 footer {
@@ -74,8 +92,7 @@ footer {
 	bottom: 0;
 	height: 32px;
 
-	.fb-holder,
-	.gplus-holder {
+	.fb-holder {
 		display: inline-block;
 		float: left;
 		margin-top: 6px;
@@ -86,7 +103,7 @@ footer {
 	}
 }
 
-section{
+section {
 	&:first-of-type {
 		margin-top: 130px;
 	}
@@ -98,11 +115,49 @@ section{
 section#mercury {
 	
 	.btn {
+		display: block;
+		background-color: white;
+		position: relative;
+		color: #333;
+		float: left;
+		text-transform: uppercase;
+		cursor: pointer;
+		padding: 12px 10px 12px 50px;
+		border-left: 3px solid $orange;
+		@include font-oswald(18px);
 		
+		.icon {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 50px;
+			height: 50px;
+			background-size: 35px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-image: url(assets/images/chrome-icon.svg);
+			@include transition(all 1s $ease-out-quint);
+		}
+
+		a {
+			background: none;
+			-webkit-text-fill-color: inherit;
+		}
+
+		&:hover {
+			.icon {
+				@include transform(rotate(8rad));
+			}
+		}
 	}
 
 	.launch-btn {
 		display: none;
+	}
+
+	.try {
+		line-height: 50px;
+		margin-left: 10px;
 	}
 
 	&.state-installed {
@@ -112,6 +167,10 @@ section#mercury {
 		.install-btn {
 			display: none;
 		}
+	}
+
+	iframe {
+		margin-top: 40px;
 	}
 
 }

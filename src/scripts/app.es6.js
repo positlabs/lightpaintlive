@@ -1,6 +1,6 @@
 import LPLLogo from './views/lpl-logo.es6.js';
-import DustParticles from './views/dust-particles.es6.js';
-import OrbitParticles from './views/orbit-particles.es6.js';
+// import DustParticles from './views/dust-particles.es6.js';
+// import OrbitParticles from './views/orbit-particles.es6.js';
 import EdgeParticles from './views/edge-particles.es6.js';
 
 import MercurySection from './views/mercury-section.es6.js';
@@ -35,7 +35,7 @@ export default class App {
 
 		new MercurySection();
 		new FooterView();
-		new BGTrailsView(); // FIXME: https://github.com/GoodBoyDigital/pixi.js/issues/1299
+		// new BGTrailsView(); // FIXME: https://github.com/GoodBoyDigital/pixi.js/issues/1299
 	}
 
 };

@@ -3,6 +3,10 @@ import PIXI from '../lib/pixi.js';
 import Backbone from 'backbone';
 import CoreEvents from '../core/core-events.es6.js';
 
+
+//TODO: set background image on the canvas to use as a fallback
+
+
 export default class LPLLogo extends CoreEvents {
 
 	constructor(selector, size = 512){

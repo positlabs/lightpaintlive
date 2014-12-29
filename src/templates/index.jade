@@ -4,7 +4,6 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 	head
 		title Lightpaint Live
 		
-		script(src="main.js" type="text/javascript")
 		link(href="main.css" type="text/css" rel="stylesheet")
 
 		link(href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css')
@@ -34,47 +33,53 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 		div(class='scrollable-content')
 			div(class='wrapper')
 
+
+
 				section(id='mercury')
 					h1 Mercury
 					p A webcam app for light painting in real-time. Runs on Chrome for Mac &amp; Windows.
 					div(class='mercury-btns')
-						button(class='install-btn btn') buy &amp; install Mercury
-						button(class='launch-btn btn') launch Mercury
-						span ...or try 
-						a(href='http://lightpaintlive.com/mercury/' target='_blank') Mercury Alpha
-					iframe(class="video" width="420" height="315" src="//www.youtube.com/embed/XQu8TTBmGhA" frameborder="0" allowfullscreen)
+						div(class='install-btn btn')
+							div(class='icon')
+							a(href='https://chrome.google.com/webstore/detail/bphfkpkoljdicakaokfbjiaamholpgjf' target='_blank') buy &amp; install Mercury
+						div(class='launch-btn btn')
+							div(class='icon')
+							span launch Mercury
+						span(class="try") ...or try 
+							a(href='http://lightpaintlive.com/mercury/' target='_blank') Mercury Alpha
+					iframe(class="video" width="100%" height="405" src="//www.youtube.com/embed/XQu8TTBmGhA" frameborder="0" allowfullscreen)
 				
-				div(class='sub-section')
-					h1 light modes
-					p Mercury has 4 modes for capturing light. Use the keys 0-3 to quickly switch modes.
+					div(class='sub-section')
+						h1 light modes
+						p Mercury has 4 modes for capturing light. Use the keys 0-3 to quickly switch modes.
 
-					div(class='gif') gif
+						div(class='gif') gif
 
-					div(class='buttons')
-						button normal
-						button average
-						button lighten
-						button darken
+						div(class='buttons')
+							button normal
+							button average
+							button lighten
+							button darken
 
-					div(class='descriptions')
-						p normal: Used for fading the current painting.
-						p average: Simulates traditional light painting.
-						p lighten: Only captures the brightest light. Allows painting for a very long time without over-exposing the picture.
-						p darken: Similar to lighten, but darkness is captured. Can be used in extremely bright environments.
+						div(class='descriptions')
+							p normal: Used for fading the current painting.
+							p average: Simulates traditional light painting.
+							p lighten: Only captures the brightest light. Allows painting for a very long time without over-exposing the picture.
+							p darken: Similar to lighten, but darkness is captured. Can be used in extremely bright environments.
 
-				div(class='sub-section')
-					h1 keyboard shortcuts
-					p Mercury can be controlled remotely with a 
-						a(href='http://www.amazon.com/Logitech-Wireless-Keyboard-Built-In-Multi-Touch/dp/B005DKZTMG/ref=pd_cp_pc_2' target='_blank') mini bluetooth keyboard!
-					
-					ul
-						li Fullscreen: f, or F11
-						li Exposure: left/right arrows, or [ ]
-						li Modes: 0-3
-						li Mirror: m
-						li Save: s
-						li New: n
-						li Trigger: spacebar
+					div(class='sub-section')
+						h1 keyboard shortcuts
+						p Mercury can be controlled remotely with a 
+							a(href='http://www.amazon.com/Logitech-Wireless-Keyboard-Built-In-Multi-Touch/dp/B005DKZTMG/ref=pd_cp_pc_2' target='_blank') mini bluetooth keyboard!
+						
+						ul
+							li Fullscreen: f, or F11
+							li Exposure: left/right arrows, or [ ]
+							li Modes: 0-3
+							li Mirror: m
+							li Save: s
+							li New: n
+							li Trigger: spacebar
 
 
 
@@ -104,8 +109,8 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 					h2 How can I get rid of noise?
 					p Most webcams default to using auto-exposure. This is not ideal for light painting. In complete darkness, 
 						| it will use the maximum exposure, which makes the video very noisy (like high ISO). 
-						| Use your webcam's driver software to control settings on the webcam, or use a universal webcam controller
-						| like #[a(href='(https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12)' target='_blank') Webcam Settings] (Mac).
+						| Use your webcam's driver software to control settings on the webcam, or use a universal webcam controller 
+						| like #[a(href='(https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12)' target='_blank') Webcam&nbsp;Settings] (Mac).
 					p Of course, the quality of the camera also affects this. We recommend Logitech webcams, like the #[a(href='http://www.logitech.com/en-us/product/webcam-c930e-business' target='_blank') C930e]
 
 					h2 How can I fade out my light painting?
@@ -146,7 +151,7 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 				section(id='story') 
 					h1 story
 					p LPL started as a simple prototype. It had two buttons and was very slow. It was discovered by Joerg Miedza, 
-						| a prominent member of the light-painting community. The app was very limited, but Miedza saw it as the next step 
+						| a prominent member of the light-painting community. The app was very limited, but Joerg saw it as the next step 
 						| in the evolution of light-painting. He wanted to know if it could be improved, so he emailed the developer. 
 						| Ever since then, Josh and Joerg have been exchanging ideas and improving LPL. Joerg was overflowing with enthusiasm
 						| and ideas. He was the driving force behind the LPL project. Without him, the program would still have only two controls!
@@ -154,7 +159,7 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 					h3 Joerg Miedza: Artist
 					p Joerg Miedza has been creating movies and photos using special techniques since the late 90's. 
 						| He is the co-founder of the german light-art project LAPP-PRO. In this project, the LAPP-Team developed a 
-						| unique brand of light painting: LightArt Performance Photography, or LAPP for short. The skills Miedza acquired
+						| unique brand of light painting: LightArt Performance Photography, or LAPP for short. The skills Joerg acquired
 						| working with motion pictures allowed him to contribute significantly to the performance and artistic aspect of 
 						| LAPP photography.
 					p His personal work is at miedza.de 
@@ -178,5 +183,8 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 
 			
 		div(id='bg-trails')
+
+		script(src="main.js" type="text/javascript")
+
 
 
