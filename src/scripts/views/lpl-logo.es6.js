@@ -3,24 +3,17 @@ import PIXI from '../lib/pixi.js';
 import Backbone from 'backbone';
 import CoreEvents from '../core/core-events.es6.js';
 
-
-//TODO: set background image on the canvas to use as a fallback
-
-
 export default class LPLLogo extends CoreEvents {
 
 	constructor(selector, size = 512){
 
 		super();
-		// window.logo = this;
 
 		this._size = size;
 		var halfSize = this._halfSize = size * .5;
 
 		this.stage = new PIXI.Stage(0x000000);
 		this.renderer = PIXI.autoDetectRenderer(size, size);
-		// this.renderer.view.style.position = 'absolute';
-		// this.renderer.view.style.top = 0;
 
 		this.accumulationTextures = [
 			new PIXI.RenderTexture(size, size),
@@ -84,8 +77,6 @@ export default class LPLLogo extends CoreEvents {
 	onResize(){
 
 		this.renderer.resize(this._size, this._size);
-		// this.renderer.view.style.width = this._halfSize + 'px';
-		// this.renderer.view.style.height = this._halfSize + 'px';
 
 		this.accumulationTextures[0].resize(this._size, this._size);
 		this.accumulationTextures[1].resize(this._size, this._size);

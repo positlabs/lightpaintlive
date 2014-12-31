@@ -18,7 +18,7 @@ export default class EdgeParticles extends PIXI.Graphics {
 	    logo.on('resize', (e)=>this.onResize(e));
 	    this.onResize();
 
-		this.spawnParticles(200);
+		this.spawnParticles(150);
 
 	}
 
@@ -55,17 +55,13 @@ class EdgeParticle extends PIXI.Graphics {
 		this.center = new PIXI.Vector(logo.size*.5, logo.size*.5);
 		this.direction = Math.random() > .5 ? 1 : -1;
 		this.blendMode = PIXI.blendModes.SCREEN;
+		this.hueOffset = hueOffset;
+		this.hue = Math.random()*150;
+		this.logo = logo;
 
-		var color = tinycolor({h: Math.random()*150 + hueOffset, s: 100, v: 50}).toHex();
-		color = parseInt(color, 16);
-		// console.log('%c'+color, 'color: #' + color);
-		this.lineStyle(logo.size/1024*4, color, .2);
+		this.draw();
 
-		var size = Math.random() * logo.size * .5 + logo.size * .1;
-		this.moveTo(0, -size/2);
-		this.lineTo(0, size/2);
 		this.speed = Math.random() * .5 + .2;
-		// this.speed = Math.random() * .5 + .05;
 		this.angle = Math.random() * Math.PI * 2;
 	}
 
@@ -85,8 +81,22 @@ class EdgeParticle extends PIXI.Graphics {
 		this.rotation = Math.atan2(this.position.y-this.center.y, this.position.x-this.center.y);
 	}
 
+	draw(){
+		var color = tinycolor({h: this.hue + this.hueOffset, s: 100, v: 50}).toHex();
+		color = parseInt(color, 16);
+		// console.log('%c'+color, 'color: #' + color);
+		this.lineStyle(this.logo.size/1024*4, color, .2);
+		var size = Math.random() * this.logo.size * .5 + this.logo.size * .1;
+		this.moveTo(0, -size/2);
+		this.lineTo(0, size/2);
+	}
+
 	onFrame(time){
+		this.clear();
+		this.hueOffset += .25;
+		this.hueOffset = this.hueOffset % 360;
 		this.angle += .01 * this.direction * this.speed;
+		this.draw();
 	}
 
 }
