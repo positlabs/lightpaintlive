@@ -36,6 +36,21 @@ export default class App {
 		new MercurySection();
 		new FooterView();
 		// new BGTrailsView(); // FIXME: https://github.com/GoodBoyDigital/pixi.js/issues/1299
+
+		this.$header = $('header');
+		this.$footer = $('footer');
+		this.$scrollableContent = $('.scrollable-content');
+
+		window.addEventListener('resize', ()=>this.onResize);
+		this.onResize();
+
+	}
+
+	onResize(){
+		this.$scrollableContent.css({
+			height: window.innerHeight - this.$footer.height() - this.$header.height(),
+			top: this.$header.height()
+		});
 	}
 
 };
