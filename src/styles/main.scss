@@ -55,6 +55,7 @@ a.shiny {
 	height: 100%;
 	position: absolute;
 	overflow: scroll;
+	top: 100px;
 }
 
 .wrapper {
@@ -164,6 +165,8 @@ section {
 	}
 }
 
+
+
 section#mercury {
 	
 	.btn {
@@ -233,6 +236,8 @@ section#mercury {
 	}
 }
 
+
+
 section#faq {
 
 	h3 {
@@ -244,20 +249,33 @@ section#faq {
 	}
 }
 
+
+
 section#open-source {
 	li {
 		margin-top: 20px;
+		img {
+			position: absolute;
+			height: 54px;
+		}
+		h3, span {
+			padding-left: 70px;
+		}
 		span {
 			line-height: 36px;
 		}
 	}
 }
 
+
+
 section#story {
 	h3 {
 		padding-top: 20px;
 	}
 }
+
+
 
 #bg-trails {
 	position: absolute;
