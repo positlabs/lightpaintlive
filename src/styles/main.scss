@@ -11,13 +11,22 @@ html, body {
 	min-width: 100%;
 }
 
-p, span, ul {
+p, span, ul, a {
 	letter-spacing: 1px;
 	line-height: 1.5;
 	@include font-ubuntu(13px, 300);
 }
 
+ul, li {
+	list-style: none;
+	padding: 0;
+}
+
 a {
+	text-decoration: none;
+}
+
+a.shiny {
 	text-decoration: none;
 	color: $orange;
 
@@ -54,23 +63,50 @@ a {
 	padding: 0 20px;
 }
 
-footer, nav {
+footer, header {
 	position: absolute;
 	width: 100%;
 	background: black;
 	z-index: 1;
 }
 
-nav {
+header {
 	top: 0;
 	height: 100px;
+	line-height: 100px;
+
 	#lpl-logo {
 		margin-left: -22px;
+		float: left;
 		canvas {
 			width: 100px;
 			height: 100px;
 		}
 	}
+
+	.logo-type {
+		display: block;
+		float: left;
+		span {
+			@include font-oswald(22px, 300);
+			line-height: 100px;
+		}
+		span:first-child {
+			font-weight: 400;
+		}
+	}
+
+	nav {
+		float: right;
+		a {
+			color: white;
+			text-transform: uppercase;
+			cursor: pointer;
+			margin-left: 20px;
+			@include font-oswald(14px, 300);
+		}
+	}
+
 }
 
 h1, h2, h3 {
@@ -78,13 +114,14 @@ h1, h2, h3 {
 	margin: 0;
 }
 h1 {
-	@include font-oswald(32px, 300);
+	@include font-oswald(32px, 400);
 }
 h2 {
-	@include font-oswald(24px, 300);
+	@include font-oswald(18px, 400);
 }
 h3 {
-	@include font-oswald(18px, 300);
+	@include font-ubuntu(16px, 700);
+	text-transform: none;
 }
 
 footer {
@@ -104,6 +141,8 @@ footer {
 }
 
 section {
+	padding-top: 20px;
+	padding-bottom: 20px;
 	&:first-of-type {
 		margin-top: 130px;
 	}
@@ -122,9 +161,8 @@ section#mercury {
 		float: left;
 		text-transform: uppercase;
 		cursor: pointer;
-		padding: 12px 10px 12px 50px;
+		padding: 0px 10px 0px 50px;
 		border-left: 3px solid $orange;
-		@include font-oswald(18px);
 		
 		.icon {
 			position: absolute;
@@ -142,6 +180,8 @@ section#mercury {
 		a {
 			background: none;
 			-webkit-text-fill-color: inherit;
+			line-height: 50px;
+			@include font-oswald(18px);
 		}
 
 		&:hover {
@@ -171,8 +211,39 @@ section#mercury {
 
 	iframe {
 		margin-top: 40px;
+		margin-bottom: 20px;
 	}
 
+	.sub-section {
+		padding-top: 20px;
+		padding-bottom: 10px;
+	}
+}
+
+section#faq {
+
+	h3 {
+		margin-top: 30px;
+	}
+
+	p {
+		padding-left: 40px;
+	}
+}
+
+section#open-source {
+	li {
+		margin-top: 20px;
+		span {
+			line-height: 36px;
+		}
+	}
+}
+
+section#story {
+	h3 {
+		padding-top: 20px;
+	}
 }
 
 #bg-trails {

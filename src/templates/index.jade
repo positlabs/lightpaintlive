@@ -24,9 +24,17 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 
 	body
 
-		nav
+		header
 			div(class='wrapper')
 				div(id='lpl-logo')
+				div(class='logo-type')
+					span LIGHTPAINT
+					span &nbsp;LIVE
+				nav
+					a mercury
+					a faq
+					a open-source
+					a story
 
 
 
@@ -44,13 +52,13 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 							a(href='https://chrome.google.com/webstore/detail/bphfkpkoljdicakaokfbjiaamholpgjf' target='_blank') buy &amp; install Mercury
 						div(class='launch-btn btn')
 							div(class='icon')
-							span launch Mercury
+							a(href='http://lightpaintlive.com/mercury-app' target='_blank') launch Mercury
 						span(class="try") ...or try 
-							a(href='http://lightpaintlive.com/mercury/' target='_blank') Mercury Alpha
+							a(class='shiny' href='http://lightpaintlive.com/mercury/' target='_blank') Mercury Alpha
 					iframe(class="video" width="100%" height="405" src="//www.youtube.com/embed/XQu8TTBmGhA" frameborder="0" allowfullscreen)
 				
 					div(class='sub-section')
-						h1 light modes
+						h2 light modes
 						p Mercury has 4 modes for capturing light. Use the keys 0-3 to quickly switch modes.
 
 						div(class='gif') gif
@@ -68,18 +76,18 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 							p darken: Similar to lighten, but darkness is captured. Can be used in extremely bright environments.
 
 					div(class='sub-section')
-						h1 keyboard shortcuts
+						h2 keyboard shortcuts
 						p Mercury can be controlled remotely with a 
-							a(href='http://www.amazon.com/Logitech-Wireless-Keyboard-Built-In-Multi-Touch/dp/B005DKZTMG/ref=pd_cp_pc_2' target='_blank') mini bluetooth keyboard!
+							a(class='shiny' href='http://www.amazon.com/Logitech-Wireless-Keyboard-Built-In-Multi-Touch/dp/B005DKZTMG/ref=pd_cp_pc_2' target='_blank') mini bluetooth keyboard!
 						
 						ul
-							li Fullscreen: f, or F11
-							li Exposure: left/right arrows, or [ ]
-							li Modes: 0-3
-							li Mirror: m
-							li Save: s
-							li New: n
-							li Trigger: spacebar
+							li #[strong Fullscreen:] f, or F11
+							li #[strong Exposure:] left/right arrows, or [ ]
+							li #[strong Modes:] 0-3
+							li #[strong Mirror:] m
+							li #[strong Save:] s
+							li #[strong New:] n
+							li #[strong Trigger:] spacebar
 
 
 
@@ -87,43 +95,43 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 				section(id='faq') 
 					h1 Frequently asked questions
 
-					h2 It's not working!
+					h3 It's not working!
 					p Make sure Chrome is up to date. Open chrome and go to 
-						a(href='chrome://chrome' target='_blank') chrome://chrome 
+						a(class='shiny' href='chrome://chrome' target='_blank') chrome://chrome 
 						| to update.
 
-					h2 How can I use a different webcam?
+					h3 How can I use a different webcam?
 					p In Chrome, go to 
-						a(href='chrome://settings/content' target='_blank') chrome://settings/content
+						a(class='shiny' href='chrome://settings/content' target='_blank') chrome://settings/content
 						|, find the Media section, and select your camera.
 
-					h2 Can I use a DSLR with LPL?
+					h3 Can I use a DSLR with LPL?
 					p Yes, but it requires 3rd party software. Generally the video feed from DSLR to webcam is low resolution and low framerate. We don't recommend it.
-					p #[a(href='http://sparkosoft.com/how-to-use-dslr-as-webcam' target='_blank') sparkosoft ]
-					p #[a(href='http://extrawebcam.com/' target='_blank') extrawebcam]
+					p #[a(class='shiny' href='http://sparkosoft.com/how-to-use-dslr-as-webcam' target='_blank') sparkosoft ]
+					p #[a(class='shiny' href='http://extrawebcam.com/' target='_blank') extrawebcam]
 
-					h2 Can I record light painting videos?
+					h3 Can I record light painting videos?
 					p Yes, by using any screen-casting program. Quicktime has this feature built-in. There is also a free web-based program called 
-						a(href='www.screencast-o-matic.com' target='_blank') screencast-o-matic.
+						a(class='shiny' href='www.screencast-o-matic.com' target='_blank') screencast-o-matic.
 
-					h2 How can I get rid of noise?
+					h3 How can I get rid of noise?
 					p Most webcams default to using auto-exposure. This is not ideal for light painting. In complete darkness, 
 						| it will use the maximum exposure, which makes the video very noisy (like high ISO). 
 						| Use your webcam's driver software to control settings on the webcam, or use a universal webcam controller 
-						| like #[a(href='(https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12)' target='_blank') Webcam&nbsp;Settings] (Mac).
-					p Of course, the quality of the camera also affects this. We recommend Logitech webcams, like the #[a(href='http://www.logitech.com/en-us/product/webcam-c930e-business' target='_blank') C930e]
+						| like #[a(class='shiny' href='(https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12)' target='_blank') Webcam&nbsp;Settings] (Mac).
+					p Of course, the quality of the camera also affects this. We recommend Logitech webcams, like the #[a(class='shiny' href='http://www.logitech.com/en-us/product/webcam-c930e-business' target='_blank') C930e]
 
-					h2 How can I fade out my light painting?
-					p Short fades are possible by switching modes; like 'screen' to 'normal'.
+					h3 How can I fade out my light painting?
+					p Short fades are possible by switching modes; like 'average' to 'normal'.
 					p The formula below can be used to determine the duration of the fades. Each frame will subtract 1 from the current color, of which there are 256 possible values.
 					p 256 (color values) / 60 (frames per second) = 4.3 seconds
 
-					h2 Where can I buy light tools?
+					h3 Where can I buy light tools?
 					p 
-						a(href='http://lightpaintingbrushes.com/' target='_blank') LightPaintingBrushes. 
+						a(class='shiny' href='http://lightpaintingbrushes.com/' target='_blank') LightPaintingBrushes. 
 						span Jason Page's flexible, extensible light painting brush system. We highly recommend it. 
 					p 
-						a(href='http://blinkinlabs.com/blinkytape/' target='_blank') Blinky Tape. 
+						a(class='shiny' href='http://blinkinlabs.com/blinkytape/' target='_blank') Blinky Tape. 
 						span Programmable 60-led RGB strips. Easy. 
 					p Smartphones and tablets are also super cool. Get creative!
 
@@ -131,21 +139,21 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 
 
 				section(id='open-source') 
-					h1 open source
-					p Here are some open source (free!) light painting programs. LPL doesn't actively maintain these projects, but hopefully they will serve you well.
+					h1 open-source
+					p Here are some open-source (free!) light painting programs. LPL doesn't actively maintain these projects, but hopefully they will serve you well.
 
 					ul
 						li 
-							p LPL Heavy
-							span The original LPL program for Mac/Windows. #[a(href="" target="_blank") View on GitHub.]
+							h3 LPL Heavy
+							span The original LPL program for Mac/Windows. #[a(class='shiny' href="" target="_blank") View on GitHub.]
 
 						li
-							p LPL Android
-							span Light painting app for Android devices. #[a(href="" target="_blank") View on GitHub.]
+							h3 LPL Android
+							span Light painting app for Android devices. #[a(class='shiny' href="" target="_blank") View on GitHub.]
 
 						li
-							p LPL Processor
-							span Processing sketch that converts raw video into light painting videos. #[a(href="" target="_blank") View on GitHub.]
+							h3 LPL Processor
+							span Processing sketch that converts raw video into light painting videos. #[a(class='shiny' href="" target="_blank") View on GitHub.]
 
 
 				section(id='story') 
@@ -164,18 +172,18 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 						| LAPP photography.
 					p His personal work is at miedza.de 
 					p There is also a book of the work: Painting With Light
-					p Email: joerg@miedza.de 
+					p Email: #[a(href='mailto:joerg@miedza.de' class='shiny' target='_blank') joerg@miedza.de ]
 
 					h3 Josh Beckwith: Developer
 					p Josh has always been obsessed with science and technology - and as a child, he dreamed of becoming an inventor. 
 						| Now, he's a senior interactive developer at Tool of North America.
-					p Email: josh@lightpaintlive.com
+					p Email: #[a(href='mailto:josh@lightpaintlive.com' class='shiny' target='_blank') josh@lightpaintlive.com ]
 
 
 
 		footer
 			div(class='wrapper')
-				a(target="_blank" href="mailto:josh@lightpaintlive.com") contact support
+				a(class="shiny" target="_blank" href="mailto:josh@lightpaintlive.com") contact support
 				div(class='fb-holder')
 					div(class="fb-like" data-href="http://www.facebook.com/LightPaintLive" data-layout="button_count" data-width="150" data-colorscheme="dark" data-font="segoe ui")
 
