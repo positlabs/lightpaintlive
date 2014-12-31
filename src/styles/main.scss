@@ -56,6 +56,7 @@ a.shiny {
 	position: absolute;
 	overflow: scroll;
 	top: 100px;
+	@include calc(height, '100% - 132px');
 }
 
 .wrapper {
@@ -79,6 +80,10 @@ header {
 	#lpl-logo {
 		margin-left: -22px;
 		float: left;
+		background-image: url(assets/images/logo-pink.png);
+		background-size: contain;
+		width: 100px;
+		height: 100px;
 		canvas {
 			width: 100px;
 			height: 100px;

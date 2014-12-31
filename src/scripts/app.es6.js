@@ -41,7 +41,7 @@ export default class App {
 		this.$footer = $('footer');
 		this.$scrollableContent = $('.scrollable-content');
 
-		window.addEventListener('resize', ()=>this.onResize);
+		window.addEventListener('resize', (e)=>this.onResize(e));
 		this.onResize();
 
 	}
