@@ -9,8 +9,11 @@ var es6ify = 		require('es6ify');
 var fs =	 		require('fs');
 var path =	 		require('path');
 var source = 		require('vinyl-source-stream');
+var buffer = 		require('vinyl-buffer');
 var colors = 		require('colors');
 var bourbon = 		require('node-bourbon');
+var uglify = 		require('gulp-uglify');
+var gulpif = 		require('gulp-if');
 
 
 var paths = {
@@ -48,30 +51,38 @@ gulp.task('styles', styleTask);
 
 
 
-var scriptTask = function(){
+var scriptTask = function(debug){
 	if(!fs.existsSync('./dist/')) fs.mkdirSync('./dist/');
 
 	var out = 	browserify({
-					debug: true, // source maps
+					debug: debug, // source maps
 					modules: 'commonjs',
 				})
 				.add(es6ify.runtime)
 				.require(require.resolve(paths.entryScript), { entry: true })
 		 		.transform(es6ify.configure(/\.es6.*$/)) // explicit transforms on .es6.js files
+
 				.bundle(function(err){
 					if(err){
 						console.log(err.message.bgBlack.magenta);	
 						this.emit('end');
 					}
 				})
+
 				.pipe(source('main.js'))
+
+				.pipe(buffer()) // <----- convert from streaming to buffered vinyl file object
+			    .pipe(gulpif(!debug, uglify()))
+
 				// .pipe(plumber())
 				.pipe(gulp.dest(paths.dist))
 
+
 	return out;
 }
-gulp.task('build:scripts', ['clean'], scriptTask);
-gulp.task('scripts', scriptTask);
+gulp.task('build:scripts:prod', ['clean'], function(){scriptTask(false)});
+gulp.task('build:scripts', ['clean'], function(){scriptTask(true)});
+gulp.task('scripts', function(){scriptTask(true)});
 
 
 
@@ -106,7 +117,18 @@ gulp.task('clean', function (cb) {
 });
 
 
-gulp.task('default', [
+gulp.task('build:prod', [
+
+	'build:templates', 
+	'build:styles', 
+	'build:scripts:prod', 
+	'build:move'
+
+], function(){});
+
+
+
+gulp.task('build:dev', [
 
 	'build:templates', 
 	'build:styles', 
@@ -114,4 +136,6 @@ gulp.task('default', [
 	'build:move'
 	
 ], function(){});
+
+gulp.task('default', ['build:dev'], function(){});
 
