@@ -5,7 +5,6 @@ import EdgeParticles from './views/edge-particles.es6.js';
 
 import MercurySection from './views/mercury-section.es6.js';
 import FooterView from './views/footer-view.es6.js';
-// import BGTrailsView from './views/bg-trails-view.es6.js';
 import './analytics.js';
 
 import PIXI from './lib/pixi.js'; window.PIXI = PIXI;
@@ -35,7 +34,6 @@ export default class App {
 
 		new MercurySection();
 		new FooterView();
-		// new BGTrailsView(); // FIXME: https://github.com/GoodBoyDigital/pixi.js/issues/1299
 
 		this.$header = $('header');
 		this.$footer = $('footer');

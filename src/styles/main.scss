@@ -9,6 +9,7 @@ html, body {
 	color: white;
 	min-height: 100%;
 	min-width: 100%;
+	overflow: hidden;
 }
 
 p, span, ul, a {
@@ -29,36 +30,43 @@ a {
 a.shiny {
 	text-decoration: none;
 	color: $orange;
+	position: relative;
+	@include transition(all .2s $ease-out-cubic);
 
-	background: -webkit-linear-gradient(135deg, $orange 70%, white 75%, $orange 80%);
-	background-position: 60%;
-	background-size: 200%;
-	-webkit-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
-	text-fill-color: transparent;	
+	&:after {
+		content:'';
+		position: absolute;
+		top: 2px;left: 0;
+		width: 100%;
+		height: 100%;
+		border-bottom: 0px solid $orange;
+		@include transition(all .2s $ease-out-cubic);
+		z-index: -1;
+	}
 
 	&:hover {
-		@include animation(anchor-gradient-hover 3s both);
-		@include animation-iteration-count(infinite);		
+		color: white;
+		&:after {
+			// width: 100%;
+			border-bottom: 3px solid $orange;
+
+		}
 	}
 	
 }
 
-@include keyframes(anchor-gradient-hover) {
-	0% {		background-position-x: 60%; }
-	20%, 100% {	background-position-x: -145%; }
-}
-
+// main content block
 .scrollable-content {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	overflow: scroll;
+	overflow-x: hidden;
+	overflow-y: scroll;
 	top: 100px;
 	@include calc(height, '100% - 132px');
 }
 
+// for centering, sizing content
 .wrapper {
 	width: 720px;
 	margin: 0 auto;
@@ -70,6 +78,7 @@ footer, header {
 	width: 100%;
 	background: black;
 	z-index: 1;
+	@include box-shadow(0px 0px 6px black);
 }
 
 header {
@@ -199,10 +208,9 @@ section#mercury {
 		}
 
 		a {
-			background: none;
-			-webkit-text-fill-color: inherit;
 			line-height: 50px;
 			@include font-oswald(18px);
+			&:visited, &:link {color: #333;}
 		}
 
 		&:hover {
@@ -281,13 +289,22 @@ section#story {
 }
 
 
-
-#bg-trails {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
+.video-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 	z-index: -1;
+}
+
+video#bg-video {
+	position: absolute;
+	@include transform(translate3d(-50%, -50%, 0));
+	top: 50%;
+	left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+	opacity: .35;
+	// object-fit: cover;
 }
 

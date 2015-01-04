@@ -97,10 +97,10 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 					h1 Frequently asked questions
 
 					h3 It's not working!
-					p Make sure Chrome is up to date. Open chrome and go to chrome://chrome to update.
+					p Make sure Chrome is up to date. Open chrome and go to #[strong chrome://chrome] to update.
 
 					h3 How can I use a different webcam?
-					p In Chrome, go to chrome://settings/content, find the Media section, and select your camera.
+					p In Chrome, go to #[strong chrome://settings/content], find the Media section, and select your camera. Restart Mercury.
 
 					h3 Can I use a DSLR with LPL?
 					p Yes, but it requires 3rd party software. Generally the video feed from DSLR to webcam is low resolution and low framerate. We don't recommend it.
@@ -125,11 +125,11 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 
 					h3 Where can I buy light tools?
 					p 
-						a(class='shiny' href='http://lightpaintingbrushes.com/' target='_blank') LightPaintingBrushes. 
-						span Jason Page's flexible, extensible light painting brush system. We highly recommend it. 
+						a(class='shiny' href='http://lightpaintingbrushes.com/' target='_blank') LightPaintingBrushes.
+						span  Jason Page's flexible, extensible light painting brush system. We highly recommend it. 
 					p 
-						a(class='shiny' href='http://blinkinlabs.com/blinkytape/' target='_blank') Blinky Tape. 
-						span Programmable 60-led RGB strips. Easy. 
+						a(class='shiny' href='http://blinkinlabs.com/blinkytape/' target='_blank') Blinky Tape.
+						span  Programmable 60-led RGB strips. Easy. 
 					p Smartphones and tablets are also super cool. Get creative!
 
 
@@ -170,12 +170,12 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 						| working with motion pictures allowed him to contribute significantly to the performance and artistic aspect of 
 						| LAPP photography.
 					p His personal work is at miedza.de 
-					p There is also a book of the work: Painting With Light
+					p There is also a book of the work: #[a(href='http://www.rockynook.com/shop/photography/painting-with-light/' target='_blank' class='shiny') Painting With Light]
 					p Email: #[a(href='mailto:joerg@miedza.de' class='shiny' target='_blank') joerg@miedza.de ]
 
 					h3 Josh Beckwith: Developer
 					p Josh has always been obsessed with science and technology - and as a child, he dreamed of becoming an inventor. 
-						| Now, he's a senior interactive developer at Tool of North America.
+						| Now, he's a senior interactive developer at #[a(href='http://toolofna.com' class='shiny' target='_blank') Tool of North America.]
 					p Email: #[a(href='mailto:josh@lightpaintlive.com' class='shiny' target='_blank') josh@lightpaintlive.com ]
 
 
@@ -186,10 +186,10 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 				div(class='fb-holder')
 					div(class="fb-like" data-href="http://www.facebook.com/LightPaintLive" data-layout="button_count" data-width="150" data-colorscheme="dark" data-font="segoe ui")
 
-
-
-			
-		div(id='bg-trails')
+		div(class='video-container')
+			video(id='bg-video' autoplay muted loop)
+				source(src='assets/grinder.webm' type='video/webm')
+				source(src='assets/grinder.mp4' type='video/mp4')
 
 		script(src="main.js" type="text/javascript")
 
