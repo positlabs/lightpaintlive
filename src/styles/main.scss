@@ -47,9 +47,7 @@ a.shiny {
 	&:hover {
 		color: white;
 		&:after {
-			// width: 100%;
 			border-bottom: 3px solid $orange;
-
 		}
 	}
 	
@@ -78,7 +76,7 @@ footer, header {
 	width: 100%;
 	background: black;
 	z-index: 1;
-	@include box-shadow(0px 0px 6px black);
+	box-shadow: 0px 0px 6px black;
 }
 
 header {
@@ -290,11 +288,15 @@ section#story {
 
 
 .video-container {
+	display: none;
     position: absolute;
     height: 100%;
     width: 100%;
     overflow: hidden;
 	z-index: -1;
+}
+.autoplay .video-container {
+	display: block;
 }
 
 video#bg-video {
@@ -305,6 +307,5 @@ video#bg-video {
     min-width: 100%;
     min-height: 100%;
 	opacity: .35;
-	// object-fit: cover;
 }
 

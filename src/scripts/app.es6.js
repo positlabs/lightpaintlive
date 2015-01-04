@@ -7,6 +7,8 @@ import MercurySection from './views/mercury-section.es6.js';
 import FooterView from './views/footer-view.es6.js';
 import './analytics.js';
 
+import checkAutoplaySupport from './lib/is-autoplay-supported.js';
+
 import PIXI from './lib/pixi.js'; window.PIXI = PIXI;
 import Vector from './lib/vector.es6.js';
 
@@ -38,6 +40,8 @@ export default class App {
 		this.$header = $('header');
 		this.$footer = $('footer');
 		this.$scrollableContent = $('.scrollable-content');
+
+		checkAutoplaySupport();
 
 		window.addEventListener('resize', (e)=>this.onResize(e));
 		this.onResize();
