@@ -1,10 +1,9 @@
 import LPLLogo from './views/lpl-logo.es6.js';
-// import DustParticles from './views/dust-particles.es6.js';
-// import OrbitParticles from './views/orbit-particles.es6.js';
 import EdgeParticles from './views/edge-particles.es6.js';
 
 import MercurySection from './views/mercury-section.es6.js';
 import FooterView from './views/footer-view.es6.js';
+import HeaderView from './views/header-view.es6.js';
 import './analytics.js';
 
 import checkAutoplaySupport from './lib/is-autoplay-supported.js';
@@ -31,8 +30,9 @@ export default class App {
 
 		var logo = new LPLLogo('#lpl-logo');
 		new EdgeParticles(logo);
-		// var dust = new DustParticles(logo);
-		// new OrbitParticles(logo);
+
+		this.headerView = new HeaderView();
+		this.headerView.on('resize', ()=>this.onResize);
 
 		new MercurySection();
 		new FooterView();
@@ -49,6 +49,7 @@ export default class App {
 	}
 
 	onResize(){
+		console.log('app.onResize');
 		this.$scrollableContent.css({
 			height: window.innerHeight - this.$footer.height() - this.$header.height(),
 			top: this.$header.height()

@@ -114,6 +114,8 @@ header {
 	nav {
 		float: right;
 		a {
+			@include transition(.2s all);
+
 			display: block;
 			float: left;
 			color: white;
@@ -124,7 +126,6 @@ header {
 			line-height: 100px;
 
 			border-bottom: 0px solid orange;
-			@include transition(all .2s);
 			&:hover {
 				border-bottom: 3px solid $orange;
 				color: $orange;
@@ -306,6 +307,6 @@ video#bg-video {
 	left: 50%;
     min-width: 100%;
     min-height: 100%;
-	opacity: .35;
+	opacity: .15;
 }
 
