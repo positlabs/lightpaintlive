@@ -245,7 +245,53 @@ section#mercury {
 	.sub-section {
 		padding-top: 20px;
 		padding-bottom: 10px;
+		clear: both;
 	}
+
+	.sub-section.modes {
+		.gifs {
+			float: left;
+			width: 400px;
+			height: 400px;
+			margin-right: 20px;
+			img {
+				display: none;
+			}
+			img.selected {
+				display: block;
+			}
+		}
+
+		.descriptions {
+			p {
+				display: none;
+			}
+			p.selected {
+				display: block;
+			}
+		}
+
+		.buttons {
+			.mode-btn {
+				margin-right: 20px;
+				padding: 5px;
+				border-bottom: 0px solid $orange;
+				cursor: pointer;
+				display: inline-block;
+				text-transform: uppercase;
+				font-size: .9em;
+				@include user-select(none);
+				&:hover {
+
+				}
+				&.selected {
+					color: $orange;
+					border-bottom: 3px solid $orange;
+				}
+			}
+		}
+	}
+
 }
 
 
@@ -282,8 +328,21 @@ section#open-source {
 
 
 section#story {
-	h3 {
-		padding-top: 20px;
+	.person {
+		margin-bottom: 20px;
+		overflow: hidden;
+		h3 {
+			padding-top: 20px;
+		}
+		img {
+			float: left;
+			margin-right: 20px;
+			margin-top: 20px;
+		}
+		.content-block {
+			float: left;
+			width: 540px;
+		}
 	}
 }
 

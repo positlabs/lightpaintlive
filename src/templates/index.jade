@@ -22,7 +22,6 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 		meta(property="fb:app_id" content="331545326882067")
 
 
-
 	body
 
 		header
@@ -58,23 +57,27 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 							a(class='shiny' href='http://lightpaintlive.com/mercury/' target='_blank') Mercury Alpha
 					iframe(class="video" width="100%" height="405" src="//www.youtube.com/embed/XQu8TTBmGhA" frameborder="0" allowfullscreen)
 				
-					div(class='sub-section')
+					div(class='sub-section modes')
 						h2 light modes
-						p Mercury has 4 modes for capturing light. Use the keys 0-3 to quickly switch modes.
+						p Mercury has 4 modes for capturing light. 
 
-						div(class='gif') gif
+						div(class="gifs")
+							img(src="assets/images/flame2_light.gif", class="light selected")
+							img(src="assets/images/flame2_fade.gif", class="fade")
+							img(src="assets/images/flame2_dark.gif", class="dark")
+							img(src="assets/images/flame2_bloom.gif", class="bloom")
 
 						div(class='buttons')
-							button normal
-							button average
-							button lighten
-							button darken
+							div(class="mode-btn selected") light
+							div(class="mode-btn") fade
+							div(class="mode-btn") dark
+							div(class="mode-btn") bloom
 
 						div(class='descriptions')
-							p normal: Used for fading the current painting.
-							p average: Simulates traditional light painting.
-							p lighten: Only captures the brightest light. Allows painting for a very long time without over-exposing the picture.
-							p darken: Similar to lighten, but darkness is captured. Can be used in extremely bright environments.
+							p(class="light selected") Only captures the brightest light. Allows painting for a very long time without over-exposing the picture.
+							p(class="fade") Used for fading the current painting.
+							p(class="dark") Similar to lighten, but darkness is captured. Can be used in extremely bright environments.
+							p(class="bloom") Simulates traditional light painting.
 
 					div(class='sub-section')
 						h2 keyboard shortcuts
@@ -96,32 +99,28 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 				section(id='faq') 
 					h1 Frequently asked questions
 
-					h3 It's not working!
-					p Make sure Chrome is up to date. Open chrome and go to #[strong chrome://chrome] to update.
-
-					h3 How can I use a different webcam?
-					p In Chrome, go to #[strong chrome://settings/content], find the Media section, and select your camera. Restart Mercury.
-
 					h3 Can I use a DSLR with LPL?
 					p Yes, but it requires 3rd party software. Generally the video feed from DSLR to webcam is low resolution and low framerate. We don't recommend it.
 					p #[a(class='shiny' href='http://sparkosoft.com/how-to-use-dslr-as-webcam' target='_blank') sparkosoft ]
 					p #[a(class='shiny' href='http://extrawebcam.com/' target='_blank') extrawebcam]
 
 					h3 Can I record light painting videos?
-					p Yes, by using any screen-casting program. Quicktime has this feature built-in. There is also a free web-based program called 
-						a(class='shiny' href='www.screencast-o-matic.com' target='_blank') screencast-o-matic.
+					p Yes, by using any screen-casting program. We use #[a(class='shiny' href='https://support.apple.com/downloads/#quicktime' target='_blank') screencast-o-matic] and #[a(class='shiny' href='https://support.apple.com/downloads/#quicktime' target='_blank') Quicktime] (mac).
 
 					h3 How can I get rid of noise?
 					p Most webcams default to using auto-exposure. This is not ideal for light painting. In complete darkness, 
 						| it will use the maximum exposure, which makes the video very noisy (like high ISO). 
 						| Use your webcam's driver software to control settings on the webcam, or use a universal webcam controller 
-						| like #[a(class='shiny' href='(https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12)' target='_blank') Webcam&nbsp;Settings] (Mac).
+						| like #[a(class='shiny' href='https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12' target='_blank') Webcam&nbsp;Settings] (Mac).
 					p Of course, the quality of the camera also affects this. We recommend Logitech webcams, like the #[a(class='shiny' href='http://www.logitech.com/en-us/product/webcam-c930e-business' target='_blank') C930e]
 
 					h3 How can I fade out my light painting?
-					p Short fades are possible by switching modes; like 'average' to 'normal'.
+					p Short fades are possible by switching modes; like 'light' to 'fade'.
 					p The formula below can be used to determine the duration of the fades. Each frame will subtract 1 from the current color, of which there are 256 possible values.
 					p 256 (color values) / 60 (frames per second) = 4.3 seconds
+
+					h3 It's not working!
+					p Make sure Chrome is up to date. Open chrome and go to #[strong chrome://chrome] to update.
 
 					h3 Where can I buy light tools?
 					p 
@@ -130,8 +129,6 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 					p 
 						a(class='shiny' href='http://blinkinlabs.com/blinkytape/' target='_blank') Blinky Tape.
 						span  Programmable 60-led RGB strips. Easy. 
-					p Smartphones and tablets are also super cool. Get creative!
-
 
 
 
@@ -156,6 +153,7 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 							span Processing sketch that converts raw video into light painting videos. #[a(class='shiny' href='http://positlabs.github.io/lpl-processor/' target='_blank') View on GitHub.]
 
 
+
 				section(id='story') 
 					h1 story
 					p LPL started as a simple prototype. It had two buttons and was very slow. It was discovered by Joerg Miedza, 
@@ -163,20 +161,26 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 						| in the evolution of light-painting. He wanted to know if it could be improved, so he emailed the developer. 
 						| Ever since then, Josh and Joerg have been exchanging ideas and improving LPL. 
 
-					h3 Joerg Miedza: Artist
-					p Joerg Miedza has been creating movies and photos using special techniques since the late 90's. 
-						| He is the co-founder of the german light-art project LAPP-PRO. In this project, the LAPP-Team developed a 
-						| unique brand of light painting: LightArt Performance Photography, or LAPP for short. The skills Joerg acquired
-						| working with motion pictures allowed him to contribute significantly to the performance and artistic aspect of 
-						| LAPP photography.
-					p His personal work is at miedza.de 
-					p There is also a book of the work: #[a(href='http://www.rockynook.com/shop/photography/painting-with-light/' target='_blank' class='shiny') Painting With Light]
-					p Email: #[a(href='mailto:joerg@miedza.de' class='shiny' target='_blank') joerg@miedza.de ]
+					div(class="person")
+						h3 Joerg Miedza: Artist
+						img(src="assets/images/joerg.jpg")
+						div(class="content-block")
+							p Joerg Miedza has been creating movies and photos using special techniques since the late 90's. 
+								| He is the co-founder of the german light-art project LAPP-PRO. In this project, the LAPP-Team developed a 
+								| unique brand of light painting: LightArt Performance Photography, or LAPP for short. The skills Joerg acquired
+								| working with motion pictures allowed him to contribute significantly to the performance and artistic aspect of 
+								| LAPP photography.
+							p His personal work is at #[a(class="shiny" href="http://miedza.de" target="_blank") miedza.de]
+							p There is also a book of the work: #[a(href='http://www.rockynook.com/shop/photography/painting-with-light/' target='_blank' class='shiny') Painting With Light]
+							p Email: #[a(href='mailto:joerg@miedza.de' class='shiny' target='_blank') joerg@miedza.de ]
 
-					h3 Josh Beckwith: Developer
-					p Josh has always been obsessed with science and technology - and as a child, he dreamed of becoming an inventor. 
-						| Now, he's a senior interactive developer at #[a(href='http://toolofna.com' class='shiny' target='_blank') Tool of North America.]
-					p Email: #[a(href='mailto:josh@lightpaintlive.com' class='shiny' target='_blank') josh@lightpaintlive.com ]
+					div(class="person")
+						h3 Josh Beckwith: Developer
+						img(src="assets/images/josh.jpg")
+						div(class="content-block")
+							p Josh has always been obsessed with science and technology - and as a child, he dreamed of becoming an inventor. 
+								| Now, he's a senior interactive developer at #[a(href='http://toolofna.com' class='shiny' target='_blank') Tool of North America.]
+							p Email: #[a(href='mailto:josh@lightpaintlive.com' class='shiny' target='_blank') josh@lightpaintlive.com ]
 
 
 

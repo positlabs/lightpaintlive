@@ -8,7 +8,8 @@ export default class MercurySection extends CoreView {
 		this.props = {
 			events: {
 				'mousedown 	.install-btn': 		'onClickInstallBtn',
-				'click 		.launch-btn': 		'onClickLaunchBtn'
+				'click 		.launch-btn': 		'onClickLaunchBtn',
+				'click 		.mode-btn': 		'onClickModeBtn',
 			}
 		};
 		super();
@@ -39,6 +40,14 @@ export default class MercurySection extends CoreView {
 		// triggers a url handler that will open the app
 		var w = window.open('http://lightpaintlive.com/mercury-app');
 		setTimeout(w.close(), 100);
+	}
+
+	onClickModeBtn(e){
+		console.log("onClickModeBtn");
+		this.$('.modes .selected').removeClass('selected');
+		var $targ = $(e.currentTarget).addClass('selected');
+		var className = $targ.html();
+		this.$('.modes .'+className).addClass('selected');
 	}
 
 }
