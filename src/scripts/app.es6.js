@@ -42,6 +42,7 @@ export default class App {
 		this.$scrollableContent = $('.scrollable-content');
 
 		checkAutoplaySupport();
+		$('video')[0].playbackRate = .5;
 
 		window.addEventListener('resize', (e)=>this.onResize(e));
 		this.onResize();
