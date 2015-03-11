@@ -249,17 +249,11 @@ section#mercury {
 	}
 
 	.sub-section.modes {
-		.gifs {
+		.gif {
 			float: left;
 			width: 400px;
 			height: 400px;
 			margin-right: 20px;
-			img {
-				display: none;
-			}
-			img.selected {
-				display: block;
-			}
 		}
 
 		.descriptions {

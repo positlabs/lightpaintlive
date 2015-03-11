@@ -48,6 +48,8 @@ export default class MercurySection extends CoreView {
 		var $targ = $(e.currentTarget).addClass('selected');
 		var className = $targ.html();
 		this.$('.modes .'+className).addClass('selected');
+		this.$('.modes .gif').attr('src', 'assets/images/' + className + '.gif');
+		//TODO: add a spinner behind 
 	}
 
 }

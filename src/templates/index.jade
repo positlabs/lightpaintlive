@@ -25,9 +25,9 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 	body
 
 		header
-			div(class='wrapper')
-				div(id='lpl-logo')
-				div(class='logo-type')
+			.wrapper
+				#lpl-logo
+				.logo-type
 					span LIGHTPAINT
 					span &nbsp;LIVE
 				nav
@@ -38,51 +38,47 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 
 
 
-		div(class='scrollable-content')
-			div(class='wrapper')
+		.scrollable-content
+			.wrapper
 
 
 
-				section(id='mercury')
+				section#mercury
 					h1 Mercury
 					p A webcam app for light painting in real-time. Runs on Chrome for Mac &amp; Windows.
-					div(class='mercury-btns')
-						div(class='install-btn btn')
-							div(class='icon')
+					.mercury-btns
+						.install-btn.btn
+							.icon
 							a(href='https://chrome.google.com/webstore/detail/bphfkpkoljdicakaokfbjiaamholpgjf' target='_blank') buy &amp; install Mercury
-						div(class='launch-btn btn')
-							div(class='icon')
+						.launch-btn.btn
+							.icon
 							a(href='http://lightpaintlive.com/mercury-app' target='_blank') launch Mercury
-						span(class="try") ...or try 
+						span.try ...or try 
 							a(class='shiny' href='http://lightpaintlive.com/mercury/' target='_blank') Mercury Alpha
 					iframe(class="video" width="100%" height="405" src="//www.youtube.com/embed/XQu8TTBmGhA" frameborder="0" allowfullscreen)
 				
-					div(class='sub-section modes')
+					.sub-section.modes
 						h2 light modes
 						p Mercury has 4 modes for capturing light. 
 
-						div(class="gifs")
-							img(src="assets/images/flame2_light.gif", class="light selected")
-							img(src="assets/images/flame2_fade.gif", class="fade")
-							img(src="assets/images/dark.gif", class="dark")
-							img(src="assets/images/flame2_bloom.gif", class="bloom")
+						img(src="assets/images/light.gif", class="gif")
 
-						div(class='buttons')
-							div(class="mode-btn selected") light
-							div(class="mode-btn") fade
-							div(class="mode-btn") dark
-							div(class="mode-btn") bloom
+						.buttons
+							div(class="mode-btn selected" data-type="light") light
+							div(class="mode-btn" data-type="fade") fade
+							div(class="mode-btn" data-type="dark") dark
+							div(class="mode-btn" data-type="bloom") bloom
 
-						div(class='descriptions')
-							p(class="light selected") Only captures the brightest light. Allows painting for a very long time without over-exposing the picture.
-							p(class="fade") Used for fading the current painting.
-							p(class="dark") Similar to lighten, but darkness is captured. Can be used in extremely bright environments.
-							p(class="bloom") Simulates traditional light painting.
+						.descriptions
+							p.light.selected Only captures the brightest light. Allows painting for a very long time without over-exposing the picture.
+							p.fade Used for fading the current painting.
+							p.dark Similar to lighten, but darkness is captured. Can be used in extremely bright environments.
+							p.bloom Simulates traditional light painting.
 
-					div(class='sub-section')
+					.sub-section
 						h2 keyboard shortcuts
 						p Mercury can be controlled remotely with a 
-							a(class='shiny' href='http://www.amazon.com/Logitech-Wireless-Keyboard-Built-In-Multi-Touch/dp/B005DKZTMG/ref=pd_cp_pc_2' target='_blank') mini bluetooth keyboard!
+							a.shiny(href='http://www.amazon.com/Logitech-Wireless-Keyboard-Built-In-Multi-Touch/dp/B005DKZTMG/ref=pd_cp_pc_2' target='_blank') mini bluetooth keyboard!
 						
 						ul
 							li #[strong Fullscreen:] f, or F11
@@ -96,23 +92,22 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 
 
 
-				section(id='faq') 
+				section#faq 
 					h1 Frequently asked questions
 
 					h3 Can I use a DSLR with LPL?
 					p Yes, but it requires 3rd party software. Generally the video feed from DSLR to webcam is low resolution and low framerate. We don't recommend it.
-					p #[a(class='shiny' href='http://sparkosoft.com/how-to-use-dslr-as-webcam' target='_blank') sparkosoft ]
-					p #[a(class='shiny' href='http://extrawebcam.com/' target='_blank') extrawebcam]
+					p #[a.shiny(href='http://sparkosoft.com/how-to-use-dslr-as-webcam' target='_blank') sparkosoft ] &amp; #[a.shiny(href='http://extrawebcam.com/' target='_blank') extrawebcam]
 
 					h3 Can I record light painting videos?
-					p Yes, by using any screen-casting program. We use #[a(class='shiny' href='https://support.apple.com/downloads/#quicktime' target='_blank') screencast-o-matic] and #[a(class='shiny' href='https://support.apple.com/downloads/#quicktime' target='_blank') Quicktime] (mac).
+					p Yes, by using any screen-casting program. We use #[a.shiny(href='https://support.apple.com/downloads/#quicktime' target='_blank') screencast-o-matic] and #[a.shiny( href='https://support.apple.com/downloads/#quicktime' target='_blank') Quicktime] (mac).
 
 					h3 How can I get rid of noise?
 					p Most webcams default to using auto-exposure. This is not ideal for light painting. In complete darkness, 
 						| it will use the maximum exposure, which makes the video very noisy (like high ISO). 
 						| Use your webcam's driver software to control settings on the webcam, or use a universal webcam controller 
-						| like #[a(class='shiny' href='https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12' target='_blank') Webcam&nbsp;Settings] (Mac).
-					p Of course, the quality of the camera also affects this. We recommend Logitech webcams, like the #[a(class='shiny' href='http://www.logitech.com/en-us/product/webcam-c930e-business' target='_blank') C930e]
+						| like #[a.shiny(href='https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12' target='_blank') Webcam&nbsp;Settings] (Mac).
+					p Of course, the quality of the camera also affects this. We recommend Logitech webcams, like the #[a.shiny(href='http://www.logitech.com/en-us/product/webcam-c930e-business' target='_blank') C930e]
 
 					h3 How can I fade out my light painting?
 					p Short fades are possible by switching modes; like 'light' to 'fade'.
@@ -124,15 +119,15 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 
 					h3 Where can I buy light tools?
 					p 
-						a(class='shiny' href='http://lightpaintingbrushes.com/' target='_blank') LightPaintingBrushes.
+						a.shiny(href='http://lightpaintingbrushes.com/' target='_blank') LightPaintingBrushes.
 						span  Jason Page's flexible, extensible light painting brush system. We highly recommend it. 
 					p 
-						a(class='shiny' href='http://blinkinlabs.com/blinkytape/' target='_blank') Blinky Tape.
+						a.shiny(href='http://blinkinlabs.com/blinkytape/' target='_blank') Blinky Tape.
 						span  Programmable 60-led RGB strips. Easy. 
 
 
 
-				section(id='open-source') 
+				section#open-source
 					h1 open source
 					p Here are some open-source (free!) light painting programs. LPL doesn't actively maintain these projects, but hopefully they will serve you well.
 
@@ -140,58 +135,58 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 						li
 							img(src='assets/images/lpl-heavy-icon.png')
 							h3 LPL Heavy
-							span The original LPL program for Mac/Windows. #[a(class='shiny' href='https://github.com/positlabs/lpl-heavy' target='_blank') View on GitHub.]
+							span The original LPL program for Mac/Windows. #[a.shiny(href='https://github.com/positlabs/lpl-heavy' target='_blank') View on GitHub.]
 
 						li
 							img(src='assets/images/android-icon.svg')
 							h3 LPL Android
-							span Light painting app for Android devices. #[a(class='shiny' href='https://github.com/positlabs/LightPainter' target='_blank') View on GitHub.]
+							span Light painting app for Android devices. #[a.shiny(href='https://github.com/positlabs/LightPainter' target='_blank') View on GitHub.]
 
 						li
 							img(src='assets/images/processing-icon.svg')
 							h3 LPL Processor
-							span Processing sketch that converts raw video into light painting videos. #[a(class='shiny' href='http://positlabs.github.io/lpl-processor/' target='_blank') View on GitHub.]
+							span Processing sketch that converts raw video into light painting videos. #[a.shiny(href='http://positlabs.github.io/lpl-processor/' target='_blank') View on GitHub.]
 
 
 
-				section(id='story') 
+				section#story
 					h1 story
 					p LPL started as a simple prototype. It had two buttons and was very slow. It was discovered by Joerg Miedza, 
 						| a prominent member of the light-painting community. The app was very limited, but Joerg saw it as the next step 
 						| in the evolution of light-painting. He wanted to know if it could be improved, so he emailed the developer. 
 						| Ever since then, Josh and Joerg have been exchanging ideas and improving LPL. 
 
-					div(class="person")
+					.person
 						h3 Joerg Miedza: Artist
 						img(src="assets/images/joerg.jpg")
-						div(class="content-block")
+						.content-block
 							p Joerg Miedza has been creating movies and photos using special techniques since the late 90's. 
 								| He is the co-founder of the german light-art project LAPP-PRO. In this project, the LAPP-Team developed a 
 								| unique brand of light painting: LightArt Performance Photography, or LAPP for short. The skills Joerg acquired
 								| working with motion pictures allowed him to contribute significantly to the performance and artistic aspect of 
 								| LAPP photography.
-							p His personal work is at #[a(class="shiny" href="http://miedza.de" target="_blank") miedza.de]
-							p There is also a book of the work: #[a(href='http://www.rockynook.com/shop/photography/painting-with-light/' target='_blank' class='shiny') Painting With Light]
-							p Email: #[a(href='mailto:joerg@miedza.de' class='shiny' target='_blank') joerg@miedza.de ]
+							p His personal work is at #[a.shiny(href="http://miedza.de" target="_blank") miedza.de]
+							p There is also a book of the work: #[a.shiny(href='http://www.rockynook.com/shop/photography/painting-with-light/' target='_blank') Painting With Light]
+							p Email: #[a.shiny(href='mailto:joerg@miedza.de' target='_blank') joerg@miedza.de ]
 
-					div(class="person")
+					.person
 						h3 Josh Beckwith: Developer
 						img(src="assets/images/josh.jpg")
-						div(class="content-block")
+						.content-block
 							p Josh has always been obsessed with science and technology - and as a child, he dreamed of becoming an inventor. 
-								| Now, he's a senior interactive developer at #[a(href='http://toolofna.com' class='shiny' target='_blank') Tool of North America.]
-							p Email: #[a(href='mailto:josh@lightpaintlive.com' class='shiny' target='_blank') josh@lightpaintlive.com ]
+								| Now, he's a senior interactive developer at #[a.shiny(href='http://toolofna.com' target='_blank') Tool of North America.]
+							p Email: #[a.shiny(href='mailto:josh@lightpaintlive.com' target='_blank') josh@lightpaintlive.com ]
 
 
 
 		footer
-			div(class='wrapper')
-				a(class="shiny" target="_blank" href="mailto:josh@lightpaintlive.com") contact support
-				div(class='fb-holder')
-					div(class="fb-like" data-href="http://www.facebook.com/LightPaintLive" data-layout="button_count" data-width="150" data-colorscheme="dark" data-font="segoe ui")
+			.wrapper
+				a.shiny(target="_blank" href="mailto:josh@lightpaintlive.com") contact support
+				.fb-holder
+					.fb-like(data-href="http://www.facebook.com/LightPaintLive" data-layout="button_count" data-width="150" data-colorscheme="dark" data-font="segoe ui")
 
-		div(class='video-container')
-			video(id='bg-video' autoplay muted loop)
+		.video-container
+			video#bg-video(autoplay muted loop)
 				source(src='assets/grinder.webm' type='video/webm')
 				source(src='assets/grinder.mp4' type='video/mp4')
 
