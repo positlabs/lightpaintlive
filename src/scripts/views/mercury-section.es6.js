@@ -48,7 +48,14 @@ export default class MercurySection extends CoreView {
 		var $targ = $(e.currentTarget).addClass('selected');
 		var className = $targ.html();
 		this.$('.modes .'+className).addClass('selected');
-		this.$('.modes .gif').attr('src', 'assets/images/' + className + '.gif');
+		this.$('.modes video source[type="video/mp4"]').attr('src', 'assets/' + className + '.mp4');
+		this.$('.modes video source[type="video/webm"]').attr('src', 'assets/' + className + '.webm');
+		this.$('.modes video')[0].outerHTML = `
+			<video class="mode" autoplay muted loop>
+				<source src="assets/${className}.webm" type="video/webm">
+				<source src="assets/${className}.mp4" type="video/mp4">
+			</video>
+		`;
 	}
 
 }

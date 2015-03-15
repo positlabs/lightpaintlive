@@ -7,6 +7,7 @@ import HeaderView from './views/header-view.es6.js';
 import './analytics.js';
 
 import checkAutoplaySupport from './lib/is-autoplay-supported.js';
+// import smoothscroll from 'smooth-scroll';
 
 import PIXI from './lib/pixi.js'; window.PIXI = PIXI;
 import Vector from './lib/vector.es6.js';
@@ -42,7 +43,28 @@ export default class App {
 		this.$scrollableContent = $('.scrollable-content');
 
 		checkAutoplaySupport();
-		$('video')[0].playbackRate = .5;
+		setTimeout(()=>{ // waiting for other higher priority stuff to load
+
+			var bgvid = `
+				<video id="bg-video" autoplay loop muted>
+					<source src="assets/grinder.webm" type="video/webm">
+					<source src="assets/grinder.mp4" type="video/mp4">
+				</video>
+			`;
+
+			$('.video-container')[0].innerHTML += bgvid;
+			setTimeout(()=>{
+				var vid = document.getElementById('bg-video');
+				vid.addEventListener('play', ()=>{
+					vid.playbackRate = .5;
+				});
+				vid.playbackRate = .5;
+				setTimeout(()=>{
+					vid.playbackRate = .5;
+				}, 2000);
+			}, 1);
+
+		}, 3000);
 
 		window.addEventListener('resize', (e)=>this.onResize(e));
 		this.onResize();

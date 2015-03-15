@@ -31,10 +31,10 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 					span LIGHTPAINT
 					span &nbsp;LIVE
 				nav
-					a(href='#mercury') mercury
-					a(href='#faq') faq
-					a(href='#open-source') open-source
-					a(href='#story') story
+					a(data-scroll href='#mercury') mercury
+					a(data-scroll href='#faq') faq
+					a(data-scroll href='#open-source') open-source
+					a(data-scroll href='#story') story
 
 
 
@@ -61,13 +61,16 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 						h2 light modes
 						p Mercury has 4 modes for capturing light. 
 
-						img(src="assets/images/light.gif", class="gif")
+						video.mode(loop autoplay muted)
+							source(src="assets/light.mp4" type="video/mp4")
+							source(src="assets/light.webm" type="video/webm")
+						//- img(src="assets/images/light.gif", class="gif")
 
 						.buttons
-							div(class="mode-btn selected" data-type="light") light
-							div(class="mode-btn" data-type="fade") fade
-							div(class="mode-btn" data-type="dark") dark
-							div(class="mode-btn" data-type="bloom") bloom
+							.mode-btn.selected(data-type="light") light
+							.mode-btn(data-type="fade") fade
+							.mode-btn(data-type="dark") dark
+							.mode-btn(data-type="bloom") bloom
 
 						.descriptions
 							p.light.selected Only captures the brightest light. Allows painting for a very long time without over-exposing the picture.
@@ -96,8 +99,9 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 					h1 Frequently asked questions
 
 					h3 Can I use a DSLR with LPL?
-					p Yes, but it requires 3rd party software. Generally the video feed from DSLR to webcam is low resolution and low framerate. We don't recommend it.
-					p #[a.shiny(href='http://sparkosoft.com/how-to-use-dslr-as-webcam' target='_blank') sparkosoft ] &amp; #[a.shiny(href='http://extrawebcam.com/' target='_blank') extrawebcam]
+					p Yes, but it requires 3rd party software. Generally the video feed from DSLR to webcam is low resolution and low framerate.
+					p #[a.shiny(href='http://extrawebcam.com/' target='_blank') extrawebcam]
+					//- #[a.shiny(href='http://sparkosoft.com/how-to-use-dslr-as-webcam' target='_blank') sparkosoft ] &amp;
 
 					h3 Can I record light painting videos?
 					p Yes, by using any screen-casting program. We use #[a.shiny(href='https://support.apple.com/downloads/#quicktime' target='_blank') screencast-o-matic] and #[a.shiny( href='https://support.apple.com/downloads/#quicktime' target='_blank') Quicktime] (mac).
@@ -186,9 +190,9 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 					.fb-like(data-href="http://www.facebook.com/LightPaintLive" data-layout="button_count" data-width="150" data-colorscheme="dark" data-font="segoe ui")
 
 		.video-container
-			video#bg-video(autoplay muted loop)
-				source(src='assets/grinder.webm' type='video/webm')
-				source(src='assets/grinder.mp4' type='video/mp4')
+			//- video#bg-video(data-src="assets/grinder" muted loop)
+				//- source(src='assets/grinder.webm' type='video/webm')
+				//- source(src='assets/grinder.mp4' type='video/mp4')
 
 		script(src="main.js" type="text/javascript")
 
