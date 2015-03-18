@@ -2,7 +2,8 @@
 @import './normalize.scss';
 @import './mixins.scss';
 
-$orange: #ff9933;
+// $orange: #ff9933;
+$orange: #6ce4ed;
 
 html, body {
 	background-color: #151515;
@@ -125,7 +126,7 @@ header {
 			@include font-oswald(14px, 300);
 			line-height: 100px;
 
-			border-bottom: 0px solid orange;
+			border-bottom: 0px solid $orange;
 			&:hover {
 				border-bottom: 3px solid $orange;
 				color: $orange;
@@ -199,6 +200,7 @@ section#mercury {
 			top: 0;
 			width: 50px;
 			height: 50px;
+			z-index: 1;
 			background-size: 35px;
 			background-repeat: no-repeat;
 			background-position: center center;
@@ -214,7 +216,7 @@ section#mercury {
 
 		&:hover {
 			.icon {
-				@include transform(rotate(8rad));
+				@include transform(rotate(-1rad));
 			}
 		}
 	}

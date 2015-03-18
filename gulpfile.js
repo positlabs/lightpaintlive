@@ -137,5 +137,5 @@ gulp.task('build:dev', [
 	
 ], function(){});
 
-gulp.task('default', ['build:dev'], function(){});
+gulp.task('default', ['build:prod'], function(){});
 
