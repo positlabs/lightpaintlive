@@ -222,21 +222,12 @@ section#mercury {
 	}
 
 	.launch-btn {
-		display: none;
+		@include user-select(none);
 	}
 
 	.try {
 		line-height: 50px;
 		margin-left: 10px;
-	}
-
-	&.state-installed {
-		.launch-btn {
-			display: block;
-		}
-		.install-btn {
-			display: none;
-		}
 	}
 
 	iframe {

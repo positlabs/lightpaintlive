@@ -7,7 +7,6 @@ export default class MercurySection extends CoreView {
 		this.setElement($('#mercury'));
 		this.props = {
 			events: {
-				'mousedown 	.install-btn': 		'onClickInstallBtn',
 				'click 		.launch-btn': 		'onClickLaunchBtn',
 				'click 		.mode-btn': 		'onClickModeBtn',
 			}
@@ -16,30 +15,23 @@ export default class MercurySection extends CoreView {
 	}
 
 	initialize(){
-		// console.log('MercurySection.initialize');
-		if (chrome.app.isInstalled) {
-			this.$el.addClass('state-installed');
-		}
-	}
-
-	onClickInstallBtn(e){
-		// console.log('MercurySection.onClickInstallBtn');
-
-		//TODO: only do this on chrome. maybe show warning if other browser.
-		e.preventDefault();
-		let appurl = "https://chrome.google.com/webstore/detail/bphfkpkoljdicakaokfbjiaamholpgjf";
-		chrome.webstore.install(
-			appurl, 
-			()=> this.$el.addClass('state-installed'), 
-			()=> console.log('failure')
-		);
+		
 	}
 
 	onClickLaunchBtn(){
-		// console.log('MercurySection.onClickLaunchBtn');
+		console.log('MercurySection.onClickLaunchBtn');
 		// triggers a url handler that will open the app
-		var w = window.open('http://lightpaintlive.com/mercury-app');
-		setTimeout(w.close(), 100);
+		var w = window.open('http://lightpaintlive.com/mercury-app/', '_blank');
+		setTimeout(function(){
+			try {
+				console.log(w.location.href)
+				if(w.location.href == "about:blank"){
+					w.close();
+				}
+			}catch(e){
+				// app isn't installed, do nothing
+			}
+		}, 100);
 	}
 
 	onClickModeBtn(e){

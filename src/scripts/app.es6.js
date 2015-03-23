@@ -58,13 +58,9 @@ export default class App {
 				vid.addEventListener('play', ()=>{
 					vid.playbackRate = .5;
 				});
-				vid.playbackRate = .5;
-				setTimeout(()=>{
-					vid.playbackRate = .5;
-				}, 2000);
 			}, 1);
 
-		}, 3000);
+		}, 6000);
 
 		window.addEventListener('resize', (e)=>this.onResize(e));
 		this.onResize();
