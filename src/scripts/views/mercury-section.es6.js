@@ -9,6 +9,7 @@ export default class MercurySection extends CoreView {
 			events: {
 				'click 		.launch-btn': 		'onClickLaunchBtn',
 				'click 		.mode-btn': 		'onClickModeBtn',
+				'click 		.modes video': 		'onClickModesVideo'
 			}
 		};
 		super();
@@ -34,20 +35,25 @@ export default class MercurySection extends CoreView {
 		}, 100);
 	}
 
+	onClickModesVideo(){
+		this.$('.modes video')[0].play();
+	}
+
 	onClickModeBtn(e){
 		console.log("onClickModeBtn");
 		this.$('.modes .selected').removeClass('selected');
 		var $targ = $(e.currentTarget).addClass('selected');
 		var className = $targ.html();
 		this.$('.modes .'+className).addClass('selected');
-		this.$('.modes video source[type="video/mp4"]').attr('src', 'assets/' + className + '.mp4');
-		this.$('.modes video source[type="video/webm"]').attr('src', 'assets/' + className + '.webm');
+		// this.$('.modes video source[type="video/mp4"]').attr('src', 'assets/' + className + '.mp4');
+		// this.$('.modes video source[type="video/webm"]').attr('src', 'assets/' + className + '.webm');
 		this.$('.modes video')[0].outerHTML = `
 			<video class="mode" autoplay muted loop>
 				<source src="assets/${className}.webm" type="video/webm">
 				<source src="assets/${className}.mp4" type="video/mp4">
 			</video>
 		`;
+		this.$('.modes video')[0].play();
 	}
 
 }
