@@ -89,7 +89,17 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 							li #[strong New:] n
 							li #[strong Trigger:] spacebar
 
+					.sub-section.gallery
+						.filmstrip
+							.thumb-wrapper
+								.thumbs
+									each path in ['1423315019342_fin_1920', '1425928789731_fin_1920', '1425999379410_fin_1920', '1426010653835_fin_1920','1426085185659_fin_1920','1424879158174_fin_1920','1425932886285_fin_1920','1426002321059_fin_1920','1426074957472_fin_1920','1426089951222_fin_1920']
+										img(src="./assets/images/gallery/#{path}_thumb.jpg" data-src=path)
 
+							.left.button
+								span &lt;
+							.right.button
+								span &gt;
 
 
 				section#faq 
