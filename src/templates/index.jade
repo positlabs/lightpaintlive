@@ -66,13 +66,13 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 						.buttons
 							.mode-btn.selected(data-type="light") light
 							.mode-btn(data-type="fade") fade
-							.mode-btn(data-type="dark") dark
+							//- .mode-btn(data-type="dark") dark
 							.mode-btn(data-type="bloom") bloom
 
 						.descriptions
 							p.light.selected Only captures the brightest light. Allows painting for a very long time without over-exposing the picture.
 							p.fade Used for fading the current painting.
-							p.dark Similar to lighten, but darkness is captured. Can be used in extremely bright environments.
+							//- p.dark Similar to lighten, but darkness is captured. Can be used in extremely bright environments.
 							p.bloom Simulates traditional light painting.
 
 					.sub-section
@@ -84,6 +84,7 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 							li #[strong Fullscreen:] f, or F11
 							li #[strong Exposure:] left/right arrows, or [ ]
 							li #[strong Modes:] 0-3
+							li #[strong Ghost:] g
 							li #[strong Mirror:] m
 							li #[strong Save:] s
 							li #[strong New:] n
