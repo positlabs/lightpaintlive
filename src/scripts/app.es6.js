@@ -12,11 +12,13 @@ import checkAutoplaySupport from './lib/is-autoplay-supported.js';
 import PIXI from './lib/pixi.js'; window.PIXI = PIXI;
 import Vector from './lib/vector.es6.js';
 
+
 // init backbone
 import '../../node_modules/zepto/zepto.min.js'; // zepto's package.json is not working...
 import _ from 'lodash'; window._ = _;
 import Backbone from 'backbone';
 Backbone.$ = $;
+require('perfect-scrollbar/jquery')($);
 
 export default class App {
 
@@ -73,6 +75,9 @@ export default class App {
 			height: window.innerHeight - this.$footer.height() - this.$header.height(),
 			top: this.$header.height()
 		});
+		this.$scrollableContent.perfectScrollbar('update');
 	}
+	
+	this.$scrollableContent.perfectScrollbar({suppressScrollX: true});
 
 };

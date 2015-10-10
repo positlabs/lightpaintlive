@@ -23,7 +23,7 @@ var paths = {
 	styles: 		'./src/styles/**/*.scss',
 	scripts: 		'./src/scripts/**/*.js',
 	entryScript: 	'./src/scripts/main.es6.js'
-}
+};
 
 
 
@@ -32,8 +32,8 @@ var templateTask = function(){
 		        .pipe(plumber())
 			    .pipe(jade())
 			    .pipe(gulp.dest(paths.dist));
-}
-gulp.task('build:templates', ['clean'], templateTask)
+};
+gulp.task('build:templates', ['clean'], templateTask);
 gulp.task('templates', templateTask);
 
 
@@ -45,7 +45,7 @@ var styleTask = function(){
 		        	errLogToConsole: true,
 		        }))
 		        .pipe(gulp.dest(paths.dist));
-}
+};
 gulp.task('build:styles', ['clean'], styleTask);
 gulp.task('styles', styleTask);
 
@@ -75,14 +75,14 @@ var scriptTask = function(debug){
 			    .pipe(gulpif(!debug, uglify()))
 
 				// .pipe(plumber())
-				.pipe(gulp.dest(paths.dist))
+				.pipe(gulp.dest(paths.dist));
 
 
 	return out;
-}
-gulp.task('build:scripts:prod', ['clean'], function(){scriptTask(false)});
-gulp.task('build:scripts', ['clean'], function(){scriptTask(true)});
-gulp.task('scripts', function(){scriptTask(true)});
+};
+gulp.task('build:scripts:prod', ['clean'], function(){scriptTask(false);});
+gulp.task('build:scripts', ['clean'], function(){scriptTask(true);});
+gulp.task('scripts', function(){scriptTask(true);});
 
 
 
