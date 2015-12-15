@@ -43,6 +43,8 @@ export default class App {
 		this.$header = $('header');
 		this.$footer = $('footer');
 		this.$scrollableContent = $('.scrollable-content');
+		this.$scrollableContent.perfectScrollbar({suppressScrollX: true});
+
 
 		checkAutoplaySupport();
 		setTimeout(()=>{ // waiting for other higher priority stuff to load
@@ -78,6 +80,4 @@ export default class App {
 		this.$scrollableContent.perfectScrollbar('update');
 	}
 	
-	this.$scrollableContent.perfectScrollbar({suppressScrollX: true});
-
 };

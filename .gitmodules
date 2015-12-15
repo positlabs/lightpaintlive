@@ -1,3 +1,0 @@
-[submodule "mercury/build/Build-o-Matic"]
-	path = mercury/build/Build-o-Matic
-	url = git@github.com:positlabs/Build-o-Matic.git

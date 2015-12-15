@@ -1,0 +1,64 @@
+/* perfect-scrollbar v0.6.7 */
+.ps-container {
+  -ms-touch-action: none;
+  overflow: hidden !important; }
+  .ps-container.ps-active-y > .ps-scrollbar-y-rail {
+    display: block; 
+  }
+  .ps-container.ps-in-scrolling {
+    pointer-events: none; 
+  }
+    .ps-container.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail {
+      opacity: 0.9; 
+    }
+   .ps-container.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+      // background-color: #999; 
+    }
+  .ps-container > .ps-scrollbar-y-rail {
+    display: none;
+    position: absolute;
+    /* please don't change 'position' */
+    opacity: 0;
+    background-color: rgba(white, .2);
+    @include transition(background-color 0.2s linear, opacity 0.2s linear);
+    right: 3px;
+    /* there must be 'right' for ps-scrollbar-y-rail */
+    width: 2px; 
+  }
+    .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+      position: absolute;
+      /* please don't change 'position' */
+      cursor: ns-resize;
+      background-color: cyan;
+      @include transition(background-color 0.2s linear);
+      right: 0;
+      /* there must be 'right' for ps-scrollbar-y */
+      width: 2px;
+      &:after {
+        content: '';
+        position: absolute;
+        left: -2px; top: 0;
+        width: 6px; height: 100%;
+        background: rgba(black, 0.000000001);
+      }
+    }
+  .ps-container:hover.ps-in-scrolling {
+    // pointer-events: none; 
+  }
+    .ps-container:hover.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail {
+    }
+      .ps-container:hover.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+      }
+  .ps-container:hover > .ps-scrollbar-y-rail {
+    opacity: 0.6;
+  }
+  .ps-container:hover > .ps-scrollbar-y-rail:hover {
+    opacity: 0.3;
+  }
+  .ps-container:hover > .ps-scrollbar-y-rail:hover > .ps-scrollbar-y {
+  }
+
+
+
+.ps-scrollbar-y-rail {
+}
