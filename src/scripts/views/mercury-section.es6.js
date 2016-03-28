@@ -53,20 +53,22 @@ export default class MercurySection extends CoreView {
 		console.log('MercurySection.onClickLaunchBtn');
 		// triggers a url handler that will open the app
 		var w = window.open('http://lightpaintlive.com/mercury-app/', '_blank');
+
+		// try closing original window if the app opens on desktop
 		setTimeout(function(){
 			try {
 				console.log(w.location.href)
-				if(w.location.href == "about:blank"){
+				if(w.location.href === "about:blank"){
 					w.close();
 				}
 			}catch(e){
 				// app isn't installed, do nothing
 			}
-		}, 100);
+		}, 1000);
 	}
 
 	onClickModesVideo(){
-		console.log('onClickModesVideo')
+		// console.log('onClickModesVideo')
 		this.$('.modes video')[0].play();
 	}
 
