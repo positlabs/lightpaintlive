@@ -8,6 +8,7 @@ export default class MercurySection extends CoreView {
 		this.props = {
 			events: {
 				'click 		.launch-btn': 		'onClickLaunchBtn',
+				'click 		.launch-pro-btn': 	'onClickLaunchBtn',
 				'click 		.mode-btn': 		'onClickModeBtn',
 				'click 		.modes video': 		'onClickModesVideo',
 				'click 		.gallery .button': 	'onClickGalleryNav',
@@ -49,10 +50,12 @@ export default class MercurySection extends CoreView {
 
 	}
 
-	onClickLaunchBtn(){
+	onClickLaunchBtn(e){
 		console.log('MercurySection.onClickLaunchBtn');
 		// triggers a url handler that will open the app
-		var w = window.open('http://lightpaintlive.com/mercury-app/', '_blank');
+		var pro = '';
+		if(e.currentTarget.classList.contains('launch-pro-btn')) pro = 'pro.html';
+		var w = window.open(location.pathname + '/mercury-app/' + pro, '_blank');
 
 		// try closing original window if the app opens on desktop
 		setTimeout(function(){
@@ -64,7 +67,7 @@ export default class MercurySection extends CoreView {
 			}catch(e){
 				// app isn't installed, do nothing
 			}
-		}, 1000);
+		}, 2000);
 	}
 
 	onClickModesVideo(){
