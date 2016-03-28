@@ -55,7 +55,7 @@ export default class MercurySection extends CoreView {
 		// triggers a url handler that will open the app
 		var pro = '';
 		if(e.currentTarget.classList.contains('launch-pro-btn')) pro = 'pro.html';
-		var w = window.open(location.pathname + '/mercury-app/' + pro, '_blank');
+		var w = window.open(location.origin + location.pathname + 'mercury-app/' + pro, '_blank');
 
 		// try closing original window if the app opens on desktop
 		setTimeout(function(){
