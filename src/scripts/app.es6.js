@@ -31,8 +31,8 @@ export default class App {
 		PIXI.Vector = Vector;
 		PIXI.Point = Vector;
 
-		var logo = new LPLLogo('#lpl-logo');
-		new EdgeParticles(logo);
+		// var logo = new LPLLogo('#lpl-logo');
+		// new EdgeParticles(logo);
 
 		this.headerView = new HeaderView();
 		this.headerView.on('resize', ()=>this.onResize);
