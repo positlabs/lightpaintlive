@@ -1,5 +1,5 @@
-import LPLLogo from './views/lpl-logo.es6.js';
-import EdgeParticles from './views/edge-particles.es6.js';
+// import LPLLogo from './views/lpl-logo.es6.js';
+// import EdgeParticles from './views/edge-particles.es6.js';
 
 import MercurySection from './views/mercury-section.es6.js';
 import FooterView from './views/footer-view.es6.js';
@@ -9,8 +9,8 @@ import './analytics.js';
 import checkAutoplaySupport from './lib/is-autoplay-supported.js';
 // import smoothscroll from 'smooth-scroll';
 
-import PIXI from './lib/pixi.js'; window.PIXI = PIXI;
-import Vector from './lib/vector.es6.js';
+// import PIXI from './lib/pixi.js'; window.PIXI = PIXI;
+// import Vector from './lib/vector.es6.js';
 
 
 // init backbone
@@ -28,8 +28,8 @@ export default class App {
 		// console.log('app.constructor');
 
 		// PIXI setup
-		PIXI.Vector = Vector;
-		PIXI.Point = Vector;
+		// PIXI.Vector = Vector;
+		// PIXI.Point = Vector;
 
 		// var logo = new LPLLogo('#lpl-logo');
 		// new EdgeParticles(logo);

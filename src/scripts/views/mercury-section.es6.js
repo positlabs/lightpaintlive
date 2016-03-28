@@ -19,6 +19,10 @@ export default class MercurySection extends CoreView {
 
 	initialize(){
 		this.$thumbs = this.$('.thumbs');
+
+		$('body').on('touchstart', e => {
+			this.onClickModesVideo(e)
+		})
 	}
 
 	onClickGalleryThumb(e){
@@ -62,6 +66,7 @@ export default class MercurySection extends CoreView {
 	}
 
 	onClickModesVideo(){
+		console.log('onClickModesVideo')
 		this.$('.modes video')[0].play();
 	}
 
