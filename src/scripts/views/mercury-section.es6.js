@@ -10,7 +10,7 @@ export default class MercurySection extends CoreView {
 				'click 		.launch-btn': 		'onClickLaunchBtn',
 				'click 		.launch-pro-btn': 	'onClickLaunchBtn',
 				'click 		.mode-btn': 		'onClickModeBtn',
-				'click 		.modes video': 		'onClickModesVideo',
+				// 'click 		.modes video': 		'onClickModesVideo',
 				// 'click 		.gallery .button': 	'onClickGalleryNav',
 				// 'click 		.gallery img': 		'onClickGalleryThumb',
 			}
@@ -21,9 +21,9 @@ export default class MercurySection extends CoreView {
 	initialize(){
 		this.$thumbs = this.$('.thumbs')
 
-		$('body').on('touchstart', e => {
-			this.onClickModesVideo(e)
-		})
+		// $('body').on('touchstart', e => {
+		// 	this.onClickModesVideo(e)
+		// })
 
 		this.$ytIframe = this.$('iframe')
 		$(window).on('resize', this.onResize.bind(this))
@@ -81,10 +81,10 @@ export default class MercurySection extends CoreView {
 		}, 2000);
 	}
 
-	onClickModesVideo(){
+	// onClickModesVideo(){
 		// console.log('onClickModesVideo')
-		this.$('.modes video')[0].play();
-	}
+		// this.$('.modes video')[0].play();
+	// }
 
 	onClickModeBtn(e){
 		// console.log("onClickModeBtn");
@@ -92,13 +92,14 @@ export default class MercurySection extends CoreView {
 		var $targ = $(e.currentTarget).addClass('selected');
 		var className = $targ.html();
 		this.$('.modes .'+className).addClass('selected');
-		this.$('.modes video')[0].outerHTML = `
-			<video class="mode" autoplay muted loop>
-				<source src="assets/${className}.webm" type="video/webm">
-				<source src="assets/${className}.mp4" type="video/mp4">
-			</video>
-		`;
-		this.$('.modes video')[0].play();
+		this.$('.modes img')[0].src = `assets/images/${className}.gif`
+		// this.$('.modes video')[0].outerHTML = `
+		// 	<video class="mode" autoplay muted loop>
+		// 		<source src="assets/${className}.webm" type="video/webm">
+		// 		<source src="assets/${className}.mp4" type="video/mp4">
+		// 	</video>
+		// `;
+		// this.$('.modes video')[0].play();
 	}
 
 }

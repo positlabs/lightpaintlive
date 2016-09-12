@@ -266,9 +266,10 @@ section#mercury {
 	}
 
 	.sub-section.modes {
+		img.mode,
 		video.mode {
 			float: left;
-			width: 400px; height: 400px;
+			width: 240px; height: 240px;
 			margin-right: 20px;
 		}
 
@@ -302,6 +303,7 @@ section#mercury {
 		}
 
 		@media (max-width: 720px){
+			img.mode,
 			video.mode {
 				width: 100%; height: auto;
 				margin-bottom: 20px;
