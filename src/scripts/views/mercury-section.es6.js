@@ -14,22 +14,33 @@ export default class MercurySection extends CoreView {
 				'click 		.gallery .button': 	'onClickGalleryNav',
 				'click 		.gallery img': 		'onClickGalleryThumb',
 			}
-		};
-		super();
+		}
+		super()
 	}
 
 	initialize(){
-		this.$thumbs = this.$('.thumbs');
+		this.$thumbs = this.$('.thumbs')
 
 		$('body').on('touchstart', e => {
 			this.onClickModesVideo(e)
+		})
+
+		this.$ytIframe = this.$('iframe')
+		$(window).on('resize', this.onResize.bind(this))
+		this.onResize()
+	}
+
+	onResize(e){
+
+		// apply correct aspect ratio to youtube iframe
+		this.$ytIframe.css({
+			height: this.$el.width() * 9 / 16
 		})
 	}
 
 	onClickGalleryThumb(e){
 		// console.log('onClickGalleryThumb');
 		var src = "./assets/images/gallery/" + e.currentTarget.getAttribute('data-src') + ".jpg";
-
 		window.open(src, '_blank');
 	}
 
@@ -76,7 +87,7 @@ export default class MercurySection extends CoreView {
 	}
 
 	onClickModeBtn(e){
-		console.log("onClickModeBtn");
+		// console.log("onClickModeBtn");
 		this.$('.modes .selected').removeClass('selected');
 		var $targ = $(e.currentTarget).addClass('selected');
 		var className = $targ.html();

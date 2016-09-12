@@ -1,24 +1,16 @@
-// import LPLLogo from './views/lpl-logo.es6.js';
-// import EdgeParticles from './views/edge-particles.es6.js';
 
-import MercurySection from './views/mercury-section.es6.js';
-import FooterView from './views/footer-view.es6.js';
-import HeaderView from './views/header-view.es6.js';
-import './analytics.js';
+import MercurySection from './views/mercury-section.es6.js'
+import FooterView from './views/footer-view.es6.js'
+import HeaderView from './views/header-view.es6.js'
+import './analytics.js'
 
-import checkAutoplaySupport from './lib/is-autoplay-supported.js';
-// import smoothscroll from 'smooth-scroll';
-
-// import PIXI from './lib/pixi.js'; window.PIXI = PIXI;
-// import Vector from './lib/vector.es6.js';
-
+import checkAutoplaySupport from './lib/is-autoplay-supported.js'
 
 // init backbone
-import '../../node_modules/zepto/zepto.min.js'; // zepto's package.json is not working...
-import _ from 'lodash'; window._ = _;
-import Backbone from 'backbone';
-Backbone.$ = $;
-require('perfect-scrollbar/jquery')($);
+import '../../node_modules/zepto/zepto.min.js' // zepto's package.json is not working...
+import _ from 'lodash'; window._ = _
+import Backbone from 'backbone'
+Backbone.$ = $
 
 export default class App {
 
@@ -27,26 +19,17 @@ export default class App {
 	constructor(){
 		// console.log('app.constructor');
 
-		// PIXI setup
-		// PIXI.Vector = Vector;
-		// PIXI.Point = Vector;
+		this.headerView = new HeaderView()
+		this.headerView.on('resize', ()=>this.onResize)
 
-		// var logo = new LPLLogo('#lpl-logo');
-		// new EdgeParticles(logo);
+		new MercurySection()
+		new FooterView()
 
-		this.headerView = new HeaderView();
-		this.headerView.on('resize', ()=>this.onResize);
+		this.$header = $('header')
+		this.$footer = $('footer')
+		this.$scrollableContent = $('.scrollable-content')
 
-		new MercurySection();
-		new FooterView();
-
-		this.$header = $('header');
-		this.$footer = $('footer');
-		this.$scrollableContent = $('.scrollable-content');
-		this.$scrollableContent.perfectScrollbar({suppressScrollX: true});
-
-
-		checkAutoplaySupport();
+		checkAutoplaySupport()
 		setTimeout(()=>{ // waiting for other higher priority stuff to load
 
 			var bgvid = `
@@ -54,30 +37,28 @@ export default class App {
 					<source src="assets/grinder.webm" type="video/webm">
 					<source src="assets/grinder.mp4" type="video/mp4">
 				</video>
-			`;
+			`
 
-			$('.video-container')[0].innerHTML += bgvid;
+			$('.video-container')[0].innerHTML += bgvid
 			setTimeout(()=>{
-				var vid = document.getElementById('bg-video');
+				var vid = document.getElementById('bg-video')
 				vid.addEventListener('play', ()=>{
-					vid.playbackRate = .5;
-				});
-			}, 1);
+					vid.playbackRate = .5
+				})
+			}, 1)
 
-		}, 6000);
+		}, 6000)
 
-		window.addEventListener('resize', (e)=>this.onResize(e));
-		this.onResize();
+		window.addEventListener('resize', (e)=>this.onResize(e))
+		this.onResize()
 
 	}
 
 	onResize(){
-		console.log('app.onResize');
+		console.log('app.onResize')
 		this.$scrollableContent.css({
 			height: window.innerHeight - this.$footer.height() - this.$header.height(),
 			top: this.$header.height()
-		});
-		this.$scrollableContent.perfectScrollbar('update');
+		})
 	}
-	
-};
+}

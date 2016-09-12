@@ -9,9 +9,10 @@ $orange: #6ce4ed;
 html, body {
 	background-color: #151515;
 	color: white;
-	min-height: 100%;
-	min-width: 100%;
+	height: 100%; width: 100%;
 	overflow: hidden;
+	position: absolute;
+	top: 0; left: 0;
 }
 
 p, span, ul, a {
@@ -38,9 +39,8 @@ a.shiny {
 	&:after {
 		content:'';
 		position: absolute;
-		top: 2px;left: 0;
-		width: 100%;
-		height: 100%;
+		top: 2px; left: 0;
+		width: 100%; height: 100%;
 		border-bottom: 0px solid $orange;
 		@include transition(all .2s $ease-out-cubic);
 		z-index: -1;
@@ -57,21 +57,18 @@ a.shiny {
 
 // main content block
 .scrollable-content {
-	width: 100%;
-	height: 100%;
+	width: 100%; height: 100%;
 	position: absolute;
-	overflow: hidden;
-	// overflow-x: hidden;
-	// overflow-y: scroll;
 	top: 100px;
+	overflow-x: hidden; overflow-y: scroll;
 	@include calc(height, '100% - 132px');
 }
 
 // for centering, sizing content
 .wrapper {
-	width: 720px;
+	width: 90%;
+	max-width: 720px;
 	margin: 0 auto;
-	padding: 0 20px;
 }
 
 footer, header {
@@ -88,17 +85,11 @@ header {
 	line-height: 100px;
 
 	#lpl-logo {
-		margin-left: -22px;
 		float: left;
+		margin-left: -22px;
 		background-image: url(assets/images/logo-cyan.png);
-		// background-image: url(assets/images/logo-pink.png);
 		background-size: contain;
-		width: 100px;
-		height: 100px;
-		canvas {
-			width: 100px;
-			height: 100px;
-		}
+		width: 100px; height: 100px;
 	}
 
 	.logo-type {
@@ -135,6 +126,30 @@ header {
 				color: $orange;
 			}
 
+		}
+	}
+
+	@media (max-width: 720px){
+		
+		height: 80px;
+		line-height: 80px;
+
+		.logo-type span {
+			font-size: 20px;
+			line-height: 80px;
+		}
+
+		#lpl-logo {
+			width: 80px; height: 80px;
+		}
+
+		nav {
+			display: none;
+			position: absolute;
+			right: 10px; top: 80px;
+			a {
+				line-height: 20px;
+			}
 		}
 	}
 
@@ -198,6 +213,7 @@ section#mercury {
 		border-left: 3px solid $orange;
 
 		margin-right: 20px;
+		margin-bottom: 20px;
 		
 		.icon {
 			position: absolute;
@@ -233,11 +249,14 @@ section#mercury {
 	.try {
 		line-height: 50px;
 		margin-left: 10px;
+		display: inline-block;
 	}
 
 	iframe {
 		margin-top: 40px;
 		margin-bottom: 20px;
+		width: 100%;
+		height: auto;
 	}
 
 	.sub-section {
@@ -249,8 +268,7 @@ section#mercury {
 	.sub-section.modes {
 		video.mode {
 			float: left;
-			width: 400px;
-			height: 400px;
+			width: 400px; height: 400px;
 			margin-right: 20px;
 		}
 
@@ -280,6 +298,13 @@ section#mercury {
 					color: $orange;
 					border-bottom: 3px solid $orange;
 				}
+			}
+		}
+
+		@media (max-width: 720px){
+			video.mode {
+				width: 100%; height: auto;
+				margin-bottom: 20px;
 			}
 		}
 	}
@@ -343,7 +368,7 @@ section#mercury {
 
 
 
-section#faq {
+.sub-section.faq {
 
 	h3 {
 		margin-top: 30px;
@@ -398,8 +423,7 @@ section#story {
 .video-container {
 	display: none;
     position: absolute;
-    height: 100%;
-    width: 100%;
+    height: 100%; width: 100%;
     overflow: hidden;
 	z-index: -1;
 }
@@ -410,10 +434,8 @@ section#story {
 video#bg-video {
 	position: absolute;
 	@include transform(translate3d(-50%, -50%, 0));
-	top: 50%;
-	left: 50%;
-    min-width: 100%;
-    min-height: 100%;
+	top: 50%; left: 50%;
+    min-width: 100%; min-height: 100%;
 	opacity: .15;
 }
 
