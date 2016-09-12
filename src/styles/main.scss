@@ -62,6 +62,7 @@ a.shiny {
 	top: 100px;
 	overflow-x: hidden; overflow-y: scroll;
 	@include calc(height, '100% - 132px');
+	-webkit-overflow-scrolling: touch;
 }
 
 // for centering, sizing content
@@ -131,25 +132,40 @@ header {
 
 	@media (max-width: 720px){
 		
-		height: 80px;
-		line-height: 80px;
+		$height: 60px;
+		height: $height;
+		line-height: $height;
 
 		.logo-type span {
 			font-size: 20px;
-			line-height: 80px;
+			line-height: $height;
 		}
 
 		#lpl-logo {
-			width: 80px; height: 80px;
+			width: $height; height: $height;
 		}
 
 		nav {
 			display: none;
 			position: absolute;
-			right: 10px; top: 80px;
+			right: 10px; top: $height;
 			a {
 				line-height: 20px;
 			}
+		}
+	}
+
+	@media (max-height: 480px){
+		$height: 60px;
+		height: $height;
+		line-height: $height;
+		.logo-type span {
+			font-size: 16px;
+			line-height: $height;
+		}
+		#lpl-logo {
+			width: $height; height: $height;
+			margin-left: -12px;
 		}
 	}
 
@@ -398,7 +414,7 @@ section#open-source {
 			padding-left: 70px;
 		}
 		span {
-			line-height: 36px;
+			// line-height: 36px;
 			display: block;
 		}
 	}
@@ -420,7 +436,7 @@ section#story {
 		}
 		.content-block {
 			float: left;
-			width: 540px;
+			max-width: 540px;
 		}
 	}
 }
