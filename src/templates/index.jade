@@ -34,9 +34,8 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 				nav
 					a(data-scroll href='#mercury') mercury
 					a(data-scroll href='#open-source') open-source
-					a(data-scroll href='#faq') faq
+					//- a(data-scroll href='#faq') faq
 					a(data-scroll href='#story') story
-
 
 
 		.scrollable-content
@@ -44,8 +43,8 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 
 
 				section#mercury
-					h1 Mercury
-					p A webcam app for light painting in real-time. Runs on Chrome for Mac &amp; Windows.
+					h1 Mercury #[span for Chrome]
+					p A webcam app for light painting in real-time. Runs on Chrome for Mac &amp; Windows. Available in two flavors.
 					.mercury-btns
 						.launch-btn.btn
 							.icon
@@ -79,6 +78,12 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 							p.fade Used for fading the current painting.
 							//- p.dark Similar to lighten, but darkness is captured. Can be used in extremely bright environments.
 							p.bloom Simulates traditional light painting.
+
+					.sub-section.gallery
+						.imgur-embed
+							blockquote(class="imgur-embed-pub" lang="en" data-id="a/WpgfK")
+								a(href="//imgur.com/WpgfK") Chromavore
+								script(async src="//s.imgur.com/min/embed.js" charset="utf-8")
 
 					.sub-section
 						h2 keyboard shortcuts
@@ -130,7 +135,7 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 							span  Programmable 60-led RGB strips. Easy. 
 
 
-					.sub-section.gallery
+					//- .sub-section.gallery
 						.filmstrip
 							.thumb-wrapper
 								.thumbs
@@ -141,7 +146,7 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 								span &lt;
 							.right.button
 								span &gt;
-
+	
 
 
 				section#open-source

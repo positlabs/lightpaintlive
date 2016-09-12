@@ -11,8 +11,8 @@ export default class MercurySection extends CoreView {
 				'click 		.launch-pro-btn': 	'onClickLaunchBtn',
 				'click 		.mode-btn': 		'onClickModeBtn',
 				'click 		.modes video': 		'onClickModesVideo',
-				'click 		.gallery .button': 	'onClickGalleryNav',
-				'click 		.gallery img': 		'onClickGalleryThumb',
+				// 'click 		.gallery .button': 	'onClickGalleryNav',
+				// 'click 		.gallery img': 		'onClickGalleryThumb',
 			}
 		}
 		super()
@@ -38,11 +38,11 @@ export default class MercurySection extends CoreView {
 		})
 	}
 
-	onClickGalleryThumb(e){
-		// console.log('onClickGalleryThumb');
-		var src = "./assets/images/gallery/" + e.currentTarget.getAttribute('data-src') + ".jpg";
-		window.open(src, '_blank');
-	}
+	// onClickGalleryThumb(e){
+	// 	// console.log('onClickGalleryThumb');
+	// 	var src = "./assets/images/gallery/" + e.currentTarget.getAttribute('data-src') + ".jpg";
+	// 	window.open(src, '_blank');
+	// }
 
 	onClickGalleryNav(e){
 		// console.log('onClickGalleryButton', e);
