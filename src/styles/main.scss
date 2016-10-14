@@ -179,7 +179,7 @@ h1 {
 	@include font-oswald(32px, 400);
 }
 h2 {
-	@include font-oswald(18px, 400);
+	@include font-oswald(22px, 400);
 }
 h3 {
 	@include font-ubuntu(16px, 700);
@@ -213,42 +213,54 @@ section {
 	}
 }
 
+.btn {
+	display: block;
+	background-color: white;
+	position: relative;
+	color: #333;
+	float: left;
+	text-transform: uppercase;
+	cursor: pointer;
+	padding: 0px 10px 0px 50px;
+	border-left: 3px solid $orange;
 
+	margin-right: 20px;
+	margin-bottom: 20px;
+	
+	.icon {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 50px;
+		height: 50px;
+		z-index: 1;
+		background-size: 35px;
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+
+	a {
+		line-height: 50px;
+		@include font-oswald(18px);
+		&:visited, &:link {color: #333;}
+	}
+}
+
+section#mobile {
+	width: 100%;
+	overflow: hidden;
+	.btn .icon {
+		background-image: url(assets/images/android-icon.svg);
+	}
+}
 
 section#mercury {
 	
 	.btn {
-		display: block;
-		background-color: white;
-		position: relative;
-		color: #333;
-		float: left;
-		text-transform: uppercase;
-		cursor: pointer;
-		padding: 0px 10px 0px 50px;
-		border-left: 3px solid $orange;
-
-		margin-right: 20px;
-		margin-bottom: 20px;
 		
 		.icon {
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 50px;
-			height: 50px;
-			z-index: 1;
-			background-size: 35px;
-			background-repeat: no-repeat;
-			background-position: center center;
 			background-image: url(assets/images/chrome-icon.svg);
 			@include transition(all 1s $ease-out-quint);
-		}
-
-		a {
-			line-height: 50px;
-			@include font-oswald(18px);
-			&:visited, &:link {color: #333;}
 		}
 
 		&:hover {
