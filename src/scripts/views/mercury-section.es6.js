@@ -10,9 +10,6 @@ export default class MercurySection extends CoreView {
 				'click 		.launch-btn': 		'onClickLaunchBtn',
 				'click 		.launch-pro-btn': 	'onClickLaunchBtn',
 				'click 		.mode-btn': 		'onClickModeBtn',
-				// 'click 		.modes video': 		'onClickModesVideo',
-				// 'click 		.gallery .button': 	'onClickGalleryNav',
-				// 'click 		.gallery img': 		'onClickGalleryThumb',
 			}
 		}
 		super()
@@ -20,10 +17,6 @@ export default class MercurySection extends CoreView {
 
 	initialize(){
 		this.$thumbs = this.$('.thumbs')
-
-		// $('body').on('touchstart', e => {
-		// 	this.onClickModesVideo(e)
-		// })
 
 		this.$ytIframe = this.$('iframe')
 		$(window).on('resize', this.onResize.bind(this))
@@ -37,12 +30,6 @@ export default class MercurySection extends CoreView {
 			height: this.$el.width() * 9 / 16
 		})
 	}
-
-	// onClickGalleryThumb(e){
-	// 	// console.log('onClickGalleryThumb');
-	// 	var src = "./assets/images/gallery/" + e.currentTarget.getAttribute('data-src') + ".jpg";
-	// 	window.open(src, '_blank');
-	// }
 
 	onClickGalleryNav(e){
 		// console.log('onClickGalleryButton', e);
@@ -81,11 +68,6 @@ export default class MercurySection extends CoreView {
 		}, 2000);
 	}
 
-	// onClickModesVideo(){
-		// console.log('onClickModesVideo')
-		// this.$('.modes video')[0].play();
-	// }
-
 	onClickModeBtn(e){
 		// console.log("onClickModeBtn");
 		this.$('.modes .selected').removeClass('selected');
@@ -93,13 +75,6 @@ export default class MercurySection extends CoreView {
 		var className = $targ.html();
 		this.$('.modes .'+className).addClass('selected');
 		this.$('.modes img')[0].src = `assets/images/${className}.gif`
-		// this.$('.modes video')[0].outerHTML = `
-		// 	<video class="mode" autoplay muted loop>
-		// 		<source src="assets/${className}.webm" type="video/webm">
-		// 		<source src="assets/${className}.mp4" type="video/mp4">
-		// 	</video>
-		// `;
-		// this.$('.modes video')[0].play();
 	}
 
 }
