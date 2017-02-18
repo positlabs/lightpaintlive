@@ -7,17 +7,17 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 		link(href="main.css" type="text/css" rel="stylesheet")
 		link(rel="icon" type="image/png" href="assets/images/mercury-logo.png")
 
-		link(href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css')
-		link(href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css')
+		link(href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css')
+		link(href='https://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css')
 
 		link(rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/bphfkpkoljdicakaokfbjiaamholpgjf")
 
 		meta(name="keywords" content="light painting, live light painting, paint live, light paint live, light painting online, light painting software, light painting tools, light painting photography, light painting tutorials, webcam, photography, photo app, chrome app, android, iOS, long exposure")
 
-		meta(property="og:url" content="http://lightpaintlive.com")
+		meta(property="og:url" content="https://lightpaintlive.com")
 		meta(property="og:site_name" content="Lightpaint Live")
 		meta(property="og:type" content="website")
-		meta(property="og:image" content="http://lightpaintlive.com/assets/images/og-image.jpg")
+		meta(property="og:image" content="https://lightpaintlive.com/assets/images/og-image.jpg")
 		meta(property="og:description" content="Real-time light painting software.")
 		meta(property="fb:app_id" content="331545326882067")
 
@@ -34,7 +34,6 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 				nav
 					a(data-scroll href='#mercury') mercury
 					a(data-scroll href='#open-source') open-source
-					//- a(data-scroll href='#faq') faq
 					a(data-scroll href='#story') story
 
 
@@ -141,20 +140,6 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 							span  Programmable 60-led RGB strips. Easy. 
 
 
-					//- .sub-section.gallery
-						.filmstrip
-							.thumb-wrapper
-								.thumbs
-									each path in ['1423315019342_fin_1920', '1425928789731_fin_1920', '1425999379410_fin_1920', '1426010653835_fin_1920','1426085185659_fin_1920','1424879158174_fin_1920','1425932886285_fin_1920','1426002321059_fin_1920','1426074957472_fin_1920','1426089951222_fin_1920']
-										img(src="./assets/images/gallery/#{path}_thumb.jpg" data-src=path)
-
-							.left.button
-								span &lt;
-							.right.button
-								span &gt;
-	
-
-
 				section#open-source
 					h1 open source
 					p Here are some open-source (free!) light painting programs. LPL doesn't actively maintain these projects, but hopefully they will serve you well.
@@ -164,11 +149,6 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 							img(src='assets/images/lpl-heavy-icon.png')
 							h3 LPL Heavy
 							span The original LPL program for Mac/Windows. #[a.shiny(href='https://github.com/positlabs/lpl-heavy' target='_blank') View on GitHub.]
-
-						//- li
-							img(src='assets/images/android-icon.svg')
-							h3 LPL Android
-							span Light painting app for Android devices. #[a.shiny(href='https://github.com/positlabs/LightPainter' target='_blank') View on GitHub.]
 
 						li
 							img(src='assets/images/processing-icon.svg')
