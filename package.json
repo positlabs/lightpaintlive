@@ -1,8 +1,12 @@
 {
   "name": "lightpaintlive",
   "version": "1.0.0",
-  "description": "lightpaintlive ==============",
+  "description": "lightpaintlive",
   "main": "gulpfile.js",
+  "scripts": {
+    "serve": "python -m SimpleHTTPServer",
+    "deploy": "git subtree push --prefix dist origin gh-pages"
+  },
   "dependencies": {
     "backbone": "^1.1.2",
     "browserify": "^6.3.3",
@@ -30,9 +34,6 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
     "zepto": "0.0.4"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
