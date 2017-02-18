@@ -1,0 +1,145 @@
+// EASINGS
+
+@ease-out-ex: cubic-bezier(.15, .75, .49, .93);
+
+// UTIL MIXINS
+
+.pos (@x : 0, @y: 0, @zi : 0, @p : absolute) {
+	position: @p;
+	top: @y;
+	left: @x;
+	z-index: @zi;
+}
+
+.fullwindow () {
+	width: 100%;
+	height: 100%;
+}
+
+.coverbg (@url) {
+	background: url(@url) no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.bkgdCover {
+	-webkit-background-size: 100% 100%;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.bkgdCoverAll (@params) {
+	background: url(@params) no-repeat center center;
+	-webkit-background-size: 100% 100%;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+// CREATING COLOR RECTANGLES
+
+.rect (@w, @h, @c : rgba(255, 255, 255, 0.5)) {
+	content: "";
+	display: block;
+	position: absolute;
+	width: @w;
+	height: @h;
+	background-color: @c;
+}
+
+// MISC VENDOR PREFIXES
+
+.border-box () {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+}
+
+.box-shadow (@params) {
+	-moz-box-shadow: @params;
+	-webkit-box-shadow: @params;
+	-ms-box-shadow: @params;
+	box-shadow: @params;
+}
+
+// ANIMATION + TRANSITION + TRANSFORM
+
+.transition (@params) {
+	transition: @params;
+	-webkit-transition: @params;
+	-moz-transition: @params;
+	-ms-transition: @params;
+}
+
+.transform (@params) {
+	transform: @params;
+	-webkit-transform: @params;
+	-moz-transform: @params;
+	-ms-transform: @params;
+}
+
+.transformGPU (@params: "") {
+	transform: translateZ(0) @params;
+	-webkit-transform: translateZ(0) @params;
+	-moz-transform: translateZ(0) @params;
+	-ms-transform: translateZ(0) @params;
+}
+
+.perspective (@param) {
+	perspective: @param;
+	-webkit-perspective: @param;
+	-moz-perspective: @param;
+	-ms-perspective: @param;
+}
+
+.perspective-origin (@params) {
+	perspective-origin: @params;
+	-webkit-perspective-origin: @params;
+	-moz-perspective-origin: @params;
+	-ms-perspective-origin: @params;
+}
+
+.transform-origin (@params) {
+	transform-origin: @params;
+	-webkit-transform-origin: @params;
+	-moz-transform-origin: @params;
+	-ms-transform-origin: @params;
+}
+
+.animation (@params) {
+	-webkit-animation: @params;
+	-ms-animation: @params;
+	-moz-animation: @params;
+	animation: @params;
+}
+
+.animation-fill-mode (@params) {
+	-webkit-animation-fill-mode: @params;
+	-moz-animation-fill-mode: @params;
+	-ms-animation-fill-mode: @params;
+	animation-fill-mode: @params;
+}
+
+.backface-visibility (@value) {
+	backface-visibility: @value;
+	-webkit-backface-visibility: @value;
+	-moz-backface-visibility: @value;
+	-ms-backface-visibility: @value;
+}
+
+  /**
+  *  @param val - none, text, all
+  */
+.user-select(@val) {
+  user-select: @val;
+  -ms-user-select: @val;
+  -webkit-user-select: @val;
+  -khtml-user-select: @val;
+  -moz-user-select: @val;
+  -webkit-touch-callout: @val;
+  -webkit-user-drag: @val;
+}
