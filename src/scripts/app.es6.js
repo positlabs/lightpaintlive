@@ -22,26 +22,6 @@ export default class App {
 		this.$footer = $('footer')
 		this.$scrollableContent = $('.scrollable-content')
 
-		checkAutoplaySupport()
-		setTimeout(()=>{ // waiting for other higher priority stuff to load
-
-			var bgvid = `
-				<video id="bg-video" autoplay loop muted>
-					<source src="assets/grinder.webm" type="video/webm">
-					<source src="assets/grinder.mp4" type="video/mp4">
-				</video>
-			`
-
-			$('.video-container')[0].innerHTML += bgvid
-			setTimeout(()=>{
-				var vid = document.getElementById('bg-video')
-				vid.addEventListener('play', ()=>{
-					vid.playbackRate = .5
-				})
-			}, 1)
-
-		}, 6000)
-
 		window.addEventListener('resize', (e)=>this.onResize(e))
 		this.onResize()
 	}

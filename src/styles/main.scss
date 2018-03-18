@@ -251,13 +251,13 @@ section#mercury {
 	.btn {
 		
 		.icon {
-			background-image: url(assets/images/chrome-icon.svg);
+			background-image: url(assets/images/desktop.png);
 			@include transition(all 1s $ease-out-quint);
 		}
 
 		&:hover {
 			.icon {
-				@include transform(rotate(-1rad));
+				@include transform(scale(1.1));
 			}
 		}
 	}
