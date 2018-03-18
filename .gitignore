@@ -4,11 +4,4 @@ node_modules/
 npm-debug.log
 firebase-debug.log
 
-dist/download-mercury.html
-dist/footer.html
-dist/head.html
-dist/index.html
-dist/nav.html
-dist/privacy.html
-dist/main.js
-dist/main.css
+dist/
