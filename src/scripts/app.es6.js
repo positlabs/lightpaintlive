@@ -3,10 +3,7 @@ import MercurySection from './views/mercury-section.es6.js'
 import FooterView from './views/footer-view.es6.js'
 import HeaderView from './views/header-view.es6.js'
 import './analytics.js'
-
 import checkAutoplaySupport from './lib/is-autoplay-supported.js'
-
-// init backbone
 import '../../node_modules/zepto/zepto.min.js' // zepto's package.json is not working...
 import _ from 'lodash'; window._ = _
 import Backbone from 'backbone'
@@ -14,11 +11,7 @@ Backbone.$ = $
 
 export default class App {
 
-	// https://github.com/thlorenz/es6ify#supported-es6-features
-
 	constructor(){
-		// console.log('app.constructor');
-
 		this.headerView = new HeaderView()
 		this.headerView.on('resize', ()=>this.onResize)
 
@@ -51,11 +44,9 @@ export default class App {
 
 		window.addEventListener('resize', (e)=>this.onResize(e))
 		this.onResize()
-
 	}
 
 	onResize(){
-		console.log('app.onResize')
 		this.$scrollableContent.css({
 			height: window.innerHeight - this.$footer.height() - this.$header.height(),
 			top: this.$header.height()

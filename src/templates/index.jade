@@ -1,41 +1,8 @@
 doctype html
 html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
-
-	head
-		title LIGHTPAINT LIVE
-		
-		link(href="main.css" type="text/css" rel="stylesheet")
-		link(rel="icon" type="image/png" href="assets/images/mercury-logo.png")
-
-		link(href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css')
-		link(href='https://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css')
-
-		link(rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/bphfkpkoljdicakaokfbjiaamholpgjf")
-
-		meta(name="keywords" content="light painting, live light painting, paint live, light paint live, light painting online, light painting software, light painting tools, light painting photography, light painting tutorials, webcam, photography, photo app, chrome app, android, iOS, long exposure")
-
-		meta(property="og:url" content="https://lightpaintlive.com")
-		meta(property="og:site_name" content="Lightpaint Live")
-		meta(property="og:type" content="website")
-		meta(property="og:image" content="https://lightpaintlive.com/assets/images/og-image.jpg")
-		meta(property="og:description" content="Real-time light painting software.")
-		meta(property="fb:app_id" content="331545326882067")
-
-		meta(name="viewport" content="width=device-width, initial-scale=1.0")
-
+	include head
 	body
-
-		header
-			.wrapper
-				#lpl-logo
-				.logo-type
-					span LIGHTPAINT
-					span &nbsp;LIVE
-				nav
-					a(data-scroll href='#mercury') mercury
-					a(data-scroll href='#open-source') open-source
-					a(data-scroll href='#story') story
-
+		include nav
 
 		.scrollable-content
 			.wrapper
@@ -48,15 +15,13 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 						a(href='https://play.google.com/store/apps/details?id=com.lightpaintlive.mercury' target='_blank') Mercury Android
 
 				section#mercury
-					h2 Mercury #[span on Chrome Desktop]
-					p A webcam app for light painting in real-time. Runs on Chrome for Mac &amp; Windows. Available in two flavors.
+					h2 Mercury #[span on Desktop]
+					p A webcam app for light painting in real-time. Now for Mac &amp; Windows. 
+					p #[strong Update: Google recently closed the Chrome app store, so Mercury Pro is FREE until further notice.]
 					.mercury-btns
 						.launch-btn.btn
 							.icon
-							a Mercury
-						.launch-pro-btn.btn
-							.icon
-							a Mercury Pro
+							a(href='/download-mercury.html') Mercury Pro
 						span.try ...or try the 
 							a(class='shiny' href='https://positlabs.github.io/LPLMercury/demo/' target='_blank') Mercury Demo
 					iframe(class="video" src="//www.youtube.com/embed/qO7gYBkJjow" frameborder="0" allowfullscreen)
@@ -67,15 +32,11 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 						h2 light modes
 						p Mercury has 3 modes for capturing light. 
 
-						//- video.mode(loop autoplay muted)
-							source(src="assets/light.mp4" type="video/mp4")
-							source(src="assets/light.webm" type="video/webm")
 						img.mode(src="assets/images/light.gif", class="gif")
 
 						.buttons
 							.mode-btn.selected(data-type="light") light
 							.mode-btn(data-type="fade") fade
-							//- .mode-btn(data-type="dark") dark
 							.mode-btn(data-type="bloom") bloom
 
 						.descriptions
@@ -184,26 +145,7 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 								| Now, he's a senior interactive developer at #[a.shiny(href='http://toolofna.com' target='_blank') Tool of North America.]
 							p Email: #[a.shiny(href='mailto:josh@lightpaintlive.com' target='_blank') josh@lightpaintlive.com ]
 
-
-
-		footer
-			.wrapper
-				a.shiny(target="_blank" href="mailto:josh@lightpaintlive.com") contact support
-				.fb-holder
-					.fb-like(data-href="http://www.facebook.com/LightPaintLive" data-layout="button_count" data-width="150" data-colorscheme="dark" data-font="segoe ui")
-
-		.video-container
-			//- video#bg-video(data-src="assets/grinder" muted loop)
-				//- source(src='assets/grinder.webm' type='video/webm')
-				//- source(src='assets/grinder.mp4' type='video/mp4')
-
-		script.
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-			ga('create', 'UA-28885410-1', 'auto');
-			ga('send', 'pageview');
+		include footer
 
 		script(src="main.js" type="text/javascript")
 
