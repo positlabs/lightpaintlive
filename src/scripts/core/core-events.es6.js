@@ -1,7 +1,6 @@
-import Backbone from 'backbone';
-
+import Backbone from 'backbone'
 export default class CoreEvents {
 	constructor(){
-		Object.assign(this, Backbone.Events);
+		Object.assign(this, Backbone.Events)
 	}
 }

@@ -6,10 +6,6 @@ $orange: #6ce4ed;
 html, body {
 	background-color: #151515;
 	color: white;
-	height: 100%; width: 100%;
-	overflow: hidden;
-	position: absolute;
-	top: 0; left: 0;
 }
 
 p, span, ul, a {
@@ -52,16 +48,6 @@ a.shiny {
 	
 }
 
-// main content block
-.scrollable-content {
-	width: 100%; height: 100%;
-	position: absolute;
-	top: 100px;
-	overflow-x: hidden; overflow-y: auto;
-	@include calc(height, '100% - 132px');
-	-webkit-overflow-scrolling: touch;
-}
-
 // for centering, sizing content
 .wrapper {
 	width: 90%;
@@ -70,7 +56,6 @@ a.shiny {
 }
 
 footer, header {
-	position: absolute;
 	width: 100%;
 	background: black;
 	z-index: 1;
@@ -78,7 +63,6 @@ footer, header {
 }
 
 header {
-	top: 0;
 	height: 100px;
 	line-height: 100px;
 
@@ -179,13 +163,9 @@ h3 {
 }
 
 footer {
-	
-	bottom: 0;
 	height: 32px;
-
 	.fb-holder {
 		display: inline-block;
-		float: left;
 		margin-top: 6px;
 	}
 	a {
@@ -333,9 +313,7 @@ section#mercury {
 
  	.sub-section.gallery {
  		text-align: center;
- 		.imgur-embed {
-
- 		}
+ 		// .imgur-embed {}
  	}
 
 }
@@ -347,23 +325,6 @@ section#mercury {
 
 	p {
 		padding-left: 40px;
-	}
-}
-
-section#open-source {
-	li {
-		margin-top: 20px;
-		img {
-			position: absolute;
-			height: 54px;
-		}
-		h3, span {
-			padding-left: 70px;
-		}
-		span {
-			// line-height: 36px;
-			display: block;
-		}
 	}
 }
 
@@ -397,15 +358,6 @@ section#story {
 	display: block;
 }
 
-video#bg-video {
-	position: absolute;
-	@include transform(translate3d(-50%, -50%, 0));
-	top: 50%; left: 50%;
-    min-width: 100%; min-height: 100%;
-	opacity: .15;
-}
-
-
-#download-mercury .scrollable-content {
-	top: 140px;
+#download-mercury {
+	h1 { margin-top: 80px; }
 }

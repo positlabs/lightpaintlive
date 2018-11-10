@@ -5,7 +5,9 @@
   "main": "gulpfile.js",
   "scripts": {
     "serve": "python -m SimpleHTTPServer",
-    "deploy": "git subtree push --prefix dist origin gh-pages"
+    "deploy": "git subtree push --prefix dist origin gh-pages",
+    "build": "gulp",
+    "watch": "gulp watch"
   },
   "dependencies": {
     "backbone": "^1.1.2",
@@ -13,7 +15,7 @@
     "colors": "^1.0.3",
     "del": "^0.1.3",
     "es6ify": "^1.5.1",
-    "gulp": "^3.8.10",
+    "firebase": "^5.5.8",
     "gulp-if": "^1.2.5",
     "gulp-jade": "^0.10.0",
     "gulp-plumber": "^0.6.6",
@@ -44,5 +46,8 @@
   "bugs": {
     "url": "https://github.com/positlabs/lightpaintlive/issues"
   },
-  "homepage": "https://github.com/positlabs/lightpaintlive"
+  "homepage": "https://github.com/positlabs/lightpaintlive",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
