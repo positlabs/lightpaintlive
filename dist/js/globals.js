@@ -148,7 +148,7 @@ eval("\n/**\n * When source maps are enabled, `style-loader` uses a link element
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\")\n__webpack_require__(/*! ../styles/common.scss */ \"./src/styles/common.scss\")\n\n//# sourceURL=webpack:///./src/js/globals.js?");
+eval("window.$ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\")\n__webpack_require__(/*! ../styles/common.scss */ \"./src/styles/common.scss\")\n\n//# sourceURL=webpack:///./src/js/globals.js?");
 
 /***/ }),
 

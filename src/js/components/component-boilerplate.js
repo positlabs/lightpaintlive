@@ -7,7 +7,8 @@
 import {html} from '@polymer/lit-element'
 import {default as ComponentBase} from './component-base'
 const componentName = 'a-component'
-const style = require(`../${componentName}.scss`)
+require(`../../styles/components/${componentName}.scss`)
+
 
 class AComponent extends ComponentBase {
 

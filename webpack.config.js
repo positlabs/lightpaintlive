@@ -33,6 +33,18 @@ const config = {
     module: {
         rules: [
             pug,
+            // {
+            //     test: /src\/styles\/components\/*\.(s*)(c|a)ss$/,
+            //     use: [
+            //         { loader: 'raw-loader' }, // use raw to get the string for injecting in shadow dom
+            //         // { loader: 'style-loader' },
+            //         {
+            //             loader: 'css-loader',
+            //             options: {url: false}
+            //         },
+            //         { loader: 'sass-loader' }
+            //     ]
+            // },
             {
                 test: /\.(s*)(c|a)ss$/,
                 use: [
@@ -41,9 +53,7 @@ const config = {
                     { loader: 'style-loader' },
                     {
                         loader: 'css-loader',
-                        options: {
-                            url: false
-                        }
+                        options: {url: false}
                     },
                     { loader: 'sass-loader' }
                 ]

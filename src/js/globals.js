@@ -1,2 +1,2 @@
-require('jquery')
+window.$ = require('jquery')
 require('../styles/common.scss')
