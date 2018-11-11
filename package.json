@@ -22,10 +22,14 @@
   },
   "homepage": "https://github.com/positlabs/lightpaintlive",
   "devDependencies": {
+    "css-loader": "^1.0.1",
     "glob": "^7.1.3",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.10.0",
     "pug-html-loader": "^1.1.5",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   }

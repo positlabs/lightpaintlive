@@ -1,7 +1,6 @@
-@import '../../node_modules/node-bourbon/assets/stylesheets/_bourbon.scss';
 @import './normalize.scss';
 @import './mixins.scss';
-$orange: #6ce4ed;
+@import './vars.scss';
 
 html, body {
 	background-color: #151515;
@@ -25,24 +24,24 @@ a {
 
 a.shiny {
 	text-decoration: none;
-	color: $orange;
+	color: $primary;
 	position: relative;
-	@include transition(all .2s $ease-out-cubic);
+	transition: all .2s $ease-out-cubic;
 
 	&:after {
 		content:'';
 		position: absolute;
 		top: 2px; left: 0;
 		width: 100%; height: 100%;
-		border-bottom: 0px solid $orange;
-		@include transition(all .2s $ease-out-cubic);
+		border-bottom: 0px solid $primary;
+		transition: all .2s $ease-out-cubic;
 		z-index: -1;
 	}
 
 	&:hover {
 		color: white;
 		&:after {
-			border-bottom: 3px solid $orange;
+			border-bottom: 3px solid $primary;
 		}
 	}
 	
@@ -77,7 +76,7 @@ header {
 	.logo-type {
 		display: block;
 		float: left;
-		@include user-select(none);
+		user-select: none;
 		cursor: default;
 		span {
 			@include font-oswald(22px, 300);
@@ -91,7 +90,7 @@ header {
 	nav {
 		float: right;
 		a {
-			@include transition(.2s all);
+			transition: .2s all;
 			display: block;
 			float: left;
 			color: white;
@@ -100,10 +99,10 @@ header {
 			margin-left: 20px;
 			@include font-oswald(14px, 300);
 			line-height: 100px;
-			border-bottom: 0px solid $orange;
+			border-bottom: 0px solid $primary;
 			&:hover {
-				border-bottom: 3px solid $orange;
-				color: $orange;
+				border-bottom: 3px solid $primary;
+				color: $primary;
 			}
 		}
 	}
@@ -195,7 +194,7 @@ section {
 	text-transform: uppercase;
 	cursor: pointer;
 	padding: 0px 10px 0px 50px;
-	border-left: 3px solid $orange;
+	border-left: 3px solid $primary;
 
 	margin-right: 20px;
 	margin-bottom: 20px;
@@ -219,146 +218,7 @@ section {
 	}
 }
 
-section#mobile {
-	width: 100%;
-	overflow: hidden;
-	.btn .icon {
-		background-image: url(assets/images/android-icon.svg);
-	}
-}
 
-section#mercury {
-	
-	.btn {
-		
-		.icon {
-			background-image: url(assets/images/desktop.png);
-			@include transition(all 1s $ease-out-quint);
-		}
-
-		&:hover {
-			.icon {
-				@include transform(scale(1.1));
-			}
-		}
-	}
-
-	.launch-btn {
-		@include user-select(none);
-	}
-
-	.try {
-		line-height: 50px;
-		margin-left: 10px;
-		display: inline-block;
-	}
-
-	iframe {
-		margin-top: 40px;
-		margin-bottom: 20px;
-		width: 100%;
-		height: auto;
-	}
-
-	.sub-section {
-		padding-top: 20px;
-		padding-bottom: 10px;
-		clear: both;
-	}
-
-	.sub-section.modes {
-		img.mode,
-		video.mode {
-			float: left;
-			width: 240px; height: 240px;
-			margin-right: 20px;
-		}
-
-		.descriptions {
-			p {
-				display: none;
-			}
-			p.selected {
-				display: block;
-			}
-		}
-
-		.buttons {
-			.mode-btn {
-				margin-right: 20px;
-				padding: 5px;
-				border-bottom: 0px solid $orange;
-				cursor: pointer;
-				display: inline-block;
-				text-transform: uppercase;
-				font-size: .9em;
-				@include user-select(none);
-				&:hover {
-
-				}
-				&.selected {
-					color: $orange;
-					border-bottom: 3px solid $orange;
-				}
-			}
-		}
-
-		@media (max-width: 720px){
-			img.mode,
-			video.mode {
-				width: 100%; height: auto;
-				margin-bottom: 20px;
-			}
-		}
-	}
-
- 	.sub-section.gallery {
- 		text-align: center;
- 		// .imgur-embed {}
- 	}
-
-}
-
-.sub-section.faq {
-	h3 {
-		margin-top: 30px;
-	}
-
-	p {
-		padding-left: 40px;
-	}
-}
-
-section#story {
-	.person {
-		margin-bottom: 20px;
-		overflow: hidden;
-		h3 {
-			padding-top: 20px;
-		}
-		img {
-			float: left;
-			margin-right: 20px;
-			margin-top: 20px;
-		}
-		.content-block {
-			float: left;
-			max-width: 540px;
-		}
-	}
-}
-
-.video-container {
-	display: none;
-    position: absolute;
-    height: 100%; width: 100%;
-    overflow: hidden;
-	z-index: -1;
-}
-.autoplay .video-container {
-	display: block;
-}
-
-#download-mercury {
-	h1 { margin-top: 80px; }
-}
+// #download-mercury {
+// 	h1 { margin-top: 80px; }
+// }
