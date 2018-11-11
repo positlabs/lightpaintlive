@@ -4,11 +4,11 @@ export default class MercurySection extends CoreView {
 
 	constructor(){
 		this.setElement($('#mercury'))
-		this.props = {
-			events: {
-				'click 		.mode-btn': 		'onClickModeBtn',
-			}
-		}
+		// this.props = {
+		// 	events: {
+		// 		'click 		.mode-btn': 		'onClickModeBtn',
+		// 	}
+		// }
 		super()
 	}
 

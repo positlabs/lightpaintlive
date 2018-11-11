@@ -1,9 +1,9 @@
 doctype html
 html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
-	include head
+	head
+		include _head
 	body
-		//- .scrollable-content
-		include nav
+		include _nav
 		.wrapper
 
 			section#mercury
@@ -18,22 +18,6 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 						a(href='./download-mercury-pro.html') Mercury Pro (buy)
 				iframe(class="video" src="//www.youtube.com/embed/qO7gYBkJjow" frameborder="0" allowfullscreen)
 			
-				//- .sub-section.modes
-					h2 light modes
-					p Mercury has 3 modes for capturing light. 
-
-					img.mode(src="assets/images/light.gif", class="gif")
-
-					.buttons
-						.mode-btn.selected(data-type="light") light
-						.mode-btn(data-type="fade") fade
-						.mode-btn(data-type="bloom") bloom
-
-					.descriptions
-						p.light.selected Only captures the brightest light. Allows painting for a very long time without over-exposing the picture.
-						p.fade Used for fading the current painting.
-						p.bloom Simulates traditional light painting.
-
 				//- .sub-section.gallery
 					.imgur-embed
 						blockquote(class="imgur-embed-pub" lang="en" data-id="a/WpgfK")
@@ -68,7 +52,7 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 						| it will use the maximum exposure, which makes the video very noisy (like high ISO). 
 						| Use your webcam's driver software to control settings on the webcam, or use a universal webcam controller 
 						| like #[a.shiny(href='https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12' target='_blank') Webcam&nbsp;Settings] (Mac).
-						| #[a.shiny](https://obsproject.com/)OBS also has webcam controls.
+						| #[a.shiny(href='https://obsproject.com/')]OBS also has webcam controls.
 
 					h3 What webcam should I use?
 					p We recommend Logitech webcams, like the #[a.shiny(href='https://www.amazon.com/Logitech-BRIO-Conferencing-Recording-Streaming/dp/B01N5UOYC4' target='_blank') Brio] or #[a.shiny(href='https://www.amazon.com/Logitech-Widescreen-Calling-Recording-Desktop/dp/B006JH8T3S' target='_blank') C920]
@@ -102,6 +86,6 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 							| Now, he's a senior interactive developer at #[a.shiny(href='http://toolofna.com' target='_blank') Tool of North America.]
 						p Email: #[a.shiny(href='mailto:josh@lightpaintlive.com' target='_blank') josh@lightpaintlive.com ]
 
-		include footer
+		include _footer
 
 		script(src="main.js" type="text/javascript")
