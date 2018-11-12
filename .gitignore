@@ -3,5 +3,6 @@
 node_modules/
 npm-debug.log
 firebase-debug.log
+dist/js
 dist/*.html
 !dist/googleda3c10baf778c2f2.html

@@ -4,15 +4,15 @@
 lpl-landing {
 
     section#mercury {
-        
         .btn {
-            
+            border-radius: 2px;
+            background-color: #ddd;
             .icon {
                 background-image: url('assets/images/desktop.png');
-                transition: all 1s $ease-out-quint;
+                transition: all .3s $ease-out-quint;
             }
-
             &:hover {
+                background-color: white;
                 .icon {
                     transform: scale(1.1);
                 }

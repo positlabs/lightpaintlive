@@ -4,40 +4,4 @@ html(lang="en" xmlns:fb="http://ogp.me/ns/fb#")
 		include _head
 	body#download-mercury
 		include _nav
-		script(
-			src="https://code.jquery.com/jquery-3.2.1.min.js"
-			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-			crossorigin="anonymous")
-
-		.wrapper
-			h1 Your Mercury download is starting!
-			p If it fails, you can #[a.shiny(id="manual-dl") click here] to manually start it.
-			p Your OS might block the installation. Here are instructions on how to get around that. 
-				a.shiny(href="http://kb.mit.edu/confluence/display/istcontrib/Allow+application+installations+and+temporarily+disable+Gatekeeper+in+OS+X+10.9+and+up") Mac
-				span  - 
-				a.shiny(href="https://www.windowscentral.com/how-fix-app-has-been-blocked-your-protection-windows-10") Windows
-		script.
-			$.get('https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/latest.json', {dataType: 'jsonp'}, function(data){
-				data = JSON.parse(data)
-				console.log(data)
-				var url
-				var isMac = navigator.platform === 'MacIntel'
-				var isWin = navigator.platform.indexOf('Win') !== -1
-				// isWin = true; isMac = false;
-				// isWin = false; isMac = false;
-				if(isMac){
-					url = 'https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/'+data.version+'/lpl-mercury-'+data.version+'.dmg'
-				}else if(isWin){
-					url = 'https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/'+data.version+'/lpl-mercury-'+data.version+'+Setup.exe'
-				}
-				if(url){
-					window.location = url
-					document.querySelector('#manual-dl').setAttribute('href', url)
-					// document.body.innerText = 'Downloading...'
-				}else {
-					// document.body.innerText = 'Sorry, this platform is not supported. Try again on Mac or Windows.'
-					alert('Sorry, this platform is not supported. Try again on Mac or Windows.')
-				}
-			})
-
 		//- include footer

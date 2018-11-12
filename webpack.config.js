@@ -5,7 +5,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const entry = {}
-;(['index', 'globals']).forEach(e => {
+;(['index', 'globals', 'download-mercury']).forEach(e => {
     entry[e] = `./src/js/${e}.js`
 })
 
