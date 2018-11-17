@@ -106,7 +106,7 @@ class LPLDL extends ComponentBase {
 			<div class="wrapper">
 				<div id="auth-ui" class="ui">
 					<h2>Please log in to purchase or access downloads</h2>
-					<div id="customBtn" @click=${this.onClickLogin}>
+					<div id="login-btn" @click=${this.onClickLogin}>
 						<span class="icon"></span>
 						<span class="buttonText">Login</span>
 					</div>

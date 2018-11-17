@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "lightpaintlive"
+  },
+  "targets": {
+    "lightpaintlive": {
+      "hosting": {
+        "dev": [
+          "lightpaintlive-dev"
+        ],
+        "prod": [
+          "lightpaintlive"
+        ]
+      }
+    }
   }
 }
