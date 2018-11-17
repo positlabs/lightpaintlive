@@ -1,3 +1,11 @@
+
+/*
+
+	TODO logout button
+
+
+*/
+
 import {html} from '@polymer/lit-element'
 import {default as ComponentBase} from './component-base'
 const componentName = 'lpl-dl'
@@ -15,30 +23,45 @@ const config = {
 }
 
 class LPLDL extends ComponentBase {
-
+	
 	static get properties() {
 		return {
 			pro: {type: Boolean},
 		}
 	}
-
+	
 	constructor() {
 		super()
-		if(!this.pro){
-			this.download()
-		}else{
-			this.showAuth()
-		}
+	}
+	
+	async showAuth(){
+		this.showUI('auth')
+		firebase.initializeApp(config)
+		await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
+		firebase.auth().onAuthStateChanged((user) => {
+			if (user) {
+				// User is signed in.
+				const {displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData} = user
+				console.log({displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData})
+				// TODO handle user signed in. get user purchase status from db
+				this.showUI('buy')
+				// this.showUI('download')
+			} else {
+				// User is signed out.
+			}
+		})
 	}
 
-	showAuth(){
-		firebase.initializeApp(config)
+	showUI(name){
+		console.log('showUI', name, this.$(`#${name}-ui`))
+		this.$('.ui').css('display', 'none')
+		this.$(`#${name}-ui`).css('display', 'block')
 	}
 
 	download(){
-		// TODO show download messaging
+		this.showUI('download')
 		// TODO create another release target for v3
-		$.get('https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/latest.json', {dataType: 'jsonp'}, function(data){
+		$.get('https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/latest.json', {dataType: 'jsonp'}, (data) => {
 			data = JSON.parse(data)
 			console.log(data)
 			var url
@@ -53,21 +76,45 @@ class LPLDL extends ComponentBase {
 			}
 			if(url){
 				window.location = url
-				document.querySelector('#manual-dl').setAttribute('href', url)
+				this.find('#manual-dl').setAttribute('href', url)
 			}else {
 				alert('Sorry, this platform is not supported. Try again on Mac or Windows.')
 			}
 		})
 	}
 
+	onClickLogin(){
+		// console.log('onClickLogin')
+		const provider = new firebase.auth.GoogleAuthProvider()
+		firebase.auth().signInWithPopup(provider)
+		// .then((result) => {
+		// 	console.log(result)
+		// 	// This gives you a Google Access Token. You can use it to access the Google API.
+		// 	var token = result.credential.accessToken
+		// 	var user = result.user
+		// }).catch((error) => {
+		// 	console.error(error)
+		// 	var errorCode = error.code
+		// 	var errorMessage = error.message
+		// 	var email = error.email
+		// 	var credential = error.credential
+		// })
+	}
+
 	render() {
 		return html`
-			<style>${style}</style>
 			<div class="wrapper">
-				<div id="auth-ui">
-					authorize, yo
+				<div id="auth-ui" class="ui">
+					<h2>Please log in to purchase or access downloads</h2>
+					<div id="customBtn" @click=${this.onClickLogin}>
+						<span class="icon"></span>
+						<span class="buttonText">Login</span>
+					</div>
 				</div>
-				<div id="download">
+				<div id="buy-ui" class="ui">
+					purchase, yo
+				</div>
+				<div id="download-ui" class="ui">
 					<h1>Your Mercury download is starting!</h1>
 					<p>If it fails, you can <a class="shiny" id="manual-dl">click here</a> to manually start it.</p>
 					<p>Your OS might block the installation. Here are instructions on how to get around that. <a class="shiny" href="http://kb.mit.edu/confluence/display/istcontrib/Allow+application+installations+and+temporarily+disable+Gatekeeper+in+OS+X+10.9+and+up">Mac</a><span>
@@ -76,30 +123,21 @@ class LPLDL extends ComponentBase {
 			</div>
 		`
 	}
+
+	firstUpdated(){
+		if(!this.attributes.pro){
+			this.download()
+		}else{
+			this.showAuth()
+		}
+	}
 }
 
 customElements.define(componentName, LPLDL)
 export default LPLDL
 
-	// onClickLogin(){
-	// 	// console.log('onClickLogin')
-	// 	const provider = new firebase.auth.GoogleAuthProvider()
-	// 	firebase.auth().signInWithPopup(provider).then((result) => {
-	// 		console.log(result)
-	// 		// This gives you a Google Access Token. You can use it to access the Google API.
-	// 		var token = result.credential.accessToken
-	// 		var user = result.user
-	// 	}).catch((error) => {
-	// 		console.error(error)
-	// 		var errorCode = error.code
-	// 		var errorMessage = error.message
-	// 		var email = error.email
-	// 		var credential = error.credential
-	// 	})
-	// }
 
-
-	// TODO set login state in model
+	// // check login state
 	// firebase.auth().onAuthStateChanged((user) => {
 	// 	if (user) {
 	// 		// User is signed in.
