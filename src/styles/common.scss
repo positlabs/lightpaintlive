@@ -77,10 +77,10 @@ header {
 		display: block;
 		float: left;
 		user-select: none;
-		cursor: default;
 		span {
 			@include font-oswald(22px, 300);
 			line-height: 100px;
+			color: white;
 		}
 		span:first-child {
 			font-weight: 400;

@@ -1,9 +1,12 @@
 
 /*
 
-	TODO logout button
-
-
+	TODO
+		- logout button
+		- test on ssl via localtunnel
+		- handle user signed in. get user purchase status from db and show appropriate ui
+		- request production access to google pay api
+		- create another release target for v3
 */
 
 import {html} from '@polymer/lit-element'
@@ -38,7 +41,7 @@ class LPLDL extends ComponentBase {
 	async showAuth(){
 		this.showUI('auth')
 		firebase.initializeApp(config)
-		// await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
+		await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
 				// User is signed in.
@@ -89,18 +92,13 @@ class LPLDL extends ComponentBase {
 		// console.log('onClickLogin')
 		const provider = new firebase.auth.GoogleAuthProvider()
 		firebase.auth().signInWithPopup(provider)
-		// .then((result) => {
-		// 	console.log(result)
-		// 	// This gives you a Google Access Token. You can use it to access the Google API.
-		// 	var token = result.credential.accessToken
-		// 	var user = result.user
-		// }).catch((error) => {
-		// 	console.error(error)
-		// 	var errorCode = error.code
-		// 	var errorMessage = error.message
-		// 	var email = error.email
-		// 	var credential = error.credential
-		// })
+	}
+	onClickLogout(){
+		firebase.auth().signOut().then(() => {
+			// Sign-out successful.
+		}).catch((error) => {
+			// An error happened.
+		})
 	}
 
 	render() {
@@ -114,7 +112,20 @@ class LPLDL extends ComponentBase {
 					</div>
 				</div>
 				<div id="buy-ui" class="ui">
-					<google-pay></google-pay>
+					<div class='panel'>
+						<h1>Mercury Pro</h1>
+						<h3>$30 for Mac & Windows</h3>
+						<ul>
+							<li>High bit depth colors</li>
+							<li>Decay effect for continuous fade</li>
+							<li>Ghost effect to control light capture</li>
+							<li>Video file input</li>
+							<li>Remote / mobile device controls</li>
+							<li>Pop-out controls</li>
+							<li>Access to all future updates</li>
+						</ul>
+						<google-pay></google-pay>
+					</div>
 				</div>
 				<div id="download-ui" class="ui">
 					<h1>Your Mercury download is starting!</h1>
@@ -137,15 +148,3 @@ class LPLDL extends ComponentBase {
 
 customElements.define(componentName, LPLDL)
 export default LPLDL
-
-
-	// // check login state
-	// firebase.auth().onAuthStateChanged((user) => {
-	// 	if (user) {
-	// 		// User is signed in.
-	// 		const {displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData} = user
-	// 		console.log({displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData})
-	// 	} else {
-	// 		// User is signed out.
-	// 	}
-	// })

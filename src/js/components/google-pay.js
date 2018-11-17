@@ -8,6 +8,9 @@ import {default as ComponentBase} from './component-base'
 const componentName = 'google-pay'
 // require(`../../styles/components/${componentName}.scss`)
 
+const environment = 'TEST'
+// const environment = 'PRODUCTION'
+
 /**
  * Define the version of the Google Pay API referenced when creating your
  * configuration
@@ -48,8 +51,11 @@ const allowedCardAuthMethods = ["PAN_ONLY", "CRYPTOGRAM_3DS"]
 const tokenizationSpecification = {
     type: 'PAYMENT_GATEWAY',
     parameters: {
-        'gateway': 'example',
-        'gatewayMerchantId': 'exampleGatewayMerchantId'
+        // 'gateway': 'example',
+        // 'gatewayMerchantId': 'exampleGatewayMerchantId'
+        "gateway": "stripe",
+        "stripe:version": "2018-10-31",
+        "stripe:publishableKey": "pk_live_jZKKFzftiylue9eSTOKL2Z8g"
     }
 }
 
@@ -143,7 +149,7 @@ class GooglePay extends ComponentBase {
             // @todo a merchant ID is available for a production environment after approval by Google
             // See {@link https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist|Integration checklist}
             // merchantId: '01234567890123456789',
-            merchantName: 'Example Merchant'
+            merchantName: 'Lightpaint Live'
         }
         return paymentDataRequest
     }
@@ -157,7 +163,7 @@ class GooglePay extends ComponentBase {
     getGooglePaymentsClient() {
         if (paymentsClient === null) {
             paymentsClient = new google.payments.api.PaymentsClient({
-                environment: 'TEST'
+                environment
             })
         }
         return paymentsClient
@@ -176,8 +182,8 @@ class GooglePay extends ComponentBase {
             .then((response) => {
                 if (response.result) {
                     this.addGooglePayButton()
-                    // @todo prefetch payment data to improve performance after confirming site functionality
-                    // prefetchGooglePaymentData()
+                    // prefetch payment data to improve performance after confirming site functionality
+                    this.prefetchGooglePaymentData()
                 }
             })
             .catch((err) => {
@@ -212,7 +218,7 @@ class GooglePay extends ComponentBase {
             currencyCode: 'USD',
             totalPriceStatus: 'FINAL',
             // set to cart total
-            totalPrice: '1.00'
+            totalPrice: '30.00'
         }
     }
 
@@ -259,8 +265,14 @@ class GooglePay extends ComponentBase {
      */
     processPayment(paymentData) {
         // show returned data in developer console for debugging
-        console.log(paymentData)
+        console.log('!!!!!!!!!!!!!!!!!!', paymentData)
+        
+        
+        
         // @todo pass payment data response to your gateway to process payment
+
+
+
     }
 }
 
