@@ -10,6 +10,7 @@ import {html} from '@polymer/lit-element'
 import {default as ComponentBase} from './component-base'
 const componentName = 'lpl-dl'
 require(`../../styles/components/${componentName}.scss`)
+import './google-pay'
 
 const FIREBASE_PROJECT_ID = 'lightpaintlive'
 const firebase = require('firebase/app')
@@ -37,13 +38,13 @@ class LPLDL extends ComponentBase {
 	async showAuth(){
 		this.showUI('auth')
 		firebase.initializeApp(config)
-		await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
+		// await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
 				// User is signed in.
 				const {displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData} = user
 				console.log({displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData})
-				// TODO handle user signed in. get user purchase status from db
+				// TODO handle user signed in. get user purchase status from db and show appropriate ui
 				this.showUI('buy')
 				// this.showUI('download')
 			} else {
@@ -61,6 +62,7 @@ class LPLDL extends ComponentBase {
 	download(){
 		this.showUI('download')
 		// TODO create another release target for v3
+		// possibly on firebase
 		$.get('https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/latest.json', {dataType: 'jsonp'}, (data) => {
 			data = JSON.parse(data)
 			console.log(data)
@@ -108,11 +110,11 @@ class LPLDL extends ComponentBase {
 					<h2>Please log in to purchase or access downloads</h2>
 					<div id="login-btn" @click=${this.onClickLogin}>
 						<span class="icon"></span>
-						<span class="buttonText">Login</span>
+						<span class="buttonText">Log in with Google</span>
 					</div>
 				</div>
 				<div id="buy-ui" class="ui">
-					purchase, yo
+					<google-pay></google-pay>
 				</div>
 				<div id="download-ui" class="ui">
 					<h1>Your Mercury download is starting!</h1>
