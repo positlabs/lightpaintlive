@@ -41,7 +41,7 @@ class LPLDL extends ComponentBase {
 	async showAuth(){
 		this.showUI('auth')
 		firebase.initializeApp(config)
-		await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
+		// await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
 				// User is signed in.

@@ -94,12 +94,6 @@ let paymentsClient = null
 
 class GooglePay extends ComponentBase {
 
-    // static get properties() {
-    // 	return {
-    // 		mood: {type: String}
-    // 	}
-    // }
-
     constructor() {
         super()
         window.onGooglePayLoaded = this.onGooglePayLoaded
@@ -110,11 +104,7 @@ class GooglePay extends ComponentBase {
     }
 
     render() {
-        // <script
-        // src="https://pay.google.com/gp/p/js/pay.js"
-        // onload='onGooglePayLoaded'></script>
-        return html `
-            `
+        return html ``
     }
 
     /**
@@ -148,7 +138,7 @@ class GooglePay extends ComponentBase {
         paymentDataRequest.merchantInfo = {
             // @todo a merchant ID is available for a production environment after approval by Google
             // See {@link https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist|Integration checklist}
-            // merchantId: '01234567890123456789',
+            merchantId: '01234567890123456789',
             merchantName: 'Lightpaint Live'
         }
         return paymentDataRequest
@@ -187,8 +177,7 @@ class GooglePay extends ComponentBase {
                 }
             })
             .catch((err) => {
-                // show error in developer console for debugging
-                console.error(err)
+                console.error('isReadyToPay error:', err)
             })
     }
 
@@ -217,7 +206,6 @@ class GooglePay extends ComponentBase {
         return {
             currencyCode: 'USD',
             totalPriceStatus: 'FINAL',
-            // set to cart total
             totalPrice: '30.00'
         }
     }
@@ -228,6 +216,7 @@ class GooglePay extends ComponentBase {
      * @see {@link https://developers.google.com/pay/api/web/reference/client#prefetchPaymentData|prefetchPaymentData()}
      */
     prefetchGooglePaymentData() {
+        console.log('prefetchGooglePaymentData')
         const paymentDataRequest = this.getGooglePaymentDataRequest()
         // transactionInfo must be set but does not affect cache
         paymentDataRequest.transactionInfo = {
@@ -242,18 +231,18 @@ class GooglePay extends ComponentBase {
      * Show Google Pay payment sheet when Google Pay payment button is clicked
      */
     onGooglePaymentButtonClicked() {
+        console.log('onGooglePaymentButtonClicked')
         const paymentDataRequest = this.getGooglePaymentDataRequest()
         paymentDataRequest.transactionInfo = this.getGoogleTransactionInfo()
+        console.log(paymentDataRequest)
 
         const paymentsClient = this.getGooglePaymentsClient()
         paymentsClient.loadPaymentData(paymentDataRequest)
             .then((paymentData) => {
-                // handle the response
                 this.processPayment(paymentData)
             })
             .catch((err) => {
-                // show error in developer console for debugging
-                console.error(err)
+                console.error('loadPaymentData error', err)
             })
     }
 
@@ -264,7 +253,6 @@ class GooglePay extends ComponentBase {
      * @see {@link https://developers.google.com/pay/api/web/reference/object#PaymentData|PaymentData object reference}
      */
     processPayment(paymentData) {
-        // show returned data in developer console for debugging
         console.log('!!!!!!!!!!!!!!!!!!', paymentData)
         
         

@@ -33,13 +33,16 @@ class LPLLanding extends ComponentBase {
             </section>
             <section id="faq">
                 <h1>Frequently asked questions</h1>
+                
                 <h2>Can I use a DSLR with LPL?</h2>
                 <p>Yes, but it requires 3rd party software (like <a class="shiny" href="http://extrawebcam.com/" target="_blank">extrawebcam</a>). Generally the video feed from DSLR to webcam is low
                     resolution and low framerate. Webcams work best because they are made for streaming.</p>
-                <h2>What webcam should I use?</h2>
+                
+                <h2>Which webcam is best?</h2>
                 <p>We recommend Logitech webcams, like the <a class="shiny" href="https://www.amazon.com/Logitech-BRIO-Conferencing-Recording-Streaming/dp/B01N5UOYC4"
                         target="_blank">Brio</a> or <a class="shiny" href="https://www.amazon.com/Logitech-Widescreen-Calling-Recording-Desktop/dp/B006JH8T3S"
                         target="_blank">C920</a></p>
+            
                 <h2>How can I control exposure on my webcam?</h2>
                 <p>Most webcams default to using auto-exposure. This is not ideal for light painting. In complete
                     darkness, it will use the maximum exposure, which makes the video very noisy (like high ISO).
@@ -47,7 +50,7 @@ class LPLLanding extends ComponentBase {
                     controller
                     like <a class="shiny" href="https://itunes.apple.com/us/app/webcam-settings/id533696630?mt=12"
                         target="_blank">Webcam&nbsp;Settings</a> (Mac).
-                    <a class="shiny" href="https://obsproject.com/">OBS</a> also has webcam controls.</p>
+                    <a class="shiny" href="https://obsproject.com/">OBS</a> also has webcam controls on Windows.</p>
             </section>
             <section id="story">
                 <h1>story</h1>
