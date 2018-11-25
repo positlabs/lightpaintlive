@@ -7,7 +7,10 @@
         "firebase.json",
         "**/.*",
         "**/node_modules/**"
-      ]
+      ],
+      "rewrites": [ {
+        "source": "/api/**", "function": "app"
+      } ]
     },
     {
       "target": "prod",
@@ -16,7 +19,10 @@
         "firebase.json",
         "**/.*",
         "**/node_modules/**"
-      ]
+      ],
+      "rewrites": [ {
+        "source": "/api/**", "function": "app"
+      } ]
     }
   ],
   "database": {

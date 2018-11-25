@@ -51,11 +51,11 @@ const allowedCardAuthMethods = ["PAN_ONLY", "CRYPTOGRAM_3DS"]
 const tokenizationSpecification = {
     type: 'PAYMENT_GATEWAY',
     parameters: {
-        // 'gateway': 'example',
-        // 'gatewayMerchantId': 'exampleGatewayMerchantId'
-        "gateway": "stripe",
-        "stripe:version": "2018-10-31",
-        "stripe:publishableKey": "pk_live_jZKKFzftiylue9eSTOKL2Z8g"
+        'gateway': 'example',
+        'gatewayMerchantId': 'exampleGatewayMerchantId'
+        // "gateway": "stripe",
+        // "stripe:version": "2018-10-31",
+        // "stripe:publishableKey": "pk_live_jZKKFzftiylue9eSTOKL2Z8g"
     }
 }
 
@@ -138,7 +138,7 @@ class GooglePay extends ComponentBase {
         paymentDataRequest.merchantInfo = {
             // @todo a merchant ID is available for a production environment after approval by Google
             // See {@link https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist|Integration checklist}
-            merchantId: '01234567890123456789',
+            // merchantId: '01234567890123456789',
             merchantName: 'Lightpaint Live'
         }
         return paymentDataRequest
@@ -253,14 +253,9 @@ class GooglePay extends ComponentBase {
      * @see {@link https://developers.google.com/pay/api/web/reference/object#PaymentData|PaymentData object reference}
      */
     processPayment(paymentData) {
-        console.log('!!!!!!!!!!!!!!!!!!', paymentData)
-        
-        
-        
-        // @todo pass payment data response to your gateway to process payment
-
-
-
+        console.log('paymentData', paymentData)
+        // pass payment data response to your gateway to process payment
+        this.emit('buy', {token: paymentData.paymentMethodData.tokenizationData.token})
     }
 }
 

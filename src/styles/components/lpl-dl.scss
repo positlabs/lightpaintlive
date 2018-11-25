@@ -11,6 +11,20 @@ lpl-dl {
         display: none;
     }
     #download-ui {
+        .dl-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-right: 20px;
+            border-left: 2px solid $primary;
+            border-bottom: 2px solid $primary;
+            border-radius: 3px;
+            cursor: pointer;
+            background: #ddd;
+            color: black;
+            &:hover {
+                background: white;
+            }
+        }
     }
     #auth-ui {
         text-align: center;

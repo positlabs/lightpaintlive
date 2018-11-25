@@ -7,6 +7,7 @@ import {LitElement} from '@polymer/lit-element'
 class ComponentBase extends LitElement {
     find(selector){ return this.querySelector(selector) }
     findAll(selector){ return this.querySelectorAll(selector) }
+    $$(selector){ return this.querySelectorAll(selector) }
     $(selector){
         return $(this.findAll(selector))
     }

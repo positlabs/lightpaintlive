@@ -20,7 +20,7 @@ const firebase = require('firebase/app')
 require('firebase/auth')
 
 // Initialize Firebase
-const config = {
+const firebaseConfig = {
     apiKey: 'AIzaSyBbVEyizlMI9fzmw72Qf6jMrRtAPEfqvhE',
     authDomain: `${FIREBASE_PROJECT_ID}.firebaseapp.com`,
     projectId: FIREBASE_PROJECT_ID,
@@ -40,16 +40,23 @@ class LPLDL extends ComponentBase {
 	
 	async showAuth(){
 		this.showUI('auth')
-		firebase.initializeApp(config)
+		firebase.initializeApp(firebaseConfig)
 		// await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
 				// User is signed in.
 				const {displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData} = user
-				console.log({displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData})
-				// TODO handle user signed in. get user purchase status from db and show appropriate ui
-				this.showUI('buy')
-				// this.showUI('download')
+				this.user = {displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData}
+				console.log(this.user)
+				// handle user signed in. get user purchase status from db and show appropriate ui
+				$.get(`/api/user/${uid}`, (response) => {
+					console.log(response)
+					if(response.user){
+						this.showUI('download')
+					}else{
+						this.showUI('buy')
+					}
+				})
 			} else {
 				// User is signed out.
 			}
@@ -62,8 +69,8 @@ class LPLDL extends ComponentBase {
 		this.$(`#${name}-ui`).css('display', 'block')
 	}
 
-	download(){
-		this.showUI('download')
+	download(type='auto'){
+		// this.showUI('download')
 		// TODO create another release target for v3
 		// possibly on firebase
 		$.get('https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/latest.json', {dataType: 'jsonp'}, (data) => {
@@ -74,6 +81,10 @@ class LPLDL extends ComponentBase {
 			var isWin = navigator.platform.indexOf('Win') !== -1
 			// isWin = true; isMac = false;
 			// isWin = false; isMac = false;
+			if(type !== 'auto'){
+				isMac = type === 'mac'
+				isWin = type === 'win'
+			}
 			if(isMac){
 				url = 'https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/'+data.version+'/lpl-mercury-'+data.version+'.dmg'
 			}else if(isWin){
@@ -81,15 +92,14 @@ class LPLDL extends ComponentBase {
 			}
 			if(url){
 				window.location = url
-				this.find('#manual-dl').setAttribute('href', url)
-			}else {
-				alert('Sorry, this platform is not supported. Try again on Mac or Windows.')
+				// this.find('#manual-dl').setAttribute('href', url)
+			// }else {
+				// alert('Sorry, this platform is not supported. Try again on Mac or Windows.')
 			}
 		})
 	}
 
 	onClickLogin(){
-		// console.log('onClickLogin')
 		const provider = new firebase.auth.GoogleAuthProvider()
 		firebase.auth().signInWithPopup(provider)
 	}
@@ -106,7 +116,7 @@ class LPLDL extends ComponentBase {
 			<div class="wrapper">
 				<div id="auth-ui" class="ui">
 					<h2>Please log in to purchase or access downloads</h2>
-					<div id="login-btn" @click=${this.onClickLogin}>
+					<div id="login-btn">
 						<span class="icon"></span>
 						<span class="buttonText">Log in with Google</span>
 					</div>
@@ -128,10 +138,13 @@ class LPLDL extends ComponentBase {
 					</div>
 				</div>
 				<div id="download-ui" class="ui">
-					<h1>Your Mercury download is starting!</h1>
-					<p>If it fails, you can <a class="shiny" id="manual-dl">click here</a> to manually start it.</p>
-					<p>Your OS might block the installation. Here are instructions on how to get around that. <a class="shiny" href="http://kb.mit.edu/confluence/display/istcontrib/Allow+application+installations+and+temporarily+disable+Gatekeeper+in+OS+X+10.9+and+up">Mac</a><span>
-							- </span><a class="shiny" href="https://www.windowscentral.com/how-fix-app-has-been-blocked-your-protection-windows-10">Windows</a></p>
+					<h1>Download Mercury ${this.pro ? 'Pro' : 'v3'}</h1>
+					<p>
+						<div class='dl-btn' type='mac'><img width='15' src='/assets/images/apple.svg'> MAC INSTALLER</div>
+						<div class='dl-btn' type='win'><img width='12' src='/assets/images/windows.svg'> WIN INSTALLER</div>
+					</p>
+					<p>Your OS might try to block the installation. Here are instructions on how to get around that. <a class="shiny" href="http://kb.mit.edu/confluence/display/istcontrib/Allow+application+installations+and+temporarily+disable+Gatekeeper+in+OS+X+10.9+and+up" target="_blank">Mac</a><span>
+							- </span><a class="shiny" href="https://www.windowscentral.com/how-fix-app-has-been-blocked-your-protection-windows-10" target="blank">Windows</a></p>
 				</div>
 			</div>
 		`
@@ -143,6 +156,38 @@ class LPLDL extends ComponentBase {
 		}else{
 			this.showAuth()
 		}
+		this.$('google-pay').on('buy', (e) => this.onBuy(e.detail.token))
+		this.$('#login-btn').click(this.onClickLogin.bind(this))
+		// this.$('#manual-dl').click(this.download.bind(this))
+		this.$('.dl-btn').click((e) => {
+			const type = e.currentTarget.getAttribute('type')
+			this.download(type)
+		})
+	}
+
+	onBuy(token){
+		const data = {
+			token,
+			email: this.user.email,
+			photoURL: this.user.photoURL,
+			displayName: this.user.displayName,
+			uid: this.user.uid,
+		}
+		console.log(data)
+		$.ajax({
+			url: '/api/buy',
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json; charset=utf-8',
+			dataType: 'json',
+		}, (response) => {
+			console.log(response)
+			this.showUI('download')
+		}).fail((xhr, status, err) => {
+			console.error(err)
+			// handle error
+			alert('payment failed with error: ' + err)
+		})
 	}
 }
 

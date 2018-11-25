@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "lightpaintlive",
   "scripts": {
-    "serve": "cd dist && python -m SimpleHTTPServer",
+    "serve": "firebase serve --only hosting,functions",
     "deploy:prod": "npm run build && firebase deploy --only hosting:prod,functions:prod,database:prod",
     "deploy:dev": "npm run build && firebase deploy --only hosting:dev,functions:dev,database:dev",
     "watch": "webpack --watch --mode development",
@@ -12,8 +12,7 @@
   },
   "dependencies": {
     "firebase": "^5.5.8",
-    "jquery": "^2.1.4",
-    "perfect-scrollbar": "^0.6.8"
+    "jquery": "^2.1.4"
   },
   "repository": {
     "type": "git",
