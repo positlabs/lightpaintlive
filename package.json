@@ -8,7 +8,7 @@
     "deploy:dev": "npm run build && firebase deploy --only hosting:dev,functions:dev,database:dev",
     "watch": "webpack --watch --mode development",
     "build": "webpack --mode production",
-    "localtunnel": "pm2 start ./dev/localtunnel.sh -- lightpaintlive 8000"
+    "localtunnel": "pm2 start ./dev/localtunnel.sh -- lightpaintlive 5000"
   },
   "dependencies": {
     "firebase": "^5.5.8",

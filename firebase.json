@@ -9,7 +9,7 @@
         "**/node_modules/**"
       ],
       "rewrites": [ {
-        "source": "/api/**", "function": "app"
+        "source": "/api/**", "function": "dev"
       } ]
     },
     {
@@ -21,7 +21,7 @@
         "**/node_modules/**"
       ],
       "rewrites": [ {
-        "source": "/api/**", "function": "app"
+        "source": "/api/**", "function": "prod"
       } ]
     }
   ],

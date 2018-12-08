@@ -15,15 +15,21 @@ const componentName = 'lpl-dl'
 require(`../../styles/components/${componentName}.scss`)
 import './google-pay'
 
-const FIREBASE_PROJECT_ID = 'lightpaintlive'
+// const FIREBASE_PROJECT_ID = 'lightpaintlive'
 const firebase = require('firebase/app')
 require('firebase/auth')
 
 // Initialize Firebase
 const firebaseConfig = {
     apiKey: 'AIzaSyBbVEyizlMI9fzmw72Qf6jMrRtAPEfqvhE',
-    authDomain: `${FIREBASE_PROJECT_ID}.firebaseapp.com`,
-    projectId: FIREBASE_PROJECT_ID,
+    // authDomain: `${FIREBASE_PROJECT_ID}.firebaseapp.com`,
+    // authDomain: `${FIREBASE_PROJECT_ID}-dev.firebaseapp.com`,
+    // projectId: FIREBASE_PROJECT_ID,
+	authDomain: "lightpaintlive.firebaseapp.com",
+	databaseURL: "https://lightpaintlive.firebaseio.com",
+	projectId: "lightpaintlive",
+	storageBucket: "lightpaintlive.appspot.com",
+	messagingSenderId: "281319827451"
 }
 
 class LPLDL extends ComponentBase {

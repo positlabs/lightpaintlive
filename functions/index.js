@@ -33,7 +33,6 @@ app.post('/api/buy', (req, res) => {
         amount: 30000,
         currency: 'usd',
         source: req.body.token,
-        // source: "tok_mastercard", // obtained with Stripe.js
         description: 'Mercury Pro'
     }, (err, charge) => {
         if(err) {
@@ -63,4 +62,7 @@ app.get('/api/user/:uid', (req, res) => {
     })
 })
 
-exports.app = functions.https.onRequest(app)
+const func = functions.https.onRequest(app)
+// exports.app = func
+exports.dev = func
+exports.prod = func
