@@ -173,15 +173,15 @@ class LPLDL extends ComponentBase {
 			displayName: this.user.displayName,
 			uid: this.user.uid,
 		}
-		console.log(data)
+		console.log('onBuy', data)
 		$.ajax({
 			url: '/api/buy',
 			type: 'POST',
 			data: JSON.stringify(data),
 			contentType: 'application/json; charset=utf-8',
 			dataType: 'json',
-		}, (response) => {
-			console.log(response)
+		}).done(response => {
+			console.log('buy success', response)
 			this.showUI('download')
 		}).fail((xhr, status, err) => {
 			console.error(err)

@@ -26,6 +26,7 @@ const getUser = (uid) => {
 app.use(express.json({}))
 
 app.post('/api/buy', (req, res) => {
+    if(req.body.token === 'examplePaymentMethodToken') req.body.token = 'tok_mastercard'
     console.log('/api/buy', req.body)
     // submit payment to stripe
     stripe.charges.create({
@@ -47,7 +48,8 @@ app.post('/api/buy', (req, res) => {
                 display_name: req.body.displayName,
                 photo_url: req.body.photoURL
             })
-            res.send('ok')
+            console.log('sending response to /api/buy')
+            res.send({status: 'ok'})
         }
     })
 })
