@@ -68,9 +68,11 @@ header {
 	#lpl-logo {
 		float: left;
 		margin-left: -22px;
-		background-image: url(assets/images/logo-cyan.png);
-		background-size: contain;
+		background-image: url(assets/images/logo-green.jpg);
 		width: 100px; height: 100px;
+		background-size: 80%;
+		background-position: center;
+		background-repeat: no-repeat;
 	}
 
 	.logo-type {
