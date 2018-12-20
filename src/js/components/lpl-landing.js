@@ -24,10 +24,10 @@ class LPLLanding extends ComponentBase {
                 <p>A webcam app for light painting in real-time - for Mac &amp; Windows. </p>
                 <div class="mercury-btns">
                     <div class="pro-btn btn">
-                        <div class="icon"></div><a href="./download-mercury-pro.html">Buy Mercury Pro (V4+)</a>
+                        <div class="icon"></div><a href="./download-mercury-pro.html">Buy Pro (V4+)</a>
                     </div>
                     <div class="launch-btn btn">
-                        <div class="icon"></div><a href="./download-mercury.html">Download Mercury v3</a>
+                        <div class="icon"></div><a href="./download-mercury.html">Download V3</a>
                     </div>
                 </div><iframe class="video" src="//www.youtube.com/embed/qO7gYBkJjow" frameborder="0" allowfullscreen></iframe>
             </section>

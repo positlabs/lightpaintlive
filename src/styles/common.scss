@@ -11,6 +11,7 @@ p, span, ul, a {
 	letter-spacing: 1px;
 	line-height: 1.5;
 	@include font-ubuntu(16px, 300);
+	color: #ddd;
 }
 
 ul, li {
@@ -164,14 +165,14 @@ h3 {
 
 footer {
 	overflow: hidden;
-	height: 32px;
+	height: 45px;
 	.fb-holder {
 		display: inline-block;
-		margin-top: 6px;
+		margin-top: 12px;
 	}
 	a {
 		float: right;
-		line-height: 32px;
+		line-height: 45px;
 	}
 }
 
@@ -195,17 +196,17 @@ section {
 	text-transform: uppercase;
 	cursor: pointer;
 	padding: 0px 10px 0px 50px;
-	border-left: 3px solid $primary;
+	border-left: 2px solid $primary;
+	border-bottom: 2px solid $primary;
+	border-radius: 3px;
 
 	margin-right: 20px;
 	margin-bottom: 20px;
 	
 	.icon {
 		position: absolute;
-		left: 0;
-		top: 0;
-		width: 50px;
-		height: 50px;
+		left: 0; top: 0;
+		width: 50px; height: 50px;
 		z-index: 1;
 		background-size: 35px;
 		background-repeat: no-repeat;
