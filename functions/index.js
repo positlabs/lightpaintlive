@@ -23,6 +23,17 @@ const getUser = (uid) => {
     })
 }
 
+const getUserByEmail = (email) => {
+    return new Promise((resolve, reject) => {
+        db.ref(`/user`).orderByChild('email').equalTo(email).once('value', (snapshot) => {
+            const val = snapshot.val()
+            const key = Object.keys(val)[0]
+            console.log(val[key])
+            resolve(val[key])
+        })
+    })
+}
+
 app.use(express.json({}))
 
 app.post('/api/buy', (req, res) => {
@@ -55,6 +66,16 @@ app.post('/api/buy', (req, res) => {
 
 app.get('/api/user/:uid', (req, res) => {
     getUser(req.params.uid).then((user) => {
+        return res.send({user})
+    }).catch(err => {
+        console.error(err)
+        res.status(500).send(err)
+    })
+})
+
+app.get('/api/user', (req, res) => {
+    console.log('/api/user', req.query.email)
+    getUserByEmail(req.query.email).then((user) => {
         return res.send({user})
     }).catch(err => {
         console.error(err)
