@@ -10,6 +10,9 @@ lpl-dl {
     .ui {
         display: none;
     }
+    ul li {
+        color: #333;
+    }
     #download-ui {
         .dl-btn {
             display: inline-block;
@@ -51,6 +54,7 @@ lpl-dl {
                 display: inline-block;
                 vertical-align: middle;
                 font-family: 'Roboto', sans-serif;
+                color: #333;
             }
         }
     }

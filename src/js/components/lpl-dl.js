@@ -77,10 +77,11 @@ class LPLDL extends ComponentBase {
 
 	download(type='auto'){
 		// this.showUI('download')
-		// TODO create another release target for v3
-		// possibly on firebase
-		$.get('https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/latest.json', {dataType: 'jsonp'}, (data) => {
-			data = JSON.parse(data)
+
+		const version = this.pro ? 4 : 3
+		const manifest = `https://storage.googleapis.com/lightpaintlive.appspot.com/v${version}-latest.json`
+		$.get(manifest, {}, (data) => {
+			// data = JSON.parse(data)
 			console.log(data)
 			var url
 			var isMac = navigator.platform === 'MacIntel'
@@ -91,10 +92,13 @@ class LPLDL extends ComponentBase {
 				isMac = type === 'mac'
 				isWin = type === 'win'
 			}
+			const proString = this.pro ? 'pro-' : ''
 			if(isMac){
-				url = 'https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/'+data.version+'/lpl-mercury-'+data.version+'.dmg'
+				url = `https://storage.googleapis.com/lightpaintlive.appspot.com/builds/mac/lpl-mercury-${proString}${data.version}.dmg`
+				// url = 'https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/'+data.version+'/lpl-mercury-'+data.version+'.dmg'
 			}else if(isWin){
-				url = 'https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/'+data.version+'/lpl-mercury-'+data.version+'+Setup.exe'
+				url = `https://storage.googleapis.com/lightpaintlive.appspot.com/builds/win/lpl-mercury-pro-${proString}${data.version}%20Setup.exe`
+				// url = 'https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/'+data.version+'/lpl-mercury-'+data.version+'+Setup.exe'
 			}
 			if(url){
 				window.location = url

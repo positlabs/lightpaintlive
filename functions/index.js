@@ -27,6 +27,7 @@ const getUserByEmail = (email) => {
     return new Promise((resolve, reject) => {
         db.ref(`/user`).orderByChild('email').equalTo(email).once('value', (snapshot) => {
             const val = snapshot.val()
+            if(!val) return resolve(null)
             const key = Object.keys(val)[0]
             console.log(val[key])
             resolve(val[key])
