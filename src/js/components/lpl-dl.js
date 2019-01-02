@@ -97,7 +97,7 @@ class LPLDL extends ComponentBase {
 				url = `https://storage.googleapis.com/lightpaintlive.appspot.com/builds/mac/lpl-mercury-${proString}${data.version}.dmg`
 				// url = 'https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/'+data.version+'/lpl-mercury-'+data.version+'.dmg'
 			}else if(isWin){
-				url = `https://storage.googleapis.com/lightpaintlive.appspot.com/builds/win/lpl-mercury-pro-${proString}${data.version}%20Setup.exe`
+				url = `https://storage.googleapis.com/lightpaintlive.appspot.com/builds/win/lpl-mercury-${proString}${data.version}%20Setup.exe`
 				// url = 'https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/'+data.version+'/lpl-mercury-'+data.version+'+Setup.exe'
 			}
 			if(url){
