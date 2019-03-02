@@ -13,6 +13,18 @@
       } ]
     },
     {
+      "target": "stage",
+      "public": "dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [ {
+        "source": "/api/**", "function": "stage"
+      } ]
+    },
+    {
       "target": "prod",
       "public": "dist",
       "ignore": [

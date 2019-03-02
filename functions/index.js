@@ -85,6 +85,6 @@ app.get('/api/user', (req, res) => {
 })
 
 const func = functions.https.onRequest(app)
-// exports.app = func
 exports.dev = func
+exports.stage = func
 exports.prod = func

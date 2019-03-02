@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "firebase serve --only hosting,functions",
     "deploy:prod": "npm run build && firebase deploy --only hosting:prod,functions:prod,database:prod",
+    "deploy:stage": "npm run build && firebase deploy --only hosting:stage,functions:stage,database:stage",
     "deploy:dev": "npm run build && firebase deploy --only hosting:dev,functions:dev,database:dev",
     "watch": "webpack --watch --mode development",
     "build": "webpack --mode production",
