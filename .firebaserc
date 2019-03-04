@@ -5,11 +5,14 @@
   "targets": {
     "lightpaintlive": {
       "hosting": {
-        "dev": [
-          "lightpaintlive-dev"
-        ],
         "prod": [
           "lightpaintlive"
+        ],
+        "stage": [
+          "lightpaintlive-stage"
+        ],
+        "dev": [
+          "lightpaintlive-dev"
         ]
       }
     }

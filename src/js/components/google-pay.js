@@ -51,11 +51,11 @@ const allowedCardAuthMethods = ["PAN_ONLY", "CRYPTOGRAM_3DS"]
 const tokenizationSpecification = {
     type: 'PAYMENT_GATEWAY',
     parameters: {
-        'gateway': 'example',
-        'gatewayMerchantId': 'exampleGatewayMerchantId'
-        // "gateway": "stripe",
-        // "stripe:version": "2018-10-31",
-        // "stripe:publishableKey": "pk_live_jZKKFzftiylue9eSTOKL2Z8g"
+        // 'gateway': 'example',
+        // 'gatewayMerchantId': 'exampleGatewayMerchantId'
+        "gateway": "stripe",
+        "stripe:version": "2018-10-31",
+        "stripe:publishableKey": "pk_live_jZKKFzftiylue9eSTOKL2Z8g"
     }
 }
 
