@@ -54,6 +54,7 @@ const tokenizationSpecification = {
         // 'gateway': 'example',
         // 'gatewayMerchantId': 'exampleGatewayMerchantId'
         "gateway": "stripe",
+        "gatewayMerchantId": "10899507662861473370",
         "stripe:version": "2018-10-31",
         "stripe:publishableKey": "pk_live_jZKKFzftiylue9eSTOKL2Z8g"
     }

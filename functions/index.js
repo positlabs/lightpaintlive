@@ -42,6 +42,7 @@ app.post('/api/buy', (req, res) => {
   // console.log('/api/buy', req.body)
   // submit payment to stripe
   stripe.charges.create({
+    // amount: 1000,
     amount: 30000,
     currency: 'usd',
     source: req.body.token,
