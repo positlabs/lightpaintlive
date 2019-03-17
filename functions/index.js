@@ -38,18 +38,20 @@ const getUserByEmail = (email) => {
 app.use(express.json({}))
 
 app.post('/api/buy', (req, res) => {
-  if (req.body.token === 'examplePaymentMethodToken') req.body.token = 'tok_mastercard'
-  // console.log('/api/buy', req.body)
+  // TODO test this for TEST environment
+  let {token} = req.body.paymentMethodData.tokenizationData
+  if (token === 'examplePaymentMethodToken') token = {id: 'tok_mastercard'}
+  console.log('/api/buy', req.body)
   // submit payment to stripe
   stripe.charges.create({
-    // amount: 1000,
-    amount: 30000,
+    // amount: 100,
+    amount: 3000,
     currency: 'usd',
-    source: req.body.token,
-    description: 'Mercury Pro'
+    source: token.id,
+    description: 'Mercury Pro',
   }, (err, charge) => {
     if (err) {
-      res.status(500).send(err.Error)
+      res.status(500).send(err)
       return console.error(err)
     } else {
       console.log(charge)
@@ -69,6 +71,7 @@ app.post('/api/buy', (req, res) => {
 })
 
 app.get('/api/user/:uid', (req, res) => {
+  console.log('/api/user/:uid', req.params)
   getUser(req.params.uid).then((user) => {
     return res.send({
       user

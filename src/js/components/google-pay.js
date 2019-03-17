@@ -6,10 +6,9 @@
 import {html} from '@polymer/lit-element'
 import {default as ComponentBase} from './component-base'
 const componentName = 'google-pay'
-// require(`../../styles/components/${componentName}.scss`)
 
-const environment = 'TEST'
-// const environment = 'PRODUCTION'
+// const environment = 'TEST'
+const environment = 'PRODUCTION'
 
 /**
  * Define the version of the Google Pay API referenced when creating your
@@ -139,7 +138,7 @@ class GooglePay extends ComponentBase {
         paymentDataRequest.merchantInfo = {
             // @todo a merchant ID is available for a production environment after approval by Google
             // See {@link https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist|Integration checklist}
-            // merchantId: '01234567890123456789',
+            merchantId: '10899507662861473370',
             merchantName: 'Lightpaint Live'
         }
         return paymentDataRequest
@@ -255,8 +254,9 @@ class GooglePay extends ComponentBase {
      */
     processPayment(paymentData) {
         console.log('paymentData', paymentData)
+        paymentData.paymentMethodData.tokenizationData.token = JSON.parse(paymentData.paymentMethodData.tokenizationData.token)
         // pass payment data response to your gateway to process payment
-        this.emit('buy', {token: paymentData.paymentMethodData.tokenizationData.token})
+        this.emit('buy', paymentData.paymentMethodData)
     }
 }
 

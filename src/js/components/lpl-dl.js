@@ -166,7 +166,7 @@ class LPLDL extends ComponentBase {
 		}else{
 			this.showAuth()
 		}
-		this.$('google-pay').on('buy', (e) => this.onBuy(e.detail.token))
+		this.$('google-pay').on('buy', (e) => this.onBuy(e.detail))
 		this.$('#login-btn').click(this.onClickLogin.bind(this))
 		// this.$('#manual-dl').click(this.download.bind(this))
 		this.$('.dl-btn').click((e) => {
@@ -175,9 +175,9 @@ class LPLDL extends ComponentBase {
 		})
 	}
 
-	onBuy(token){
+	onBuy(paymentMethodData){
 		const data = {
-			token,
+			paymentMethodData,
 			email: this.user.email,
 			photoURL: this.user.photoURL,
 			displayName: this.user.displayName,
