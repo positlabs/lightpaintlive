@@ -5,23 +5,23 @@
 
 */
 import {
-  html
+    html
 } from '@polymer/lit-element'
 import {
-  default as ComponentBase
+    default as ComponentBase
 } from './component-base'
 const componentName = 'lpl-landing'
 require('../../styles/components/lpl-landing.scss')
 
 class LPLLanding extends ComponentBase {
 
-  constructor() {
-    super()
-    $(window).on('resize', this.onResize.bind(this))
-  }
+    constructor() {
+        super()
+        $(window).on('resize', this.onResize.bind(this))
+    }
 
-  render() {
-    return html `
+    render() {
+        return html `
         <div class="wrapper">
             <section id="mercury">
                 <h1>Mercury</h1>
@@ -60,6 +60,7 @@ class LPLLanding extends ComponentBase {
                 <h3>Nvidia</h3>
                 <p>Open the NVIDIA control panel. Right-click on an empty area on your desktop and select the ‘NVIDIA Control Panel’ option from the context menu.</p>
                 <p>Go to the Desktop menu and enable the ‘Add “Run with graphics processor” to Context Menu’ option.</p>
+                <p>Add a shortcut to Mercury to the desktop, then right-click and select “Run with graphics processor”.</p>
                 <h3>AMD</h3>
                 <p>Open the AMD Catalyst Control Center app by right-clicking on an empty area on your desktop. Select ‘Catalyst Control Center’ from the context menu. From the list of panels on the left, select ‘Power’. Under ‘Power’, select ‘Switchable application graphics settings’. Add Mercury to this list.</p>
                 <p>Read <a src='https://www.addictivetips.com/windows-tips/force-app-to-use-dedicated-gpu-windows/' target='_blank'>How To Force An App To Use The Dedicated GPU On Windows</a> for a more detailed explanation.</p>
@@ -103,18 +104,18 @@ class LPLLanding extends ComponentBase {
             </section>
         </div>
         `
-  }
-  firstUpdated() {
-    this.$ytIframe = this.$('iframe')
-    this.onResize()
-  }
+    }
+    firstUpdated() {
+        this.$ytIframe = this.$('iframe')
+        this.onResize()
+    }
 
-  onResize(e) {
-    // apply correct aspect ratio to youtube iframe
-    this.$ytIframe.css({
-      height: this.$ytIframe.width() * 9 / 16
-    })
-  }
+    onResize(e) {
+        // apply correct aspect ratio to youtube iframe
+        this.$ytIframe.css({
+            height: this.$ytIframe.width() * 9 / 16
+        })
+    }
 }
 
 customElements.define(componentName, LPLLanding)
