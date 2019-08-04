@@ -21,6 +21,8 @@ class LPLLanding extends ComponentBase {
     }
 
     render() {
+        // <iframe class="video" src="//www.youtube.com/embed/jzrUNDacs1A" frameborder="0" allowfullscreen></iframe>
+
         return html `
         <div class="wrapper">
             <section id="mercury">
@@ -33,7 +35,8 @@ class LPLLanding extends ComponentBase {
                     <div class="launch-btn btn">
                         <div class="icon"></div><a href="./download-mercury.html">Download V3</a>
                     </div>
-                </div><iframe class="video" src="//www.youtube.com/embed/qO7gYBkJjow" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <iframe id="ytplayer" type="text/html" src="https://www.youtube.com/embed/jzrUNDacs1A?list=PLAZp2Vi7Gfsouo7T5XA39-M_swalzOs9C&listType=playlist&modestbranding=1" frameborder="0" allowfullscreen></iframe>
             </section>
             <section id="faq">
                 <h1>Frequently asked questions</h1>
