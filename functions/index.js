@@ -38,7 +38,6 @@ const getUserByEmail = (email) => {
 app.use(express.json({}))
 
 app.post('/api/buy', (req, res) => {
-  // TODO test this for TEST environment
   let {token} = req.body.paymentMethodData.tokenizationData
   if (token === 'examplePaymentMethodToken') token = {id: 'tok_mastercard'}
   console.log('/api/buy', req.body)

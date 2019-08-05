@@ -89,7 +89,7 @@ class LPLLanding extends ComponentBase {
                             artistic aspect of
                             LAPP photography.</p>
                         <p>His personal work is at <a class="shiny" href="http://miedza.de" target="_blank">miedza.de</a></p>
-                        <p>There is also a book of the work: <a class="shiny" href="http://www.rockynook.com/shop/photography/painting-with-light/"
+                        <p>There is also a book of the work: <a class="shiny" href="http://shop.oreilly.com/product/9781933952741.do"
                                 target="_blank">Painting With Light</a></p>
                         <p>Email: <a class="shiny" href="mailto:joerg@miedza.de" target="_blank">joerg@miedza.de </a></p>
                     </div>
