@@ -100,8 +100,8 @@ class LPLLanding extends ComponentBase {
                         <p>Josh has always been obsessed with science and technology - and as a child, he dreamed of
                             becoming an inventor. Now, he's a senior interactive developer at <a class="shiny" href="http://toolofna.com"
                                 target="_blank">Tool of North America.</a></p>
-                        <p>Email: <a class="shiny" href="mailto:josh@lightpaintlive.com" target="_blank">josh@lightpaintlive.com
-                            </a></p>
+                        <p>Email: <a class="shiny" href="mailto:josh@lightpaintlive.com" target="_blank">josh@lightpaintlive.com</a></p>
+                        <p>Instagram: <a class="shiny" href="https://instagram.com/positlabs" target="_blank">@positlabs</a></p>
                     </div>
                 </div>
             </section>
