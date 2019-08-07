@@ -33,17 +33,17 @@ const firebaseConfig = {
 }
 
 class LPLDL extends ComponentBase {
-	
+
 	static get properties() {
 		return {
 			pro: {type: Boolean},
 		}
 	}
-	
+
 	constructor() {
 		super()
 	}
-	
+
 	async showAuth(){
 		this.showUI('auth')
 		firebase.initializeApp(firebaseConfig)
@@ -55,7 +55,8 @@ class LPLDL extends ComponentBase {
 				this.user = {displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData}
 				console.log(this.user)
 				// handle user signed in. get user purchase status from db and show appropriate ui
-				$.get(`/api/user/${uid}`, (response) => {
+				$.get(`/api/user/?email=${email}`, (response) => {
+					// $.get(`/api/user/${uid}`, (response) => {
 					console.log(response)
 					if(response.user){
 						this.showUI('download')

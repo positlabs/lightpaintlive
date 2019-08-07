@@ -3,14 +3,16 @@ const functions = require('firebase-functions')
 const express = require('express')
 const app = express()
 const firebase = require('firebase-admin')
+const serviceAccount = require('./service-account.json')
 firebase.initializeApp({
-  // apiKey: 'AIzaSyBbVEyizlMI9fzmw72Qf6jMrRtAPEfqvhE',
-  // authDomain: 'lightpaintlive.firebaseapp.com',
+  // name: 'lightpaintlive',
+  credential: firebase.credential.cert(serviceAccount),
   databaseURL: 'https://lightpaintlive.firebaseio.com',
 })
 const config = functions.config()
 // console.log(config)
 const db = firebase.database()
+// const { addUser } = require('./admin/index')
 
 // const stripe = require('stripe')(config.stripe.test_secret)
 const stripe = require('stripe')(config.stripe.secret)
@@ -93,7 +95,14 @@ app.get('/api/user', (req, res) => {
   })
 })
 
+// app.get('/api/add-user', (req, res) => {
+//   addUser(db, 'Frank Upmeier', 'info@fotogusto.info')
+//     .then(result => res.send(result))
+//     .catch(err => res.send(err))
+// })
+
 const func = functions.https.onRequest(app)
 exports.dev = func
 exports.stage = func
 exports.prod = func
+
