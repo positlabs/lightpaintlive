@@ -12,7 +12,6 @@ firebase.initializeApp({
 const config = functions.config()
 // console.log(config)
 const db = firebase.database()
-// const { addUser } = require('./admin/index')
 
 // const stripe = require('stripe')(config.stripe.test_secret)
 const stripe = require('stripe')(config.stripe.secret)
@@ -95,11 +94,12 @@ app.get('/api/user', (req, res) => {
   })
 })
 
-// app.get('/api/add-user', (req, res) => {
-//   addUser(db, 'Frank Upmeier', 'info@fotogusto.info')
-//     .then(result => res.send(result))
-//     .catch(err => res.send(err))
-// })
+const { addUser } = require('./admin/index')
+app.get('/api/add-user', (req, res) => {
+  addUser(db, 'Jiggity Josh', 'josh.beckwith.0@gmail.com')
+    .then(result => res.send(result))
+    .catch(err => res.send(err))
+})
 
 const func = functions.https.onRequest(app)
 exports.dev = func

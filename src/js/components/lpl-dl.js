@@ -55,7 +55,7 @@ class LPLDL extends ComponentBase {
 				this.user = {displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData}
 				console.log(this.user)
 				// handle user signed in. get user purchase status from db and show appropriate ui
-				$.get(`/api/user/?email=${email}`, (response) => {
+				$.get(`/api/user?email=${encodeURIComponent(email)}`, (response) => {
 					// $.get(`/api/user/${uid}`, (response) => {
 					console.log(response)
 					if(response.user){
