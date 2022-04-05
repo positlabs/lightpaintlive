@@ -1,42 +1,25 @@
 {
   "name": "lightpaintlive",
-  "version": "1.0.0",
-  "description": "lightpaintlive",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Stencil App Starter",
   "scripts": {
-    "serve": "firebase serve --only hosting,functions",
-    "deploy:prod": "npm run build && firebase deploy --only hosting:prod,functions:prod,database:prod",
-    "deploy:stage": "npm run build && firebase deploy --only hosting:stage,functions:stage,database:stage",
-    "deploy:dev": "npm run build && firebase deploy --only hosting:dev,functions:dev,database:dev",
-    "watch": "webpack --watch --mode development",
-    "build": "webpack --mode production",
-    "localtunnel": "pm2 start ./dev/localtunnel.sh -- lightpaintlive 5000"
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
   },
-  "dependencies": {
-    "@webcomponents/custom-elements": "^1.2.1",
-    "firebase": "^5.5.8",
-    "firebase-functions": "^3.2.0",
-    "jquery": "^2.1.4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/positlabs/lightpaintlive.git"
-  },
-  "bugs": {
-    "url": "https://github.com/positlabs/lightpaintlive/issues"
-  },
-  "homepage": "https://github.com/positlabs/lightpaintlive",
   "devDependencies": {
-    "@polymer/lit-element": "^0.6.3",
-    "css-loader": "^1.0.1",
-    "firebase-tools": "^7.2.2",
-    "glob": "^7.1.3",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.10.0",
-    "pug-html-loader": "^1.1.5",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2"
+    "@stencil/core": "2.13.0",
+    "@stencil/router": "^1.0.1",
+    "@types/jest": "^27.0.3",
+    "jest": "^27.4.5",
+    "jest-cli": "^27.4.5",
+    "puppeteer": "^10.0.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@stencil/sass": "^1.5.2"
   }
 }
