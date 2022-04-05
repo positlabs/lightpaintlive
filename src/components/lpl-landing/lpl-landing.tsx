@@ -3,7 +3,7 @@ import { Component, Host, h, Element } from '@stencil/core';
 @Component({
   tag: 'lpl-landing',
   styleUrl: 'lpl-landing.scss',
-  shadow: true,
+  shadow: false,
 })
 export class LplLanding {
   @Element() el: HTMLElement
@@ -14,14 +14,52 @@ export class LplLanding {
 
   componentDidLoad() {
     this.onResize()
+    // this.$('iframe').onload = this.onResize.bind(this)
   }
-  
+
   onResize() {
     // apply correct aspect ratio to youtube iframe
     const ytIframe = this.$('iframe')
     Object.assign(ytIframe.style, {
-      height: ytIframe.offsetWidth * 9 / 16
+      height: ytIframe.offsetWidth * 9 / 16 + 'px'
     })
+  }
+
+  download(version) {
+
+    // TODO get manifest from github
+    // TODO use fetch
+
+    // const manifest = `https://storage.googleapis.com/lightpaintlive.appspot.com/v${version}-latest.json`
+    // $.get(manifest, {}, (data) => {
+    //   // data = JSON.parse(data)
+    //   console.log(data)
+    const dataV3 = {
+      version: "3.1.3",
+      updatedAt: "2019-08-05T20:52:31.560Z"
+    }
+    const dataV4 = {
+      version: "4.1.4",
+      updatedAt: "2020-02-02T18:59:25.592Z"
+    }
+    const data = version === 3 ? dataV3 : dataV4
+    var url
+    var isMac = navigator.platform === 'MacIntel'
+    var isWin = navigator.platform.indexOf('Win') !== -1
+    // isWin = true; isMac = false;
+    // isWin = false; isMac = false;
+    const proString = version === 4 ? 'pro-' : ''
+    if (isMac) {
+      url = `https://storage.googleapis.com/lightpaintlive.appspot.com/builds/mac/lpl-mercury-${proString}${data.version}.dmg`
+      // url = 'https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/'+data.version+'/lpl-mercury-'+data.version+'.dmg'
+    } else if (isWin) {
+      url = `https://storage.googleapis.com/lightpaintlive.appspot.com/builds/win/lpl-mercury-${proString}${data.version}%20Setup.exe`
+      // url = 'https://s3-us-west-2.amazonaws.com/lightpaintlive-mercury/'+data.version+'/lpl-mercury-'+data.version+'+Setup.exe'
+    }
+    if (url) {
+      window.location = url
+    }
+    // })
   }
 
   render() {
@@ -32,11 +70,11 @@ export class LplLanding {
             <h1>Mercury</h1>
             <p>A webcam app for light painting in real-time - for Mac &amp; Windows. </p>
             <div class="mercury-btns">
-              <div class="pro-btn btn">
-                <div class="icon"></div><a href="./download-mercury-pro.html">Buy Pro (V4+)</a>
+              <div class="pro-btn btn" onClick={() => this.download(4)}>
+                <div class="icon"></div><a href="#">Download V4</a>
               </div>
-              <div class="launch-btn btn">
-                <div class="icon"></div><a href="./download-mercury.html">Download V3</a>
+              <div class="launch-btn btn" onClick={() => this.download(3)}>
+                <div class="icon"></div><a href="#">Download V3</a>
               </div>
             </div>
             <iframe id="ytplayer" src="https://www.youtube.com/embed/jzrUNDacs1A?list=PLAZp2Vi7Gfsouo7T5XA39-M_swalzOs9C&listType=playlist&modestbranding=1" frameborder="0" allowFullScreen></iframe>
@@ -81,31 +119,31 @@ export class LplLanding {
               developer, Josh Beckwith.
               Ever since then, Josh and Joerg have been exchanging ideas and improving LPL. </p>
             <div class="person">
-              <h3>Joerg Miedza</h3><img src="assets/images/joerg.jpg"/>
-                <div class="content-block">
-                  <p>Joerg Miedza has been creating movies and photos using special techniques since the late 90's.
-                    He is the co-founder of the german light-art project LAPP-PRO. In this project, the LAPP-Team
-                    developed a
-                    unique brand of light painting: LightArt Performance Photography, or LAPP for short. The skills
-                    Joerg acquired
-                    working with motion pictures allowed him to contribute significantly to the performance and
-                    artistic aspect of
-                    LAPP photography.</p>
-                  <p>His personal work is at <a class="shiny" href="http://miedza.de" target="_blank">miedza.de</a></p>
-                  <p>There is also a book of the work: <a class="shiny" href="http://shop.oreilly.com/product/9781933952741.do"
-                    target="_blank">Painting With Light</a></p>
-                  <p>Email: <a class="shiny" href="mailto:joerg@miedza.de" target="_blank">joerg@miedza.de </a></p>
-                </div>
+              <h3>Joerg Miedza</h3><img src="assets/images/joerg.jpg" />
+              <div class="content-block">
+                <p>Joerg Miedza has been creating movies and photos using special techniques since the late 90's.
+                  He is the co-founder of the german light-art project LAPP-PRO. In this project, the LAPP-Team
+                  developed a
+                  unique brand of light painting: LightArt Performance Photography, or LAPP for short. The skills
+                  Joerg acquired
+                  working with motion pictures allowed him to contribute significantly to the performance and
+                  artistic aspect of
+                  LAPP photography.</p>
+                <p>His personal work is at <a class="shiny" href="http://miedza.de" target="_blank">miedza.de</a></p>
+                <p>There is also a book of the work: <a class="shiny" href="http://shop.oreilly.com/product/9781933952741.do"
+                  target="_blank">Painting With Light</a></p>
+                <p>Email: <a class="shiny" href="mailto:joerg@miedza.de" target="_blank">joerg@miedza.de </a></p>
+              </div>
             </div>
             <div class="person">
               <h3>Josh Beckwith</h3><img src="assets/images/josh.jpg" />
-                <div class="content-block">
-                  <p>Josh has always been obsessed with science and technology - and as a child, he dreamed of
-                    becoming an inventor. Now, he's a senior interactive developer at <a class="shiny" href="http://toolofna.com"
-                      target="_blank">Tool of North America.</a></p>
-                  <p>Email: <a class="shiny" href="mailto:josh@lightpaintlive.com" target="_blank">josh@lightpaintlive.com</a></p>
-                  <p>Instagram: <a class="shiny" href="https://instagram.com/positlabs" target="_blank">@positlabs</a></p>
-                </div>
+              <div class="content-block">
+                <p>Josh has always been obsessed with science and technology - and as a child, he dreamed of
+                  becoming an inventor. Now, he's a senior interactive developer at <a class="shiny" href="http://toolofna.com"
+                    target="_blank">Tool of North America.</a></p>
+                <p>Email: <a class="shiny" href="mailto:josh@lightpaintlive.com" target="_blank">josh@lightpaintlive.com</a></p>
+                <p>Instagram: <a class="shiny" href="https://instagram.com/positlabs" target="_blank">@positlabs</a></p>
+              </div>
             </div>
           </section>
         </div>
@@ -118,3 +156,19 @@ export class LplLanding {
     return this.el.querySelector(selector) as HTMLElement
   }
 }
+/*
+
+
+  <div id="download-ui" class="ui">
+    <h1>Download Mercury ${this.pro ? 'Pro' : 'v3'}</h1>
+    <p>
+      <div class='dl-btn' data-type='mac'><img width='15' src='/assets/images/apple.svg'/> MAC INSTALLER</div>
+      <div class='dl-btn' data-type='win'><img width='12' src='/assets/images/windows.svg'/> WIN INSTALLER</div>
+    </p>
+    <p>Your OS might try to block the installation. Here are instructions on how to get around that. <a class="shiny" href="http://kb.mit.edu/confluence/display/istcontrib/Allow+application+installations+and+temporarily+disable+Gatekeeper+in+OS+X+10.9+and+up" target="_blank">Mac</a><span>
+      - </span><a class="shiny" href="https://www.windowscentral.com/how-fix-app-has-been-blocked-your-protection-windows-10" target="blank">Windows</a></p>
+  </div>
+
+
+
+*/
