@@ -6,7 +6,7 @@ lpl-landing {
     .btn {
       background-color: #ddd;
       .icon {
-        background-image: url("assets/images/desktop.png");
+        background-image: url("../assets/images/desktop.png");
         transition: all 0.3s $ease-out-quint;
       }
       &:hover {
