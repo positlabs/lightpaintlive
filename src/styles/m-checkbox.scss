@@ -1,0 +1,21 @@
+
+:host {
+    // border: 1px solid fuchsia;
+}
+:host(:hover) .box {
+    border: 1px solid lime;
+}
+
+.box {
+    position: absolute;
+    right: 10px; top: 50%;
+    transform: translateY(-50%);
+    height: 10px; width: 10px;
+    border: 1px solid white;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.content[checked] .box {
+    background-color: white;
+}

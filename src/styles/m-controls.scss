@@ -1,0 +1,148 @@
+
+:host, m-controls {
+  position: absolute;
+  z-index: 100;
+  color: white;
+  bottom: 0; right: 0px;
+  width: 190px;
+  text-align: center;
+  transition: opacity .4s;
+}
+* {
+  user-select: none;
+  box-sizing: border-box;
+}
+
+m-select,
+m-checkbox,
+m-slider,
+m-button,
+#save-dir {
+  position: relative;
+  float: left;
+  clear: both;
+  width: 100%;
+
+  padding: 8px 10px;
+  text-align: left;
+
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+
+  border-left: 3px solid transparent;
+  border-top: 1px solid rgba(255, 255, 255, .4);
+  background-color: rgba(0,0,0, .65);
+}
+
+m-select:hover,
+m-checkbox:hover,
+m-slider:hover,
+m-button:hover,
+#save-dir:hover {
+  border-left: 3px solid lime;
+}
+
+m-button:last-child {
+  padding: 18px 10px;
+}
+
+.btn {
+  position: relative;
+  width: 33px; height: 33px;
+  line-height: 33px;
+  background-color: rgba(0,0,0, .65);
+  border: 1px solid rgba(255, 255, 255, .4);
+  border-bottom: none;
+  border-right: none;
+  cursor: pointer;
+  float: right;
+}
+
+.btn:hover {
+  color: lime;
+  border: 1px solid rgba(0, 255, 0, .4);
+  border-bottom: none;
+  border-right: none;
+}
+
+.btn img {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.min-max.btn[minimized=true] {
+  opacity: 0;
+  transition: opacity .3s 1s;
+}
+
+.min-max.btn[minimized=true]:hover,
+:host.mouse-move .min-max.btn[minimized=true] {
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.drag-bar {
+  width: 100%; height: 20px;
+  background-color: rgba(0,0,0, .65);
+
+  .grab-dots {
+    position: absolute;
+    right: 0;
+    width: 164px; height: 13px;
+    margin: 4px;
+    margin-left: 0;
+    background-image: url('assets/imgs/grab-dots.png');
+    background-size: 18%;
+    -webkit-app-region: drag;
+    cursor: move;
+  }
+  .close {
+    float: left;
+    border: none;
+    width: 20px; height: 20px;
+    line-height: 20px;
+    -webkit-app-region: none;
+  }
+}
+
+#save-dir {
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-bottom: none;
+  border-right: none;
+  input[type=file]::-webkit-file-upload-button {
+    cursor: pointer;
+  }
+  &:hover {
+    color: lime;
+  }
+  input {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+
+#indicator {
+  position: absolute;
+  bottom: 26px; right: 14px;
+  transform: translateY(50%);
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  z-index: 10;
+  background-color: white;
+
+  &[state="painting"] {
+    background-color: lime;
+  }
+  &[state="paused"] {
+    background-color: orange;
+  }
+}

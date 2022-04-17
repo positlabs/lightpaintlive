@@ -1,0 +1,102 @@
+{
+    "version": "4.1.0",
+    "name": "lpl-mercury-pro",
+    "productName": "lpl-mercury-pro",
+    "repository": "https://github.com/positlabs/LPLMercury",
+    "description": "Realtime light painting",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "npx electron-forge start",
+        "webpack": "npx webpack --config ./webpack.config.js --watch",
+        "webpack:browser": "npx webpack --config ./webpack.browser.js --watch",
+        "build:app:mac": "npx electron-forge package --platform=darwin",
+        "build:app:win": "npx electron-forge package --platform=win32",
+        "build:installer:mac": "npx electron-forge make --platform=darwin",
+        "build:installer:win": "npx electron-forge make --platform=win32",
+        "lint": "eslint src --color"
+    },
+    "keywords": [],
+    "author": "positlabs",
+    "config": {
+        "forge": {
+            "make_targets": {
+                "win32": [
+                    "squirrel"
+                ],
+                "darwin": [
+                    "dmg"
+                ],
+                "linux": []
+            },
+            "electronPackagerConfig": {
+                "packageManager": "yarn",
+                "icon": "./src/assets/icons/logo-green-icon-1024"
+            },
+            "electronWinstallerConfig": {
+                "name": "lplmercury",
+                "loadingGif": "./dev/loader.gif"
+            },
+            "electronWixMSIConfig": {
+                "exe": "lpl_mercury.exe",
+                "name": "LightpaintLive Mercury"
+            },
+            "github_repository": {
+                "owner": "positlabs",
+                "name": "LPLMercury"
+            },
+            "windowsStoreConfig": {
+                "packageName": "",
+                "name": "lplmercury"
+            }
+        }
+    },
+    "engines": {
+        "node": "~14"
+    },
+    "dependencies": {
+        "@polymer/lit-element": "^0.5.2",
+        "adapterjs": "^0.15.5",
+        "babel-preset-env": "^1.7.0",
+        "babelify": "^8.0.0",
+        "electron-compile": "^6.4.4",
+        "electron-squirrel-startup": "^1.0.0",
+        "electron-updater": "^2.23.3",
+        "express": "^4.17.3",
+        "fs-extra": "^5.0.0",
+        "gsap": "^1.20.6",
+        "ip": "^1.1.5",
+        "jquery": "^3.6.0",
+        "minivents": "^2.2.1",
+        "moment": "^2.29.2",
+        "mousetrap": "^1.6.5",
+        "node-abi": "^2.30.1",
+        "opn": "^5.5.0",
+        "request": "^2.88.2",
+        "semver": "^5.7.1",
+        "socket.io": "^2.4.1",
+        "underscore": "^1.13.2"
+    },
+    "devDependencies": {
+        "appdmg": "^0.6.4",
+        "babel-plugin-transform-async-to-generator": "^6.24.1",
+        "babel-preset-react": "^6.24.1",
+        "css-loader": "^0.28.11",
+        "electron-forge": "^5.2.4",
+        "electron-prebuilt-compile": "3.0.13",
+        "electron-wix-msi": "^2.2.0",
+        "eslint": "^3.19.0",
+        "eslint-config-airbnb": "^15.1.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-jsx-a11y": "^5.1.1",
+        "eslint-plugin-react": "^7.29.4",
+        "html-loader": "^0.5.5",
+        "node-sass": "^4.14.1",
+        "raw-loader": "^0.5.1",
+        "sass-loader": "^7.3.1",
+        "style-loader": "^0.21.0",
+        "ttf-loader": "^1.0.2",
+        "webpack": "^4.46.0",
+        "webpack-cli": "^3.3.12",
+        "yarn": "^1.22.18"
+    }
+}

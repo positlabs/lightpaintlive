@@ -1,0 +1,105 @@
+
+:host {
+    position: absolute;
+    left: 0;
+    height: 20px; width: 100%;
+    background: rgba(0,0,0,.8);
+    border-bottom: 1px solid rgba(255,255,255, .5);
+    z-index: 100000;
+    -webkit-app-region: drag;
+    transition: opacity .25s;
+}
+
+// :host.fullscreen {
+//     opacity: 0;
+// }
+// :host:hover {
+//     opacity: 1;
+// }
+// :host.fullscreen:after {
+//     content: '';
+//     position: absolute;
+//     z-index: -1;
+//     width: 100%; height: 200%;
+//     top: 100%; left: 0;
+// }
+
+.btns {
+    float: left;
+}
+
+.btn {
+    position: relative;
+    float: left;
+    color: white;
+    width: 20px; height: 20px;
+    line-height: 20px;
+    font-size: .8em;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 5px;
+    user-select: none;
+    -webkit-app-region: no-drag;
+}
+
+.btn * {
+    cursor: pointer;
+}
+
+/* .btn:before { */
+    /* content: ''; */
+    /* position: absolute; */
+    /* width: 1px; height: 1px; */
+    /* background-color: rgba(255, 255, 255, .65); */
+    /* bottom: 0; right: -5px; */
+/* } */
+
+.btn:after {
+    content: '';
+    position: absolute;
+    top: 100%; left: -5px;
+    width: 30px; height: 0px;
+    background-color: lime;
+    transition: all .15s ease-out;
+}
+
+.btn:hover:after {
+    height: 3px;
+}
+
+#fullscreen-btn svg {
+    position: absolute;
+    width: 40%; height: 40%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#drag-bar {
+    -webkit-app-region: drag;
+    height: 100%;
+    width: calc(100% - 130px);
+    cursor: move;
+    float: left;
+}
+#drag-bar .bg {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 13px;
+    background-image: url(assets/imgs/grab-dots.png);
+    background-size: 30px;
+}
+
+.version {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 2;
+    background: black;
+    padding: 0 10px;
+    color: white;
+    line-height: 21px;
+    font-weight: bold;
+    font-size: 0.8em;
+}

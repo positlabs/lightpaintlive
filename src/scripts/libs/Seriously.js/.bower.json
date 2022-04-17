@@ -1,0 +1,13 @@
+{
+  "name": "Seriously.js",
+  "homepage": "https://github.com/brianchirls/Seriously.js",
+  "_release": "f34009ede6",
+  "_resolution": {
+    "type": "branch",
+    "branch": "develop",
+    "commit": "f34009ede6ce9a1a55b96433ebe1e62cba2ae63a"
+  },
+  "_source": "git@github.com:brianchirls/Seriously.js.git",
+  "_target": "develop",
+  "_originalSource": "git@github.com:brianchirls/Seriously.js.git"
+}

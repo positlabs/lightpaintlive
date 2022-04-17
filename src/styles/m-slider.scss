@@ -1,0 +1,27 @@
+
+:host {
+    cursor: ew-resize !important;
+}
+
+.label {
+    pointer-events: none;
+}
+
+#indicator {
+    position: absolute;
+    left: 0; top: 0;
+    width: calc(100% - 1px); height: 100%;
+    transform-origin: left;
+    background-color: rgba(255,255,255,.2);
+    border-right: 1px inset lime;
+}
+
+// improve slider behavior, non-functional
+input {
+    position: absolute;
+    width: 100%; height: 100%;
+    z-index: 1;
+    top: 0; left: 0;
+    opacity: 0;
+    margin: -1px;
+}

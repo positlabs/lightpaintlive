@@ -1,0 +1,16 @@
+node_modules
+out
+
+dist/
+.DS_Store
+.idea/
+.ftppass
+.orig
+
+npm-debug.log
+
+src/styles/*.css
+src/styles/*.css.map
+.sass-cache
+
+*-latest.json

@@ -1,0 +1,22 @@
+:host {
+	
+    position: absolute;
+    bottom: 30px;
+    color: white;
+    font-weight: bold;
+    z-index: 10000;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+#label {
+    padding: 0px 15px;
+    line-height: 35px;
+
+    border-bottom: 3px solid lime;
+    height: 0px;
+    opacity: 0;
+    overflow: hidden;
+    background: rgba(0,0,0, .5);
+}

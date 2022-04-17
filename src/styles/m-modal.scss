@@ -1,0 +1,32 @@
+
+:host {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    z-index: 10000;
+    left: 50%; top: 30%;
+    transform: translate(-50%, -50%);
+}
+
+#content {
+    border-top: 3px solid lime;
+    opacity: 0;
+    overflow: hidden;
+    background: rgba(0,0,0, .5);
+}
+
+.message {
+    padding: 25px;
+    line-height: 1.5;
+}
+
+#close.btn {
+    position: absolute;
+    top: -30px; right: 0;
+    line-height: 30px;
+    width: 30px;
+    text-align: center;
+    text-shadow: 0 0 5px black;
+    font-size: 1.5em;
+    cursor: pointer;
+}

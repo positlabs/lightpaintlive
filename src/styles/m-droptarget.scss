@@ -1,0 +1,29 @@
+:host {
+    position: absolute;
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    /* opacity: 0; */
+}
+
+#drop-input-holder {
+    position: absolute;
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    background-color: lime;
+    opacity: .5;
+    display: none;
+    z-index: 10000;
+}
+
+#drop-input-holder #dropFileInput {
+    opacity: 0;
+    width: 100%; height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+}
+
+#fileInput {
+    height: 100%; width: 100%;
+    opacity: 0;
+}
+

@@ -1,0 +1,63 @@
+<html>
+
+<head>
+  <title>Remote Controls | LPL Mercury</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="./dist/m-remote-controls.js"></script>
+  <style>
+    body {
+      width: 100%;
+    }
+
+    #fullscreen {
+      position: absolute;
+      top: 15px;
+      right: 7px;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+    }
+
+    #fullscreen svg {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="fullscreen">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1"
+      x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512"
+      xml:space="preserve" fill="white">
+      <path
+        d="M0,402.286h109.714V512h73.144V329.143H0V402.286z M109.714,109.714H0v73.144h182.857V0h-73.144V109.714z M329.143,512  h73.144V402.286H512v-73.144H329.143V512z M402.286,109.714V0h-73.144v182.857H512v-73.144H402.286z" />
+    </svg>
+  </div>
+  <script>
+    var body = document.body
+    document.getElementById('fullscreen').addEventListener('click', function () {
+      if (document.webkitIsFullScreen || document.mozFullScreen) {
+        if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen()
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen()
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen()
+        }
+      } else {
+        if (body.mozRequestFullScreen) {
+          body.mozRequestFullScreen()
+        } else if (body.webkitRequestFullscreen) {
+          body.webkitRequestFullscreen()
+        } else if (body.msRequestFullscreen) {
+          body.msRequestFullscreen()
+        }
+      }
+    })
+  </script>
+  <m-remote-controls></m-remote-controls>
+</body>
+
+</html>
