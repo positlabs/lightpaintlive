@@ -2,9 +2,11 @@
 
 Mercury is a realtime light painting app for Mac and Windows.
 
+![splash logo](https://lightpaintlive.com/assets/images/og-image.png)
+
 ## Download
 
-https://github.com/positlabs/lightpaintlive-www/releases/latest
+https://github.com/positlabs/lightpaintlive/releases/latest
 
 ## Donate
 
@@ -30,5 +32,3 @@ If you used this in client projects, or simply enjoyed making effects with my op
 `build:installer:win`: Builds the exe installer for Mac.
 
 `npm start`: Starts the electron app in development mode.
-
-

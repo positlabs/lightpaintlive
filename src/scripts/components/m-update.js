@@ -28,7 +28,7 @@ class MUpdate extends MBase {
   }
 
   _firstRendered() {
-    fetch('https://api.github.com/repos/positlabs/lightpaintlive-www/releases/latest', {
+    fetch('https://api.github.com/repos/positlabs/lightpaintlive/releases/latest', {
       headers: {
         'User-Agent': 'lightpaintlive'
       }
