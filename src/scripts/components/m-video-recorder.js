@@ -4,9 +4,12 @@ var {
 } = require('@polymer/lit-element')
 var MBase = require('./m-base')
 
-let path = require('path')
-let fs = require('fs-extra')
-let app = require('electron').remote.app
+let path = electron.path
+// let path = require('path')
+
+// FIXME ipc communication
+// let fs = require('fs-extra')
+// let app = electron.remote.app
 
 class MVideoRecorder extends MBase {
 
@@ -71,7 +74,7 @@ class MVideoRecorder extends MBase {
     setTimeout(() => {
       // let outPath = filename + '.webm'
       // let outPath = path.resolve('~/Desktop', filename + '.webm')
-      const filedir = appModel.saveDir || app.getPath('downloads')
+      const filedir = appModel.saveDir// || app.getPath('downloads')
       let outPath = path.resolve(filedir, filename + '.webm')
 
       var blob = new Blob(this.recordedChunks, {

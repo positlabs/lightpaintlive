@@ -18,6 +18,8 @@ module.exports = {
         __dirname: false,
     },
     entry: {
+        'ipc-controller': './src/scripts/ipc-controller.js',
+        'globals': './src/scripts/globals.js',
         'mercury-app': './src/scripts/components/mercury-app.js',
         'm-controls': './src/scripts/components/controls/m-controls.js',
     },

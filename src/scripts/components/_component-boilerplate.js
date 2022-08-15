@@ -17,14 +17,13 @@ class MButton extends MBase {
   }
 
   _render(props) {
-    return html `
+    return html`
 		<style>${styles}</style>
-	`
-  }
+	`}
 
-  _firstRendered() {}
-  _shouldRender(props, changedProps, prevProps) {}
-  _didRender(props, changedProps, prevProps) {}
+  _firstRendered() { }
+  _shouldRender(props, changedProps, prevProps) { }
+  _didRender(props, changedProps, prevProps) { }
 
 }
 

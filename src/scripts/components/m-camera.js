@@ -4,10 +4,11 @@ var {
 } = require('@polymer/lit-element')
 var MBase = require('./m-base')
 
-require('adapterjs')
-var {
-  dialog
-} = require('electron').remote
+// require('adapterjs')
+// FIXME dialog
+// var {
+//   dialog
+// } = electron.remote
 
 class MCamera extends MBase {
 
@@ -166,12 +167,12 @@ class MCamera extends MBase {
       return
     }
 
-    getUserMedia.call(navigator, this.constraints,
+    navigator.getUserMedia.call(navigator, this.constraints,
 
       (stream) => {
-        // console.log('stream', stream);
+        console.log('stream', stream.getVideoTracks()[0]);
         this.stream = stream
-        this.video.src = (URL && URL.createObjectURL(stream)) || stream
+        this.video.srcObject = stream// (URL && URL.createObjectURL(stream)) || stream
         this.video.play()
       },
 

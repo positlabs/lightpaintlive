@@ -1,7 +1,8 @@
-const Events = require('minivents')
+// import * as Events from '../node_modules/minivents'
 const Model = require('./Model.js')
-window.$ = require('jquery')
-window._ = require('underscore')
+const Events = require('minivents/dist/minivents.commonjs')
+// window.$ = require('jquery/dist/jquery.slim')
+// window._ = require('underscore/underscore')
 
 window.states = {
   get NEW() {

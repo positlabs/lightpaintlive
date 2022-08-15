@@ -4,9 +4,6 @@ var {
 } = require('@polymer/lit-element')
 var MBase = require('../m-base')
 
-var remote = require('electron').remote
-var win = remote.getCurrentWindow()
-
 class MVideoControls extends MBase {
 
   static get properties() {
@@ -21,8 +18,12 @@ class MVideoControls extends MBase {
     appModel.watch('camera', this.onChangeCamera.bind(this))
     this.onChangeCamera()
 
-    win.addListener('enter-full-screen', this._onFullscreenChanged.bind(this))
-    win.addListener('leave-full-screen', this._onFullscreenChanged.bind(this))
+    // var win = electron.remote.app.getCurrentWindow()
+    //FIXME window fullscreen events
+    // var win = window
+    // win.addListener('enter-full-screen', this._onFullscreenChanged.bind(this))
+    // win.addListener('leave-full-screen', this._onFullscreenChanged.bind(this))
+    window.addEventListener('fullscreenchange', this._onFullscreenChanged.bind(this))
 
     appModel.watch('videoElement', () => {
       this.video = appModel.videoElement
@@ -100,8 +101,9 @@ class MVideoControls extends MBase {
   }
 
   _onFullscreenChanged() {
-    console.log('_onFullscreenChanged', win.isFullScreen())
-    if (win.isFullScreen()) {
+    // console.log('_onFullscreenChanged', win.isFullScreen())
+    if (document.fullscreenElement) {
+      // if (win.isFullScreen()) {
       this.classList.add('hover-reveal')
     } else {
       this.classList.remove('hover-reveal')

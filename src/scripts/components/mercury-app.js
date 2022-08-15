@@ -1,10 +1,10 @@
 // globals
-require('gsap')
+require('../libs/gsap/esm/all.js')
 require('./m-toast')
 require('./m-modal')
 require('../key-controller')
 
-const shell = require('electron').shell
+// const shell = require('electron').shell
 
 var mainStyles = require('../../styles/main.scss')
 var styles = require('../../styles/mercury-app.scss')
@@ -12,7 +12,9 @@ var {
   html
 } = require('@polymer/lit-element')
 var MBase = require('./m-base')
-var controlServer = require('../control-server.js')
+
+// FIXME control server
+// var controlServer = require('../control-server.js')
 
 require('./m-canvas')
 require('./m-menubar')
@@ -43,7 +45,8 @@ class MercuryApp extends MBase {
       document.body.classList.add('pro')
     }
 
-    appModel.controlServerAddress = controlServer.address
+    // FIXME control server
+    // appModel.controlServerAddress = controlServer.address
 
     actions.on(actions.TOGGLE_CONTROLS, () => {
       this.find('m-controls').minimized = !this.find('m-controls').minimized
@@ -72,7 +75,8 @@ class MercuryApp extends MBase {
     // open links externally by default
     this.find('#logo').addEventListener('click', function (event) {
       event.preventDefault()
-      shell.openExternal(this.href)
+      // FIXME open url in browser window
+      // shell.openExternal(this.href)
     })
   }
 

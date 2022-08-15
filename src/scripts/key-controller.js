@@ -1,5 +1,8 @@
-require('mousetrap')
-var win = require('electron').remote.getCurrentWindow()
+require('mousetrap/mousetrap')
+
+// TODO maybe use web api for fullscreen commands
+// var win = require('electron').remote.getCurrentWindow()
+// var win = electron.remote.getCurrentWindow()
 
 // FIXME use this in popped controls
 

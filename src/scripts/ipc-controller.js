@@ -1,6 +1,7 @@
-const {
-  ipcRenderer
-} = require('electron')
+// require('./globals.js')
+// const {ipcRenderer} = require('electron')
+// import {ipcRenderer} from 'electron'
+const { ipcRenderer } = electron
 
 // forward actions from popped controls
 ipcRenderer.on('ACTION', (event, action) => {
@@ -24,7 +25,11 @@ Object.keys(appModel._properties).forEach(key => {
   appModel.watch(key, (value, oldValue, silent) => {
     if (!silent) {
       console.log('MODEL_CHANGE', key, value)
-      ipcRenderer.send('MODEL_CHANGE', key, value)
+      try {
+        ipcRenderer.send('MODEL_CHANGE', key, value)
+      } catch (e) {
+
+      }
     }
   })
 })

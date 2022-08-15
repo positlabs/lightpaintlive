@@ -2,9 +2,13 @@ const {
   app,
   BrowserWindow,
   ipcMain,
+  systemPreferences
 } = require('electron')
 const path = require('path')
 
+systemPreferences.askForMediaAccess('camera').then(() => {
+  // TODO send event to reinit the camera
+})
 
 // this should be placed at top of main.js to handle setup events quickly
 if (handleSquirrelEvent()) {
@@ -90,9 +94,13 @@ const createWindow = () => {
     acceptFirstMouse: true,
     show: false,
     webPreferences: {
-      webSecurity: false
+      preload: path.join(app.getAppPath(), 'src/scripts/preload.js'),
+      nodeIntegration: true,
+      // webSecurity: false
+      enableRemoteModule: true
     },
   })
+
   mainWindow.loadURL(`file://${__dirname}/index.html`)
 
   // Emitted when the window is closed.
@@ -120,6 +128,9 @@ ipcMain.on('POPOUT_CONTROLS', (event, model) => {
       darkTheme: true,
       show: false,
       acceptFirstMouse: true,
+      webPreferences: {
+        nodeIntegration: true,
+      }
     })
     controlWindow.loadURL(`file://${__dirname}/controls.html`)
     controlWindow.on('closed', () => controlWindow = null)
@@ -136,10 +147,15 @@ ipcMain.on('POPOUT_CONTROLS', (event, model) => {
 
 // get model changes from sender and forward them to the other window
 ipcMain.on('MODEL_CHANGE', (event, key, value) => {
-  ([mainWindow, controlWindow]).forEach((win) => {
-    if (win && win.webContents.history[0] !== event.sender.history[0]) {
-      win.send('MODEL_CHANGE', key, value)
-    }
+  ([mainWindow]).forEach((win) => {
+    // ([mainWindow, controlWindow]).forEach((win) => {
+    // if (win && win.webContents.history[0] !== event.sender.history[0]) {
+      try {
+        win.send('MODEL_CHANGE', key, value)
+      } catch(e){
+        console.warn('could not serialize', key)
+      }
+    // }
   })
 })
 

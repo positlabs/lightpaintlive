@@ -3,13 +3,16 @@ var {
   html
 } = require('@polymer/lit-element')
 var MBase = require('./m-base')
-let path = require('path')
-let fs = require('fs-extra')
-let opn = require('opn')
-let os = require('os')
-let request = require('request')
-let semver = require('semver')
-let app = require('electron').remote.app
+let path = electron.path
+// let path = require('path')
+// FIXME ipc communication
+// let fs = require('fs-extra')
+// let opn = require('opn')
+// let os = require('os')
+// let request = require('request')
+// let semver = require('semver')
+// FIXME expose this value
+// let app = require('electron').remote.app
 let version = require('../../../package.json').version
 
 class MUpdate extends MBase {
@@ -67,15 +70,14 @@ class MUpdate extends MBase {
     })
     let url = osAsset[0].browser_download_url
 
+    // FIXME fs, opn
     let dlPath = path.join(app.getPath('downloads'), 'lpl-mercury-latest') + `.${extension}`
-    console.log(url)
-
-    // TODO use fetch?
-    request(url, (err, res) => {
-      if (err) return console.error(err)
-      opn(dlPath)
-      toast('Installing update...')
-    }).pipe(fs.createWriteStream(dlPath))
+    // console.log(url)
+    // request(url, (err, res) => {
+    //   if (err) return console.error(err)
+    //   opn(dlPath)
+    //   toast('Installing update...')
+    // }).pipe(fs.createWriteStream(dlPath))
   }
 
   hide() {

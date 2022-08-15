@@ -5,15 +5,13 @@ var {
 } = require('@polymer/lit-element')
 var MBase = require('../m-base')
 
+var {ipcRenderer} = electron
 var {
-  remote,
-  ipcRenderer,
   shell
-} = require('electron')
-var win = remote.getCurrentWindow()
-var {
-  dialog
-} = require('electron').remote
+} = electron
+// var {
+//   dialog
+// } = electron.remote
 
 require('./m-button')
 require('./m-checkbox')
@@ -241,14 +239,17 @@ class MControls extends MBase {
   }
 
   _onClickRemote() {
+    // FIXME expose shell
     shell.openExternal('http://' + appModel.controlServerAddress)
     console.log('_onClickRemote', appModel.controlServerAddress)
   }
 
   _onClickClose() {
     setImmediate(() => {
-      var win = require('electron').remote.getCurrentWindow()
-      win.close()
+      // var win = require('electron').remote.getCurrentWindow()
+      // var win = electron.getCurrentWindow()
+      // win.close()
+      window.close()
     })
 
     // have to remove so detached() gets called and things get cleaned up

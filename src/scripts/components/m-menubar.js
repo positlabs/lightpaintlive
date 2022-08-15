@@ -3,16 +3,18 @@ var {
   html
 } = require('@polymer/lit-element')
 var MBase = require('./m-base')
-var remote = require('electron').remote
-var win = remote.getCurrentWindow()
+// var app = electron.remote.app
 var {version} = require('../../../package.json')
 
 class MMenuBar extends MBase {
-
+  
   constructor() {
     super()
-    win.addListener('enter-full-screen', this._onFullscreenChanged.bind(this))
-    win.addListener('leave-full-screen', this._onFullscreenChanged.bind(this))
+    // var win = electron.remote.app.getCurrentWindow()
+    // win.addListener('enter-full-screen', this._onFullscreenChanged.bind(this))
+    // win.addListener('leave-full-screen', this._onFullscreenChanged.bind(this))
+    // FIXME window events
+    window.addEventListener('fullscreenchange', this._onFullscreenChanged.bind(this))
   }
 
   _firstRendered() {
@@ -39,7 +41,8 @@ class MMenuBar extends MBase {
   }
 
   _onFullscreenChanged() {
-    if (win.isFullScreen()) {
+    if (document.fullscreenElement) {
+      // if (win.isFullScreen()) {
       this.classList.add('hover-reveal')
     } else {
       this.classList.remove('hover-reveal')
@@ -47,18 +50,22 @@ class MMenuBar extends MBase {
   }
 
   _onClickClose() {
+    //FIXME: window
     win.close()
   }
 
   _onClickMinimize() {
+    //FIXME: window
     win.minimize()
   }
 
   _onClickMaximize() {
+    //FIXME: window
     win.isMaximized() ? win.unmaximize() : win.maximize()
   }
 
   _onClickFullscreen() {
+    //FIXME: window
     win.setFullScreen(!win.isFullScreen())
   }
 
