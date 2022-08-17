@@ -3,16 +3,6 @@ var {
   html
 } = require('@polymer/lit-element')
 var MBase = require('./m-base')
-let path = electron.path
-// let path = require('path')
-// FIXME ipc communication
-// let fs = require('fs-extra')
-// let opn = require('opn')
-// let os = require('os')
-// let request = require('request')
-// let semver = require('semver')
-// FIXME expose this value
-// let app = require('electron').remote.app
 let version = require('../../../package.json').version
 
 class MUpdate extends MBase {
@@ -39,20 +29,14 @@ class MUpdate extends MBase {
       return res.json()
     }).then(release => {
       this.latestRelease = release
-      console.log(release.name, version)
+      console.log('released:', release.name, 'current:', version)
 
       // determine version
       if (semver.gt(release.name, version)) {
-        TweenMax.set(this, {
-          y: '-50%'
-        })
-        TweenMax.to(this, .5, {
-          display: 'block',
-          opacity: 1,
-          y: '0%',
-          delay: 1
-        })
+        this.show()
       }
+      // DEV
+      // this.show()
     })
 
     this.find('.btn.skip').addEventListener('click', this.hide.bind(this))
@@ -62,22 +46,21 @@ class MUpdate extends MBase {
   download() {
     this.hide()
     toast('Downloading update...')
-
-    // download clicked
-    const extension = os.type() === 'Darwin' ? 'dmg' : 'exe'
-    let osAsset = this.latestRelease.assets.filter(asset => {
-      return asset.browser_download_url.split('.').pop() === extension
+    electron.ipcRenderer.send('update', {
+      latestRelease: this.latestRelease
     })
-    let url = osAsset[0].browser_download_url
+  }
 
-    // FIXME fs, opn
-    let dlPath = path.join(app.getPath('downloads'), 'lpl-mercury-latest') + `.${extension}`
-    // console.log(url)
-    // request(url, (err, res) => {
-    //   if (err) return console.error(err)
-    //   opn(dlPath)
-    //   toast('Installing update...')
-    // }).pipe(fs.createWriteStream(dlPath))
+  show(){
+    TweenMax.set(this, {
+      y: '-50%'
+    })
+    TweenMax.to(this, .5, {
+      display: 'block',
+      opacity: 1,
+      y: '0%',
+      delay: 1
+    })
   }
 
   hide() {

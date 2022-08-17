@@ -1,9 +1,5 @@
 require('mousetrap/mousetrap')
 
-// TODO maybe use web api for fullscreen commands
-// var win = require('electron').remote.getCurrentWindow()
-// var win = electron.remote.getCurrentWindow()
-
 // FIXME use this in popped controls
 
 Mousetrap.bind(['space', 'enter', 'return'], (e) => {
@@ -81,10 +77,18 @@ Mousetrap.bind(['alt+`'], (e) => {
 
 // fullscreen
 Mousetrap.bind(['f11', 'alt+f'], (e) => {
-  win.setFullScreen(!win.isFullScreen())
+  if(document.fullscreenElement){
+    document.exitFullscreen()
+  }else{
+    document.body.requestFullscreen()
+  }
+  // win.setFullScreen(!win.isFullScreen())
 })
 Mousetrap.bind(['esc'], (e) => {
-  if (win.isFullScreen()) {
-    win.setFullScreen(false)
+  if(document.fullscreenElement){
+    document.body.requestFullscreen()
   }
+  // if (win.isFullScreen()) {
+  //   win.setFullScreen(false)
+  // }
 })

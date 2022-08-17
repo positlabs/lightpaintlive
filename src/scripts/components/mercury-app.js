@@ -4,8 +4,6 @@ require('./m-toast')
 require('./m-modal')
 require('../key-controller')
 
-// const shell = require('electron').shell
-
 var mainStyles = require('../../styles/main.scss')
 var styles = require('../../styles/mercury-app.scss')
 var {
@@ -75,8 +73,7 @@ class MercuryApp extends MBase {
     // open links externally by default
     this.find('#logo').addEventListener('click', function (event) {
       event.preventDefault()
-      // FIXME open url in browser window
-      // shell.openExternal(this.href)
+      electron.shell.openExternal(this.href)
     })
   }
 

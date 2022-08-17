@@ -1,6 +1,4 @@
 // require('./globals.js')
-// const {ipcRenderer} = require('electron')
-// import {ipcRenderer} from 'electron'
 const { ipcRenderer } = electron
 
 // forward actions from popped controls
@@ -32,4 +30,8 @@ Object.keys(appModel._properties).forEach(key => {
       }
     }
   })
+})
+
+ipcRenderer.on('toast', (e, info) => {
+  toast(info.message)
 })

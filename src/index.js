@@ -4,11 +4,12 @@ const {
   ipcMain,
   systemPreferences
 } = require('electron')
-const path = require('path')
 
-systemPreferences.askForMediaAccess('camera').then(() => {
-  // TODO send event to reinit the camera
-})
+const path = require('path')
+const fs = require('fs-extra')
+const opn = require('opn')
+const os = require('os')
+const request = require('request')
 
 // this should be placed at top of main.js to handle setup events quickly
 if (handleSquirrelEvent()) {
@@ -29,17 +30,17 @@ function handleSquirrelEvent() {
   const updateDotExe = path.resolve(path.join(rootAtomFolder, 'Update.exe'));
   const exeName = path.basename(process.execPath);
 
-  const spawn = function(command, args) {
+  const spawn = function (command, args) {
     let spawnedProcess, error;
 
     try {
-      spawnedProcess = ChildProcess.spawn(command, args, {detached: true});
-    } catch (error) {}
+      spawnedProcess = ChildProcess.spawn(command, args, { detached: true });
+    } catch (error) { }
 
     return spawnedProcess;
   };
 
-  const spawnUpdate = function(args) {
+  const spawnUpdate = function (args) {
     return spawn(updateDotExe, args);
   };
 
@@ -112,7 +113,6 @@ const createWindow = () => {
     app.quit()
   })
   mainWindow.on('ready-to-show', mainWindow.show)
-
   // mainWindow.openDevTools()
 }
 
@@ -150,11 +150,11 @@ ipcMain.on('MODEL_CHANGE', (event, key, value) => {
   ([mainWindow]).forEach((win) => {
     // ([mainWindow, controlWindow]).forEach((win) => {
     // if (win && win.webContents.history[0] !== event.sender.history[0]) {
-      try {
-        win.send('MODEL_CHANGE', key, value)
-      } catch(e){
-        console.warn('could not serialize', key)
-      }
+    try {
+      win.send('MODEL_CHANGE', key, value)
+    } catch (e) {
+      console.warn('could not serialize', key)
+    }
     // }
   })
 })
@@ -166,3 +166,50 @@ ipcMain.on('ACTION', (event, action) => {
 // app.on('will-quit', () => {
 //   console.log('will-quit')
 // })
+
+systemPreferences.askForMediaAccess('camera').then(() => {
+  // TODO send event to reinit the camera
+})
+
+ipcMain.on('downloadImage', (e, info) => {
+  // console.log(info)
+  const { filename, dir, data } = info
+  const filepath = path.join(dir || app.getPath('downloads'), filename)
+  const buffer = Buffer.from(data, 'base64')
+  fs.outputFile(filepath, buffer, err => {
+    if (err) console.error(err)
+  })
+})
+
+ipcMain.on('downloadVideo', (e, info) => {
+  console.log('downloadVideo')
+  const { filename, dir, buffer } = info
+  const outPath = path.resolve(dir || app.getPath('downloads'), filename + '.webm')
+
+  fs.outputFile(outPath, Buffer.from(buffer, 'binary'), (err, res) => {
+    if (err) console.error(err)
+  })
+})
+
+ipcMain.on('minimize', (e, info) => mainWindow.minimize())
+ipcMain.on('maximize', (e, info) => {
+  mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize()
+})
+
+ipcMain.on('update', (e, info) => {
+  const { latestRelease } = info
+
+  const extension = os.type() === 'Darwin' ? 'dmg' : 'exe'
+  let osAsset = latestRelease.assets.filter(asset => {
+    return asset.browser_download_url.split('.').pop() === extension
+  })
+  let url = osAsset[0].browser_download_url
+
+  let dlPath = path.join(app.getPath('downloads'), 'lpl-mercury-latest') + `.${extension}`
+  // console.log(url)
+  request(url, (err, res) => {
+    if (err) return console.error(err)
+    opn(dlPath)
+    mainWindow.webContents.send('toast', { message: 'Installing update...' })
+  }).pipe(fs.createWriteStream(dlPath))
+})

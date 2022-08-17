@@ -4,12 +4,6 @@ var {
 } = require('@polymer/lit-element')
 var MBase = require('./m-base')
 
-// require('adapterjs')
-// FIXME dialog
-// var {
-//   dialog
-// } = electron.remote
-
 class MCamera extends MBase {
 
   static get properties() {

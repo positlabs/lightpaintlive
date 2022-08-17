@@ -4,13 +4,6 @@ var {
 } = require('@polymer/lit-element')
 var MBase = require('./m-base')
 
-let path = electron.path
-// let path = require('path')
-
-// FIXME ipc communication
-// let fs = require('fs-extra')
-// let app = electron.remote.app
-
 class MVideoRecorder extends MBase {
 
   _render() {
@@ -71,25 +64,14 @@ class MVideoRecorder extends MBase {
     }
 
     // not sure why, but chunks aren't saved immediately after stopping=
-    setTimeout(() => {
-      // let outPath = filename + '.webm'
-      // let outPath = path.resolve('~/Desktop', filename + '.webm')
-      const filedir = appModel.saveDir// || app.getPath('downloads')
-      let outPath = path.resolve(filedir, filename + '.webm')
+    setTimeout(async () => {
+      const dir = appModel.saveDir
+      
+      var blob = new Blob(this.recordedChunks, { type: 'video/webm' })
+      var buffer = await blob.arrayBuffer()
 
-      var blob = new Blob(this.recordedChunks, {
-        type: 'video/webm'
-      })
-      let reader = new FileReader()
-      reader.onload = function () {
-        if (reader.readyState == 2) {
-          var buffer = Buffer.from(reader.result)
-          fs.outputFile(outPath, buffer, (err, res) => {
-            if (err) console.error(err)
-          })
-        }
-      }
-      reader.readAsArrayBuffer(blob)
+      electron.ipcRenderer.send('downloadVideo', {dir, filename, buffer})
+
       this.recordedChunks = []
     }, 500)
   }

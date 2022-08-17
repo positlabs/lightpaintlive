@@ -18,11 +18,6 @@ class MVideoControls extends MBase {
     appModel.watch('camera', this.onChangeCamera.bind(this))
     this.onChangeCamera()
 
-    // var win = electron.remote.app.getCurrentWindow()
-    //FIXME window fullscreen events
-    // var win = window
-    // win.addListener('enter-full-screen', this._onFullscreenChanged.bind(this))
-    // win.addListener('leave-full-screen', this._onFullscreenChanged.bind(this))
     window.addEventListener('fullscreenchange', this._onFullscreenChanged.bind(this))
 
     appModel.watch('videoElement', () => {

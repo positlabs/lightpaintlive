@@ -5,13 +5,10 @@ var {
 } = require('@polymer/lit-element')
 var MBase = require('../m-base')
 
-var {ipcRenderer} = electron
 var {
-  shell
+  shell,
+  ipcRenderer
 } = electron
-// var {
-//   dialog
-// } = electron.remote
 
 require('./m-button')
 require('./m-checkbox')
@@ -116,7 +113,7 @@ class MControls extends MBase {
 
   // <!--<a href="./controls.html" target="_blank" class="pop btn" hidden="${this.popped || this.minimized}" on-click="${this._onClickPopout.bind(this)}" title='pop out control panel'>^</a>-->
   _render() {
-    return html `
+    return html`
       <style>${styles}</style>
 
       <div id="indicator" state$="${this.state}"></div>
@@ -175,23 +172,23 @@ class MControls extends MBase {
   }
 
   _changed_camera(newVal, prevVal) {
-    // console.log('!!!!!!111MControls._changed_camera', newVal, prevVal)
+    // console.log('MControls._changed_camera', newVal, prevVal)
     // select a video file if user chose to do so
     // only if we are in main window, not popped
     if (this.camera === 'Video file' && prevVal !== '' && !this.popped && this.isReady) {
       // don't select a new video file if user dropped it
       // if (!appModel.dropFlag) {
-        // prompt file selection
-        // this._selectVideoFile().then((file) => {
-          // const vid = URL.createObjectURL(file)
-        // appModel.set('videoFile', '')
+      // prompt file selection
+      // this._selectVideoFile().then((file) => {
+      // const vid = URL.createObjectURL(file)
+      // appModel.set('videoFile', '')
       appModel.set('camera', this.camera)
       if (!appModel.dropFlag) {
         window.toast('drag & drop a video file')
         appModel.set('videoFile', '')
       }
       appModel.dropFlag = false
-        // })
+      // })
       // }
     } else {
       appModel.set('camera', this.camera)
@@ -239,48 +236,44 @@ class MControls extends MBase {
   }
 
   _onClickRemote() {
-    // FIXME expose shell
     shell.openExternal('http://' + appModel.controlServerAddress)
     console.log('_onClickRemote', appModel.controlServerAddress)
   }
 
   _onClickClose() {
     setImmediate(() => {
-      // var win = require('electron').remote.getCurrentWindow()
-      // var win = electron.getCurrentWindow()
-      // win.close()
       window.close()
     })
 
     // have to remove so detached() gets called and things get cleaned up
     // this.remove()
     // setTimeout(() => {
-        // window.close()
-      // ipcRenderer.send('POPOUT_CONTROLS_CLOSED')
+    // window.close()
+    // ipcRenderer.send('POPOUT_CONTROLS_CLOSED')
     // }, 1)
   }
 
   // _selectVideoFile() {
-    // console.log('_selectVideoFile', this.videoInput)
-    // this.videoInput.click()
-    // return new Promise((resolve, reject) => {
-    //   dialog.showOpenDialog({
-    //     properties: [
-    //       'openFile'
-    //     ],
-    //     filters: {
-    //       name: 'video',
-    //       extensions: ['mp4', 'webm', 'avi', 'ogv', 'mov']
-    //     }
-    //   }, function (selectedFilePaths) {
-    //       console.log('selectedFilePaths', arguments)
-    //     if (selectedFilePaths) {
-    //       console.log('selectedFilePaths', selectedFilePaths[0])
-    //       // TODO create file object url from file path
-    //       resolve(selectedFilePaths[0])
-    //     }
-    //   })
-    // })
+  // console.log('_selectVideoFile', this.videoInput)
+  // this.videoInput.click()
+  // return new Promise((resolve, reject) => {
+  //   dialog.showOpenDialog({
+  //     properties: [
+  //       'openFile'
+  //     ],
+  //     filters: {
+  //       name: 'video',
+  //       extensions: ['mp4', 'webm', 'avi', 'ogv', 'mov']
+  //     }
+  //   }, function (selectedFilePaths) {
+  //       console.log('selectedFilePaths', arguments)
+  //     if (selectedFilePaths) {
+  //       console.log('selectedFilePaths', selectedFilePaths[0])
+  //       // TODO create file object url from file path
+  //       resolve(selectedFilePaths[0])
+  //     }
+  //   })
+  // })
   // }
 
   // _onVideoPicked(e) {

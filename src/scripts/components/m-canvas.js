@@ -3,13 +3,8 @@ var {
   html
 } = require('@polymer/lit-element')
 var MBase = require('./m-base')
+const moment = require('../libs/moment/moment.js').default
 
-// FIXME ipc communication
-// let fs = require('fs-extra')
-let path = electron.path
-// let path = require('path')
-// let app = electron.remote.app
-const moment = require('../libs/moment/moment.js')
 let getDecay = (percentage) => (.2 - .005) * percentage / 100
 
 require('./m-camera.js')
@@ -283,30 +278,21 @@ class MCanvas extends MBase {
   }
 
   _doSnapshot(notify) {
-    var dataURL = this.find('#canvas').toDataURL()
+    const dataURL = this.find('#canvas').toDataURL()
+    const data = dataURL.replace('data:image/png;base64', '')
 
     // prepend autosave string unless the user explicitly requested to save
     var autoSaveString = 'auto_'
     if(notify) autoSaveString = ''
 
+    const dir = appModel.saveDir
     var filename = autoSaveString + 'LPL-Mercury_' + moment().format('YYYY-MM-DD_HH-mm-ss') + '.png'
-    var buffer = new Buffer(dataURL.replace('data:image/png;base64', ''), 'base64')
 
-    // FIXME dlpath
-    // let filepath = path.resolve(appModel.saveDir || app.getPath('downloads'), filename)
-    // console.log(filepath)
+    electron.ipcRenderer.send('downloadImage', {dir, filename, data})
     setTimeout(() => {
-      // FIXME fs
-      // fs.outputFile(filepath, buffer, err => {
-      //   if (err) {
-      //     console.error(err)
-      //     alert(err.message)
-      //   }
-      // })
-
-      // if (notify) {
-      //   window.toast('saved snapshot')
-      // }
+      if (notify) {
+        window.toast('saved snapshot')
+      }
     }, 200)
   }
 }
