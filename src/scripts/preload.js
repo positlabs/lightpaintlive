@@ -4,8 +4,8 @@ console.log('preload.js')
 contextBridge.exposeInMainWorld("semver", {...require('semver')})
 
 contextBridge.exposeInMainWorld("electron", {
-  ipcRenderer: { ...ipcRenderer, on: ipcRenderer.on },
+  ipcRenderer: { ...ipcRenderer, on: function(){
+    ipcRenderer.on(...arguments)
+  }},
   shell,
 })
-
-

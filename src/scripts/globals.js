@@ -1,8 +1,6 @@
 // import * as Events from '../node_modules/minivents'
 const Model = require('./Model.js')
 const Events = require('minivents/dist/minivents.commonjs')
-// window.$ = require('jquery/dist/jquery.slim')
-// window._ = require('underscore/underscore')
 
 window.states = {
   get NEW() {
@@ -49,6 +47,9 @@ window.actions = {
   },
   get TOGGLE_LOGO() {
     return 'TOGGLE_LOGO'
+  },
+  get CAMERA_PERMISSION_GRANTED() {
+    return 'CAMERA_PERMISSION_GRANTED'
   }
 }
 Events(actions)

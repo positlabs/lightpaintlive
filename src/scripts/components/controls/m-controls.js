@@ -88,14 +88,15 @@ class MControls extends MBase {
       document.head.appendChild(mainStyleTag)
 
       var setBounds = () => {
-        var opts = {
-          x: screen.width - this.offsetWidth,
-          y: screen.height - this.offsetHeight,
-          width: this.offsetWidth,
-          height: this.offsetHeight,
-        }
-        console.log(opts)
-        win.setBounds(opts)
+        // var opts = {
+        //   x: screen.width - this.offsetWidth,
+        //   y: screen.height - this.offsetHeight,
+        //   width: this.offsetWidth,
+        //   height: this.offsetHeight,
+        // }
+        // console.log(opts)
+        // win.setBounds(opts)
+        window.resizeTo(this.offsetWidth, this.offsetHeight);
       }
       setBounds()
       // setTimeout(setBounds, 2000)
@@ -113,6 +114,10 @@ class MControls extends MBase {
 
   // <!--<a href="./controls.html" target="_blank" class="pop btn" hidden="${this.popped || this.minimized}" on-click="${this._onClickPopout.bind(this)}" title='pop out control panel'>^</a>-->
   _render() {
+    // <div class="remote btn" hidden="${this.popped || this.minimized}" on-click="${this._onClickRemote.bind(this)}" title='control Mercury with your phone'>
+    //   <img src="assets/imgs/remote-icon.svg" />
+    // </div>
+    // <div class="pop btn" hidden="${this.popped || this.minimized}" on-click="${this._onClickPopout.bind(this)}" title='pop out control panel'>^</div>
     return html`
       <style>${styles}</style>
 
@@ -121,10 +126,6 @@ class MControls extends MBase {
       <div class="btn min-max" minimized$="${this.minimized}" hidden="${this.popped}" on-click="${this._onClickMinMax.bind(this)}" title='[/] show/hide controls'>
         <span hidden="${this.minimized}">–</span>
         <span hidden="${!this.minimized}">+</span>
-      </div>
-      <div class="pop btn" hidden="${this.popped || this.minimized}" on-click="${this._onClickPopout.bind(this)}" title='pop out control panel'>^</div>
-      <div class="remote btn" hidden="${this.popped || this.minimized}" on-click="${this._onClickRemote.bind(this)}" title='control Mercury with your phone'>
-        <img src="assets/imgs/remote-icon.svg" />
       </div>
 
       <div class="drag-bar" hidden="${!this.popped}">
@@ -144,7 +145,7 @@ class MControls extends MBase {
 
       <button id="save-dir" on-input="${this.onChooseSaveDir.bind(this)}">
         choose save folder
-        <input type="file" webkitdirectory=""/>
+        <input type="file" webkitdirectory directory/>
       </button>
 
       <m-button on-click="${this._snapshot.bind(this)}" title='[s] Save image snapshot'>snapshot</m-button>
@@ -154,8 +155,9 @@ class MControls extends MBase {
   }
   // <m-checkbox id="autoSnapshot" checked="${this.autoSnapshot}" title='Automatically save images after each session'>auto-snapshot</m-checkbox>
   onChooseSaveDir(e) {
-    console.log('onChooseSaveDir', e.target.files[0])
-    appModel.saveDir = e.target.files[0].path
+    // console.log('onChooseSaveDir', e.target.files[0])
+    const file = e.target.files[0]
+    appModel.saveDir = file.path.replace(file.name, '')
   }
 
   _propertiesChanged(props, changedProps, prevProps) {
@@ -231,7 +233,12 @@ class MControls extends MBase {
 
   _onClickPopout() {
     this.minimized = true
-    ipcRenderer.send('POPOUT_CONTROLS', appModel._properties)
+    
+    // sanitize model props. Can't serialize everything
+    let props = Object.assign({}, appModel._properties)
+    props.videoElement = true
+
+    ipcRenderer.send('POPOUT_CONTROLS', props)
     toast('opening control window')
   }
 
@@ -269,7 +276,6 @@ class MControls extends MBase {
   //       console.log('selectedFilePaths', arguments)
   //     if (selectedFilePaths) {
   //       console.log('selectedFilePaths', selectedFilePaths[0])
-  //       // TODO create file object url from file path
   //       resolve(selectedFilePaths[0])
   //     }
   //   })

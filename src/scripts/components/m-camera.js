@@ -15,6 +15,11 @@ class MCamera extends MBase {
   constructor() {
     super()
 
+    actions.on(actions.CAMERA_PERMISSION_GRANTED, () => {
+      console.log('CAMERA_PERMISSION_GRANTED')
+      this.onCameraChange()
+    })
+
     appModel.watch('camera', this.onCameraChange.bind(this))
     appModel.watch('videoFile', this.onVideoFileChange.bind(this))
     appModel.watch('resolution', this.onResolutionChange.bind(this))
@@ -171,7 +176,8 @@ class MCamera extends MBase {
       },
 
       (error) => {
-        console.log('An error occurred: ' + (error.message || error.name))
+        console.dir(error)
+        console.error('An error occurred: ' + (error.message || error.name))
         window.toast('error: ' + (error.message || error.name))
       }
     )

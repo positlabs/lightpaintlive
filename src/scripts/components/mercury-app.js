@@ -1,7 +1,5 @@
 // globals
 require('../libs/gsap/esm/all.js')
-require('./m-toast')
-require('./m-modal')
 require('../key-controller')
 
 var mainStyles = require('../../styles/main.scss')
@@ -14,6 +12,8 @@ var MBase = require('./m-base')
 // FIXME control server
 // var controlServer = require('../control-server.js')
 
+require('./m-toast')
+// require('./m-modal')
 require('./m-canvas')
 require('./m-menubar')
 require('./m-droptarget')
@@ -31,7 +31,7 @@ class MercuryApp extends MBase {
 
   constructor() {
     super()
-    console.log(this.localName + '#' + this.id + ' was created')
+    // console.log(this.localName + '#' + this.id + ' was created')
 
     const ms = document.createElement('style')
     ms.innerHTML = mainStyles
@@ -44,7 +44,10 @@ class MercuryApp extends MBase {
     }
 
     // FIXME control server
-    // appModel.controlServerAddress = controlServer.address
+    // electron.ipcRenderer.invoke('createControlServer').then((e, info) => {
+    //   appModel.controlServerAddress = info.controlServerAddress
+    //   console.log('@@@@@@@@', info)
+    // })
 
     actions.on(actions.TOGGLE_CONTROLS, () => {
       this.find('m-controls').minimized = !this.find('m-controls').minimized
@@ -54,7 +57,7 @@ class MercuryApp extends MBase {
   }
 
   _render() {
-    return html `
+    return html`
       <style>${styles}</style>
       <m-menubar></m-menubar>
       <m-droptarget></m-droptarget>
@@ -62,6 +65,14 @@ class MercuryApp extends MBase {
       <m-controls></m-controls>
       <m-video-controls></m-video-controls>
       <m-canvas></m-canvas>
+      <div id="donate">
+        <div id="content">
+          <div id="close" class="btn" on-click="_onClickClose">×</div>
+          <p>Mercury is open source! If you use Mercury professionally, or simply enjoyed using the app, please consider a supporting the project.</p>
+          <p>Donations can be through <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YGS69CHAE9EQC&source=url" target="_blank">PayPal</a> or <a href="https://github.com/sponsors/positlabs" target="_blank">Github Sponsors</a>.</p>
+          <p><a href="https://github.com/positlabs/lightpaintlive" target="_blank">View the project on Github</a></p>
+        </div>
+      </div>
       <a id="logo" class="logo" state$=${this.state} href="http://lightpaintlive.com" target="_blank" title="visit lightpaintlive.com">
         <img src="assets/icons/logo-green-icon-128.png">
         <div>LIGHTPAINT <span>LIVE</span></div>
@@ -71,10 +82,40 @@ class MercuryApp extends MBase {
 
   _firstRendered() {
     // open links externally by default
-    this.find('#logo').addEventListener('click', function (event) {
-      event.preventDefault()
-      electron.shell.openExternal(this.href)
+    this.findAll('a').forEach(anchor => {
+      anchor.addEventListener('click', function (event) {
+        event.preventDefault()
+        electron.shell.openExternal(this.href)
+      })
     })
+    // modal('If you used Mercury professionally, or simply enjoyed using the app, please consider a supporting the project. Donations can be through PayPal or Github Sponsors.')
+    //     console.log('_firstRendered', ...arguments)
+    const donateModal = this.find('#donate')
+    const donateModalContent = this.find('#donate #content')
+    
+    TweenLite.fromTo(donateModalContent, 0.5, {
+      height: 0
+    }, {
+      opacity: 1,
+      height: donateModalContent.offsetHeight,
+      ease: Power3.easeOut,
+      // onComplete: () => {
+      //   this.__onClickOff = this._onClickOff.bind(this)
+      //   document.body.addEventListener('click', this.__onClickOff)
+      // }
+    })
+    function close() {
+      TweenLite.to(donateModalContent, 0.3, {
+        height: 0,
+        opacity: 0,
+        ease: Power3.easeOut,
+        onComplete: () => {
+          donateModal.remove()
+        }
+      })
+      document.body.removeEventListener('click', close)
+    }
+    document.body.addEventListener('click', close)
   }
 
   _onToggleLogo() {

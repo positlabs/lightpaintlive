@@ -1,13 +1,13 @@
 {
   "version": "5.0.0",
   "name": "lpl-mercury-pro",
-  "productName": "lpl-mercury-pro",
+  "productName": "Lightpaint Live Mercury Pro",
   "repository": "https://github.com/positlabs/LPLMercury",
   "description": "Realtime light painting",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
-    "webpack": "npx webpack --config ./wepack.config.js --watch",
+    "webpack": "npx webpack --config ./webpack.config.js --watch",
     "webpack:browser": "npx webpack --config ./webpack.browser.js --watch",
     "build:app:mac": "npx electron-forge package --platform=darwin",
     "build:app:win": "npx electron-forge package --platform=win32",
@@ -17,7 +17,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
-  "keywords": [],
+  "keywords": ["long exposure", "photography", "light painting", "webcam", "light trails", "webgl"],
   "author": "positlabs",
   "config": {
     "forge": {

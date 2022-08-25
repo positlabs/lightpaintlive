@@ -1,15 +1,22 @@
+/*
+  /Users/josh/local-workspace/lightpaintlive/out/lpl-mercury-pro-darwin-x64/lpl-mercury-pro.app/Contents/MacOS/lpl-mercury-pro
+*/
 const {
   app,
   BrowserWindow,
   ipcMain,
-  systemPreferences
+  systemPreferences,
+  dialog
 } = require('electron')
+
+console.log('running index.js')
 
 const path = require('path')
 const fs = require('fs-extra')
 const opn = require('opn')
 const os = require('os')
 const request = require('request')
+const controlServer = require('./scripts/control-server')
 
 // this should be placed at top of main.js to handle setup events quickly
 if (handleSquirrelEvent()) {
@@ -112,7 +119,9 @@ const createWindow = () => {
     mainWindow = null
     app.quit()
   })
-  mainWindow.on('ready-to-show', mainWindow.show)
+  mainWindow.on('ready-to-show', () => {
+    mainWindow.show()
+  })
   // mainWindow.openDevTools()
 }
 
@@ -129,6 +138,7 @@ ipcMain.on('POPOUT_CONTROLS', (event, model) => {
       show: false,
       acceptFirstMouse: true,
       webPreferences: {
+        preload: path.join(app.getAppPath(), 'src/scripts/preload.js'),
         nodeIntegration: true,
       }
     })
@@ -147,14 +157,11 @@ ipcMain.on('POPOUT_CONTROLS', (event, model) => {
 
 // get model changes from sender and forward them to the other window
 ipcMain.on('MODEL_CHANGE', (event, key, value) => {
-  ([mainWindow]).forEach((win) => {
-    // ([mainWindow, controlWindow]).forEach((win) => {
+  // ([mainWindow]).forEach((win) => {
+  const windows = [mainWindow, controlWindow]
+  windows.forEach((win) => {
     // if (win && win.webContents.history[0] !== event.sender.history[0]) {
-    try {
-      win.send('MODEL_CHANGE', key, value)
-    } catch (e) {
-      console.warn('could not serialize', key)
-    }
+    if (win) win.send('MODEL_CHANGE', key, value)
     // }
   })
 })
@@ -163,31 +170,62 @@ ipcMain.on('MODEL_CHANGE', (event, key, value) => {
 ipcMain.on('ACTION', (event, action) => {
   mainWindow.webContents.send('ACTION', action)
 })
-// app.on('will-quit', () => {
-//   console.log('will-quit')
-// })
+// app.on('will-quit', () => { console.log('will-quit') })
 
-systemPreferences.askForMediaAccess('camera').then(() => {
-  // TODO send event to reinit the camera
-})
+function askForMediaAccess() {
+  systemPreferences.askForMediaAccess('camera').then((granted) => {
+    console.log('systemPreferences.askForMediaAccess', granted)
+    if (granted) {
+      // send event to reinit the camera
+      mainWindow.webContents.send('ACTION', 'CAMERA_PERMISSION_GRANTED')
+    } else {
+      // User must change setting in security panel
+      // show a dialog message to instruct them 
+      dialog.showErrorBox('Required Permissions', 'Camera permissions are blocked by Mac Security. Please go to System Preferences > Camera > Lightpaint Live to enable the webcam.')
+    }
+  }).catch(err => console.error(err))
+}
+askForMediaAccess()
 
-ipcMain.on('downloadImage', (e, info) => {
-  // console.log(info)
+// TEST
+// dialog.showErrorBox('Required Permissions', 'Camera permissions are blocked by Mac Security. Please go to System Preferences > Camera > Lightpaint Live to enable the webcam.')
+// setTimeout(() => {
+//   console.log('bonk')
+//   mainWindow.webContents.send('ACTION', 'CAMERA_PERMISSION_GRANTED')
+// }, 5000)
+
+ipcMain.handle('downloadImage', (e, info) => {
+  console.log(info)
   const { filename, dir, data } = info
   const filepath = path.join(dir || app.getPath('downloads'), filename)
   const buffer = Buffer.from(data, 'base64')
-  fs.outputFile(filepath, buffer, err => {
-    if (err) console.error(err)
+  return new Promise((resolve, reject) => {
+
+    fs.outputFile(filepath, buffer, err => {
+      if (err) {
+        console.error(err)
+        reject(err)
+      } else {
+        resolve(filepath)
+      }
+    })
   })
 })
 
-ipcMain.on('downloadVideo', (e, info) => {
+ipcMain.handle('downloadVideo', (e, info) => {
   console.log('downloadVideo')
   const { filename, dir, buffer } = info
   const outPath = path.resolve(dir || app.getPath('downloads'), filename + '.webm')
 
-  fs.outputFile(outPath, Buffer.from(buffer, 'binary'), (err, res) => {
-    if (err) console.error(err)
+  return new Promise((resolve, reject) => {
+    fs.outputFile(outPath, Buffer.from(buffer, 'binary'), (err, res) => {
+      if (err) {
+        console.error(err)
+        reject(err)
+      } else {
+        resolve(outPath)
+      }
+    })
   })
 })
 
@@ -196,20 +234,33 @@ ipcMain.on('maximize', (e, info) => {
   mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize()
 })
 
-ipcMain.on('update', (e, info) => {
-  const { latestRelease } = info
+ipcMain.handle('update', (e, info) => {
 
-  const extension = os.type() === 'Darwin' ? 'dmg' : 'exe'
-  let osAsset = latestRelease.assets.filter(asset => {
-    return asset.browser_download_url.split('.').pop() === extension
+  return new Promise((resolve, reject) => {
+
+    const { latestRelease } = info
+
+    const extension = os.type() === 'Darwin' ? 'dmg' : 'exe'
+    let osAsset = latestRelease.assets.filter(asset => {
+      return asset.browser_download_url.split('.').pop() === extension
+    })
+    let url = osAsset[0].browser_download_url
+
+    let dlPath = path.join(app.getPath('downloads'), 'lpl-mercury-latest') + `.${extension}`
+    // console.log(url)
+    request(url, (err, res) => {
+      if (err) {
+        reject(err)
+        return console.error(err)
+      }
+      opn(dlPath)
+      // mainWindow.webContents.send('toast', { message: 'Installing update...' })
+      resolve()
+    }).pipe(fs.createWriteStream(dlPath))
   })
-  let url = osAsset[0].browser_download_url
+})
 
-  let dlPath = path.join(app.getPath('downloads'), 'lpl-mercury-latest') + `.${extension}`
-  // console.log(url)
-  request(url, (err, res) => {
-    if (err) return console.error(err)
-    opn(dlPath)
-    mainWindow.webContents.send('toast', { message: 'Installing update...' })
-  }).pipe(fs.createWriteStream(dlPath))
+ipcMain.handle('createControlServer', async () => {
+  const controlServerAddress = controlServer.create(mainWindow.webContents)
+  return controlServerAddress
 })

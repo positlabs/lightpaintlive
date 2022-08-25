@@ -70,7 +70,7 @@ class MVideoRecorder extends MBase {
       var blob = new Blob(this.recordedChunks, { type: 'video/webm' })
       var buffer = await blob.arrayBuffer()
 
-      electron.ipcRenderer.send('downloadVideo', {dir, filename, buffer})
+      electron.ipcRenderer.invoke('downloadVideo', {dir, filename, buffer})
 
       this.recordedChunks = []
     }, 500)

@@ -43,12 +43,13 @@ class MUpdate extends MBase {
     this.find('.btn.download').addEventListener('click', this.download.bind(this))
   }
 
-  download() {
+  async download() {
     this.hide()
     toast('Downloading update...')
-    electron.ipcRenderer.send('update', {
+    await electron.ipcRenderer.invoke('update', {
       latestRelease: this.latestRelease
     })
+    toast('Installing update...')
   }
 
   show(){

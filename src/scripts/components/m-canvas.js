@@ -277,7 +277,7 @@ class MCanvas extends MBase {
     callback()
   }
 
-  _doSnapshot(notify) {
+  async _doSnapshot(notify) {
     const dataURL = this.find('#canvas').toDataURL()
     const data = dataURL.replace('data:image/png;base64', '')
 
@@ -288,12 +288,10 @@ class MCanvas extends MBase {
     const dir = appModel.saveDir
     var filename = autoSaveString + 'LPL-Mercury_' + moment().format('YYYY-MM-DD_HH-mm-ss') + '.png'
 
-    electron.ipcRenderer.send('downloadImage', {dir, filename, data})
-    setTimeout(() => {
-      if (notify) {
-        window.toast('saved snapshot')
-      }
-    }, 200)
+    await electron.ipcRenderer.invoke('downloadImage', {dir, filename, data})
+    if (notify) {
+      window.toast('saved snapshot')
+    }
   }
 }
 
