@@ -74,6 +74,9 @@
 		border-top: 3px solid lime;
 		opacity: 0;
 		overflow: hidden;
+        line-height: 1.5;
+        font-size: 1.25em;
+        max-width: 500px;
 		background: rgba(0,0,0, .9);
         padding: 20px;
         a {
@@ -89,7 +92,7 @@
 
 	#close.btn {
 		position: absolute;
-		top: 0px; right: 0;
+		top: 10px; right: 10px;
 		line-height: 30px;
 		width: 30px;
         height: 30px;

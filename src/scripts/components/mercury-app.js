@@ -68,7 +68,7 @@ class MercuryApp extends MBase {
       <div id="donate">
         <div id="content">
           <div id="close" class="btn" on-click="_onClickClose">×</div>
-          <p>Mercury is open source! If you use Mercury professionally, or simply enjoyed using the app, please consider a supporting the project.</p>
+          <p>Mercury is open source! If you use Mercury professionally, or simply enjoyed using the app, please consider supporting the project.</p>
           <p>Donations can be through <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YGS69CHAE9EQC&source=url" target="_blank">PayPal</a> or <a href="https://github.com/sponsors/positlabs" target="_blank">Github Sponsors</a>.</p>
           <p><a href="https://github.com/positlabs/lightpaintlive" target="_blank">View the project on Github</a></p>
         </div>
@@ -97,8 +97,9 @@ class MercuryApp extends MBase {
       height: 0
     }, {
       opacity: 1,
-      height: donateModalContent.offsetHeight,
+      height: donateModalContent.offsetHeight - 40,
       ease: Power3.easeOut,
+      delay: 1,
       // onComplete: () => {
       //   this.__onClickOff = this._onClickOff.bind(this)
       //   document.body.addEventListener('click', this.__onClickOff)
