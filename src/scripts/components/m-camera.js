@@ -109,7 +109,10 @@ class MCamera extends MBase {
     }
   }
   onResolutionChange() {
-    this._initCamera()
+    // trying to prevent errors when we get multiple init requests 
+    setTimeout(() => {
+      this._initCamera()
+    }, 1000)
   }
 
   _initCamera() {
@@ -169,7 +172,7 @@ class MCamera extends MBase {
     navigator.getUserMedia.call(navigator, this.constraints,
 
       (stream) => {
-        console.log('stream', stream.getVideoTracks()[0]);
+        console.log('stream', stream.getVideoTracks()[0])
         this.stream = stream
         this.video.srcObject = stream// (URL && URL.createObjectURL(stream)) || stream
         this.video.play()
