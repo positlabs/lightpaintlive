@@ -189,6 +189,7 @@ class MCamera extends MBase {
   _onPlay() {
     // console.log('m-camera._onPlay')
     this.emit('play')
+    toast(`Resolution: ${this.video.videoWidth}:${this.video.videoHeight}`)
   }
 
   _getCameraList(callback) {
