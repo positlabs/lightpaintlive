@@ -33,21 +33,17 @@ module.exports = {
             {
                 test: /\.(s*)(c|a)ss$/,
                 use: ['raw-loader', 'sass-loader']
-                // use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.html$/,
-                use: ['raw-loader']
+                type: 'asset/inline'
             },
             {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'fonts/'
-                    }
-                }]
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[hash][ext][query]'
+                }
             }
         ]
     },

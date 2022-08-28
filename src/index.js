@@ -185,7 +185,7 @@ function askForMediaAccess() {
     }
   }).catch(err => console.error(err))
 }
-askForMediaAccess()
+if(systemPreferences.askForMediaAccess) askForMediaAccess()
 
 // TEST
 // dialog.showErrorBox('Required Permissions', 'Camera permissions are blocked by Mac Security. Please go to System Preferences > Camera > Lightpaint Live to enable the webcam.')

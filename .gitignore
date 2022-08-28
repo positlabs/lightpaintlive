@@ -14,3 +14,7 @@ src/styles/*.css.map
 .sass-cache
 
 *-latest.json
+
+./dev/*.pem
+./dev/*.pfx
+./dev/*.key
