@@ -167,6 +167,7 @@ h1 {
 }
 h2 {
 	@include font-oswald(22px, 400);
+	margin-top: 40px;
 }
 h3 {
 	@include font-ubuntu(16px, 700);
@@ -187,6 +188,7 @@ footer {
 }
 
 section {
+	display: inline-block;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	&:first-of-type {

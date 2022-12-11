@@ -12,8 +12,6 @@ export class AppRoot {
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
             <stencil-route url="/" component="lpl-landing" exact={true} />
-            {/* TODO */}
-            {/* <stencil-route url="/privacy" component="lpl-privacy" /> */}
           </stencil-route-switch>
         </stencil-router>
       </Host>

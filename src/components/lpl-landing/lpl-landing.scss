@@ -2,7 +2,27 @@
 @import "../../global/vars.scss";
 
 lpl-landing {
-  section#mercury {
+  .sponsor-buttons {
+    display: block;
+    clear: both;
+    padding-top: 10px;
+    a {
+      float: left;
+      margin-right: 30px;
+    }
+
+    .github {
+      border: 2px solid white;
+      padding: 12px;
+      border-radius: 20px;
+      svg {
+        fill: fuchsia;
+        margin-right: 6px;
+      }
+    }
+  }
+  section {
+    width: 100%;
     .btn {
       background-color: #ddd;
       .icon {
@@ -16,11 +36,23 @@ lpl-landing {
         }
       }
     }
+    img.splash {
+      width: 100%;
+      margin-top: 40px;
+    }
 
     .launch-btn {
       user-select: none;
     }
-
+    .links {
+      display: block;
+      clear: both;
+      padding-top: 20px;
+      a { 
+        display: block;
+      }
+    }
+      
     iframe {
       margin-top: 40px;
       margin-bottom: 20px;
